@@ -1,0 +1,4 @@
+/home/ariel/Escritorio/Prueba/CMakeFiles/rebuild_cache.dir
+/home/ariel/Escritorio/Prueba/CMakeFiles/edit_cache.dir
+/home/ariel/Escritorio/Prueba/CMakeFiles/untitled.dir
+/home/ariel/Escritorio/Prueba/CMakeFiles/Box2D.dir
