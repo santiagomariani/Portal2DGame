@@ -7,6 +7,7 @@ Chell::Chell(b2World& world, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_dynamicBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
+	cuerpo_def.fixedRotation = true;
 	cuerpo = world.CreateBody(&cuerpo_def);
 
 	b2PolygonShape polygonShape;
@@ -32,6 +33,13 @@ void Chell::moverDerecha(){
 void Chell::moverIzquierda(){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
 	vel.x = -5;
+	cuerpo->SetLinearVelocity(vel);
+}
+void Chell::mover(const Uint8 *state){
+	b2Vec2 vel = cuerpo->GetLinearVelocity();
+	vel.x = 5 * state[SDL_SCANCODE_RIGHT] + -5 * state[SDL_SCANCODE_LEFT];
+	if (vel.y == 0)
+		vel.y = 10 * state[SDL_SCANCODE_UP];
 	cuerpo->SetLinearVelocity(vel);
 }
 b2Vec2 Chell::getPosition(){

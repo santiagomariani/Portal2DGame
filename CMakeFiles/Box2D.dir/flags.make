@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ariel/Escritorio/Prueba/libs 
+CXX_INCLUDES = -I/home/ariel/Escritorio/Caca2/TP4---Portal/libs 
 
