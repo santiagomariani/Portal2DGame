@@ -1,7 +1,10 @@
+#include <iostream>
 #include "chell.h"
 #include "Box2D/Box2D.h"
 #define TAMANIO_CHELL_X 0.25
 #define TAMANIO_CHELL_Y 0.75
+#define CAMINAR 5
+#define SALTAR 25
 
 Chell::Chell(b2World& world, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
@@ -37,11 +40,20 @@ void Chell::moverIzquierda(){
 }
 void Chell::mover(const Uint8 *state){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
-	vel.x = 5 * state[SDL_SCANCODE_RIGHT] + -5 * state[SDL_SCANCODE_LEFT];
+	vel.x = CAMINAR * state[SDL_SCANCODE_RIGHT] + -CAMINAR * state[SDL_SCANCODE_LEFT];
 	if (vel.y == 0)
-		vel.y = 10 * state[SDL_SCANCODE_UP];
+		vel.y = SALTAR * state[SDL_SCANCODE_UP];
 	cuerpo->SetLinearVelocity(vel);
 }
+
+void Chell::mover_con_evento(ManejadorTeclado& t){
+	b2Vec2 vel = cuerpo->GetLinearVelocity();
+	vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
+	if (vel.y == 0)
+		vel.y = SALTAR * t.presionada(SDLK_UP);
+	cuerpo->SetLinearVelocity(vel);
+}
+
 b2Vec2 Chell::getPosition(){
 	return cuerpo->GetPosition();
 }
