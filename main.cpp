@@ -4,7 +4,7 @@
 #include "disparo.h"
 #include "roca.h"
 #include "chell.h"
-#include "manejador_teclado.h"
+#include "estado_teclado.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -13,30 +13,6 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
 #define CONVERSION 10
-
-
-class Accion{
-	Chell& chell;
-public:
-	Accion(Chell& c) : chell(c){
-	}
-	void operator()(){
-		char c;
-		bool caca = true;
-		while (caca){
-			c = std::cin.get();
-			if (c == 'w'){
-				chell.saltar();
-			}else if (c == 'a'){
-				chell.moverIzquierda();
-			}else if (c == 's'){
-				caca = false;
-			}else if (c == 'd'){
-				chell.moverDerecha();
-			}
-		}
-	}
-};
 
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
@@ -84,7 +60,7 @@ int main() {
 	SDL_Texture* texture = IMG_LoadTexture(renderer, "roquita.jpeg");
 	bool running = true;
 
-	ManejadorTeclado manejador;
+	EstadoTeclado teclado;
 	while (running) {
 		SDL_Event event;
 		//SDL_SetRenderDrawColor(renderer, 0x33, 0x33, 0x33, 0xFF);
@@ -104,24 +80,23 @@ int main() {
 			switch(event.type) {
 				case SDL_KEYDOWN:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-						manejador.agregar_evento(keyEvent);
+						teclado.agregar_evento(keyEvent);
 						break;
 				}
 				case SDL_KEYUP:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-						manejador.agregar_evento(keyEvent);
+						teclado.agregar_evento(keyEvent);
 						break;
 				}
 				case SDL_QUIT:
-	                std::cout << "Quit :(" << std::endl;
 	                running = false;
 	                break;
 			}
 		
 		}
-			chell.mover_con_evento(manejador);
-			world.Step(timeStep, velocityIterations, positionIterations);
-			SDL_RenderPresent(renderer);
+		chell.mover_con_evento(teclado);
+		world.Step(timeStep, velocityIterations, positionIterations);
+		SDL_RenderPresent(renderer);
 	}
 	return 0;
 }
