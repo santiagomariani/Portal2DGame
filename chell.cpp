@@ -46,7 +46,7 @@ void Chell::mover(const Uint8 *state){
 	cuerpo->SetLinearVelocity(vel);
 }
 
-void Chell::mover_con_evento(ManejadorTeclado& t){
+void Chell::mover_con_evento(EstadoTeclado& t){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
 	vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
 	if (vel.y == 0)

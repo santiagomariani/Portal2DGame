@@ -4,7 +4,7 @@
 #include "disparo.h"
 #include "roca.h"
 #include "chell.h"
-#include "manejador_teclado.h"
+#include "estado_teclado.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -60,7 +60,7 @@ int main() {
 	SDL_Texture* texture = IMG_LoadTexture(renderer, "roquita.jpeg");
 	bool running = true;
 
-	ManejadorTeclado manejador;
+	EstadoTeclado teclado;
 	while (running) {
 		SDL_Event event;
 		//SDL_SetRenderDrawColor(renderer, 0x33, 0x33, 0x33, 0xFF);
@@ -80,12 +80,12 @@ int main() {
 			switch(event.type) {
 				case SDL_KEYDOWN:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-						manejador.agregar_evento(keyEvent);
+						teclado.agregar_evento(keyEvent);
 						break;
 				}
 				case SDL_KEYUP:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-						manejador.agregar_evento(keyEvent);
+						teclado.agregar_evento(keyEvent);
 						break;
 				}
 				case SDL_QUIT:
@@ -94,7 +94,7 @@ int main() {
 			}
 		
 		}
-		chell.mover_con_evento(manejador);
+		chell.mover_con_evento(teclado);
 		world.Step(timeStep, velocityIterations, positionIterations);
 		SDL_RenderPresent(renderer);
 	}
