@@ -2,7 +2,7 @@
 #include "chell.h"
 #include "Box2D/Box2D.h"
 #define TAMANIO_CHELL_X 0.25
-#define TAMANIO_CHELL_Y 0.75
+#define TAMANIO_CHELL_Y 0.625
 #define CAMINAR 5
 #define SALTAR 25
 
@@ -18,8 +18,19 @@ Chell::Chell(b2World& world, b2Vec2& pos){
 	myFixtureDef.shape = &polygonShape;
 	myFixtureDef.density = 1;
 
-	polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y);
+	b2Vec2 pos_poligono(0, 0); // posicion del centro del poligono
+	polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
 	cuerpo->CreateFixture(&myFixtureDef);
+
+	b2CircleShape circulo;
+	b2FixtureDef circulo_fix_def;
+	circulo_fix_def.shape = &circulo;
+	circulo_fix_def.density = 1;
+
+	circulo.m_p.Set(0, -0.625); // posicion del centro del circulo
+    circulo.m_radius = 0.25f;
+	cuerpo->CreateFixture(&circulo_fix_def);
+
 }
 void Chell::saltar(){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();

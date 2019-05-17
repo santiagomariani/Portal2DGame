@@ -42,15 +42,15 @@ int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
 	b2World world(gravity);
 
-	/*std::vector<Roca> roquitas;
+	std::vector<Roca> roquitas;
 	b2Vec2 pos(-50, 0);
 	b2Vec2 inc(1, 0);
-	for (int j = 0; j < 100; ++j){
+	for (int j = 0; j < 1000; ++j){
 		Roca roca(world, pos);
 		pos += inc;
 		roquitas.push_back(roca);
-	}*/
-	b2Body* piso_cuerpo;
+	}
+	/*b2Body* piso_cuerpo;
 	b2BodyDef piso_def;
 	piso_def.type = b2_staticBody;
 	piso_def.position.Set(0, 0);
@@ -63,7 +63,7 @@ int main() {
 	piso.Set(piso1, piso2);
 	b2FixtureDef figura;
 	figura.shape = &piso;
-	piso_cuerpo->CreateFixture(&figura);
+	piso_cuerpo->CreateFixture(&figura);*/
 
 
 	b2Vec2 pos_chell(0, 3);
