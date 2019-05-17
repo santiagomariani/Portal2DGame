@@ -14,30 +14,6 @@
 #include <SDL2/SDL_image.h>
 #define CONVERSION 10
 
-
-class Accion{
-	Chell& chell;
-public:
-	Accion(Chell& c) : chell(c){
-	}
-	void operator()(){
-		char c;
-		bool caca = true;
-		while (caca){
-			c = std::cin.get();
-			if (c == 'w'){
-				chell.saltar();
-			}else if (c == 'a'){
-				chell.moverIzquierda();
-			}else if (c == 's'){
-				caca = false;
-			}else if (c == 'd'){
-				chell.moverDerecha();
-			}
-		}
-	}
-};
-
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
 	b2World world(gravity);
@@ -113,15 +89,14 @@ int main() {
 						break;
 				}
 				case SDL_QUIT:
-	                std::cout << "Quit :(" << std::endl;
 	                running = false;
 	                break;
 			}
 		
 		}
-			chell.mover_con_evento(manejador);
-			world.Step(timeStep, velocityIterations, positionIterations);
-			SDL_RenderPresent(renderer);
+		chell.mover_con_evento(manejador);
+		world.Step(timeStep, velocityIterations, positionIterations);
+		SDL_RenderPresent(renderer);
 	}
 	return 0;
 }
