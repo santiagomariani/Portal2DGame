@@ -2,7 +2,7 @@
 #include "Box2D/Box2D.h"
 #define RADIO_RAYO 0.3f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 3
+#define CTE_VELOCIDAD_RAYO 15
 
 Disparo::Disparo(b2World& world, const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;

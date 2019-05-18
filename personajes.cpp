@@ -15,6 +15,7 @@ int Personajes::agregar_chell(){
 
 void Personajes::disparar(int chell_id, b2Vec2& click_pos){
 	b2Vec2 pos_chell = this->personajes[chell_id].getPosition();
+	pos_chell.x += 10;
 	this->mundo.crearDisparo(pos_chell, click_pos);
 }
 
