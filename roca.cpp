@@ -14,23 +14,17 @@ Roca::Roca(b2World& world, const b2Vec2& pos){
 	myFixtureDef.shape = &polygonShape;
 	myFixtureDef.density = 1;
 
-	/*b2Vec2 vs[4];
-	vs[0].Set(0.0f, 1.0f);
-	vs[1].Set(-1.0f, 0.0f);
-	vs[2].Set(0.0f, -1.0f);
-	vs[3].Set(1.0f, 0.0f);
-	b2ChainShape chain;
-	chain.CreateLoop(vs, 4);
-
-	b2FixtureDef myFixtureDef;
-	myFixtureDef.shape = &chain;
-	myFixtureDef.density = 1;*/
-
 	polygonShape.SetAsBox(TAMANIO_BLOQUE_X, TAMANIO_BLOQUE_Y);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-
+Roca::Roca(Roca&& otro){
+	if (this == &otro){
+		return;
+	}
+	cuerpo = otro.cuerpo;
+	otro.cuerpo = nullptr;
+}
 b2Vec2 Roca::getPosition(){
 	return cuerpo->GetPosition();
 }

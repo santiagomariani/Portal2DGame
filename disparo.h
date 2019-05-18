@@ -3,9 +3,10 @@
 #include "Box2D/Box2D.h"
 
 class Disparo{
-	b2Body* circle_body;
+	b2Body* cuerpo;
 public:
 	Disparo(b2World& world, const b2Vec2& origen, const b2Vec2& destino);
+	Disparo(Disparo&& otro);
 	b2Vec2 getPosition();
 	float32 getAngle();
 };

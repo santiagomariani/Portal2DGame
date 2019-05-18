@@ -7,19 +7,15 @@
 
 class Mundo{
 	b2World mundo;
-	std::map<int, Chell*> personajes;
+	std::vector<Disparo> disparos;
+	std::vector<Roca> rocas;
 public:
 	Mundo(const b2Vec2& gravedad);
 
-	void agregarChell(int cliente);
-	void crearDisparo(int cliente, const b2Vec2& click);
+	void crearDisparo(const b2Vec2& origen, const b2Vec2& destino);
 	void crearRoca(const b2Vec2& pos);
 	void avanzar();
-
-
-
-
-	const b2World& getMundo();
+	b2World& getMundo();
 
 
 	

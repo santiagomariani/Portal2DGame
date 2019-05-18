@@ -4,7 +4,9 @@
 #include "disparo.h"
 #include "roca.h"
 #include "chell.h"
+#include "mundo.h"
 #include "estado_teclado.h"
+#include "personajes.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -18,19 +20,18 @@ int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
 	Mundo world(gravity);
 
+	Personajes personajes(world);
+
 	b2Vec2 pos(-50, 0);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 1000; ++j){
 		world.crearRoca(pos);
 		pos += inc;
 	}
-
-	b2Vec2 pos_chell(0, 3);
-	world.crearChell(0, pos_chell); //Cliente 0
-
+	//Cliente 0
+	int id = personajes.agregar_chell();
 
 //======================================SDL======================================
-
 
 
 	SDL_Window* window;
@@ -50,29 +51,31 @@ int main() {
 	EstadoTeclado teclado;
 	while (running) {
 		SDL_Event event;
-		
-
-
-		const b2world w = world.getMundo();
-
-		b2Body* lista = w.GetBodyList();
-
-		int i = 0;
-		while (lista[i]){
-			void* objeto = lista[i].getUserData();
-		}
-
-		/*SDL_Rect sdlSrc = {
+		SDL_RenderClear(renderer);
+		const std::map<int, Chell>& mapa = personajes.getPersonajes();
+		b2Vec2 chell_pos = mapa[id].getPosition();
+		SDL_Rect sdlSrc = {
 		0, 0,
 		233, 216
 		};
-		b2Vec2 chell_pos = chell.getPosition();
 		SDL_Rect sdlDest = {
 		(int)(chell_pos.x * CONVERSION) + 400, (int)(chell_pos.y * CONVERSION * -1) + 300,
 		233, 216
-		};*/
-		SDL_RenderClear(renderer);
-		SDL_RenderCopy(renderer, texture, &sdlSrc, &sdlDest);
+		};
+		SDL_RenderCopy(renderer, textura_chell, &sdlSrc, &sdlDest);
+		const std::vector<Disparo>& disparitos = world.getDisparos();
+		for (auto it = disparitos.begin(); it != disparitos.end(); ++it){
+			b2Vec2 asd = *it.getPosition();
+			SDL_Rect sdlSrc_a = {
+			0, 0,
+			1024, 1024
+			};
+			SDL_Rect sdlDest_a = {
+			(int)(asd.x * CONVERSION) + 400, (int)(asd.y * CONVERSION * -1) + 300,
+			100, 100
+			};
+			SDL_RenderCopy(renderer, textura_disparo, &sdlSrc_a, &sdlDest_a);
+		}
 
 
 		while (SDL_PollEvent(&event) != 0){
@@ -91,9 +94,9 @@ int main() {
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-
+						b2Vec2 click(mouseEvent.x, mouseEvent.y);
+						personajes.disparar(id, click);
 					}
-
 				}
 				case SDL_QUIT:
 					running = false;
@@ -101,8 +104,8 @@ int main() {
 			}
 		
 		}
-		chell.mover_con_evento(teclado);
-		world.Step(timeStep, velocityIterations, positionIterations);
+		persoanjes.mover_chell(id, teclado);
+		world.avanzar();
 		SDL_RenderPresent(renderer);
 	}
 	return 0;
