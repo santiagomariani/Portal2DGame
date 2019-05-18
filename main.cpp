@@ -22,7 +22,7 @@ int main() {
 
 	Personajes personajes(world);
 
-	b2Vec2 pos(-50, 0);
+	b2Vec2 pos(-50, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 1000; ++j){
 		world.crearRoca(pos);
@@ -52,7 +52,7 @@ int main() {
 	while (running) {
 		SDL_Event event;
 		SDL_RenderClear(renderer);
-		const std::map<int, Chell>& mapa = personajes.getPersonajes();
+		std::map<int, Chell>& mapa = personajes.getPersonajes();
 		b2Vec2 chell_pos = mapa[id].getPosition();
 		SDL_Rect sdlSrc = {
 		0, 0,
@@ -63,9 +63,9 @@ int main() {
 		233, 216
 		};
 		SDL_RenderCopy(renderer, textura_chell, &sdlSrc, &sdlDest);
-		const std::vector<Disparo>& disparitos = world.getDisparos();
+		std::vector<Disparo>& disparitos = world.getDisparos();
 		for (auto it = disparitos.begin(); it != disparitos.end(); ++it){
-			b2Vec2 asd = *it.getPosition();
+			b2Vec2 asd = (*it).getPosition();
 			SDL_Rect sdlSrc_a = {
 			0, 0,
 			1024, 1024
@@ -93,9 +93,12 @@ int main() {
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-						b2Vec2 click(mouseEvent.x, mouseEvent.y);
+						float x = (mouseEvent.x - 400) / CONVERSION;
+						float y = ((mouseEvent.y - 300) / CONVERSION) * -1;
+						b2Vec2 click(x, y);
 						personajes.disparar(id, click);
 					}
+					break;
 				}
 				case SDL_QUIT:
 					running = false;
@@ -103,7 +106,7 @@ int main() {
 			}
 		
 		}
-		persoanjes.mover_chell(id, teclado);
+		personajes.mover_chell(id, teclado);
 		world.avanzar();
 		SDL_RenderPresent(renderer);
 	}

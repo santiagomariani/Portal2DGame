@@ -6,6 +6,17 @@
 #define CAMINAR 5
 #define SALTAR 25
 
+Chell::Chell(){
+	cuerpo = nullptr;
+}
+Chell& Chell::operator=(Chell&& otro){
+	if (this == &otro){
+        return *this;
+    }
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
+    return *this;
+}
 Chell::Chell(b2World& world, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_dynamicBody;

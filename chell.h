@@ -7,8 +7,12 @@
 class Chell{
 	b2Body* cuerpo;
 public:
+	Chell();
 	Chell(b2World& world, b2Vec2& pos);
 	Chell(Chell&& otro);
+	Chell& operator=(Chell&& otro);
+
+
 	void moverDerecha();
 	void moverIzquierda();
 	void saltar();

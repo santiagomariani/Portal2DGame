@@ -4,6 +4,9 @@
 #include <map>
 #include "Box2D/Box2D.h"
 #include "chell.h"
+#include "roca.h"
+#include "disparo.h"
+#include <vector>
 
 class Mundo{
 	b2World mundo;
@@ -17,7 +20,7 @@ public:
 	void avanzar();
 	b2World& getMundo();
 
-
+	std::vector<Disparo>& getDisparos();
 	
 };
 

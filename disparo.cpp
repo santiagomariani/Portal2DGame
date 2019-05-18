@@ -8,6 +8,7 @@ Disparo::Disparo(b2World& world, const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
+	circle_body_def.fixedRotation = true;
 	cuerpo = world.CreateBody(&circle_body_def);
 
 	b2CircleShape circleShape;

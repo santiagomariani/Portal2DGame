@@ -18,3 +18,10 @@ void Mundo::avanzar(){
 b2World& Mundo::getMundo(){
 	return mundo;
 }
+
+
+
+
+std::vector<Disparo>& Mundo::getDisparos(){
+	return disparos;
+}

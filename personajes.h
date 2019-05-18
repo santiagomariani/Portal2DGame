@@ -3,6 +3,7 @@
 #include <map>
 #include "chell.h"
 #include "Box2D/Box2D.h"
+#include "mundo.h"
 
 class Personajes{
 	std::map<int,Chell> personajes;
@@ -17,6 +18,8 @@ public:
 	void disparar(int chell_id, b2Vec2& click_pos);
 
 	void mover_chell(int chell_id, EstadoTeclado& teclado);
+
+	std::map<int, Chell>& getPersonajes();
 
 	~Personajes() = default;
 };
