@@ -8,11 +8,11 @@ class Chell{
 	b2Body* cuerpo;
 public:
 	Chell(b2World& world, b2Vec2& pos);
+	Chell(Chell&& otro);
 	void moverDerecha();
 	void moverIzquierda();
 	void saltar();
-	void mover(const Uint8 *state);
-	void mover_con_evento(EstadoTeclado& t);
+	void mover(EstadoTeclado& t);
 	b2Vec2 getPosition(); //Copia??
 
 };

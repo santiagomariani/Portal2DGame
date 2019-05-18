@@ -79,7 +79,6 @@ int main() {
 
 
 		while (SDL_PollEvent(&event) != 0){
-
 			switch(event.type) {
 				case SDL_KEYDOWN:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;

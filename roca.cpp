@@ -28,3 +28,4 @@ Roca::Roca(Roca&& otro){
 b2Vec2 Roca::getPosition(){
 	return cuerpo->GetPosition();
 }
+
