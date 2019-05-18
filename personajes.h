@@ -15,11 +15,13 @@ public:
 	// Devuelve el id de la chell
 	int agregar_chell();
 
-	void disparar(int chell_id, b2Vec2& click_pos);
+	Chell& obtener_chell(int chell_id);
 
-	void mover_chell(int chell_id, EstadoTeclado& teclado);
+	//void disparar(int chell_id, b2Vec2& click_pos);
 
-	std::map<int, Chell>& getPersonajes();
+	//void mover_chell(int chell_id, EstadoTeclado& teclado);
+
+	//std::map<int, Chell>& getPersonajes();
 
 	~Personajes() = default;
 };
