@@ -70,7 +70,9 @@ void Chell::mover(EstadoTeclado& t){
 		vel.y = SALTAR * t.presionada(SDLK_UP);
 	cuerpo->SetLinearVelocity(vel);
 }
-
+int Chell::getId(){
+	return 0;
+}
 b2Vec2 Chell::getPosition(){
 	return cuerpo->GetPosition();
 }

@@ -8,6 +8,7 @@ class Roca{
 public:
 	Roca(Mundo& mundo, const b2Vec2& posicion);
 	Roca(Roca&& otro);
+	int getId();
 	b2Vec2 getPosition();
 };
 

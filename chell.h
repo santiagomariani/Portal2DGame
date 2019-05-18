@@ -12,12 +12,12 @@ public:
 	Chell(Mundo& mundo, b2Vec2& pos);
 	Chell(Chell&& otro);
 	Chell& operator=(Chell&& otro);
-
+	void mover(EstadoTeclado& t);
+	int getId();
 
 	void moverDerecha();
 	void moverIzquierda();
 	void saltar();
-	void mover(EstadoTeclado& t);
 	b2Vec2 getPosition(); //Copia??
 
 };

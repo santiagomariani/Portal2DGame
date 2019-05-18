@@ -10,6 +10,7 @@ public:
 	Disparo(Disparo&& otro);
 	b2Vec2 getPosition();
 	float32 getAngle();
+	int getId();
 };
 
 #endif //DISPARO_H

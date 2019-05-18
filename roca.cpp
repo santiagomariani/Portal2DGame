@@ -29,4 +29,6 @@ Roca::Roca(Roca&& otro){
 b2Vec2 Roca::getPosition(){
 	return cuerpo->GetPosition();
 }
-
+int Roca::getId(){
+	return 1;
+}

@@ -41,7 +41,9 @@ b2Vec2 Disparo::getPosition(){
 float32 Disparo::getAngle(){
 	return cuerpo->GetAngle();
 }
-
+int Disparo::getId(){
+	return 2;
+}
 
 
 
