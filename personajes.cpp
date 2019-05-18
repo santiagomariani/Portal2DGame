@@ -13,6 +13,11 @@ int Personajes::agregar_chell(){
 	return id;
 }
 
+Chell& Personajes::obtener_chell(int chell_id){
+	return this->personajes[chell_id];
+}
+
+/*
 void Personajes::disparar(int chell_id, b2Vec2& click_pos){
 	b2Vec2 pos_chell = this->personajes[chell_id].getPosition();
 	pos_chell.x += 10;
@@ -27,3 +32,4 @@ void Personajes::mover_chell(int chell_id, EstadoTeclado& teclado){
 std::map<int, Chell>& Personajes::getPersonajes(){
 	return this->personajes;
 }
+*/

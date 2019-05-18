@@ -17,12 +17,13 @@ Chell& Chell::operator=(Chell&& otro){
     otro.cuerpo = nullptr;
     return *this;
 }
-Chell::Chell(b2World& world, b2Vec2& pos){
+Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_dynamicBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
 	cuerpo_def.fixedRotation = true;
-	cuerpo = world.CreateBody(&cuerpo_def);
+	cuerpo = mundo.agregar_body(cuerpo_def);
+	//cuerpo = world.CreateBody(&cuerpo_def);
 
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
