@@ -3,10 +3,6 @@
 
 #include <map>
 #include "Box2D/Box2D.h"
-#include "chell.h"
-#include "roca.h"
-#include "disparo.h"
-#include <vector>
 
 class Mundo{
 	b2World mundo;
@@ -15,6 +11,7 @@ public:
 
 	b2Body* agregarBody(b2BodyDef& cuerpo_def);
 	void actualizar();
+	b2Body* obtenerBodies();
 	
 };
 

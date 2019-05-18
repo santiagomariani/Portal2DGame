@@ -10,3 +10,7 @@ b2Body* Mundo::agregarBody(b2BodyDef& cuerpo_def){
 void Mundo::actualizar(){
 	mundo.Step(1.0f / 60.0f, 6, 2);
 }
+
+b2Body* Mundo::obtenerBodies(){
+	return this->mundo.GetBodyList();
+}

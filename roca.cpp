@@ -7,7 +7,7 @@ Roca::Roca(Mundo& mundo, const b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
-	cuerpo = mundo.agregar_body(cuerpo_def);
+	cuerpo = mundo.agregarBody(cuerpo_def);
 	//cuerpo = world.CreateBody(&cuerpo_def);
 
 	b2PolygonShape polygonShape;
@@ -26,7 +26,7 @@ Roca::Roca(Roca&& otro){
 	cuerpo = otro.cuerpo;
 	otro.cuerpo = nullptr;
 }
-b2Vec2 Roca::getPosition(){
+const b2Vec2& Roca::getPosition(){
 	return cuerpo->GetPosition();
 }
 int Roca::getId(){

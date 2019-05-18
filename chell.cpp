@@ -6,9 +6,7 @@
 #define CAMINAR 5
 #define SALTAR 25
 
-Chell::Chell(){
-	cuerpo = nullptr;
-}
+
 Chell& Chell::operator=(Chell&& otro){
 	if (this == &otro){
         return *this;
@@ -17,12 +15,17 @@ Chell& Chell::operator=(Chell&& otro){
     otro.cuerpo = nullptr;
     return *this;
 }
+
+Chell::Chell(){
+	cuerpo = nullptr;
+}
+
 Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_dynamicBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
 	cuerpo_def.fixedRotation = true;
-	cuerpo = mundo.agregar_body(cuerpo_def);
+	cuerpo = mundo.agregarBody(cuerpo_def);
 	//cuerpo = world.CreateBody(&cuerpo_def);
 
 	b2PolygonShape polygonShape;
@@ -73,7 +76,7 @@ void Chell::mover(EstadoTeclado& t){
 int Chell::getId(){
 	return 0;
 }
-b2Vec2 Chell::getPosition(){
+const b2Vec2& Chell::getPosition(){
 	return cuerpo->GetPosition();
 }
 
@@ -83,4 +86,8 @@ Chell::Chell(Chell&& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+}
+
+void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
+	this->disparo = std::move(Disparo(mundo, this->getPosition(), pos_click));
 }

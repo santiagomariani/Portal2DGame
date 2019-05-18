@@ -4,12 +4,17 @@
 #define DENSIDAD_RAYO 1
 #define CTE_VELOCIDAD_RAYO 15
 
+
+Disparo::Disparo(){
+
+}
+
 Disparo::Disparo(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_kinematicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
 	circle_body_def.fixedRotation = true;
-	cuerpo = mundo.agregar_body(cuerpo_def);
+	cuerpo = mundo.agregarBody(circle_body_def);
 	//cuerpo = world.CreateBody(&circle_body_def);
 
 	b2CircleShape circleShape;
@@ -35,7 +40,7 @@ Disparo::Disparo(Disparo&& otro){
 	cuerpo = otro.cuerpo;
 	otro.cuerpo = nullptr;
 }
-b2Vec2 Disparo::getPosition(){
+const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
 }
 float32 Disparo::getAngle(){
@@ -45,6 +50,21 @@ int Disparo::getId(){
 	return 2;
 }
 
+Disparo& Disparo::operator=(Disparo& otro){
+	if (this == &otro){
+        return *this;
+    }
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
+    return *this;
+}
 
-
+Disparo& Disparo::operator=(Disparo&& otro){
+	if (this == &otro){
+        return *this;
+    }
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
+    return *this;
+}
 
