@@ -4,7 +4,7 @@
 #define DENSIDAD_RAYO 1
 #define CTE_VELOCIDAD_RAYO 3
 
-Disparo::Disparo(b2World& world, b2Vec2& origen, b2Vec2& destino){
+Disparo::Disparo(b2World& world, const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);

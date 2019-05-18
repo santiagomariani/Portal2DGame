@@ -13,7 +13,7 @@ public:
 	void moverIzquierda();
 	void saltar();
 	void mover(EstadoTeclado& t);
-	b2Vec2 getPosition();
+	b2Vec2 getPosition(); //Copia??
 
 };
 

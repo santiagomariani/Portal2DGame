@@ -30,6 +30,7 @@ Chell::Chell(b2World& world, b2Vec2& pos){
 	circulo.m_p.Set(0, -0.625); // posicion del centro del circulo
     circulo.m_radius = 0.25f;
 	cuerpo->CreateFixture(&circulo_fix_def);
+	cuerpo->SetUserData(this);
 
 }
 void Chell::saltar(){

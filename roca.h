@@ -5,7 +5,7 @@
 class Roca{
 	b2Body* cuerpo;
 public:
-	Roca(b2World& world, b2Vec2& posicion);
+	Roca(b2World& world, const b2Vec2& posicion);
 	b2Vec2 getPosition();
 };
 
