@@ -76,7 +76,6 @@ int main() {
 		SDL_RenderClear(renderer);
 		SDL_RenderCopy(renderer, texture, &sdlSrc, &sdlDest);
 		while (SDL_PollEvent(&event) != 0){
-
 			switch(event.type) {
 				case SDL_KEYDOWN:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;

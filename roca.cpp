@@ -33,3 +33,4 @@ Roca::Roca(b2World& world, b2Vec2& pos){
 b2Vec2 Roca::getPosition(){
 	return cuerpo->GetPosition();
 }
+

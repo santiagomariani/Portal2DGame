@@ -49,15 +49,8 @@ void Chell::moverIzquierda(){
 	vel.x = -5;
 	cuerpo->SetLinearVelocity(vel);
 }
-void Chell::mover(const Uint8 *state){
-	b2Vec2 vel = cuerpo->GetLinearVelocity();
-	vel.x = CAMINAR * state[SDL_SCANCODE_RIGHT] + -CAMINAR * state[SDL_SCANCODE_LEFT];
-	if (vel.y == 0)
-		vel.y = SALTAR * state[SDL_SCANCODE_UP];
-	cuerpo->SetLinearVelocity(vel);
-}
 
-void Chell::mover_con_evento(EstadoTeclado& t){
+void Chell::mover(EstadoTeclado& t){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
 	vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
 	if (vel.y == 0)
@@ -67,4 +60,12 @@ void Chell::mover_con_evento(EstadoTeclado& t){
 
 b2Vec2 Chell::getPosition(){
 	return cuerpo->GetPosition();
+}
+
+Chell::Chell(Chell&& otro){
+    if (this == &otro){
+        return;
+    }
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
 }
