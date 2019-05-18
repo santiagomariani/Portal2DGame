@@ -3,7 +3,7 @@
 void BeginContact(b2Contact* contact){
 	//check if fixture A was a ball
 	void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
-	if (bodyUserData == typeid(Disparo))
+	if (typeid(bodyUserData) == Disparo)
 		static_cast<Bloque*>(bodyUserData)->recibirDisparo();
 
 	//check if fixture B was a ball

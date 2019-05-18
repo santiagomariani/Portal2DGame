@@ -13,7 +13,7 @@ public:
 	void saltar();
 	void mover(const Uint8 *state);
 	void mover_con_evento(EstadoTeclado& t);
-	b2Vec2 getPosition();
+	b2Vec2 getPosition(); //Copia??
 
 };
 
