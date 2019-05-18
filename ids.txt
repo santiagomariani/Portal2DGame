@@ -1,0 +1,8 @@
+
+
+
+Objeto | ID
+============
+Chell  | 0
+Roca   | 1
+Disparo| 2
