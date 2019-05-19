@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/untitled.dir/main.cpp.o  -o untitled libBox2D.a -lpthread -lSDL2 -lSDL2_image 
+/usr/bin/c++  -g   CMakeFiles/untitled.dir/main.cpp.o  -o untitled libBox2D.a -lpthread -lSDL2 -lSDL2_image 

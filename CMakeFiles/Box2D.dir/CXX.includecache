@@ -6,43 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/ariel/Escritorio/Caca2/TP4---Portal/chell.h
-Box2D/Box2D.h
-/home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
-SDL2/SDL.h
--
+/home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
 
-/home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
-Box2D/Box2D.h
-/home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
-
-/home/ariel/Escritorio/Caca2/TP4---Portal/main.cpp
-iostream
--
-Box2D/Box2D.h
-/home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/disparo.cpp
 disparo.h
 /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
-roca.h
-/home/ariel/Escritorio/Caca2/TP4---Portal/roca.h
-chell.h
-/home/ariel/Escritorio/Caca2/TP4---Portal/chell.h
-thread
--
-pthread.h
--
-vector
--
-SDL2/SDL.h
--
-SDL2/SDL_video.h
--
-SDL2/SDL_render.h
--
-SDL2/SDL_image.h
--
+Box2D/Box2D.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
 
-/home/ariel/Escritorio/Caca2/TP4---Portal/roca.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+Box2D/Box2D.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
+cuerpo.h
+/home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
+
+/home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
+map
+-
 Box2D/Box2D.h
 /home/ariel/Escritorio/Caca2/TP4---Portal/Box2D/Box2D.h
 

@@ -19,14 +19,14 @@
 
 
 void renderizar(int id, const b2Vec2& pos, 
-				std::map<int,SDL_Texture*> texturas, SDL_Renderer* renderer){
+				std::map<int,SDL_Texture*>& texturas, SDL_Renderer* renderer){
 		SDL_Rect sdlSrc = {
 		0, 0,
-		233, 216
+		300, 300
 		};
 		SDL_Rect sdlDest = {
 		(int)(pos.x * CONVERSION) + 400, (int)(pos.y * CONVERSION * -1) + 300,
-		233, 216
+		300, 300
 		};
 
 		SDL_Texture* texture = texturas[id];
@@ -71,7 +71,6 @@ int main() {
 	texturas[1] = textura_roca;
 	texturas[2] = textura_disparo;
 
-
 //======================================Loop======================================
 
 	bool running = true;
@@ -79,27 +78,13 @@ int main() {
 	while (running) {
 		SDL_Event event;
 		SDL_RenderClear(renderer);
-		//std::map<int, Chell>& mapa = personajes.getPersonajes();
-		b2Vec2 chell_pos = personajes.obtener_chell(id).getPosition();
-		SDL_Rect sdlSrc = {
-		0, 0,
-		233, 216
-		};
-		SDL_Rect sdlDest = {
-		(int)(chell_pos.x * CONVERSION) + 400, (int)(chell_pos.y * CONVERSION * -1) + 300,
-		233, 216
-		};
-		SDL_RenderCopy(renderer, textura_chell, &sdlSrc, &sdlDest);
-		//std::vector<Disparo>& disparitos = world.getDisparos();
-
+		Chell& chell = personajes.obtener_chell(id);
 		b2Body* cuerpos = world.obtenerBodies();
 		while (cuerpos){
-			Cuerpo* bodyUserData = (Cuerpo*)cuerpos->GetUserData();
-			renderizar(bodyUserData->getId(), bodyUserData->getPosition(), texturas, renderer);
+			Cuerpo* actual = (Cuerpo*)cuerpos->GetUserData();
+			renderizar(actual->getId(), actual->getPosition(), texturas, renderer);
 			cuerpos = cuerpos->GetNext();
 		}
-
-		Chell& chell = personajes.obtener_chell(id);
 		while (SDL_PollEvent(&event) != 0){
 			switch(event.type) {
 				case SDL_KEYDOWN:{
@@ -129,7 +114,6 @@ int main() {
 		
 		}
 		chell.mover(teclado);
-		//personajes.mover_chell(id, teclado);
 		world.actualizar();
 		SDL_RenderPresent(renderer);
 	}

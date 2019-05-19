@@ -707,6 +707,45 @@ CMakeFiles/Box2D.dir/chell.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Box2D.dir/chell.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Escritorio/Caca2/TP4---Portal/chell.cpp -o CMakeFiles/Box2D.dir/chell.cpp.s
 
+CMakeFiles/Box2D.dir/estado_teclado.cpp.o: CMakeFiles/Box2D.dir/flags.make
+CMakeFiles/Box2D.dir/estado_teclado.cpp.o: estado_teclado.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/Box2D.dir/estado_teclado.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Box2D.dir/estado_teclado.cpp.o -c /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.cpp
+
+CMakeFiles/Box2D.dir/estado_teclado.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Box2D.dir/estado_teclado.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.cpp > CMakeFiles/Box2D.dir/estado_teclado.cpp.i
+
+CMakeFiles/Box2D.dir/estado_teclado.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Box2D.dir/estado_teclado.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.cpp -o CMakeFiles/Box2D.dir/estado_teclado.cpp.s
+
+CMakeFiles/Box2D.dir/personajes.cpp.o: CMakeFiles/Box2D.dir/flags.make
+CMakeFiles/Box2D.dir/personajes.cpp.o: personajes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/Box2D.dir/personajes.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Box2D.dir/personajes.cpp.o -c /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.cpp
+
+CMakeFiles/Box2D.dir/personajes.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Box2D.dir/personajes.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.cpp > CMakeFiles/Box2D.dir/personajes.cpp.i
+
+CMakeFiles/Box2D.dir/personajes.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Box2D.dir/personajes.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.cpp -o CMakeFiles/Box2D.dir/personajes.cpp.s
+
+CMakeFiles/Box2D.dir/mundo.cpp.o: CMakeFiles/Box2D.dir/flags.make
+CMakeFiles/Box2D.dir/mundo.cpp.o: mundo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/Box2D.dir/mundo.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Box2D.dir/mundo.cpp.o -c /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.cpp
+
+CMakeFiles/Box2D.dir/mundo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Box2D.dir/mundo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.cpp > CMakeFiles/Box2D.dir/mundo.cpp.i
+
+CMakeFiles/Box2D.dir/mundo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Box2D.dir/mundo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.cpp -o CMakeFiles/Box2D.dir/mundo.cpp.s
+
 # Object files for target Box2D
 Box2D_OBJECTS = \
 "CMakeFiles/Box2D.dir/libs/Box2D/Collision/Shapes/b2ChainShape.cpp.o" \
@@ -758,7 +797,10 @@ Box2D_OBJECTS = \
 "CMakeFiles/Box2D.dir/roca.cpp.o" \
 "CMakeFiles/Box2D.dir/disparo.cpp.o" \
 "CMakeFiles/Box2D.dir/main.cpp.o" \
-"CMakeFiles/Box2D.dir/chell.cpp.o"
+"CMakeFiles/Box2D.dir/chell.cpp.o" \
+"CMakeFiles/Box2D.dir/estado_teclado.cpp.o" \
+"CMakeFiles/Box2D.dir/personajes.cpp.o" \
+"CMakeFiles/Box2D.dir/mundo.cpp.o"
 
 # External object files for target Box2D
 Box2D_EXTERNAL_OBJECTS =
@@ -813,9 +855,12 @@ libBox2D.a: CMakeFiles/Box2D.dir/roca.cpp.o
 libBox2D.a: CMakeFiles/Box2D.dir/disparo.cpp.o
 libBox2D.a: CMakeFiles/Box2D.dir/main.cpp.o
 libBox2D.a: CMakeFiles/Box2D.dir/chell.cpp.o
+libBox2D.a: CMakeFiles/Box2D.dir/estado_teclado.cpp.o
+libBox2D.a: CMakeFiles/Box2D.dir/personajes.cpp.o
+libBox2D.a: CMakeFiles/Box2D.dir/mundo.cpp.o
 libBox2D.a: CMakeFiles/Box2D.dir/build.make
 libBox2D.a: CMakeFiles/Box2D.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Linking CXX static library libBox2D.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Linking CXX static library libBox2D.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Box2D.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Box2D.dir/link.txt --verbose=$(VERBOSE)
 

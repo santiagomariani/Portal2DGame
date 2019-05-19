@@ -190,6 +190,33 @@ disparo.cpp.s:
 	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/disparo.cpp.s
 .PHONY : disparo.cpp.s
 
+estado_teclado.o: estado_teclado.cpp.o
+
+.PHONY : estado_teclado.o
+
+# target to build an object file
+estado_teclado.cpp.o:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/estado_teclado.cpp.o
+.PHONY : estado_teclado.cpp.o
+
+estado_teclado.i: estado_teclado.cpp.i
+
+.PHONY : estado_teclado.i
+
+# target to preprocess a source file
+estado_teclado.cpp.i:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/estado_teclado.cpp.i
+.PHONY : estado_teclado.cpp.i
+
+estado_teclado.s: estado_teclado.cpp.s
+
+.PHONY : estado_teclado.s
+
+# target to generate assembly for a file
+estado_teclado.cpp.s:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/estado_teclado.cpp.s
+.PHONY : estado_teclado.cpp.s
+
 libs/Box2D/Collision/Shapes/b2ChainShape.o: libs/Box2D/Collision/Shapes/b2ChainShape.cpp.o
 
 .PHONY : libs/Box2D/Collision/Shapes/b2ChainShape.o
@@ -1462,6 +1489,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mundo.o: mundo.cpp.o
+
+.PHONY : mundo.o
+
+# target to build an object file
+mundo.cpp.o:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/mundo.cpp.o
+.PHONY : mundo.cpp.o
+
+mundo.i: mundo.cpp.i
+
+.PHONY : mundo.i
+
+# target to preprocess a source file
+mundo.cpp.i:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/mundo.cpp.i
+.PHONY : mundo.cpp.i
+
+mundo.s: mundo.cpp.s
+
+.PHONY : mundo.s
+
+# target to generate assembly for a file
+mundo.cpp.s:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/mundo.cpp.s
+.PHONY : mundo.cpp.s
+
+personajes.o: personajes.cpp.o
+
+.PHONY : personajes.o
+
+# target to build an object file
+personajes.cpp.o:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/personajes.cpp.o
+.PHONY : personajes.cpp.o
+
+personajes.i: personajes.cpp.i
+
+.PHONY : personajes.i
+
+# target to preprocess a source file
+personajes.cpp.i:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/personajes.cpp.i
+.PHONY : personajes.cpp.i
+
+personajes.s: personajes.cpp.s
+
+.PHONY : personajes.s
+
+# target to generate assembly for a file
+personajes.cpp.s:
+	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/personajes.cpp.s
+.PHONY : personajes.cpp.s
+
 roca.o: roca.cpp.o
 
 .PHONY : roca.o
@@ -1505,6 +1586,9 @@ help:
 	@echo "... disparo.o"
 	@echo "... disparo.i"
 	@echo "... disparo.s"
+	@echo "... estado_teclado.o"
+	@echo "... estado_teclado.i"
+	@echo "... estado_teclado.s"
 	@echo "... libs/Box2D/Collision/Shapes/b2ChainShape.o"
 	@echo "... libs/Box2D/Collision/Shapes/b2ChainShape.i"
 	@echo "... libs/Box2D/Collision/Shapes/b2ChainShape.s"
@@ -1646,6 +1730,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mundo.o"
+	@echo "... mundo.i"
+	@echo "... mundo.s"
+	@echo "... personajes.o"
+	@echo "... personajes.i"
+	@echo "... personajes.s"
 	@echo "... roca.o"
 	@echo "... roca.i"
 	@echo "... roca.s"

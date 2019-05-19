@@ -6,12 +6,15 @@
 
 
 Disparo::Disparo(){
-
+	cuerpo = nullptr;
 }
 
-Disparo::Disparo(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
+void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
+	if (cuerpo){
+		mundo.destruirBody(cuerpo);
+	}
 	b2BodyDef circle_body_def;
-	circle_body_def.type = b2_kinematicBody;
+	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
 	circle_body_def.fixedRotation = true;
 	cuerpo = mundo.agregarBody(circle_body_def);
@@ -38,6 +41,7 @@ Disparo::Disparo(Disparo&& otro){
 		return;
 	}
 	cuerpo = otro.cuerpo;
+	cuerpo->SetUserData(this);
 	otro.cuerpo = nullptr;
 }
 const b2Vec2& Disparo::getPosition(){
@@ -56,6 +60,7 @@ Disparo& Disparo::operator=(Disparo& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 
@@ -65,6 +70,7 @@ Disparo& Disparo::operator=(Disparo&& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 

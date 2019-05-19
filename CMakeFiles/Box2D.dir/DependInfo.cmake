@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ariel/Escritorio/Caca2/TP4---Portal/chell.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/chell.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/disparo.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/disparo.cpp.o"
+  "/home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/estado_teclado.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/libs/Box2D/Collision/Shapes/b2ChainShape.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/libs/Box2D/Collision/Shapes/b2CircleShape.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp.o"
@@ -53,6 +54,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/libs/Box2D/Dynamics/b2WorldCallbacks.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Rope/b2Rope.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/libs/Box2D/Rope/b2Rope.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/main.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/main.cpp.o"
+  "/home/ariel/Escritorio/Caca2/TP4---Portal/mundo.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/mundo.cpp.o"
+  "/home/ariel/Escritorio/Caca2/TP4---Portal/personajes.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/personajes.cpp.o"
   "/home/ariel/Escritorio/Caca2/TP4---Portal/roca.cpp" "/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir/roca.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

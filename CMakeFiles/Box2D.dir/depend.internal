@@ -4,6 +4,10 @@
 CMakeFiles/Box2D.dir/chell.cpp.o
  /home/ariel/Escritorio/Caca2/TP4---Portal/chell.cpp
  /home/ariel/Escritorio/Caca2/TP4---Portal/chell.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
  libs/Box2D/Box2D.h
  libs/Box2D/Collision/Shapes/b2ChainShape.h
  libs/Box2D/Collision/Shapes/b2CircleShape.h
@@ -42,8 +46,10 @@ CMakeFiles/Box2D.dir/chell.cpp.o
  libs/Box2D/Dynamics/b2World.h
  libs/Box2D/Dynamics/b2WorldCallbacks.h
 CMakeFiles/Box2D.dir/disparo.cpp.o
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
  /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.cpp
  /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
  libs/Box2D/Box2D.h
  libs/Box2D/Collision/Shapes/b2ChainShape.h
  libs/Box2D/Collision/Shapes/b2CircleShape.h
@@ -81,6 +87,9 @@ CMakeFiles/Box2D.dir/disparo.cpp.o
  libs/Box2D/Dynamics/b2TimeStep.h
  libs/Box2D/Dynamics/b2World.h
  libs/Box2D/Dynamics/b2WorldCallbacks.h
+CMakeFiles/Box2D.dir/estado_teclado.cpp.o
+ /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.cpp
+ /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.h
 CMakeFiles/Box2D.dir/libs/Box2D/Collision/Shapes/b2ChainShape.cpp.o
  /home/ariel/Escritorio/Caca2/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.cpp
  libs/Box2D/Collision/Shapes/b2ChainShape.h
@@ -623,8 +632,12 @@ CMakeFiles/Box2D.dir/libs/Box2D/Rope/b2Rope.cpp.o
  libs/Box2D/Rope/b2Rope.h
 CMakeFiles/Box2D.dir/main.cpp.o
  /home/ariel/Escritorio/Caca2/TP4---Portal/chell.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
  /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.h
  /home/ariel/Escritorio/Caca2/TP4---Portal/main.cpp
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.h
  /home/ariel/Escritorio/Caca2/TP4---Portal/roca.h
  libs/Box2D/Box2D.h
  libs/Box2D/Collision/Shapes/b2ChainShape.h
@@ -663,7 +676,97 @@ CMakeFiles/Box2D.dir/main.cpp.o
  libs/Box2D/Dynamics/b2TimeStep.h
  libs/Box2D/Dynamics/b2World.h
  libs/Box2D/Dynamics/b2WorldCallbacks.h
+CMakeFiles/Box2D.dir/mundo.cpp.o
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.cpp
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/roca.h
+ libs/Box2D/Box2D.h
+ libs/Box2D/Collision/Shapes/b2ChainShape.h
+ libs/Box2D/Collision/Shapes/b2CircleShape.h
+ libs/Box2D/Collision/Shapes/b2EdgeShape.h
+ libs/Box2D/Collision/Shapes/b2PolygonShape.h
+ libs/Box2D/Collision/Shapes/b2Shape.h
+ libs/Box2D/Collision/b2BroadPhase.h
+ libs/Box2D/Collision/b2Collision.h
+ libs/Box2D/Collision/b2Distance.h
+ libs/Box2D/Collision/b2DynamicTree.h
+ libs/Box2D/Collision/b2TimeOfImpact.h
+ libs/Box2D/Common/b2BlockAllocator.h
+ libs/Box2D/Common/b2Draw.h
+ libs/Box2D/Common/b2GrowableStack.h
+ libs/Box2D/Common/b2Math.h
+ libs/Box2D/Common/b2Settings.h
+ libs/Box2D/Common/b2StackAllocator.h
+ libs/Box2D/Common/b2Timer.h
+ libs/Box2D/Dynamics/Contacts/b2Contact.h
+ libs/Box2D/Dynamics/Joints/b2DistanceJoint.h
+ libs/Box2D/Dynamics/Joints/b2FrictionJoint.h
+ libs/Box2D/Dynamics/Joints/b2GearJoint.h
+ libs/Box2D/Dynamics/Joints/b2Joint.h
+ libs/Box2D/Dynamics/Joints/b2MotorJoint.h
+ libs/Box2D/Dynamics/Joints/b2MouseJoint.h
+ libs/Box2D/Dynamics/Joints/b2PrismaticJoint.h
+ libs/Box2D/Dynamics/Joints/b2PulleyJoint.h
+ libs/Box2D/Dynamics/Joints/b2RevoluteJoint.h
+ libs/Box2D/Dynamics/Joints/b2RopeJoint.h
+ libs/Box2D/Dynamics/Joints/b2WeldJoint.h
+ libs/Box2D/Dynamics/Joints/b2WheelJoint.h
+ libs/Box2D/Dynamics/b2Body.h
+ libs/Box2D/Dynamics/b2ContactManager.h
+ libs/Box2D/Dynamics/b2Fixture.h
+ libs/Box2D/Dynamics/b2TimeStep.h
+ libs/Box2D/Dynamics/b2World.h
+ libs/Box2D/Dynamics/b2WorldCallbacks.h
+CMakeFiles/Box2D.dir/personajes.cpp.o
+ /home/ariel/Escritorio/Caca2/TP4---Portal/chell.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/disparo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/estado_teclado.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.cpp
+ /home/ariel/Escritorio/Caca2/TP4---Portal/personajes.h
+ libs/Box2D/Box2D.h
+ libs/Box2D/Collision/Shapes/b2ChainShape.h
+ libs/Box2D/Collision/Shapes/b2CircleShape.h
+ libs/Box2D/Collision/Shapes/b2EdgeShape.h
+ libs/Box2D/Collision/Shapes/b2PolygonShape.h
+ libs/Box2D/Collision/Shapes/b2Shape.h
+ libs/Box2D/Collision/b2BroadPhase.h
+ libs/Box2D/Collision/b2Collision.h
+ libs/Box2D/Collision/b2Distance.h
+ libs/Box2D/Collision/b2DynamicTree.h
+ libs/Box2D/Collision/b2TimeOfImpact.h
+ libs/Box2D/Common/b2BlockAllocator.h
+ libs/Box2D/Common/b2Draw.h
+ libs/Box2D/Common/b2GrowableStack.h
+ libs/Box2D/Common/b2Math.h
+ libs/Box2D/Common/b2Settings.h
+ libs/Box2D/Common/b2StackAllocator.h
+ libs/Box2D/Common/b2Timer.h
+ libs/Box2D/Dynamics/Contacts/b2Contact.h
+ libs/Box2D/Dynamics/Joints/b2DistanceJoint.h
+ libs/Box2D/Dynamics/Joints/b2FrictionJoint.h
+ libs/Box2D/Dynamics/Joints/b2GearJoint.h
+ libs/Box2D/Dynamics/Joints/b2Joint.h
+ libs/Box2D/Dynamics/Joints/b2MotorJoint.h
+ libs/Box2D/Dynamics/Joints/b2MouseJoint.h
+ libs/Box2D/Dynamics/Joints/b2PrismaticJoint.h
+ libs/Box2D/Dynamics/Joints/b2PulleyJoint.h
+ libs/Box2D/Dynamics/Joints/b2RevoluteJoint.h
+ libs/Box2D/Dynamics/Joints/b2RopeJoint.h
+ libs/Box2D/Dynamics/Joints/b2WeldJoint.h
+ libs/Box2D/Dynamics/Joints/b2WheelJoint.h
+ libs/Box2D/Dynamics/b2Body.h
+ libs/Box2D/Dynamics/b2ContactManager.h
+ libs/Box2D/Dynamics/b2Fixture.h
+ libs/Box2D/Dynamics/b2TimeStep.h
+ libs/Box2D/Dynamics/b2World.h
+ libs/Box2D/Dynamics/b2WorldCallbacks.h
 CMakeFiles/Box2D.dir/roca.cpp.o
+ /home/ariel/Escritorio/Caca2/TP4---Portal/cuerpo.h
+ /home/ariel/Escritorio/Caca2/TP4---Portal/mundo.h
  /home/ariel/Escritorio/Caca2/TP4---Portal/roca.cpp
  /home/ariel/Escritorio/Caca2/TP4---Portal/roca.h
  libs/Box2D/Box2D.h

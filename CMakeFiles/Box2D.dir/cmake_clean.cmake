@@ -49,6 +49,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/Box2D.dir/disparo.cpp.o"
   "CMakeFiles/Box2D.dir/main.cpp.o"
   "CMakeFiles/Box2D.dir/chell.cpp.o"
+  "CMakeFiles/Box2D.dir/estado_teclado.cpp.o"
+  "CMakeFiles/Box2D.dir/personajes.cpp.o"
+  "CMakeFiles/Box2D.dir/mundo.cpp.o"
   "libBox2D.pdb"
   "libBox2D.a"
 )

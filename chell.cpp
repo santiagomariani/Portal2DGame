@@ -13,6 +13,7 @@ Chell& Chell::operator=(Chell&& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 
@@ -85,9 +86,15 @@ Chell::Chell(Chell&& otro){
         return;
     }
     cuerpo = otro.cuerpo;
+    cuerpo->SetUserData(this);
     otro.cuerpo = nullptr;
 }
 
 void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
-	this->disparo = std::move(Disparo(mundo, this->getPosition(), pos_click));
+	b2Vec2 pos = pos_click;
+	pos -= getPosition();
+	pos.Normalize();
+	pos *= 20;
+	pos += getPosition();
+	this->disparo.activar(mundo, pos, pos_click);
 }
