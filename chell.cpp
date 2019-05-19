@@ -13,6 +13,7 @@ Chell& Chell::operator=(Chell&& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 
@@ -85,6 +86,7 @@ Chell::Chell(Chell&& otro){
         return;
     }
     cuerpo = otro.cuerpo;
+    cuerpo->SetUserData(this);
     otro.cuerpo = nullptr;
 }
 

@@ -6,7 +6,7 @@
 
 
 Disparo::Disparo(){
-
+	cuerpo = nullptr;
 }
 
 Disparo::Disparo(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
@@ -38,6 +38,7 @@ Disparo::Disparo(Disparo&& otro){
 		return;
 	}
 	cuerpo = otro.cuerpo;
+	cuerpo->SetUserData(this);
 	otro.cuerpo = nullptr;
 }
 const b2Vec2& Disparo::getPosition(){
@@ -56,6 +57,7 @@ Disparo& Disparo::operator=(Disparo& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 

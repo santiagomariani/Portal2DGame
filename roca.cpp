@@ -24,6 +24,7 @@ Roca::Roca(Roca&& otro){
 		return;
 	}
 	cuerpo = otro.cuerpo;
+	cuerpo->SetUserData(this);
 	otro.cuerpo = nullptr;
 }
 const b2Vec2& Roca::getPosition(){
