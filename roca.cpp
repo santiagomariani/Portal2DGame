@@ -13,7 +13,7 @@ Roca::Roca(Mundo& mundo, const b2Vec2& pos){
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
-	myFixtureDef.density = 1;
+	myFixtureDef.density = 1; // hay que sacar esto.
 
 	polygonShape.SetAsBox(TAMANIO_BLOQUE_X, TAMANIO_BLOQUE_Y);
 	cuerpo->CreateFixture(&myFixtureDef);
