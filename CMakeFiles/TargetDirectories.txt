@@ -1,4 +1,0 @@
-/home/seba/Desktop/taller/TP4---Portal/CMakeFiles/rebuild_cache.dir
-/home/seba/Desktop/taller/TP4---Portal/CMakeFiles/edit_cache.dir
-/home/seba/Desktop/taller/TP4---Portal/CMakeFiles/untitled.dir
-/home/seba/Desktop/taller/TP4---Portal/CMakeFiles/Box2D.dir
