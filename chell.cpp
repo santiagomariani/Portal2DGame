@@ -91,10 +91,5 @@ Chell::Chell(Chell&& otro){
 }
 
 void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
-	b2Vec2 pos = pos_click;
-	pos -= getPosition();
-	pos.Normalize();
-	pos *= 20;
-	pos += getPosition();
-	this->disparo.activar(mundo, pos, pos_click);
+	this->disparo.activar(mundo, this->getPosition(), pos_click);
 }

@@ -26,6 +26,8 @@ void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino)
 	b2FixtureDef circle_fixture_def;
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
+	circle_fixture_def.isSensor = true; // no choca con nada pero se pueden detectar
+									// las colisiones
 	cuerpo->CreateFixture(&circle_fixture_def);
 
 	b2Vec2 vel = destino;
