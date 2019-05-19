@@ -10,6 +10,7 @@ public:
 	Mundo(const b2Vec2& gravedad);
 
 	b2Body* agregarBody(b2BodyDef& cuerpo_def);
+	void destruirBody(b2Body* body);
 	void actualizar();
 	b2Body* obtenerBodies();
 	
