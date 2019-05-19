@@ -9,7 +9,10 @@ Disparo::Disparo(){
 	cuerpo = nullptr;
 }
 
-Disparo::Disparo(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
+void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
+	if (cuerpo){
+		mundo.destruirBody(cuerpo);
+	}
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);

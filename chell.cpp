@@ -91,5 +91,5 @@ Chell::Chell(Chell&& otro){
 }
 
 void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
-	this->disparo = std::move(Disparo(mundo, this->getPosition(), pos_click));
+	this->disparo.activar(mundo, this->getPosition(), pos_click);
 }
