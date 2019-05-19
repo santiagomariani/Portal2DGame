@@ -11,7 +11,7 @@ Disparo::Disparo(){
 
 Disparo::Disparo(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;
-	circle_body_def.type = b2_kinematicBody;
+	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
 	circle_body_def.fixedRotation = true;
 	cuerpo = mundo.agregarBody(circle_body_def);
@@ -67,6 +67,7 @@ Disparo& Disparo::operator=(Disparo&& otro){
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
+    cuerpo->SetUserData(this);
     return *this;
 }
 

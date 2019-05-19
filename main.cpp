@@ -22,11 +22,11 @@ void renderizar(int id, const b2Vec2& pos,
 				std::map<int,SDL_Texture*>& texturas, SDL_Renderer* renderer){
 		SDL_Rect sdlSrc = {
 		0, 0,
-		216, 216
+		300, 300
 		};
 		SDL_Rect sdlDest = {
 		(int)(pos.x * CONVERSION) + 400, (int)(pos.y * CONVERSION * -1) + 300,
-		233, 216
+		300, 300
 		};
 
 		SDL_Texture* texture = texturas[id];
