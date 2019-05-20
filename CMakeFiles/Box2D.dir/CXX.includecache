@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< Updated upstream
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/SdlTexture.h
 string
 -
@@ -127,6 +128,51 @@ mundo.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/mundo.h
 cuerpo.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/cuerpo.h
+=======
+/home/seba/Desktop/taller/TP4---Portal/chell.cpp
+iostream
+-
+chell.h
+/home/seba/Desktop/taller/TP4---Portal/chell.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+
+/home/seba/Desktop/taller/TP4---Portal/chell.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+estado_teclado.h
+/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+disparo.h
+/home/seba/Desktop/taller/TP4---Portal/disparo.h
+SDL2/SDL.h
+-
+
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+
+/home/seba/Desktop/taller/TP4---Portal/disparo.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+
+/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h
+SDL2/SDL.h
+-
+map
+-
+
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+map
+-
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+>>>>>>> Stashed changes
 
 libs/Box2D/Box2D.h
 Box2D/Common/b2Settings.h

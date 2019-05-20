@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 # Install script for directory: /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal
+=======
+# Install script for directory: /home/seba/Desktop/taller/TP4---Portal
+>>>>>>> Stashed changes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +49,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< Updated upstream
 file(WRITE "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "/home/seba/Desktop/taller/TP4---Portal/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> Stashed changes
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -6,6 +6,7 @@
 
 #IncludeRegexTransform: 
 
+<<<<<<< Updated upstream
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/SdlTexture.h
 string
 -
@@ -61,11 +62,39 @@ cuerpo.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/cuerpo.h
 
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/estado_teclado.h
+=======
+/home/seba/Desktop/taller/TP4---Portal/chell.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+estado_teclado.h
+/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+disparo.h
+/home/seba/Desktop/taller/TP4---Portal/disparo.h
+SDL2/SDL.h
+-
+
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+
+/home/seba/Desktop/taller/TP4---Portal/disparo.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+
+/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h
+>>>>>>> Stashed changes
 SDL2/SDL.h
 -
 map
 -
 
+<<<<<<< Updated upstream
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/main.cpp
 iostream
 -
@@ -89,6 +118,27 @@ SdlWindow.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/SdlWindow.h
 ViewChell.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/ViewChell.h
+=======
+/home/seba/Desktop/taller/TP4---Portal/main.cpp
+iostream
+-
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+disparo.h
+/home/seba/Desktop/taller/TP4---Portal/disparo.h
+roca.h
+/home/seba/Desktop/taller/TP4---Portal/roca.h
+chell.h
+/home/seba/Desktop/taller/TP4---Portal/chell.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+estado_teclado.h
+/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h
+personajes.h
+/home/seba/Desktop/taller/TP4---Portal/personajes.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+>>>>>>> Stashed changes
 thread
 -
 pthread.h
@@ -104,6 +154,7 @@ SDL2/SDL_render.h
 SDL2/SDL_image.h
 -
 
+<<<<<<< Updated upstream
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/mundo.h
 map
 -
@@ -127,6 +178,31 @@ mundo.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/mundo.h
 cuerpo.h
 /home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/cuerpo.h
+=======
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+map
+-
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+
+/home/seba/Desktop/taller/TP4---Portal/personajes.h
+map
+-
+chell.h
+/home/seba/Desktop/taller/TP4---Portal/chell.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+
+/home/seba/Desktop/taller/TP4---Portal/roca.h
+Box2D/Box2D.h
+/home/seba/Desktop/taller/TP4---Portal/Box2D/Box2D.h
+mundo.h
+/home/seba/Desktop/taller/TP4---Portal/mundo.h
+cuerpo.h
+/home/seba/Desktop/taller/TP4---Portal/cuerpo.h
+>>>>>>> Stashed changes
 
 libs/Box2D/Box2D.h
 Box2D/Common/b2Settings.h

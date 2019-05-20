@@ -6,5 +6,9 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
+<<<<<<< Updated upstream
 CXX_INCLUDES = -I"/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/libs" 
+=======
+CXX_INCLUDES = -I/home/seba/Desktop/taller/TP4---Portal/libs 
+>>>>>>> Stashed changes
 

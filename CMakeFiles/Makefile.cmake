@@ -10,6 +10,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.14.4/CMakeCCompiler.cmake"
   "CMakeFiles/3.14.4/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.14.4/CMakeSystem.cmake"
+<<<<<<< Updated upstream
+=======
+  "CMakeFiles/feature_tests.c"
+  "CMakeFiles/feature_tests.cxx"
+>>>>>>> Stashed changes
   "CMakeLists.txt"
   "/usr/local/share/cmake-3.14/Modules/CMakeCInformation.cmake"
   "/usr/local/share/cmake-3.14/Modules/CMakeCXXInformation.cmake"
@@ -46,6 +51,14 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+<<<<<<< Updated upstream
+=======
+  "CMakeFiles/3.14.4/CMakeSystem.cmake"
+  "CMakeFiles/3.14.4/CMakeCCompiler.cmake"
+  "CMakeFiles/3.14.4/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.14.4/CMakeCCompiler.cmake"
+  "CMakeFiles/3.14.4/CMakeCXXCompiler.cmake"
+>>>>>>> Stashed changes
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
