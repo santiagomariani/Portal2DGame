@@ -1,2 +1,11 @@
 .idea
+#cmake:
 CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+#box2d .a:
+libBox2D.a
+#ejecutable: (cambiar cuando cambiemos nombre de ejecutable)
+untitled
