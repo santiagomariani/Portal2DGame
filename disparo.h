@@ -13,8 +13,9 @@ public:
 	Disparo& operator=(Disparo& otro);
 	Disparo& operator=(Disparo&& otro);
 	const b2Vec2& getPosition();
-	float32 getAngle();
+	double getAngle();
 	int getId();
+	float getDiameter();
 };
 
 #endif //DISPARO_H

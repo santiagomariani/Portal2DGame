@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ariel/Escritorio/Caca2/TP4---Portal/libs 
+CXX_INCLUDES = -I"/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/libs" 
 

@@ -1,6 +1,7 @@
 #include <iostream>
 //#include "ejemplo.h"
 #include "Box2D/Box2D.h"
+
 #include "disparo.h"
 #include "roca.h"
 #include "chell.h"
@@ -8,6 +9,9 @@
 #include "estado_teclado.h"
 #include "personajes.h"
 #include "cuerpo.h"
+#include "SdlWindow.h"
+#include "ViewChell.h"
+
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -15,26 +19,9 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
-#define CONVERSION 10
 
-
-void renderizar(int id, const b2Vec2& pos, 
-				std::map<int,SDL_Texture*>& texturas, SDL_Renderer* renderer){
-		SDL_Rect sdlSrc = {
-		0, 0,
-		300, 300
-		};
-		SDL_Rect sdlDest = {
-		(int)(pos.x * CONVERSION) + 400, (int)(pos.y * CONVERSION * -1) + 300,
-		300, 300
-		};
-
-		SDL_Texture* texture = texturas[id];
-
-		SDL_RenderCopy(renderer, texture, &sdlSrc, &sdlDest);
-
-}
-
+#define CONVERSION 100
+#define PI 3.14159265
 
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
@@ -43,9 +30,9 @@ int main() {
 	Personajes personajes(world);
 
 	std::vector<Roca> rocas;
-	b2Vec2 pos(-50, -3);
+	b2Vec2 pos(-20, -3);
 	b2Vec2 inc(1, 0);
-	for (int j = 0; j < 1000; ++j){
+	for (int j = 0; j < 40; ++j){
 		Roca roca(world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
@@ -55,21 +42,27 @@ int main() {
 
 //======================================SDL======================================
 
+    const int screenWidth = 1200;
+    const int screenHeight = 720;
 
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	SDL_Init(SDL_INIT_VIDEO);
-	SDL_CreateWindowAndRenderer(1600, 800, SDL_RENDERER_ACCELERATED, &window, &renderer);
-	SDL_SetRenderDrawColor(renderer, 0x33, 0x33, 0x33, 0xFF);
-	SDL_RenderClear(renderer);
-	SDL_Texture* textura_chell = IMG_LoadTexture(renderer, "chell.jpeg");
-	SDL_Texture* textura_roca = IMG_LoadTexture(renderer, "roca.jpg");
-	SDL_Texture* textura_disparo = IMG_LoadTexture(renderer, "disparo.png");
-	
-	std::map<int,SDL_Texture*> texturas;
-	texturas[0] = textura_chell;
-	texturas[1] = textura_roca;
-	texturas[2] = textura_disparo;
+    SdlWindow window(screenWidth, screenHeight);
+    window.fill(0x33, 0x33, 0x33, 0xFF);
+
+    // Disparo
+    std::string fxPath = "assets/fx.png";
+    SdlTexture fxTexture(fxPath, window);
+    Sprite disparoSprite(111, 59, 1, 1920, 3, fxTexture);
+
+    // Bloque
+    std::string blocksPath = "assets/blocks.png";
+    SdlTexture blocksTexture(blocksPath, window);
+    Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
+
+    ViewChell viewChell(window);
+
+    std::map<int,Sprite*> texturas;
+    texturas[1] = &bloqueSprite;
+    texturas[2] = &disparoSprite;
 
 //======================================Loop======================================
 
@@ -77,12 +70,34 @@ int main() {
 	EstadoTeclado teclado;
 	while (running) {
 		SDL_Event event;
-		SDL_RenderClear(renderer);
+        window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
 		b2Body* cuerpos = world.obtenerBodies();
 		while (cuerpos){
 			Cuerpo* actual = (Cuerpo*)cuerpos->GetUserData();
-			renderizar(actual->getId(), actual->getPosition(), texturas, renderer);
+			b2Vec2 position = actual->getPosition();
+			int id = actual->getId();
+			int posX = (position.x * CONVERSION) + (screenWidth / 2);
+			int posY = (position.y * CONVERSION * -1) + (screenHeight / 2); 
+			if (id == 0) {
+                viewChell.render(posX, posY, 0.0f, 0.0f);
+			} else if (id == 1) {
+				SDL_Rect areaDest = {posX - (((Roca*)actual)->getWidth() * CONVERSION) / 2,
+					posY - (((Roca*)actual)->getHeight() * CONVERSION) / 2,
+					((Roca*)actual)->getWidth() * CONVERSION, 
+					((Roca*)actual)->getHeight() * CONVERSION
+				};
+				texturas[id]->renderFrame(areaDest);
+			} else if (id == 2) {
+				SDL_Rect areaDest = {
+					posX - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
+					posY - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
+					((Disparo*)actual)->getDiameter() * CONVERSION,
+					((Disparo*)actual)->getDiameter() * CONVERSION
+				};
+				std::cout << (((Disparo*)actual)->getAngle()) << std::endl; 
+				texturas[id]->renderFrame(areaDest, (((Disparo*)actual)->getAngle())*180/PI*-1);
+			}
 			cuerpos = cuerpos->GetNext();
 		}
 		while (SDL_PollEvent(&event) != 0){
@@ -100,8 +115,8 @@ int main() {
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-						float x = (mouseEvent.x - 400) / CONVERSION;
-						float y = ((mouseEvent.y - 300) / CONVERSION) * -1;
+						float x = (mouseEvent.x - screenWidth / 2) / CONVERSION;
+						float y = ((mouseEvent.y - screenHeight / 2) / CONVERSION) * -1;
 						b2Vec2 click(x, y);
 						chell.disparar(world, click);
 					}
@@ -115,7 +130,7 @@ int main() {
 		}
 		chell.mover(teclado);
 		world.actualizar();
-		SDL_RenderPresent(renderer);
+		window.render();
 	}
 	return 0;
 }

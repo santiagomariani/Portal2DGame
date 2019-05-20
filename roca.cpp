@@ -33,3 +33,9 @@ const b2Vec2& Roca::getPosition(){
 int Roca::getId(){
 	return 1;
 }
+float Roca::getWidth(){
+	return TAMANIO_BLOQUE_X * 2;
+}
+float Roca::getHeight(){
+	return TAMANIO_BLOQUE_Y * 2;
+}

@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ariel/Escritorio/Caca2/TP4---Portal
+CMAKE_SOURCE_DIR = "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ariel/Escritorio/Caca2/TP4---Portal
+CMAKE_BINARY_DIR = "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles /home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles" "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -135,6 +135,168 @@ Box2D: cmake_check_build_system
 Box2D/fast:
 	$(MAKE) -f CMakeFiles/Box2D.dir/build.make CMakeFiles/Box2D.dir/build
 .PHONY : Box2D/fast
+
+SdlException.o: SdlException.cpp.o
+
+.PHONY : SdlException.o
+
+# target to build an object file
+SdlException.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlException.cpp.o
+.PHONY : SdlException.cpp.o
+
+SdlException.i: SdlException.cpp.i
+
+.PHONY : SdlException.i
+
+# target to preprocess a source file
+SdlException.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlException.cpp.i
+.PHONY : SdlException.cpp.i
+
+SdlException.s: SdlException.cpp.s
+
+.PHONY : SdlException.s
+
+# target to generate assembly for a file
+SdlException.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlException.cpp.s
+.PHONY : SdlException.cpp.s
+
+SdlTexture.o: SdlTexture.cpp.o
+
+.PHONY : SdlTexture.o
+
+# target to build an object file
+SdlTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlTexture.cpp.o
+.PHONY : SdlTexture.cpp.o
+
+SdlTexture.i: SdlTexture.cpp.i
+
+.PHONY : SdlTexture.i
+
+# target to preprocess a source file
+SdlTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlTexture.cpp.i
+.PHONY : SdlTexture.cpp.i
+
+SdlTexture.s: SdlTexture.cpp.s
+
+.PHONY : SdlTexture.s
+
+# target to generate assembly for a file
+SdlTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlTexture.cpp.s
+.PHONY : SdlTexture.cpp.s
+
+SdlWindow.o: SdlWindow.cpp.o
+
+.PHONY : SdlWindow.o
+
+# target to build an object file
+SdlWindow.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlWindow.cpp.o
+.PHONY : SdlWindow.cpp.o
+
+SdlWindow.i: SdlWindow.cpp.i
+
+.PHONY : SdlWindow.i
+
+# target to preprocess a source file
+SdlWindow.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlWindow.cpp.i
+.PHONY : SdlWindow.cpp.i
+
+SdlWindow.s: SdlWindow.cpp.s
+
+.PHONY : SdlWindow.s
+
+# target to generate assembly for a file
+SdlWindow.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SdlWindow.cpp.s
+.PHONY : SdlWindow.cpp.s
+
+Sprite.o: Sprite.cpp.o
+
+.PHONY : Sprite.o
+
+# target to build an object file
+Sprite.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Sprite.cpp.o
+.PHONY : Sprite.cpp.o
+
+Sprite.i: Sprite.cpp.i
+
+.PHONY : Sprite.i
+
+# target to preprocess a source file
+Sprite.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Sprite.cpp.i
+.PHONY : Sprite.cpp.i
+
+Sprite.s: Sprite.cpp.s
+
+.PHONY : Sprite.s
+
+# target to generate assembly for a file
+Sprite.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Sprite.cpp.s
+.PHONY : Sprite.cpp.s
+
+Timer.o: Timer.cpp.o
+
+.PHONY : Timer.o
+
+# target to build an object file
+Timer.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Timer.cpp.o
+.PHONY : Timer.cpp.o
+
+Timer.i: Timer.cpp.i
+
+.PHONY : Timer.i
+
+# target to preprocess a source file
+Timer.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Timer.cpp.i
+.PHONY : Timer.cpp.i
+
+Timer.s: Timer.cpp.s
+
+.PHONY : Timer.s
+
+# target to generate assembly for a file
+Timer.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Timer.cpp.s
+.PHONY : Timer.cpp.s
+
+ViewChell.o: ViewChell.cpp.o
+
+.PHONY : ViewChell.o
+
+# target to build an object file
+ViewChell.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ViewChell.cpp.o
+.PHONY : ViewChell.cpp.o
+
+ViewChell.i: ViewChell.cpp.i
+
+.PHONY : ViewChell.i
+
+# target to preprocess a source file
+ViewChell.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ViewChell.cpp.i
+.PHONY : ViewChell.cpp.i
+
+ViewChell.s: ViewChell.cpp.s
+
+.PHONY : ViewChell.s
+
+# target to generate assembly for a file
+ViewChell.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/ViewChell.cpp.s
+.PHONY : ViewChell.cpp.s
 
 chell.o: chell.cpp.o
 
@@ -1580,6 +1742,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... untitled"
 	@echo "... Box2D"
+	@echo "... SdlException.o"
+	@echo "... SdlException.i"
+	@echo "... SdlException.s"
+	@echo "... SdlTexture.o"
+	@echo "... SdlTexture.i"
+	@echo "... SdlTexture.s"
+	@echo "... SdlWindow.o"
+	@echo "... SdlWindow.i"
+	@echo "... SdlWindow.s"
+	@echo "... Sprite.o"
+	@echo "... Sprite.i"
+	@echo "... Sprite.s"
+	@echo "... Timer.o"
+	@echo "... Timer.i"
+	@echo "... Timer.s"
+	@echo "... ViewChell.o"
+	@echo "... ViewChell.i"
+	@echo "... ViewChell.s"
 	@echo "... chell.o"
 	@echo "... chell.i"
 	@echo "... chell.s"

@@ -3,8 +3,8 @@
 #include "Box2D/Box2D.h"
 #define TAMANIO_CHELL_X 0.25
 #define TAMANIO_CHELL_Y 0.625
-#define CAMINAR 5
-#define SALTAR 25
+#define CAMINAR 0.5
+#define SALTAR 6
 
 
 Chell& Chell::operator=(Chell&& otro){
@@ -16,11 +16,9 @@ Chell& Chell::operator=(Chell&& otro){
     cuerpo->SetUserData(this);
     return *this;
 }
-
 Chell::Chell(){
 	cuerpo = nullptr;
 }
-
 Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_dynamicBody;
@@ -32,7 +30,7 @@ Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
-	myFixtureDef.density = 1;
+	myFixtureDef.density = 4;
 
 	b2Vec2 pos_poligono(0, 0); // posicion del centro del poligono
 	polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
@@ -66,7 +64,6 @@ void Chell::moverIzquierda(){
 	vel.x = -5;
 	cuerpo->SetLinearVelocity(vel);
 }
-
 void Chell::mover(EstadoTeclado& t){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
 	vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
@@ -80,7 +77,6 @@ int Chell::getId(){
 const b2Vec2& Chell::getPosition(){
 	return cuerpo->GetPosition();
 }
-
 Chell::Chell(Chell&& otro){
     if (this == &otro){
         return;
@@ -89,7 +85,12 @@ Chell::Chell(Chell&& otro){
     cuerpo->SetUserData(this);
     otro.cuerpo = nullptr;
 }
-
 void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
 	this->disparo.activar(mundo, this->getPosition(), pos_click);
+}
+float Chell::getWidth(){
+	return TAMANIO_CHELL_X * 2;
+}
+float Chell::getHeight(){
+	return TAMANIO_CHELL_Y * 2 + 0.25;
 }

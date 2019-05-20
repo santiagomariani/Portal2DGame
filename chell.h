@@ -17,13 +17,13 @@ public:
 	Chell& operator=(Chell&& otro);
 	void mover(EstadoTeclado& t);
 	int getId();
-
 	void disparar(Mundo& mundo, b2Vec2& pos_click);
 	void moverDerecha();
 	void moverIzquierda();
 	void saltar();
 	const b2Vec2& getPosition();
-
+	float getWidth();
+	float getHeight();
 };
 
 #endif //CHELL_H

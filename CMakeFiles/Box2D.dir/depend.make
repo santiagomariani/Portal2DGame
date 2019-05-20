@@ -630,6 +630,10 @@ CMakeFiles/Box2D.dir/libs/Box2D/Rope/b2Rope.cpp.o: libs/Box2D/Common/b2Math.h
 CMakeFiles/Box2D.dir/libs/Box2D/Rope/b2Rope.cpp.o: libs/Box2D/Common/b2Settings.h
 CMakeFiles/Box2D.dir/libs/Box2D/Rope/b2Rope.cpp.o: libs/Box2D/Rope/b2Rope.h
 
+CMakeFiles/Box2D.dir/main.cpp.o: SdlTexture.h
+CMakeFiles/Box2D.dir/main.cpp.o: SdlWindow.h
+CMakeFiles/Box2D.dir/main.cpp.o: Sprite.h
+CMakeFiles/Box2D.dir/main.cpp.o: ViewChell.h
 CMakeFiles/Box2D.dir/main.cpp.o: chell.h
 CMakeFiles/Box2D.dir/main.cpp.o: cuerpo.h
 CMakeFiles/Box2D.dir/main.cpp.o: disparo.h

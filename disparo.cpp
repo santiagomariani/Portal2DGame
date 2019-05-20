@@ -1,8 +1,10 @@
 #include "disparo.h"
 #include "Box2D/Box2D.h"
+#include <math.h>
+
 #define RADIO_RAYO 0.3f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 15
+#define CTE_VELOCIDAD_RAYO 1
 
 
 Disparo::Disparo(){
@@ -49,16 +51,17 @@ Disparo::Disparo(Disparo&& otro){
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
 }
-float32 Disparo::getAngle(){
-	return cuerpo->GetAngle();
+double Disparo::getAngle(){
+	b2Vec2 vel = cuerpo->GetLinearVelocity();
+	return atan2(vel.y,vel.x);
 }
 int Disparo::getId(){
 	return 2;
 }
 
-Disparo& Disparo::operator=(Disparo& otro){
-	if (this == &otro){
-        return *this;
+Disparo& Disparo::operator=(Disparo& otro){ // Si es el operador asignacion
+	if (this == &otro){						// por copia, tendria que poner el const
+        return *this;						// y copiar los atributos (no robarlos).
     }
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
@@ -75,4 +78,6 @@ Disparo& Disparo::operator=(Disparo&& otro){
     cuerpo->SetUserData(this);
     return *this;
 }
-
+float Disparo::getDiameter(){
+	return 2 * RADIO_RAYO;
+}

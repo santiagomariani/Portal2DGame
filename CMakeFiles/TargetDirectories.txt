@@ -1,4 +1,4 @@
-/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/rebuild_cache.dir
-/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/edit_cache.dir
-/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/untitled.dir
-/home/ariel/Escritorio/Caca2/TP4---Portal/CMakeFiles/Box2D.dir
+/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles/rebuild_cache.dir
+/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles/edit_cache.dir
+/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles/untitled.dir
+/home/santi/Escritorio/Ingenieria/2019/1er cuat/Taller de programacion I/tps/TP FINAL/TP4---Portal/CMakeFiles/Box2D.dir

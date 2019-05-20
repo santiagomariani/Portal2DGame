@@ -4,7 +4,8 @@ project(untitled)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Debug)
 
-add_executable(untitled main.cpp)
+add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp)
+
 # ${CMAKE_CURRENT_SOURCE_DIR}
 
 find_package(Threads REQUIRED)
