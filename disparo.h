@@ -6,10 +6,14 @@
 
 class Disparo : public Cuerpo{
 	b2Body* cuerpo;
+	bool listo;
 public:
 	Disparo();
 	void activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino);
 	Disparo(Disparo&& otro);
+	bool terminado();
+	void terminar();
+	void remover();
 	Disparo& operator=(Disparo& otro);
 	Disparo& operator=(Disparo&& otro);
 	const b2Vec2& getPosition();

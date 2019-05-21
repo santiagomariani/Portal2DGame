@@ -39,3 +39,7 @@ float Roca::getWidth(){
 float Roca::getHeight(){
 	return TAMANIO_BLOQUE_Y * 2;
 }
+
+void Roca::recibirDisparo(Disparo* disparo){
+	disparo->terminar();
+}

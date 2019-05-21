@@ -1,3 +1,4 @@
+#include <iostream>
 #include "disparo.h"
 #include "Box2D/Box2D.h"
 #include <math.h>
@@ -8,13 +9,15 @@
 
 
 Disparo::Disparo(){
-	cuerpo = nullptr;
+	cuerpo = NULL;
+	this->listo = false;
 }
 
 void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
 	if (cuerpo){
 		mundo.destruirBody(cuerpo);
 	}
+	this->listo = false;
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
@@ -46,7 +49,7 @@ Disparo::Disparo(Disparo&& otro){
 	}
 	cuerpo = otro.cuerpo;
 	cuerpo->SetUserData(this);
-	otro.cuerpo = nullptr;
+	otro.cuerpo = NULL;
 }
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
@@ -74,10 +77,26 @@ Disparo& Disparo::operator=(Disparo&& otro){
         return *this;
     }
     cuerpo = otro.cuerpo;
-    otro.cuerpo = nullptr;
+    otro.cuerpo = NULL;
     cuerpo->SetUserData(this);
     return *this;
 }
 float Disparo::getDiameter(){
 	return 2 * RADIO_RAYO;
+}
+
+void Disparo::terminar(){
+	this->listo = true;
+}
+
+bool Disparo::terminado(){
+	return this->listo;
+}
+
+void Disparo::remover(){
+	if (cuerpo && this->terminado()){
+		b2World* w = cuerpo->GetWorld();
+		w->DestroyBody(cuerpo);
+		cuerpo = NULL;
+	}
 }

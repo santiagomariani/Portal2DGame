@@ -4,6 +4,11 @@
 
 Mundo::Mundo(const b2Vec2& gravedad) : mundo(gravedad){
 }
+
+void Mundo::setContactListener(b2ContactListener& listener){
+	mundo.SetContactListener(&listener);
+}
+
 b2Body* Mundo::agregarBody(b2BodyDef& cuerpo_def){
 	return mundo.CreateBody(&cuerpo_def);
 }

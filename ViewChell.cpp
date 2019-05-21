@@ -14,7 +14,6 @@ ViewChell::ViewChell(SdlWindow &window) {
 }
 
 void ViewChell::spritesCreation() {
-
     // fire to rest
     sprites.emplace_back(143, 213, 1, 1104, 4, chellTextures);
     actualSprite = FIRE_TO_REST;
