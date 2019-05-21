@@ -39,6 +39,5 @@ void ContactListenerDisparo::BeginContact(b2Contact* contact){
     Roca* roca;
     if (getDisparoYRoca(contact, disp, roca)){
         roca->recibirDisparo(disp);
-
     }
 }

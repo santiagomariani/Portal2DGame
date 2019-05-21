@@ -55,6 +55,15 @@ int main() {
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
+
+	std::vector<Roca> pared;
+	b2Vec2 pos_roca(2, -3);
+	b2Vec2 inc_pared(0, 1);
+	for (int j = 0; j < 40; ++j){
+		Roca roca(world, pos_roca);
+		pared.push_back(std::move(roca));
+		pos_roca += inc_pared;
+	}
 	//Cliente 0
 	int id = personajes.agregar_chell();
 

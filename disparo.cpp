@@ -3,9 +3,9 @@
 #include "Box2D/Box2D.h"
 #include <math.h>
 
-#define RADIO_RAYO 0.3f
+#define RADIO_RAYO 0.25f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 1
+#define CTE_VELOCIDAD_RAYO 0.25
 
 
 Disparo::Disparo(){
