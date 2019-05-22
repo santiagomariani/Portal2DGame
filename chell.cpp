@@ -31,6 +31,8 @@ Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
 	myFixtureDef.density = 4;
+	myFixtureDef.friction = 0;
+	myFixtureDef.restitution = 0;
 
 	b2Vec2 pos_poligono(0, 0); // posicion del centro del poligono
 	polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
@@ -40,6 +42,8 @@ Chell::Chell(Mundo& mundo, b2Vec2& pos){
 	b2FixtureDef circulo_fix_def;
 	circulo_fix_def.shape = &circulo;
 	circulo_fix_def.density = 1;
+	circulo_fix_def.friction = 0;
+	circulo_fix_def.restitution = 0;
 
 	circulo.m_p.Set(0, -0.625); // posicion del centro del circulo
     circulo.m_radius = 0.25f;
@@ -86,7 +90,9 @@ Chell::Chell(Chell&& otro){
     otro.cuerpo = nullptr;
 }
 void Chell::disparar(Mundo& mundo, b2Vec2& pos_click){
-	this->disparo.activar(mundo, this->getPosition(), pos_click);
+	b2Vec2 pos_inicial(0,0.53f);
+	pos_inicial += this->getPosition();
+	this->disparo.activar(mundo, pos_inicial, pos_click);
 }
 float Chell::getWidth(){
 	return TAMANIO_CHELL_X * 2;

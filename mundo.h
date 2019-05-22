@@ -9,6 +9,8 @@ class Mundo{
 public:
 	Mundo(const b2Vec2& gravedad);
 
+	void setContactListener(b2ContactListener& listener);
+
 	b2Body* agregarBody(b2BodyDef& cuerpo_def);
 	void destruirBody(b2Body* body);
 	void actualizar();

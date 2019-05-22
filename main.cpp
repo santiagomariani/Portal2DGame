@@ -1,5 +1,4 @@
 #include <iostream>
-//#include "ejemplo.h"
 #include "Box2D/Box2D.h"
 
 #include "disparo.h"
@@ -11,6 +10,7 @@
 #include "cuerpo.h"
 #include "SdlWindow.h"
 #include "ViewChell.h"
+#include "contact_listener.h"
 
 #include <thread>
 #include <pthread.h>
@@ -23,9 +23,27 @@
 #define CONVERSION 100
 #define PI 3.14159265
 
+
+// En realidad es mejor que cada disparo al ser desactivado sea agregado
+// a un vector de disparos_a_remover u cuerpos_a_remover y recorrer solo ese vector
+void remover_disparos(Mundo& world){
+	b2Body* cuerpos = world.obtenerBodies();
+	while (cuerpos){
+		Cuerpo* actual = (Cuerpo*)cuerpos->GetUserData();		
+		int id = actual->getId();
+		if (id == 2){
+			((Disparo*)actual)->remover();
+		}
+		cuerpos = cuerpos->GetNext();
+	}
+}
+
+
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
 	Mundo world(gravity);
+	ContactListenerDisparo listener_disparo;
+	world.setContactListener(listener_disparo);
 
 	Personajes personajes(world);
 
@@ -36,6 +54,15 @@ int main() {
 		Roca roca(world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
+	}
+
+	std::vector<Roca> pared;
+	b2Vec2 pos_roca(2, -3);
+	b2Vec2 inc_pared(0, 1);
+	for (int j = 0; j < 40; ++j){
+		Roca roca(world, pos_roca);
+		pared.push_back(std::move(roca));
+		pos_roca += inc_pared;
 	}
 	//Cliente 0
 	int id = personajes.agregar_chell();
@@ -94,12 +121,16 @@ int main() {
 					posY - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
 					((Disparo*)actual)->getDiameter() * CONVERSION,
 					((Disparo*)actual)->getDiameter() * CONVERSION
-				};
-				std::cout << (((Disparo*)actual)->getAngle()) << std::endl; 
+				}; 
 				texturas[id]->renderFrame(areaDest, (((Disparo*)actual)->getAngle())*180/PI*-1);
+				
 			}
+
 			cuerpos = cuerpos->GetNext();
 		}
+
+		remover_disparos(world);
+
 		while (SDL_PollEvent(&event) != 0){
 			switch(event.type) {
 				case SDL_KEYDOWN:{
@@ -134,3 +165,4 @@ int main() {
 	}
 	return 0;
 }
+

@@ -80,7 +80,6 @@ int SdlTexture::getHeight() {
 }
 
 SdlTexture::~SdlTexture() {
-    std::cout << this->getWidth();
     if (this->texture) {
         SDL_DestroyTexture(this->texture);
         this->texture = nullptr;
