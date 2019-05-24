@@ -5,7 +5,7 @@
 
 #define RADIO_RAYO 0.25f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 0.25
+#define CTE_VELOCIDAD_RAYO 15
 
 
 Disparo::Disparo(){
@@ -22,6 +22,7 @@ void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino)
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
 	circle_body_def.fixedRotation = true;
+    circle_body_def.bullet = true;
 	cuerpo = mundo.agregarBody(circle_body_def);
 	//cuerpo = world.CreateBody(&circle_body_def);
 
