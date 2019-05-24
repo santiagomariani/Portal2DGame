@@ -11,6 +11,7 @@
 #include "SdlWindow.h"
 #include "ViewChell.h"
 #include "contact_listener.h"
+#include "Timer.h"
 
 #include <thread>
 #include <pthread.h>
@@ -56,6 +57,11 @@ int main() {
 		pos += inc;
 	}
 
+	pos.Set(0, -2);
+	Roca roca(world, pos);
+	pos.Set(0, 1);
+	Roca roca2(world, pos);
+
 	std::vector<Roca> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
@@ -71,6 +77,9 @@ int main() {
 
     const int screenWidth = 1200;
     const int screenHeight = 720;
+
+    const int FPS = 60;
+    const int TICKS_PER_FRAME = 1000/FPS;
 
     SdlWindow window(screenWidth, screenHeight);
     window.fill(0x33, 0x33, 0x33, 0xFF);
@@ -95,7 +104,14 @@ int main() {
 
 	bool running = true;
 	EstadoTeclado teclado;
+
+	Timer fpsTimer;
+	Timer capTimer;
+
+	int countedFrames = 1;
+
 	while (running) {
+		fpsTimer.start();
 		SDL_Event event;
         window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
@@ -105,9 +121,11 @@ int main() {
 			b2Vec2 position = actual->getPosition();
 			int id = actual->getId();
 			int posX = (position.x * CONVERSION) + (screenWidth / 2);
-			int posY = (position.y * CONVERSION * -1) + (screenHeight / 2); 
+			int posY = (position.y * CONVERSION * -1) + (screenHeight / 2);
+				// Renderizado Chell.
 			if (id == 0) {
                 viewChell.render(posX, posY, 0.0f, 0.0f);
+                // Renderizado Roca.
 			} else if (id == 1) {
 				SDL_Rect areaDest = {posX - (((Roca*)actual)->getWidth() * CONVERSION) / 2,
 					posY - (((Roca*)actual)->getHeight() * CONVERSION) / 2,
@@ -115,6 +133,7 @@ int main() {
 					((Roca*)actual)->getHeight() * CONVERSION
 				};
 				texturas[id]->renderFrame(areaDest);
+				// Renderizado Disparo.
 			} else if (id == 2) {
 				SDL_Rect areaDest = {
 					posX - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
@@ -162,6 +181,22 @@ int main() {
 		chell.mover(teclado);
 		world.actualizar();
 		window.render();
+
+		// Solo para ver cantidad de FPS en terminal.
+		/*
+		float avgFPS = (countedFrames / (fpsTimer.getTicks() / 1000.f));
+		if (avgFPS > 2000000) {
+			avgFPS = 0;
+		}
+		std::cout << "FPS: " << avgFPS << std::endl;
+		++countedFrames;
+		*/
+
+		int frameTicks = capTimer.getTicks();
+
+		if (frameTicks < TICKS_PER_FRAME) {
+			SDL_Delay(TICKS_PER_FRAME - frameTicks);
+		}
 	}
 	return 0;
 }

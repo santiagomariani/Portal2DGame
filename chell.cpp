@@ -3,8 +3,8 @@
 #include "Box2D/Box2D.h"
 #define TAMANIO_CHELL_X 0.25
 #define TAMANIO_CHELL_Y 0.625
-#define CAMINAR 0.5
-#define SALTAR 6
+#define CAMINAR 3
+#define SALTAR 5
 
 
 Chell& Chell::operator=(Chell&& otro){

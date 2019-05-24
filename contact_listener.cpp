@@ -34,10 +34,14 @@ bool getDisparoYRoca(b2Contact* contact, Disparo*& disp, Roca*& roca){
     return false;
 }
 
+int contador = 0;
+
 void ContactListenerDisparo::BeginContact(b2Contact* contact){
 	Disparo* disp;
     Roca* roca;
     if (getDisparoYRoca(contact, disp, roca)){
         roca->recibirDisparo(disp);
+        contador++;
+        std::cout << "colision" << contador << std::endl;
     }
 }
