@@ -19,7 +19,6 @@ public:
 	const b2Vec2& getPosition();
 	double getAngle();
 	int getId();
-	float getDiameter();
 };
 
 #endif //DISPARO_H

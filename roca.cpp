@@ -1,9 +1,10 @@
 #include "roca.h"
 #include "Box2D/Box2D.h"
-#define TAMANIO_BLOQUE_X 0.5
-#define TAMANIO_BLOQUE_Y 0.5
+#define TAMANIO_BLOQUE_X 0.5f
+#define TAMANIO_BLOQUE_Y 0.5f
 
-Roca::Roca(Mundo& mundo, const b2Vec2& pos){
+Roca::Roca(Mundo& mundo, const b2Vec2& pos) :
+	Cuerpo(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -19,10 +20,15 @@ Roca::Roca(Mundo& mundo, const b2Vec2& pos){
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-Roca::Roca(Roca&& otro){
+Roca::Roca(Roca&& otro) : Cuerpo(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
 	if (this == &otro){
 		return;
 	}
+	maxWidth = otro.maxWidth;
+	maxHeight = otro.maxHeight;
+
+	otro.maxWidth = 0;
+	otro.maxHeight = 0;
 	cuerpo = otro.cuerpo;
 	cuerpo->SetUserData(this);
 	otro.cuerpo = nullptr;
@@ -32,12 +38,6 @@ const b2Vec2& Roca::getPosition(){
 }
 int Roca::getId(){
 	return 1;
-}
-float Roca::getWidth(){
-	return TAMANIO_BLOQUE_X * 2;
-}
-float Roca::getHeight(){
-	return TAMANIO_BLOQUE_Y * 2;
 }
 
 void Roca::recibirDisparo(Disparo* disparo){

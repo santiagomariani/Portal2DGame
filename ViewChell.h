@@ -12,15 +12,18 @@
 #include "SdlTexture.h"
 #include "Sprite.h"
 
-class ViewChell {
+class ViewChell : public Renderable {
 private:
     SdlTexture chellTextures;
     std::vector<Sprite> sprites;
     int actualSprite;
     void spritesCreation();
 public:
-    ViewChell(SdlWindow &window);
-    void render(float x, float y, float xCam, float yCam);
+    explicit ViewChell(SdlWindow &window);
+    void render(SDL_Rect &dest,
+                     double angle,
+                     SDL_Point *center,
+                     SDL_RendererFlip flip) override;
     ~ViewChell() = default;
 };
 

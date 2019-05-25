@@ -33,10 +33,10 @@ void Sprite::resetAnimation() {
     countedImages = 0;
 }
 
-void Sprite::renderFrame(SDL_Rect &dest,
-    double angle,
-    SDL_Point *center,
-    SDL_RendererFlip flip) {
+void Sprite::render(SDL_Rect &dest,
+                    double angle,
+                    SDL_Point *center,
+                    SDL_RendererFlip flip) {
     if (numberImages == 1) {
       texture.render(&srcArea, &dest);
       return;

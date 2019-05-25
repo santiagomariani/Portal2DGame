@@ -8,8 +8,9 @@
 
 #include "SdlTexture.h"
 #include "SdlWindow.h"
+#include "Renderable.h"
 
-class Sprite {
+class Sprite : public Renderable {
 private:
     int frameWidth;
     int frameHeight;
@@ -27,10 +28,10 @@ public:
             unsigned int numberFrames,
             SdlTexture &texture);
     void resetAnimation();
-    void renderFrame(SDL_Rect &dest,
-         double angle = 0.0,
-         SDL_Point *center = nullptr,
-         SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void render(SDL_Rect &dest,
+                double angle,
+                SDL_Point *center,
+                SDL_RendererFlip flip) override;
     int getFrameWidth();
     int getFrameHeight();
     ~Sprite() = default;

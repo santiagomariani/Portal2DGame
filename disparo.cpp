@@ -3,13 +3,13 @@
 #include "Box2D/Box2D.h"
 #include <math.h>
 
-#define RADIO_RAYO 0.25f
+#define RADIO_RAYO 0.15f
 #define DENSIDAD_RAYO 1
 #define CTE_VELOCIDAD_RAYO 15
 
 
-Disparo::Disparo(){
-	cuerpo = NULL;
+Disparo::Disparo() : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
+	cuerpo = nullptr;
 	this->listo = false;
 }
 
@@ -33,7 +33,7 @@ void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino)
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
 	circle_fixture_def.isSensor = true; // no choca con nada pero se pueden detectar
-									// las colisiones
+	    								// las colisiones
 	cuerpo->CreateFixture(&circle_fixture_def);
 
 	b2Vec2 vel = destino;
@@ -44,13 +44,18 @@ void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino)
 	cuerpo->SetLinearVelocity(vel);
 	cuerpo->SetUserData(this);
 }
-Disparo::Disparo(Disparo&& otro){
+Disparo::Disparo(Disparo&& otro) : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	if (this == &otro){
 		return;
 	}
+	maxWidth = otro.maxWidth;
+	maxHeight = otro.maxHeight;
 	cuerpo = otro.cuerpo;
+
+	otro.maxWidth = 0;
+	otro.maxHeight = 0;
+	otro.cuerpo = nullptr;
 	cuerpo->SetUserData(this);
-	otro.cuerpo = NULL;
 }
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
@@ -67,7 +72,13 @@ Disparo& Disparo::operator=(Disparo& otro){ // Si es el operador asignacion
 	if (this == &otro){						// por copia, tendria que poner el const
         return *this;						// y copiar los atributos (no robarlos).
     }
+
+	maxWidth = otro.maxWidth;
+	maxHeight = otro.maxHeight;
     cuerpo = otro.cuerpo;
+
+	otro.maxWidth = 0;
+	otro.maxHeight = 0;
     otro.cuerpo = nullptr;
     cuerpo->SetUserData(this);
     return *this;
@@ -77,13 +88,16 @@ Disparo& Disparo::operator=(Disparo&& otro){
 	if (this == &otro){
         return *this;
     }
-    cuerpo = otro.cuerpo;
-    otro.cuerpo = NULL;
+
+	maxWidth = otro.maxWidth;
+	maxHeight = otro.maxHeight;
+	cuerpo = otro.cuerpo;
+
+	otro.maxWidth = 0;
+	otro.maxHeight = 0;
+	otro.cuerpo = nullptr;
     cuerpo->SetUserData(this);
     return *this;
-}
-float Disparo::getDiameter(){
-	return 2 * RADIO_RAYO;
 }
 
 void Disparo::terminar(){
@@ -98,6 +112,6 @@ void Disparo::remover(){
 	if (cuerpo && this->terminado()){
 		b2World* w = cuerpo->GetWorld();
 		w->DestroyBody(cuerpo);
-		cuerpo = NULL;
+		cuerpo = nullptr;
 	}
 }

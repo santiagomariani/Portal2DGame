@@ -19,11 +19,10 @@ void ViewChell::spritesCreation() {
     actualSprite = FIRE_TO_REST;
 }
 
-void ViewChell::render(float x, float y, float xCam, float yCam) {
+void ViewChell::render(SDL_Rect &dest,
+        double angle,
+        SDL_Point *center,
+        SDL_RendererFlip flip) {
     Sprite &sprite = sprites.at(actualSprite);
-    SDL_Rect dest = {x - xCam - 100/2,
-                     y - yCam - 62.5,
-                     100,
-                     150}; // hardcodeadisimo.
-    sprite.renderFrame(dest);
+    sprite.render(dest, angle, center, flip);
 }
