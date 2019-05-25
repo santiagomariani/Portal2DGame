@@ -14,6 +14,7 @@
 #include "Timer.h"
 #include "Camera.h"
 #include "CoordConverter.h"
+#include "portal.h"
 
 #include <thread>
 #include <pthread.h>
@@ -45,8 +46,8 @@ void remover_disparos(Mundo& world){
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
 	Mundo world(gravity);
-	ContactListenerDisparo listener_disparo;
-	world.setContactListener(listener_disparo);
+	ContactListener listener;
+	world.setContactListener(listener);
 
 	Personajes personajes(world);
 
@@ -74,6 +75,7 @@ int main() {
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
+	Portal portal();
 	//Cliente 0
 	int id = personajes.agregar_chell();
 

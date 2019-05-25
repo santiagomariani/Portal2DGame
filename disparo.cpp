@@ -8,6 +8,8 @@
 #define CTE_VELOCIDAD_RAYO 15
 
 
+Disparo::Disparo(int identidad) : id(identidad){
+	cuerpo = nullptr;
 Disparo::Disparo() : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	cuerpo = nullptr;
 	this->listo = false;
@@ -16,6 +18,7 @@ Disparo::Disparo() : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
 	if (cuerpo){
 		mundo.destruirBody(cuerpo);
+		cuerpo = nullptr;
 	}
 	this->listo = false;
 	b2BodyDef circle_body_def;
@@ -57,6 +60,12 @@ Disparo::Disparo(Disparo&& otro) : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	otro.cuerpo = nullptr;
 	cuerpo->SetUserData(this);
 }
+
+void Disparo::setPortal(Portal* port){
+	portal = port;
+}
+
+
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
 }

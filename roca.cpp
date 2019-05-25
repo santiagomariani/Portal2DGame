@@ -9,7 +9,6 @@ Roca::Roca(Mundo& mundo, const b2Vec2& pos) :
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
 	cuerpo = mundo.agregarBody(cuerpo_def);
-	//cuerpo = world.CreateBody(&cuerpo_def);
 
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
