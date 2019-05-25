@@ -15,6 +15,11 @@ public:
 	const b2Vec2& getPosition();
 	float getWidth();
 	float getHeight();
+
+
+
+	void empezarContacto(Cuerpo* otro) {}
+	
 };
 
 #endif //ROCA_H

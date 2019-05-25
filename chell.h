@@ -4,26 +4,32 @@
 #include "mundo.h"
 #include "estado_teclado.h"
 #include "cuerpo.h"
-#include "disparo.h"
+#include "pistola.h"
 #include <SDL2/SDL.h>
 
-class Chell : public Cuerpo{
+class Chell : public Cuerpo {
+	int id;
 	b2Body* cuerpo;
-	Disparo disparo;
+	Pistola pistola;
 public:
 	Chell();
-	Chell(Mundo& mundo, b2Vec2& pos);
+	Chell(int identidad);
+	void activar(Mundo& mundo, b2Vec2& pos);
 	Chell(Chell&& otro);
 	Chell& operator=(Chell&& otro);
 	void mover(EstadoTeclado& t);
 	int getId();
-	void disparar(Mundo& mundo, b2Vec2& pos_click);
-	void moverDerecha();
-	void moverIzquierda();
-	void saltar();
+	void dispararAzul(Mundo& mundo, b2Vec2& pos_click);
+	void dispararNaranja(Mundo& mundo, b2Vec2& pos_click);
 	const b2Vec2& getPosition();
+	const b2Vec2& getVelocidad();
+	void setVelocidad(b2Vec2& vel);
+	void cambiarPosicion(const b2Vec2& pos);
 	float getWidth();
 	float getHeight();
+
+
+	void empezarContacto(Cuerpo* otro) {}
 };
 
 #endif //CHELL_H
