@@ -6,4 +6,4 @@
 #define ID_DISPARO 2
 #define ID_METAL 3
 
-#endif IDS_H
+#endif //IDS_H

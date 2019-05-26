@@ -1,19 +1,20 @@
 #ifndef ROCA_H
 #define ROCA_H
 #include "Box2D/Box2D.h"
+#include "Bloque.h"
 #include "mundo.h"
 #include "cuerpo.h"
 #include "disparo.h"
 
-class Roca : public Cuerpo{
+class BloqueRoca : public Bloque{
 	b2Body* cuerpo;
 public:
-	Roca(Mundo& mundo, const b2Vec2& posicion);
-	Roca(Roca&& otro);
+	BloqueRoca(Mundo& mundo, const b2Vec2& posicion);
+	BloqueRoca(BloqueRoca&& otro);
 	void recibirDisparo(Disparo* disparo);
 	int getId();
 	const b2Vec2& getPosition();
-	void empezarContacto(Cuerpo* otro) {}
+	void empezarContacto(Cuerpo* otro);
 };
 
 #endif //ROCA_H

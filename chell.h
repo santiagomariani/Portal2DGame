@@ -11,16 +11,16 @@ class Chell : public Cuerpo {
 	int id;
 	b2Body* cuerpo;
 	Pistola pistola;
+	Mundo& mundo;
 public:
-	Chell();
-	Chell(int identidad);
-	void activar(Mundo& mundo, b2Vec2& pos);
+	Chell(int identidad, Mundo& mundo);
+	void activar(b2Vec2& pos);
 	Chell(Chell&& otro);
 	Chell& operator=(Chell&& otro);
 	void mover(EstadoTeclado& t);
 	int getId();
-	void dispararAzul(Mundo& mundo, b2Vec2& pos_click);
-	void dispararNaranja(Mundo& mundo, b2Vec2& pos_click);
+	void dispararAzul(b2Vec2& pos_click);
+	void dispararNaranja(b2Vec2& pos_click);
 	const b2Vec2& getPosition();
 	const b2Vec2& getVelocidad();
 	void setVelocidad(b2Vec2& vel);
