@@ -12,6 +12,8 @@
 #include "ViewChell.h"
 #include "contact_listener.h"
 #include "Timer.h"
+#include "Camera.h"
+#include "CoordConverter.h"
 #include "portal.h"
 
 #include <thread>
@@ -60,49 +62,57 @@ int main() {
 
 	pos.Set(0, -2);
 	Roca roca(world, pos);
+	rocas.push_back(std::move(roca));
 	pos.Set(0, 1);
 	Roca roca2(world, pos);
+	rocas.push_back(std::move(roca2));
 
 	std::vector<Roca> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
-	for (int j = 0; j < 40; ++j){
-		Roca roca(world, pos_roca);
-		pared.push_back(std::move(roca));
+	for (int j = 0; j < 5; ++j){
+		Roca roca3(world, pos_roca);
+		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
 	Portal portal();
 	//Cliente 0
 	int id = personajes.agregar_chell();
 
+
 //======================================SDL======================================
 
-    const int screenWidth = 1200;
-    const int screenHeight = 720;
+	const int screenWidth = 800;
+	const int screenHeight = 600;
 
-    const int FPS = 60;
-    const int TICKS_PER_FRAME = 1000/FPS;
+	const int FPS = 60;
+	const int TICKS_PER_FRAME = 1000/FPS;
 
-    SdlWindow window(screenWidth, screenHeight);
-    window.fill(0x33, 0x33, 0x33, 0xFF);
+	Camera camera(screenWidth, screenHeight);
 
-    // Disparo
-    std::string fxPath = "assets/fx.png";
-    SdlTexture fxTexture(fxPath, window);
-    Sprite disparoSprite(111, 59, 1, 1920, 3, fxTexture);
+	SdlWindow window(screenWidth, screenHeight);
+	window.fill(0x33, 0x33, 0x33, 0xFF);
 
-    // Bloque
-    std::string blocksPath = "assets/blocks.png";
-    SdlTexture blocksTexture(blocksPath, window);
-    Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
+	// Disparo
+	std::string fxPath = "assets/fx.png";
+	SdlTexture fxTexture(fxPath, window);
+	Sprite disparoSprite(111, 59, 1, 1920, 3, fxTexture);
 
-    ViewChell viewChell(window);
+	// Bloque
+	std::string blocksPath = "assets/blocks.png";
+	SdlTexture blocksTexture(blocksPath, window);
+	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 
-    std::map<int,Sprite*> texturas;
-    texturas[1] = &bloqueSprite;
-    texturas[2] = &disparoSprite;
+	ViewChell viewChell(window);
 
+	std::map<int, Renderable*> texturas;
+	texturas[0] = &viewChell;
+	texturas[1] = &bloqueSprite;
+	texturas[2] = &disparoSprite;
+
+	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
+
 
 	bool running = true;
 	EstadoTeclado teclado;
@@ -117,40 +127,21 @@ int main() {
 		SDL_Event event;
         window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
-		b2Body* cuerpos = world.obtenerBodies();
+		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
+		camera.updateCamera(destChell);
+		b2Body *cuerpos = world.obtenerBodies();
 		while (cuerpos){
-			Cuerpo* actual = (Cuerpo*)cuerpos->GetUserData();
-			b2Vec2 position = actual->getPosition();
+			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
+			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
-			int posX = (position.x * CONVERSION) + (screenWidth / 2);
-			int posY = (position.y * CONVERSION * -1) + (screenHeight / 2);
-				// Renderizado Chell.
-			if (id == 0) {
-                viewChell.render(posX, posY, 0.0f, 0.0f);
-                // Renderizado Roca.
-			} else if (id == 1) {
-				SDL_Rect areaDest = {posX - (((Roca*)actual)->getWidth() * CONVERSION) / 2,
-					posY - (((Roca*)actual)->getHeight() * CONVERSION) / 2,
-					((Roca*)actual)->getWidth() * CONVERSION, 
-					((Roca*)actual)->getHeight() * CONVERSION
-				};
-				texturas[id]->renderFrame(areaDest);
-				// Renderizado Disparo.
-			} else if (id == 2) {
-				SDL_Rect areaDest = {
-					posX - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
-					posY - (((Disparo*)actual)->getDiameter() * CONVERSION) / 2,
-					((Disparo*)actual)->getDiameter() * CONVERSION,
-					((Disparo*)actual)->getDiameter() * CONVERSION
-				}; 
-				texturas[id]->renderFrame(areaDest, (((Disparo*)actual)->getAngle())*180/PI*-1);
-				
-			}
 
+			if (id == 2) {
+				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
+			} else {
+                camera.render(*texturas[id], dest);
+			}
 			cuerpos = cuerpos->GetNext();
 		}
-
-		remover_disparos(world);
 
 		while (SDL_PollEvent(&event) != 0){
 			switch(event.type) {
@@ -167,10 +158,8 @@ int main() {
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-						float x = (mouseEvent.x - screenWidth / 2) / CONVERSION;
-						float y = ((mouseEvent.y - screenHeight / 2) / CONVERSION) * -1;
-						b2Vec2 click(x, y);
-						chell.dispararAzul(world, click);
+					    b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
+					    chell.disparar(world, click);
 					}
 					break;
 				}
@@ -183,8 +172,9 @@ int main() {
 		chell.mover(teclado);
 		world.actualizar();
 		window.render();
+        remover_disparos(world);
 
-		// Solo para ver cantidad de FPS en terminal.
+        // Solo para ver cantidad de FPS en terminal.
 		/*
 		float avgFPS = (countedFrames / (fpsTimer.getTicks() / 1000.f));
 		if (avgFPS > 2000000) {

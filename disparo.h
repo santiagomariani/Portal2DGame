@@ -27,15 +27,7 @@ public:
 	const b2Vec2& getPosition();
 	double getAngle();
 	int getId();
-	float getDiameter();
-
-
-
 	void empezarContacto(Cuerpo* otro) {}
-
-
-
-
 };
 
 #endif //DISPARO_H
