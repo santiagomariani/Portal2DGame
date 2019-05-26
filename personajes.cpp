@@ -7,15 +7,15 @@ Personajes::Personajes(Mundo& m) : mundo(m){
 int Personajes::agregar_chell(){
 	int id = this->siguiente_client;
 	b2Vec2 pos(0, 0); // POS INICIAL
-	Chell chell(0);
-	chell.activar(this->mundo, pos);
-	this->personajes[id] = std::move(chell); //mov
+	Chell chell(0, this->mundo);
+	chell.activar(pos);
+	this->personajes.emplace(id, std::move(chell)); //mov
 	this->siguiente_client += 1;
 	return id;
 }
 
 Chell& Personajes::obtener_chell(int chell_id){
-	return this->personajes[chell_id];
+	return this->personajes.at(chell_id);
 }
 
 /*

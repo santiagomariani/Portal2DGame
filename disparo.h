@@ -9,25 +9,22 @@ class Disparo : public Cuerpo{
 	int id;
 	b2Body* cuerpo;
 	Portal* portal;
-	bool listo;
+	Mundo& mundo;
 public:
-	Disparo(int identidad);
-	void activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino);
+	Disparo(int identidad, Mundo& mundo);
+	void activar(const b2Vec2& origen, const b2Vec2& destino);
 	Disparo(Disparo&& otro);
-
-
 	void setPortal(Portal* port);
-
-
-	bool terminado();
-	void terminar();
-	void remover();
-	Disparo& operator=(Disparo& otro);
+	void desactivar();
 	Disparo& operator=(Disparo&& otro);
 	const b2Vec2& getPosition();
 	double getAngle();
 	int getId();
 	void empezarContacto(Cuerpo* otro) {}
+
+    void crearPortal(b2Vec2& pos, b2Vec2& normal);
+
+    void terminar();
 };
 
 #endif //DISPARO_H

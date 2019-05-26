@@ -8,19 +8,17 @@
 #define CTE_VELOCIDAD_RAYO 15
 
 
-Disparo::Disparo(int identidad) : id(identidad){
+Disparo::Disparo(int identidad, Mundo& mundo) : 
+			id(identidad), mundo(mundo),
+			Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	cuerpo = nullptr;
-Disparo::Disparo() : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
-	cuerpo = nullptr;
-	this->listo = false;
 }
 
-void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino){
+void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	if (cuerpo){
 		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
 	}
-	this->listo = false;
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
@@ -47,14 +45,18 @@ void Disparo::activar(Mundo& mundo, const b2Vec2& origen, const b2Vec2& destino)
 	cuerpo->SetLinearVelocity(vel);
 	cuerpo->SetUserData(this);
 }
-Disparo::Disparo(Disparo&& otro) : Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
+
+Disparo::Disparo(Disparo&& otro) : 
+		mundo(otro.mundo),
+		Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	if (this == &otro){
 		return;
 	}
 	maxWidth = otro.maxWidth;
 	maxHeight = otro.maxHeight;
 	cuerpo = otro.cuerpo;
-
+	portal = otro.portal;
+	id = otro.id;
 	otro.maxWidth = 0;
 	otro.maxHeight = 0;
 	otro.cuerpo = nullptr;
@@ -65,6 +67,10 @@ void Disparo::setPortal(Portal* port){
 	portal = port;
 }
 
+void Disparo::crearPortal(b2Vec2& pos, b2Vec2& normal){
+    portal->establecer(pos, normal);
+    this->mundo.agregarPortal(portal);
+}
 
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
@@ -77,22 +83,6 @@ int Disparo::getId(){
 	return 2;
 }
 
-Disparo& Disparo::operator=(Disparo& otro){ // Si es el operador asignacion
-	if (this == &otro){						// por copia, tendria que poner el const
-        return *this;						// y copiar los atributos (no robarlos).
-    }
-
-	maxWidth = otro.maxWidth;
-	maxHeight = otro.maxHeight;
-    cuerpo = otro.cuerpo;
-
-	otro.maxWidth = 0;
-	otro.maxHeight = 0;
-    otro.cuerpo = nullptr;
-    cuerpo->SetUserData(this);
-    return *this;
-}
-
 Disparo& Disparo::operator=(Disparo&& otro){
 	if (this == &otro){
         return *this;
@@ -101,7 +91,9 @@ Disparo& Disparo::operator=(Disparo&& otro){
 	maxWidth = otro.maxWidth;
 	maxHeight = otro.maxHeight;
 	cuerpo = otro.cuerpo;
-
+	mundo = std::move(otro.mundo);
+	portal = otro.portal;
+	id = otro.id;
 	otro.maxWidth = 0;
 	otro.maxHeight = 0;
 	otro.cuerpo = nullptr;
@@ -109,18 +101,14 @@ Disparo& Disparo::operator=(Disparo&& otro){
     return *this;
 }
 
-void Disparo::terminar(){
-	this->listo = true;
-}
-
-bool Disparo::terminado(){
-	return this->listo;
-}
-
-void Disparo::remover(){
-	if (cuerpo && this->terminado()){
+void Disparo::desactivar(){
+	if (cuerpo){
 		b2World* w = cuerpo->GetWorld();
 		w->DestroyBody(cuerpo);
 		cuerpo = nullptr;
 	}
+}
+
+void Disparo::terminar() {
+    this->mundo.agregarCuerpoADestruir(this);
 }

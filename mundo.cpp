@@ -1,5 +1,5 @@
 #include "mundo.h"
-#include "roca.h"
+#include "BloqueRoca.h"
 #include "disparo.h"
 
 Mundo::Mundo(const b2Vec2& gravedad) : mundo(gravedad){
@@ -25,3 +25,42 @@ b2Body* Mundo::obtenerBodies(){
 	return this->mundo.GetBodyList();
 }
 
+void Mundo::agregarPortal(Portal* portal){
+	portales_activar.push_back(portal);
+}
+void Mundo::activarPortales(){
+	for (auto it=portales_activar.begin(); it!=portales_activar.end(); it++){
+		(*it)->activar();
+	}
+	portales_activar.clear();
+}
+void Mundo::agregarCuerpoADestruir(Cuerpo* cuerpo){
+	cuerpos_desactivar.push_back(cuerpo);
+}
+void Mundo::destruirCuerpos(){
+	for (auto it=cuerpos_desactivar.begin(); it!=cuerpos_desactivar.end(); it++){
+		(*it)->desactivar();
+	}
+	cuerpos_desactivar.clear();
+}
+
+
+
+Mundo::Mundo(Mundo &&otro): mundo(otro.mundo) {
+    if (this == &otro){
+        return;
+    }
+    //mundo = std::move(otro.mundo);
+    portales_activar = std::move(portales_activar);
+    cuerpos_desactivar = std::move(cuerpos_desactivar);
+}
+
+Mundo& Mundo::operator=(Mundo &&otro) {
+    if (this == &otro){
+        return *this;
+    }
+    mundo = std::move(otro.mundo);
+    portales_activar = std::move(portales_activar);
+    cuerpos_desactivar = std::move(cuerpos_desactivar);
+    return *this;
+}

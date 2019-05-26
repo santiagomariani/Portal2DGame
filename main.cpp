@@ -2,7 +2,7 @@
 #include "Box2D/Box2D.h"
 
 #include "disparo.h"
-#include "roca.h"
+#include "BloqueRoca.h"
 #include "chell.h"
 #include "mundo.h"
 #include "estado_teclado.h"
@@ -28,20 +28,6 @@
 #define PI 3.14159265
 
 
-// En realidad es mejor que cada disparo al ser desactivado sea agregado
-// a un vector de disparos_a_remover u cuerpos_a_remover y recorrer solo ese vector
-void remover_disparos(Mundo& world){
-	b2Body* cuerpos = world.obtenerBodies();
-	while (cuerpos){
-		Cuerpo* actual = (Cuerpo*)cuerpos->GetUserData();		
-		int id = actual->getId();
-		if (id == 2){
-			((Disparo*)actual)->remover();
-		}
-		cuerpos = cuerpos->GetNext();
-	}
-}
-
 
 int main() {
 	b2Vec2 gravity(0.0f, -9.8f);
@@ -51,31 +37,31 @@ int main() {
 
 	Personajes personajes(world);
 
-	std::vector<Roca> rocas;
+	std::vector<BloqueRoca> rocas;
 	b2Vec2 pos(-20, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 40; ++j){
-		Roca roca(world, pos);
+		BloqueRoca roca(world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
 
 	pos.Set(0, -2);
-	Roca roca(world, pos);
+	BloqueRoca roca(world, pos);
 	rocas.push_back(std::move(roca));
 	pos.Set(0, 1);
-	Roca roca2(world, pos);
+	BloqueRoca roca2(world, pos);
 	rocas.push_back(std::move(roca2));
 
-	std::vector<Roca> pared;
+	std::vector<BloqueRoca> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
 	for (int j = 0; j < 5; ++j){
-		Roca roca3(world, pos_roca);
+		BloqueRoca roca3(world, pos_roca);
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
-	Portal portal();
+	//Portal portal();
 	//Cliente 0
 	int id = personajes.agregar_chell();
 
@@ -159,7 +145,7 @@ int main() {
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
 					    b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
-					    chell.disparar(world, click);
+					    chell.dispararAzul(click);
 					}
 					break;
 				}
@@ -172,7 +158,7 @@ int main() {
 		chell.mover(teclado);
 		world.actualizar();
 		window.render();
-        remover_disparos(world);
+        world.destruirCuerpos();
 
         // Solo para ver cantidad de FPS en terminal.
 		/*

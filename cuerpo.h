@@ -10,6 +10,7 @@ protected:
     Cuerpo(float maxWidth, float maxHeight) :
         maxWidth(maxWidth),
         maxHeight(maxHeight) {};
+    Cuerpo() {};
 public:
 	virtual int getId() = 0;
 	virtual const b2Vec2& getPosition() = 0;
@@ -21,6 +22,7 @@ public:
     }
     ~Cuerpo() {};
 	virtual void empezarContacto(Cuerpo* otro) = 0;
+    virtual void desactivar() {};
 };
 
 #endif

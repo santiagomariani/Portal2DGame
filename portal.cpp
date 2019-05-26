@@ -8,12 +8,12 @@
 #define PI 3.14159265
 
 
-Portal::Portal(int identidad) : id(identidad){
+Portal::Portal(int identidad, Mundo& mundo) : id(identidad), mundo(mundo){
 	hermano = nullptr;
 	cuerpo = nullptr;
 }
 
-void Portal::activar(Mundo& mundo, const b2Vec2& pos, const b2Vec2& normal){
+void Portal::activar(){
 	if (cuerpo){
 		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
@@ -71,4 +71,21 @@ void Portal::expulsar(b2Body* otro, float orientacion_otro){
 
 void Portal::teletransportar(b2Body* otro){
 	hermano->expulsar(otro, getAnguloEntrada());
+}
+
+void Portal::establecer(b2Vec2 &pos, b2Vec2 &normal) {
+    pos.Set(pos.x, pos.y);
+    normal.Set(normal.x, normal.y);
+}
+
+Portal& Portal::operator=(Portal&& otro){
+    mundo = std::move(otro.mundo);
+    pos = otro.pos;
+    normal = otro.normal;
+    id = otro.id;
+    hermano = otro.hermano;
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
+    orientacion = otro.orientacion;
+
 }

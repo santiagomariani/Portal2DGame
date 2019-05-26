@@ -1,10 +1,11 @@
-#include "roca.h"
+#include "BloqueRoca.h"
+#include "ids.h"
 #include "Box2D/Box2D.h"
 #define TAMANIO_BLOQUE_X 0.5f
 #define TAMANIO_BLOQUE_Y 0.5f
 
-Roca::Roca(Mundo& mundo, const b2Vec2& pos) :
-	Cuerpo(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
+BloqueRoca::BloqueRoca(Mundo& mundo, const b2Vec2& pos) :
+	Bloque(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -19,7 +20,7 @@ Roca::Roca(Mundo& mundo, const b2Vec2& pos) :
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-Roca::Roca(Roca&& otro) : Cuerpo(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
+BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
 	if (this == &otro){
 		return;
 	}
@@ -32,13 +33,19 @@ Roca::Roca(Roca&& otro) : Cuerpo(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
 	cuerpo->SetUserData(this);
 	otro.cuerpo = nullptr;
 }
-const b2Vec2& Roca::getPosition(){
+const b2Vec2& BloqueRoca::getPosition(){
 	return cuerpo->GetPosition();
 }
-int Roca::getId(){
+int BloqueRoca::getId(){
 	return 1;
 }
 
-void Roca::recibirDisparo(Disparo* disparo){
+void BloqueRoca::recibirDisparo(Disparo* disparo){
 	disparo->terminar();
+}
+
+void BloqueRoca::empezarContacto(Cuerpo *otro) {
+    if (otro->getId() == ID_DISPARO){
+        this->recibirDisparo((Disparo*)otro);
+    }
 }
