@@ -10,16 +10,17 @@
 #define PI 3.14159265
 
 
-Portal::Portal(int identidad, Mundo& mundo) : id(identidad), mundo(mundo){
+Portal::Portal(int identidad, Mundo& mundo) : id(identidad), mundo(mundo), pos(0, 0), normal(0, 0){
+	orientacion = 0.0f;
 	hermano = nullptr;
 	cuerpo = nullptr;
 }
 
 void Portal::activar(){
-	/*if (cuerpo){
+	if (cuerpo){
 		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
-	}*/
+	}
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -34,13 +35,9 @@ void Portal::activar(){
 	if (orientacion < 0){
 		orientacion += 2 * PI;
 	}
-
-	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, (0.025f * (normal + pos)) , orientacion);
-
-
-
+	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, (2 * (normal + pos)) , orientacion);
 	cuerpo->CreateFixture(&myFixtureDef);
-
+	cuerpo->SetUserData(this);
 }
 
 void Portal::conectar(Portal* otro){
@@ -84,24 +81,26 @@ void Portal::teletransportar(b2Body* otro){
 }
 
 void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
-    pos.Set(posicion.x, posicion.y);
-    normal.Set(normal_entrada.x, normal_entrada.y);
+	pos.x = posicion.x;
+	pos.y = posicion.y;
+	normal.x = normal_entrada.x;
+	normal.y = normal_entrada.y;
 }
-
-Portal& Portal::operator=(Portal&& otro){
-    mundo = std::move(otro.mundo);
-    pos = otro.pos;
-    normal = otro.normal;
-    id = otro.id;
-    hermano = otro.hermano;
-    cuerpo = otro.cuerpo;
-    otro.cuerpo = nullptr;
-    orientacion = otro.orientacion;
+Portal::Portal(Portal&& otro) : mundo(otro.mundo){
+	pos = otro.pos;
+	normal = otro.normal;
+	id = otro.id;
+	cuerpo = otro.cuerpo;
+	otro.cuerpo = nullptr;
+	orientacion = otro.orientacion;
+	if (cuerpo){
+		cuerpo->SetUserData(this);
+	}
 }
-
 void Portal::empezarContacto(Cuerpo* otro){
 	switch (otro->getId()){
 		case(ID_CHELL):
+			std::cout << "Me estan tocando UwU (* ^ . ^ *)\n";
 			teletransportar(otro->getBody());
 	}
 }

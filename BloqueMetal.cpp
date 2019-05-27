@@ -1,7 +1,9 @@
 
 #include "BloqueMetal.h"
 #include "ids.h"
+#include <iostream>
 #include "cuerpo.h"
+#include <cmath>
 
 BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(identidad),
 	Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
@@ -31,7 +33,7 @@ void BloqueMetal::recibirDisparo(Disparo* disparo) {
 	b2Vec2 bloque = this->getPosition();
 	b2Vec2 pos = disparo->getPosition();
 	pos -= bloque;
-	if (pos.x >= pos.y){
+	if (std::abs(pos.x) >= std::abs(pos.y)){
 		pos.y = 0;
 	} else {
 		pos.x = 0;

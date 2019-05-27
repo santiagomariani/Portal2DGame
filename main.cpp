@@ -32,6 +32,7 @@
 
 
 int main() {
+
 	b2Vec2 gravity(0.0f, -9.8f);
 	Mundo world(gravity);
 	ContactListener listener;
@@ -130,6 +131,9 @@ int main() {
 			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
+			if (id == 4){
+				std::cout << actual->getPosition().x << " : " << actual->getPosition().y << '\n';
+			}
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
 			} else {
@@ -166,19 +170,17 @@ int main() {
 		}
 		chell.mover(teclado);
 		world.actualizar();
-		//world.destruirCuerpos();
 		window.render();
 		
 
 		// Solo para ver cantidad de FPS en terminal.
-		/*
-		float avgFPS = (countedFrames / (fpsTimer.getTicks() / 1000.f));
-		if (avgFPS > 2000000) {
-			avgFPS = 0;
-		}
-		std::cout << "FPS: " << avgFPS << std::endl;
-		++countedFrames;
-		*/
+		//float avgFPS = (countedFrames / (fpsTimer.getTicks() / 1000.f));
+		//if (avgFPS > 2000000) {
+		//	avgFPS = 0;
+		//}
+		//std::cout << "FPS: " << avgFPS << std::endl;
+		//++countedFrames;
+		
 
 		int frameTicks = capTimer.getTicks();
 
@@ -186,6 +188,7 @@ int main() {
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
+
 	return 0;
 }
 

@@ -14,10 +14,10 @@ class Portal : public Cuerpo {
     b2Vec2 normal;
 public:
     Portal(int identidad, Mundo &mundo);
-    Portal& operator=(Portal&&);
+    Portal(Portal&& otro);
 
     void conectar(Portal *otro);
-    void establecer(b2Vec2& pos, b2Vec2& normal);
+    void establecer(b2Vec2& posicion, b2Vec2& normal_entrada);
 	void activar();
 	int getId();
 	const b2Vec2& getPosition();

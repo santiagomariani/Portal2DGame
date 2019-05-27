@@ -13,6 +13,7 @@ Disparo::Disparo(int identidad, Mundo& mundo) :
 			id(identidad), mundo(mundo),
 			Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
 	cuerpo = nullptr;
+	portal = nullptr;
 }
 
 void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
@@ -60,7 +61,9 @@ Disparo::Disparo(Disparo&& otro) :
 	otro.maxWidth = 0;
 	otro.maxHeight = 0;
 	otro.cuerpo = nullptr;
-	cuerpo->SetUserData(this);
+	if (cuerpo){
+		cuerpo->SetUserData(this);
+	}
 }
 
 void Disparo::setPortal(Portal* port){
