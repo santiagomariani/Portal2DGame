@@ -81,15 +81,6 @@ void Chell::mover(EstadoTeclado& t){
 const b2Vec2& Chell::getPosition(){
 	return cuerpo->GetPosition();
 }
-const b2Vec2& Chell::getVelocidad(){
-	return cuerpo->GetLinearVelocity();
-}
-void Chell::setVelocidad(b2Vec2& vel){
-	cuerpo->SetLinearVelocity(vel);
-}
-void Chell::cambiarPosicion(const b2Vec2& pos){
-	cuerpo->SetTransform(pos, 0.0f);
-}
 
 void Chell::dispararAzul(b2Vec2& pos_click){
 	pistola.dispararAzul(getPosition(), pos_click);
@@ -105,3 +96,9 @@ float Chell::getWidth(){
 float Chell::getHeight(){
 	return float(TAMANIO_CHELL_Y * 2 + 0.25);
 }
+
+b2Body* Chell::getBody(){
+	return cuerpo;
+}
+
+

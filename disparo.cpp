@@ -69,7 +69,7 @@ void Disparo::setPortal(Portal* port){
 
 void Disparo::crearPortal(b2Vec2& pos, b2Vec2& normal){
 	portal->establecer(pos, normal);
-	//this->mundo.agregarPortal(portal);
+	this->mundo.agregarPortal(portal);
 }
 
 const b2Vec2& Disparo::getPosition(){
@@ -114,7 +114,8 @@ void Disparo::terminar() {
 
 
 void Disparo::empezarContacto(Cuerpo* otro){
-	if (otro->getId() == ID_ROCA){
+	int id_otro = otro->getId();
+	if (id_otro == ID_ROCA || id_otro == ID_METAL){
 		terminar();
 	}
 }

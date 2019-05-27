@@ -8,8 +8,9 @@
 
 class BloqueRoca : public Bloque{
 	b2Body* cuerpo;
+	int id;
 public:
-	BloqueRoca(Mundo& mundo, const b2Vec2& posicion);
+	BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& posicion);
 	BloqueRoca(BloqueRoca&& otro);
 	void recibirDisparo(Disparo* disparo);
 	int getId();

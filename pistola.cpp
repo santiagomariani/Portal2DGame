@@ -1,10 +1,12 @@
 #include "pistola.h"
+#include <iostream>
+#include "ids.h"
 
-Pistola::Pistola(Mundo& mundo) : mundo(mundo), d_azul(5, mundo),
-					 d_naranja(6, mundo), p_azul(7, mundo),
-					 p_naranja(8, mundo){
+Pistola::Pistola(Mundo& mundo) : mundo(mundo), d_azul(ID_DISPARO, mundo),
+					 d_naranja(ID_DISPARO, mundo), p_azul(ID_PORTAL_AZUL, mundo),
+					 p_naranja(ID_PORTAL_NARANJA, mundo){
 	
-	p_azul.conectar(&p_naranja);
+    p_azul.conectar(&p_naranja);
 	p_naranja.conectar(&p_azul);
 	d_azul.setPortal(&p_azul);
 	d_naranja.setPortal(&p_naranja);
@@ -31,9 +33,9 @@ Pistola& Pistola::operator=(Pistola&& otro){
 }
 
 Pistola::Pistola(Pistola &&otro):
-            mundo(otro.mundo),   d_azul(5, mundo),
-            d_naranja(6, mundo), p_azul(7, mundo),
-            p_naranja(8, mundo){
+            mundo(otro.mundo),   d_azul(ID_DISPARO, mundo),
+            d_naranja(ID_DISPARO, mundo), p_azul(ID_PORTAL_AZUL, mundo),
+            p_naranja(ID_PORTAL_NARANJA, mundo){
     if (this == &otro){
         return;
     }

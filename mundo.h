@@ -10,9 +10,10 @@
 class Portal;
 class Mundo{
 	b2World mundo;
-	//std::vector<Portal*> portales_activar;
+	std::vector<Portal*> portales_activar;
 	std::vector<Cuerpo*> cuerpos_desactivar;
 	void destruirCuerpos();	
+	void activarPortales();
 public:
 	void destruirBody(b2Body* body);
 	Mundo(const b2Vec2& gravedad);
@@ -25,8 +26,7 @@ public:
 	void actualizar();
 	b2Body* obtenerBodies();
 
-	//void agregarPortal(Portal* portal);
-	//void activarPortales();
+	void agregarPortal(Portal* portal);
 	void agregarCuerpoADestruir(Cuerpo* cuerpo);
 	
 };

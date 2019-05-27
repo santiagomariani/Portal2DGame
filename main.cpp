@@ -3,6 +3,7 @@
 
 #include "disparo.h"
 #include "BloqueRoca.h"
+#include "BloqueMetal.h"
 #include "chell.h"
 #include "mundo.h"
 #include "estado_teclado.h"
@@ -15,6 +16,7 @@
 #include "Camera.h"
 #include "CoordConverter.h"
 #include "portal.h"
+#include "ids.h"
 
 #include <thread>
 #include <pthread.h>
@@ -41,23 +43,23 @@ int main() {
 	b2Vec2 pos(-20, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 40; ++j){
-		BloqueRoca roca(world, pos);
+		BloqueRoca roca(ID_ROCA, world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
 
 	pos.Set(0, -2);
-	BloqueRoca roca(world, pos);
-	rocas.push_back(std::move(roca));
+	BloqueMetal roca(ID_METAL, world, pos);
+	//rocas.push_back(std::move(roca));
 	pos.Set(0, 1);
-	BloqueRoca roca2(world, pos);
-	rocas.push_back(std::move(roca2));
+	BloqueRoca roca2(ID_ROCA, world, pos);
+	//rocas.push_back(std::move(roca2));
 
 	std::vector<BloqueRoca> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
 	for (int j = 0; j < 5; ++j){
-		BloqueRoca roca3(world, pos_roca);
+		BloqueRoca roca3(ID_ROCA, world, pos_roca);
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
@@ -88,13 +90,21 @@ int main() {
 	std::string blocksPath = "assets/blocks.png";
 	SdlTexture blocksTexture(blocksPath, window);
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
+	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
+
+	//Portal
+	std::string portalPath = "assets/portAzul.png";
+	SdlTexture portalTexture(portalPath, window);
+	Sprite portalSprite(193, 193, 0, 0, 1, portalTexture);
 
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
-	texturas[0] = &viewChell;
-	texturas[1] = &bloqueSprite;
-	texturas[2] = &disparoSprite;
+	texturas[ID_CHELL] = &viewChell;
+	texturas[ID_ROCA] = &bloqueSprite;
+	texturas[ID_DISPARO] = &disparoSprite;
+	texturas[ID_METAL] = &bloqueMetalSprite;
+	texturas[ID_PORTAL_AZUL] = &portalSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================

@@ -21,11 +21,9 @@ public:
 	void dispararAzul(b2Vec2& pos_click);
 	void dispararNaranja(b2Vec2& pos_click);
 	const b2Vec2& getPosition();
-	const b2Vec2& getVelocidad();
-	void setVelocidad(b2Vec2& vel);
-	void cambiarPosicion(const b2Vec2& pos);
 	float getWidth();
 	float getHeight();
+	b2Body* getBody();
 
 
 	void empezarContacto(Cuerpo* otro) {}

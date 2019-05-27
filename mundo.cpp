@@ -19,13 +19,14 @@ void Mundo::destruirBody(b2Body* body){
 
 void Mundo::actualizar(){
 	destruirCuerpos();
+	activarPortales();
 	mundo.Step(1.0f / 60.0f, 6, 2);
 }
 
 b2Body* Mundo::obtenerBodies(){
 	return this->mundo.GetBodyList();
 }
-/*
+
 void Mundo::agregarPortal(Portal* portal){
 	portales_activar.push_back(portal);
 }
@@ -34,7 +35,7 @@ void Mundo::activarPortales(){
 		(*it)->activar();
 	}
 	portales_activar.clear();
-}*/
+}
 void Mundo::agregarCuerpoADestruir(Cuerpo* cuerpo){
 	cuerpos_desactivar.push_back(cuerpo);
 }
