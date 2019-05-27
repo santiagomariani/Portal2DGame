@@ -43,7 +43,7 @@ int main() {
 	std::vector<BloqueRoca> rocas;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
-	for (int j = 0; j < 40; ++j){
+	for (int j = 0; j < 45; ++j){
 		BloqueRoca roca(ID_ROCA, world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
