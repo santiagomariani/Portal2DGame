@@ -67,7 +67,9 @@ Chell::Chell(Chell&& otro) :
     otro.maxWidth = 0;
     otro.maxHeight = 0;
     otro.cuerpo = nullptr;
-    cuerpo->SetUserData(this);
+	if (cuerpo){
+		cuerpo->SetUserData(this);
+	}
 }
 
 

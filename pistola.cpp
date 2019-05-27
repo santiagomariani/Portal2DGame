@@ -19,7 +19,7 @@ void Pistola::dispararAzul(const b2Vec2& origen, const b2Vec2& destino){
 void Pistola::dispararNaranja(const b2Vec2& origen, const b2Vec2& destino){
 	d_azul.activar(origen, destino);
 }
-
+/*
 Pistola& Pistola::operator=(Pistola&& otro){
     if (this == &otro){
         return *this;
@@ -30,10 +30,15 @@ Pistola& Pistola::operator=(Pistola&& otro){
     d_azul = std::move(otro.d_azul);
     d_naranja = std::move(otro.d_naranja);
     return *this;
-}
+}*/
 
-Pistola::Pistola(Pistola &&otro):
-            mundo(otro.mundo),   d_azul(std::move(d_azul)),
-            d_naranja(std::move(d_naranja)), p_azul(std::move(p_azul)),
-            p_naranja(std::move(p_naranja)){
+
+Pistola::Pistola(Pistola&& otro):
+            mundo(otro.mundo),   d_azul(std::move(otro.d_azul)),
+            d_naranja(std::move(otro.d_naranja)), p_azul(std::move(otro.p_azul)),
+            p_naranja(std::move(otro.p_naranja)){
+    p_azul.conectar(&p_naranja);
+    p_naranja.conectar(&p_azul);
+    d_azul.setPortal(&p_azul);
+    d_naranja.setPortal(&p_naranja);
 }

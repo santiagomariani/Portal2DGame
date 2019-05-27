@@ -14,7 +14,6 @@ class Portal : public Cuerpo {
     b2Vec2 normal;
 public:
     Portal(int identidad, Mundo &mundo);
-    Portal& operator=(Portal&&);
     Portal(Portal&& otro);
 
     void conectar(Portal *otro);
