@@ -2,30 +2,18 @@
 #include "chell.h"
 #include "pistola.h"
 #include "Box2D/Box2D.h"
-#define TAMANIO_CHELL_X 0.4f
+
+#define TAMANIO_CHELL_X 0.40f
 #define TAMANIO_CHELL_Y 0.625f
 #define RADIO 0.25f
 #define CAMINAR 3
 #define SALTAR 5
 
-Chell::Chell(int identidad, Mundo& mundo) : 
-        Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
-        id(identidad), mundo(mundo), pistola(mundo){
-    cuerpo = nullptr;
+Chell::Chell(int identidad, Mundo& mundo) : Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
+											id(identidad), mundo(mundo), pistola(mundo){
+	cuerpo = nullptr;
 }
 
-Chell& Chell::operator=(Chell&& otro){
-    if (this == &otro){
-        return *this;
-    }
-    pistola = std::move(otro.pistola);
-    mundo = std::move(otro.mundo);
-    id = otro.id;
-    cuerpo = otro.cuerpo;
-    otro.cuerpo = nullptr;
-    cuerpo->SetUserData(this);
-    return *this;
-}
 void Chell::activar(b2Vec2& pos){
     if (cuerpo){
         mundo.destruirBody(cuerpo);
@@ -71,7 +59,6 @@ Chell::Chell(Chell&& otro) :
     if (this == &otro){
         return;
     }
-    std::cout << "moviendo " << id << std::endl;
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     cuerpo = otro.cuerpo;
@@ -95,15 +82,6 @@ void Chell::mover(EstadoTeclado& t){
 const b2Vec2& Chell::getPosition(){
     return cuerpo->GetPosition();
 }
-const b2Vec2& Chell::getVelocidad(){
-    return cuerpo->GetLinearVelocity();
-}
-void Chell::setVelocidad(b2Vec2& vel){
-    cuerpo->SetLinearVelocity(vel);
-}
-void Chell::cambiarPosicion(const b2Vec2& pos){
-    cuerpo->SetTransform(pos, 0.0f);
-}
 
 void Chell::dispararAzul(b2Vec2& pos_click){
     pistola.dispararAzul(getPosition(), pos_click);
@@ -119,3 +97,9 @@ float Chell::getWidth(){
 float Chell::getHeight(){
     return float(TAMANIO_CHELL_Y * 2 + 0.25);
 }
+
+b2Body* Chell::getBody(){
+	return cuerpo;
+}
+
+

@@ -20,7 +20,7 @@ public:
 	const b2Vec2& getPosition();
 	double getAngle();
 	int getId();
-	void empezarContacto(Cuerpo* otro) {}
+	void empezarContacto(Cuerpo* otro);
 
     void crearPortal(b2Vec2& pos, b2Vec2& normal);
 

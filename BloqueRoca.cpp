@@ -2,11 +2,9 @@
 #include "BloqueRoca.h"
 #include "ids.h"
 #include "Box2D/Box2D.h"
-#define TAMANIO_BLOQUE_X 0.5f
-#define TAMANIO_BLOQUE_Y 0.5f
 
-BloqueRoca::BloqueRoca(Mundo& mundo, const b2Vec2& pos) :
-	Bloque(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
+BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) : id(identidad),
+	Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -15,13 +13,12 @@ BloqueRoca::BloqueRoca(Mundo& mundo, const b2Vec2& pos) :
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
-	myFixtureDef.density = 1; // hay que sacar esto.
 
-	polygonShape.SetAsBox(TAMANIO_BLOQUE_X, TAMANIO_BLOQUE_Y);
+	polygonShape.SetAsBox(TAMANIO_BLOQUE, TAMANIO_BLOQUE);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
+BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
 	if (this == &otro){
 		return;
 	}
@@ -42,12 +39,11 @@ int BloqueRoca::getId(){
 }
 
 void BloqueRoca::recibirDisparo(Disparo* disparo){
-	disparo->terminar();
 }
 
 void BloqueRoca::empezarContacto(Cuerpo *otro) {
     if (otro->getId() == ID_DISPARO){
-    	std::cout << "choque\n";
         this->recibirDisparo((Disparo*)otro);
     }
 }
+

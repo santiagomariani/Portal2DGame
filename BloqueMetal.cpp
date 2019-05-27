@@ -3,37 +3,49 @@
 #include "ids.h"
 #include "cuerpo.h"
 
-BloqueMetal::BloqueMetal(Mundo &mundo, b2Vec2& pos):
-    Bloque(TAMANIO_BLOQUE_X * 2, TAMANIO_BLOQUE_Y * 2) {
+BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(identidad),
+	Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
 
-    b2BodyDef cuerpo_def;
-    cuerpo_def.type = b2_staticBody;
-    cuerpo_def.position.Set(pos.x, pos.y);
-    cuerpo = mundo.agregarBody(cuerpo_def);
+	b2BodyDef cuerpo_def;
+	cuerpo_def.type = b2_staticBody;
+	cuerpo_def.position.Set(pos.x, pos.y);
+	cuerpo = mundo.agregarBody(cuerpo_def);
 
-    b2PolygonShape polygonShape;
-    b2FixtureDef myFixtureDef;
-    myFixtureDef.shape = &polygonShape;
+	b2PolygonShape polygonShape;
+	b2FixtureDef myFixtureDef;
+	myFixtureDef.shape = &polygonShape;
 
-    polygonShape.SetAsBox(TAMANIO_BLOQUE_X, TAMANIO_BLOQUE_Y);
-    cuerpo->CreateFixture(&myFixtureDef);
-    cuerpo->SetUserData(this);
+	polygonShape.SetAsBox(TAMANIO_BLOQUE, TAMANIO_BLOQUE);
+	cuerpo->CreateFixture(&myFixtureDef);
+	cuerpo->SetUserData(this);
 }
 
 const b2Vec2& BloqueMetal::getPosition(){
-    return cuerpo->GetPosition();
+	return cuerpo->GetPosition();
 }
 int BloqueMetal::getId(){
-    return 1;
+	return ID_METAL;
 }
 
-void BloqueMetal::recibirDisparo(Disparo *disparo) {
-    b2Vec2 pos = this->getPosition();
-    disparo->crearPortal(pos, pos); // esto esta mal..
+void BloqueMetal::recibirDisparo(Disparo* disparo) {
+	b2Vec2 bloque = this->getPosition();
+	b2Vec2 pos = disparo->getPosition();
+	pos -= bloque;
+	if (pos.x >= pos.y){
+		pos.y = 0;
+	} else {
+		pos.x = 0;
+	}
+	pos *= TAMANIO_BLOQUE / pos.Length();
+
+	b2Vec2 normal = pos - bloque;
+	normal.Normalize();
+
+	disparo->crearPortal(pos, normal);
 }
 
 void BloqueMetal::empezarContacto(Cuerpo* otro){
-    if (otro->getId() == ID_DISPARO){
-        this->recibirDisparo((Disparo*)otro);
-    }
+	if (otro->getId() == ID_DISPARO){
+		this->recibirDisparo((Disparo*)otro);
+	}
 }

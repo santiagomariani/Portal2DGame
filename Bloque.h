@@ -6,8 +6,7 @@
 #include "cuerpo.h"
 #include "disparo.h"
 
-#define TAMANIO_BLOQUE_X 0.5f
-#define TAMANIO_BLOQUE_Y 0.5f
+#define TAMANIO_BLOQUE 0.5f
 
 
 class Bloque : public Cuerpo{

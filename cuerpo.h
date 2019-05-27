@@ -21,8 +21,9 @@ public:
         return maxHeight;
     }
     ~Cuerpo() {};
+    virtual b2Body* getBody() {}
 	virtual void empezarContacto(Cuerpo* otro) = 0;
-    virtual void desactivar() {};
+    virtual void desactivar() {}
 };
 
 #endif

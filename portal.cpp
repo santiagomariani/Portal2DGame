@@ -1,23 +1,28 @@
 #include "portal.h"
 #include "chell.h"
+#include "ids.h"
 #include <math.h>
 #include "Box2D/Box2D.h"
+#include <iostream>
 #define TAMANIO_PORTAL_X 0.5
 #define TAMANIO_PORTAL_Y 0.05
 
 #define PI 3.14159265
 
 
-Portal::Portal(int identidad, Mundo& mundo) : id(identidad), mundo(mundo){
+Portal::Portal(int identidad, Mundo& mundo) :
+        id(identidad), mundo(mundo),
+        pos(0,0), normal(0,0){
 	hermano = nullptr;
 	cuerpo = nullptr;
+	orientacion = 0.0f;
 }
 
 void Portal::activar(){
-	if (cuerpo){
+	/*if (cuerpo){
 		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
-	}
+	}*/
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -28,13 +33,17 @@ void Portal::activar(){
 	myFixtureDef.shape = &polygonShape;
 	myFixtureDef.density = 1;
 
-	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y);
-	cuerpo->CreateFixture(&myFixtureDef);
-
 	orientacion = atan2(normal.y, normal.x);
 	if (orientacion < 0){
 		orientacion += 2 * PI;
 	}
+
+	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, (0.025f * (normal + pos)) , orientacion);
+
+
+
+	cuerpo->CreateFixture(&myFixtureDef);
+
 }
 
 void Portal::conectar(Portal* otro){
@@ -61,21 +70,26 @@ float Portal::getAnguloEntrada(){
 }
 
 void Portal::expulsar(b2Body* otro, float orientacion_otro){
+	if (!cuerpo)
+		return;
 	float nuevo_ang = getAnguloSalida() - orientacion_otro;
 	b2Rot rotador(nuevo_ang);
 	b2Vec2 vel = otro->GetLinearVelocity();
 	b2Vec2 nueva_vel = b2Mul(rotador, vel);
 	otro->SetLinearVelocity(nueva_vel);
-	otro->SetTransform(cuerpo->GetPosition(), 0.0f);
+	otro->SetTransform((cuerpo->GetPosition() + (0.2f * normal)), 0.0f);
 }
 
 void Portal::teletransportar(b2Body* otro){
+	if (!cuerpo)
+		return;
 	hermano->expulsar(otro, getAnguloEntrada());
 }
 
-void Portal::establecer(b2Vec2 &pos, b2Vec2 &normal) {
-    pos.Set(pos.x, pos.y);
-    normal.Set(normal.x, normal.y);
+void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
+    // por aca huelo a caca
+    pos.Set(posicion.x, posicion.y);
+    normal.Set(normal_entrada.x, normal_entrada.y);
 }
 
 Portal& Portal::operator=(Portal&& otro){
@@ -87,5 +101,25 @@ Portal& Portal::operator=(Portal&& otro){
     cuerpo = otro.cuerpo;
     otro.cuerpo = nullptr;
     orientacion = otro.orientacion;
-
 }
+
+Portal::Portal(Portal&& otro): mundo(otro.mundo){
+    pos = otro.pos;
+    normal = otro.normal;
+    id = otro.id;
+    hermano = otro.hermano;
+    otro.hermano = nullptr;
+    cuerpo = otro.cuerpo;
+    otro.cuerpo = nullptr;
+    orientacion = otro.orientacion;
+    otro.orientacion = 0;
+}
+
+
+void Portal::empezarContacto(Cuerpo* otro){
+	switch (otro->getId()){
+		case(ID_CHELL):
+			teletransportar(otro->getBody());
+	}
+}
+

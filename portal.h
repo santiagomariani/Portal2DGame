@@ -26,7 +26,7 @@ public:
 	float getAnguloSalida();
 	float getAnguloEntrada();
 
-	void empezarContacto(Cuerpo* otro) {}
+	void empezarContacto(Cuerpo* otro);
 	~Portal() = default;
 };
 
