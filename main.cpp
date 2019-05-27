@@ -49,8 +49,11 @@ int main() {
 		pos += inc;
 	}
 
-	pos.Set(0, -2);
+	pos.Set(-5, -1);
 	BloqueMetal roca(ID_METAL, world, pos);
+
+	pos.Set(-4, -2);
+	BloqueRoca roquitauwu(ID_ROCA, world, pos);
 	//rocas.push_back(std::move(roca));
 	pos.Set(0, 1);
 	//BloqueRoca roca2(ID_ROCA, world, pos);
