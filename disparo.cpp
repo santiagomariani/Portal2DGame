@@ -22,8 +22,8 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	b2BodyDef circle_body_def;
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
-	circle_body_def.fixedRotation = true;
-    circle_body_def.bullet = true;
+	//circle_body_def.fixedRotation = true;
+    //circle_body_def.bullet = true;
 	cuerpo = mundo.agregarBody(circle_body_def);
 	//cuerpo = world.CreateBody(&circle_body_def);
 
@@ -33,7 +33,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	b2FixtureDef circle_fixture_def;
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
-	circle_fixture_def.isSensor = true; // no choca con nada pero se pueden detectar
+	//circle_fixture_def.isSensor = true; // no choca con nada pero se pueden detectar
 	    								// las colisiones
 	cuerpo->CreateFixture(&circle_fixture_def);
 
@@ -41,7 +41,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	vel -= origen;
 	vel.Normalize();
 	vel *= CTE_VELOCIDAD_RAYO;
-	cuerpo->SetGravityScale(0);
+	//cuerpo->SetGravityScale(0);
 	cuerpo->SetLinearVelocity(vel);
 	cuerpo->SetUserData(this);
 }

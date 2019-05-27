@@ -1,3 +1,4 @@
+#include <iostream>
 #include "BloqueRoca.h"
 #include "ids.h"
 #include "Box2D/Box2D.h"
@@ -46,6 +47,7 @@ void BloqueRoca::recibirDisparo(Disparo* disparo){
 
 void BloqueRoca::empezarContacto(Cuerpo *otro) {
     if (otro->getId() == ID_DISPARO){
+    	std::cout << "choque\n";
         this->recibirDisparo((Disparo*)otro);
     }
 }

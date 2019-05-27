@@ -38,7 +38,7 @@ int main() {
 	Personajes personajes(world);
 
 	std::vector<BloqueRoca> rocas;
-	b2Vec2 pos(-20, -3);
+	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 40; ++j){
 		BloqueRoca roca(world, pos);
