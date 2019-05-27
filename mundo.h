@@ -10,24 +10,25 @@
 class Portal;
 class Mundo{
 	b2World mundo;
-	std::vector<Portal*> portales_activar;
+	//std::vector<Portal*> portales_activar;
 	std::vector<Cuerpo*> cuerpos_desactivar;
+	void destruirCuerpos();	
 public:
+	void destruirBody(b2Body* body);
 	Mundo(const b2Vec2& gravedad);
-    Mundo(Mundo &&otro);
-    Mundo& operator=(Mundo &&otro);
+    //Mundo(Mundo &&otro);
+    //Mundo& operator=(Mundo &&otro);
 
     void setContactListener(b2ContactListener& listener);
 
 	b2Body* agregarBody(b2BodyDef& cuerpo_def);
-	void destruirBody(b2Body* body);
 	void actualizar();
 	b2Body* obtenerBodies();
 
-	void agregarPortal(Portal* portal);
-	void activarPortales();
+	//void agregarPortal(Portal* portal);
+	//void activarPortales();
 	void agregarCuerpoADestruir(Cuerpo* cuerpo);
-	void destruirCuerpos();	
+	
 };
 
 #endif //MUNDO_H

@@ -18,13 +18,14 @@ void Mundo::destruirBody(b2Body* body){
 }
 
 void Mundo::actualizar(){
+	destruirCuerpos();
 	mundo.Step(1.0f / 60.0f, 6, 2);
 }
 
 b2Body* Mundo::obtenerBodies(){
 	return this->mundo.GetBodyList();
 }
-
+/*
 void Mundo::agregarPortal(Portal* portal){
 	portales_activar.push_back(portal);
 }
@@ -33,10 +34,11 @@ void Mundo::activarPortales(){
 		(*it)->activar();
 	}
 	portales_activar.clear();
-}
+}*/
 void Mundo::agregarCuerpoADestruir(Cuerpo* cuerpo){
 	cuerpos_desactivar.push_back(cuerpo);
 }
+
 void Mundo::destruirCuerpos(){
 	for (auto it=cuerpos_desactivar.begin(); it!=cuerpos_desactivar.end(); it++){
 		(*it)->desactivar();
@@ -45,14 +47,18 @@ void Mundo::destruirCuerpos(){
 }
 
 
-
+/*
 Mundo::Mundo(Mundo &&otro): mundo(otro.mundo) {
     if (this == &otro){
         return;
     }
     //mundo = std::move(otro.mundo);
-    portales_activar = std::move(portales_activar);
-    cuerpos_desactivar = std::move(cuerpos_desactivar);
+    a_destruir = std::move(a_destruir);
+
+
+
+    //portales_activar = std::move(portales_activar);
+    //cuerpos_desactivar = std::move(cuerpos_desactivar);
 }
 
 Mundo& Mundo::operator=(Mundo &&otro) {
@@ -60,7 +66,11 @@ Mundo& Mundo::operator=(Mundo &&otro) {
         return *this;
     }
     mundo = std::move(otro.mundo);
-    portales_activar = std::move(portales_activar);
-    cuerpos_desactivar = std::move(cuerpos_desactivar);
+    	
+	a_destruir = std::move(a_destruir);
+
+    //portales_activar = std::move(portales_activar);
+    //cuerpos_desactivar = std::move(cuerpos_desactivar);
     return *this;
 }
+*/

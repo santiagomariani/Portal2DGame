@@ -41,7 +41,7 @@ void ContactListener::BeginContact(b2Contact* contact){
 
 	Cuerpo* entity_A = (Cuerpo*)(fixture_A->GetBody()->GetUserData());
 	Cuerpo* entity_B = (Cuerpo*)(fixture_B->GetBody()->GetUserData());
-
+	
 	entity_A->empezarContacto(entity_B);
 	entity_B->empezarContacto(entity_A);
 }

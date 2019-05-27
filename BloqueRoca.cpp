@@ -41,11 +41,10 @@ int BloqueRoca::getId(){
 }
 
 void BloqueRoca::recibirDisparo(Disparo* disparo){
-	disparo->terminar();
+	//disparo->terminar();
 }
 
 void BloqueRoca::empezarContacto(Cuerpo *otro) {
     if (otro->getId() == ID_DISPARO){
-        this->recibirDisparo((Disparo*)otro);
     }
 }

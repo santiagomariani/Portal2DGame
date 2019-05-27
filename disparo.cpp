@@ -1,11 +1,12 @@
 #include <iostream>
 #include "disparo.h"
+#include "ids.h"
 #include "Box2D/Box2D.h"
 #include <math.h>
 
 #define RADIO_RAYO 0.15f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 15
+#define CTE_VELOCIDAD_RAYO 10
 
 
 Disparo::Disparo(int identidad, Mundo& mundo) : 
@@ -23,18 +24,17 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	circle_body_def.type = b2_dynamicBody;
 	circle_body_def.position.Set(origen.x, origen.y);
 	circle_body_def.fixedRotation = true;
-    circle_body_def.bullet = true;
+	circle_body_def.bullet = true;
 	cuerpo = mundo.agregarBody(circle_body_def);
-	//cuerpo = world.CreateBody(&circle_body_def);
 
 	b2CircleShape circleShape;
-	circleShape.m_p.Set(origen.x, origen.y);
+	circleShape.m_p.Set(0, 0);
 	circleShape.m_radius = RADIO_RAYO;
 	b2FixtureDef circle_fixture_def;
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
 	circle_fixture_def.isSensor = true; // no choca con nada pero se pueden detectar
-	    								// las colisiones
+										// las colisiones
 	cuerpo->CreateFixture(&circle_fixture_def);
 
 	b2Vec2 vel = destino;
@@ -68,8 +68,8 @@ void Disparo::setPortal(Portal* port){
 }
 
 void Disparo::crearPortal(b2Vec2& pos, b2Vec2& normal){
-    portal->establecer(pos, normal);
-    this->mundo.agregarPortal(portal);
+	portal->establecer(pos, normal);
+	//this->mundo.agregarPortal(portal);
 }
 
 const b2Vec2& Disparo::getPosition(){
@@ -85,8 +85,8 @@ int Disparo::getId(){
 
 Disparo& Disparo::operator=(Disparo&& otro){
 	if (this == &otro){
-        return *this;
-    }
+		return *this;
+	}
 
 	maxWidth = otro.maxWidth;
 	maxHeight = otro.maxHeight;
@@ -97,18 +97,24 @@ Disparo& Disparo::operator=(Disparo&& otro){
 	otro.maxWidth = 0;
 	otro.maxHeight = 0;
 	otro.cuerpo = nullptr;
-    cuerpo->SetUserData(this);
-    return *this;
+	cuerpo->SetUserData(this);
+	return *this;
 }
 
 void Disparo::desactivar(){
 	if (cuerpo){
-		b2World* w = cuerpo->GetWorld();
-		w->DestroyBody(cuerpo);
+		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
 	}
 }
 
 void Disparo::terminar() {
-    this->mundo.agregarCuerpoADestruir(this);
+	this->mundo.agregarCuerpoADestruir(this);
+}
+
+
+void Disparo::empezarContacto(Cuerpo* otro){
+	if (otro->getId() == ID_ROCA){
+		terminar();
+	}
 }

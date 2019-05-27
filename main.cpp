@@ -111,7 +111,7 @@ int main() {
 	while (running) {
 		fpsTimer.start();
 		SDL_Event event;
-        window.fill(0x33, 0x33, 0x33, 0xFF);
+		window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
 		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
 		camera.updateCamera(destChell);
@@ -120,11 +120,10 @@ int main() {
 			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
-
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
 			} else {
-                camera.render(*texturas[id], dest);
+				camera.render(*texturas[id], dest);
 			}
 			cuerpos = cuerpos->GetNext();
 		}
@@ -144,8 +143,8 @@ int main() {
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-					    b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
-					    chell.dispararAzul(click);
+						b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
+						chell.dispararAzul(click);
 					}
 					break;
 				}
@@ -157,10 +156,11 @@ int main() {
 		}
 		chell.mover(teclado);
 		world.actualizar();
+		//world.destruirCuerpos();
 		window.render();
-        world.destruirCuerpos();
+		
 
-        // Solo para ver cantidad de FPS en terminal.
+		// Solo para ver cantidad de FPS en terminal.
 		/*
 		float avgFPS = (countedFrames / (fpsTimer.getTicks() / 1000.f));
 		if (avgFPS > 2000000) {

@@ -16,7 +16,6 @@ public:
 	Chell(int identidad, Mundo& mundo);
 	void activar(b2Vec2& pos);
 	Chell(Chell&& otro);
-	Chell& operator=(Chell&& otro);
 	void mover(EstadoTeclado& t);
 	int getId();
 	void dispararAzul(b2Vec2& pos_click);
