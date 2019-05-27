@@ -53,7 +53,7 @@ int main() {
 	BloqueMetal roca(ID_METAL, world, pos);
 	//rocas.push_back(std::move(roca));
 	pos.Set(0, 1);
-	BloqueRoca roca2(ID_ROCA, world, pos);
+	//BloqueRoca roca2(ID_ROCA, world, pos);
 	//rocas.push_back(std::move(roca2));
 
 	std::vector<BloqueRoca> pared;
@@ -131,11 +131,11 @@ int main() {
 			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
-			if (id == 4){
-				std::cout << actual->getPosition().x << " : " << actual->getPosition().y << '\n';
-			}
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
+			}
+			if (id == ID_PORTAL_AZUL){
+				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI*-1);
 			} else {
 				camera.render(*texturas[id], dest);
 			}

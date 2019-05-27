@@ -11,7 +11,9 @@
 
 
 
-Portal::Portal(int identidad, Mundo& mundo) : id(identidad), mundo(mundo), pos(0, 0), normal(0, 0){
+Portal::Portal(int identidad, Mundo& mundo) : 
+		Cuerpo(TAMANIO_PORTAL_X*2, TAMANIO_PORTAL_Y*2),
+ 		id(identidad), mundo(mundo), pos(0, 0), normal(0, 0){
 	orientacion = 0.0f;
 	hermano = nullptr;
 	cuerpo = nullptr;
@@ -23,6 +25,15 @@ void Portal::activar(){
 		mundo.destruirBody(cuerpo);
 		cuerpo = nullptr;
 	}
+	orientacion = atan2(normal.y, normal.x);
+	if (orientacion < 0){
+		orientacion += 2 * PI;
+	}
+	orientacion -= PI/2; // faltaba esto, estan mal los "sist. de referencias"
+						// la normal esta defasada pi/2 respecto 
+						// a el rectangulo que creamos mas abajo.
+
+	//pos += normal;
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -31,13 +42,12 @@ void Portal::activar(){
 	b2PolygonShape polygonShape;
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
-	myFixtureDef.density = 1;
 
-	orientacion = atan2(normal.y, normal.x);
-	if (orientacion < 0){
-		orientacion += 2 * PI;
-	}
-	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, (2 * (normal + pos)) , orientacion);
+	std::cout << "normal " << normal.x << " " << normal.y << "\n";
+	std::cout << "orientacion " << orientacion << "\n";
+
+	b2Vec2 centro(0,0);
+	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, centro, orientacion);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
@@ -73,7 +83,7 @@ void Portal::expulsar(b2Body* otro, float orientacion_otro){
 	b2Vec2 vel = otro->GetLinearVelocity();
 	b2Vec2 nueva_vel = b2Mul(rotador, vel);
 	otro->SetLinearVelocity(nueva_vel);
-	otro->SetTransform((cuerpo->GetPosition() + (0.2f * normal)), 0.0f);
+	otro->SetTransform((cuerpo->GetPosition() + (0.3f * normal)), 0.0f);
 }
 
 void Portal::teletransportar(b2Body* otro){
@@ -89,7 +99,9 @@ void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
 	normal.y = normal_entrada.y;
 }
 
-Portal::Portal(Portal&& otro): mundo(otro.mundo){
+Portal::Portal(Portal&& otro): 
+		Cuerpo(TAMANIO_PORTAL_X*2, TAMANIO_PORTAL_Y*2),
+		mundo(otro.mundo){
     pos = otro.pos;
     normal = otro.normal;
     id = otro.id;

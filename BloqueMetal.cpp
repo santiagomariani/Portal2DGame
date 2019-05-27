@@ -39,8 +39,10 @@ void BloqueMetal::recibirDisparo(Disparo* disparo) {
 		pos.x = 0;
 	}
 	pos *= TAMANIO_BLOQUE / pos.Length();
+	pos += bloque;
 
 	b2Vec2 normal = pos - bloque;
+	std::cout << "centro portal: " << pos.x << " " << pos.y << std::endl;
 	normal.Normalize();
 
 	disparo->crearPortal(pos, normal);
