@@ -40,30 +40,20 @@ int main() {
 
 	Personajes personajes(world);
 
-	std::vector<BloqueRoca> rocas;
+	std::vector<BloqueMetal> rocas;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 45; ++j){
-		BloqueRoca roca(ID_ROCA, world, pos);
+		BloqueMetal roca(ID_METAL, world, pos);
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
 
-	pos.Set(-5, -1);
-	BloqueMetal roca(ID_METAL, world, pos);
-
-	pos.Set(-4, -2);
-	BloqueRoca roquitauwu(ID_ROCA, world, pos);
-	//rocas.push_back(std::move(roca));
-	pos.Set(0, 1);
-	//BloqueRoca roca2(ID_ROCA, world, pos);
-	//rocas.push_back(std::move(roca2));
-
-	std::vector<BloqueRoca> pared;
+	std::vector<BloqueMetal> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
 	for (int j = 0; j < 5; ++j){
-		BloqueRoca roca3(ID_ROCA, world, pos_roca);
+		BloqueMetal roca3(ID_METAL, world, pos_roca);
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
@@ -96,10 +86,15 @@ int main() {
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
-	//Portal
-	std::string portalPath = "assets/portAzul.png";
-	SdlTexture portalTexture(portalPath, window);
-	Sprite portalSprite(193, 193, 0, 0, 1, portalTexture);
+	//Portal azul
+	std::string portalAzulPath = "assets/portAzul.png";
+	SdlTexture portalAzulTexture(portalAzulPath, window);
+	Sprite portalAzulSprite(193, 193, 0, 0, 1, portalAzulTexture);
+
+	//Portal naranja
+	std::string portalNaranjaPath = "assets/portNaranja.png";
+	SdlTexture portalNaranjaTexture(portalNaranjaPath, window);
+	Sprite portalNaranjaSprite(193, 193, 0, 0, 1, portalNaranjaTexture);
 
 	ViewChell viewChell(window);
 
@@ -108,7 +103,8 @@ int main() {
 	texturas[ID_ROCA] = &bloqueSprite;
 	texturas[ID_DISPARO] = &disparoSprite;
 	texturas[ID_METAL] = &bloqueMetalSprite;
-	texturas[ID_PORTAL_AZUL] = &portalSprite;
+	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
+	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -137,8 +133,8 @@ int main() {
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
 			}
-			if (id == ID_PORTAL_AZUL){
-				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI*-1);
+			else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
+				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI *-1);
 			} else {
 				camera.render(*texturas[id], dest);
 			}
@@ -162,6 +158,10 @@ int main() {
 					if ((mouseEvent.button) == SDL_BUTTON_LEFT){
 						b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
 						chell.dispararAzul(click);
+					}
+					if ((mouseEvent.button) == SDL_BUTTON_RIGHT){
+						b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
+						chell.dispararNaranja(click);
 					}
 					break;
 				}

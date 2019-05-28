@@ -17,7 +17,7 @@ void Pistola::dispararAzul(const b2Vec2& origen, const b2Vec2& destino){
 }
 
 void Pistola::dispararNaranja(const b2Vec2& origen, const b2Vec2& destino){
-	d_azul.activar(origen, destino);
+	d_naranja.activar(origen, destino);
 }
 /*
 Pistola& Pistola::operator=(Pistola&& otro){

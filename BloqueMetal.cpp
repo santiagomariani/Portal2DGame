@@ -22,6 +22,21 @@ BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(ide
 	cuerpo->SetUserData(this);
 }
 
+BloqueMetal::BloqueMetal(BloqueMetal&& otro) : 
+			Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2){
+	if (this == &otro){
+		return;
+	}
+	maxWidth = otro.maxWidth;
+	maxHeight = otro.maxHeight;
+
+	otro.maxWidth = 0;
+	otro.maxHeight = 0;
+	cuerpo = otro.cuerpo;
+	cuerpo->SetUserData(this);
+	otro.cuerpo = nullptr;
+}
+
 const b2Vec2& BloqueMetal::getPosition(){
 	return cuerpo->GetPosition();
 }

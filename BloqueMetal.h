@@ -10,6 +10,7 @@ class BloqueMetal : public Bloque{
     int id;
 public:
     BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos);
+    BloqueMetal(BloqueMetal&& otro);
     void recibirDisparo(Disparo* disparo);
     int getId();
     const b2Vec2& getPosition();

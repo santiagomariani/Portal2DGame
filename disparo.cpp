@@ -6,7 +6,7 @@
 
 #define RADIO_RAYO 0.15f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 10
+#define CTE_VELOCIDAD_RAYO 5
 
 
 Disparo::Disparo(int identidad, Mundo& mundo) : 
@@ -83,7 +83,7 @@ double Disparo::getAngle(){
 	return atan2(vel.y,vel.x);
 }
 int Disparo::getId(){
-	return 2;
+	return ID_DISPARO;
 }
 
 Disparo& Disparo::operator=(Disparo&& otro){

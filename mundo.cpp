@@ -20,6 +20,7 @@ void Mundo::destruirBody(b2Body* body){
 void Mundo::actualizar(){
 	destruirCuerpos();
 	activarPortales();
+	activarTeletransportadores();
 	mundo.Step(1.0f / 60.0f, 6, 2);
 }
 
@@ -47,6 +48,19 @@ void Mundo::destruirCuerpos(){
 	cuerpos_desactivar.clear();
 }
 
+void Mundo::agregarTransportador(b2Body* cuerpo,
+									 b2Vec2& nueva_pos,
+									 b2Vec2& velocidad, 
+									 float32 angulo){
+	transportadores.emplace_back(cuerpo, nueva_pos, velocidad, angulo);
+}
+
+void Mundo::activarTeletransportadores(){
+	for (auto it=transportadores.begin(); it!=transportadores.end(); it++){
+		(*it).activar();
+	}
+	transportadores.clear();
+}
 
 /*
 Mundo::Mundo(Mundo &&otro): mundo(otro.mundo) {

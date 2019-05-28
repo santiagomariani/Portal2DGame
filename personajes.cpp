@@ -6,7 +6,7 @@ Personajes::Personajes(Mundo& m) : mundo(m){
 
 int Personajes::agregar_chell(){
 	int id = this->siguiente_client;
-	b2Vec2 pos(0, 0); // POS INICIAL
+	b2Vec2 pos(2, 6); // POS INICIAL
 	Chell chell(0, this->mundo);
 	chell.activar(pos);
 	this->personajes.emplace(id, std::move(chell)); //mov

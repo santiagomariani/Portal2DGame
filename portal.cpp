@@ -1,11 +1,12 @@
 #include "portal.h"
 #include "chell.h"
 #include "ids.h"
+#include "Teletransportador.h"
 #include <math.h>
 #include "Box2D/Box2D.h"
 #include <iostream>
-#define TAMANIO_PORTAL_X 0.5
-#define TAMANIO_PORTAL_Y 0.05
+#define TAMANIO_PORTAL_X 0.04
+#define TAMANIO_PORTAL_Y 0.45
 
 #define PI 3.14159265
 
@@ -29,11 +30,7 @@ void Portal::activar(){
 	if (orientacion < 0){
 		orientacion += 2 * PI;
 	}
-	orientacion -= PI/2; // faltaba esto, estan mal los "sist. de referencias"
-						// la normal esta defasada pi/2 respecto 
-						// a el rectangulo que creamos mas abajo.
 
-	//pos += normal;
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -75,21 +72,35 @@ float Portal::getAnguloEntrada(){
 	return orientacion - PI;
 }
 
-void Portal::expulsar(b2Body* otro, float orientacion_otro){
+void Portal::expulsar(b2Body* objeto, float orientacion_otro){
 	if (!cuerpo)
 		return;
 	float nuevo_ang = getAnguloSalida() - orientacion_otro;
 	b2Rot rotador(nuevo_ang);
-	b2Vec2 vel = otro->GetLinearVelocity();
+	b2Vec2 vel = objeto->GetLinearVelocity();
 	b2Vec2 nueva_vel = b2Mul(rotador, vel);
-	otro->SetLinearVelocity(nueva_vel);
-	otro->SetTransform((cuerpo->GetPosition() + (0.3f * normal)), 0.0f);
+
+	b2Vec2 nueva_pos = (cuerpo->GetPosition() + (0.7f * normal));
+
+	std::cout << "vel anterior: " 
+			  << vel.x 
+			  << " " << vel.y 
+			  << ""
+			  << " length: "
+			  << vel.Length()
+			  << std::endl
+			  << " nueva vel: "
+			  << nueva_vel.x
+			  << " " << nueva_vel.y
+			  << " length: " << nueva_vel.Length() << std::endl;
+
+	mundo.agregarTransportador(objeto, nueva_pos, nueva_vel);
 }
 
-void Portal::teletransportar(b2Body* otro){
+void Portal::teletransportar(b2Body* objeto){
 	if (!cuerpo)
 		return;
-	hermano->expulsar(otro, getAnguloEntrada());
+	hermano->expulsar(objeto, getAnguloEntrada());
 }
 
 void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
@@ -100,7 +111,7 @@ void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
 }
 
 Portal::Portal(Portal&& otro): 
-		Cuerpo(TAMANIO_PORTAL_X*2, TAMANIO_PORTAL_Y*2),
+		Cuerpo(TAMANIO_PORTAL_Y*2, TAMANIO_PORTAL_Y*2),
 		mundo(otro.mundo){
     pos = otro.pos;
     normal = otro.normal;
