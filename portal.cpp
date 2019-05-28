@@ -40,9 +40,6 @@ void Portal::activar(){
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
 
-	std::cout << "normal " << normal.x << " " << normal.y << "\n";
-	std::cout << "orientacion " << orientacion << "\n";
-
 	b2Vec2 centro(0,0);
 	polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, centro, orientacion);
 	cuerpo->CreateFixture(&myFixtureDef);
@@ -79,20 +76,8 @@ void Portal::expulsar(b2Body* objeto, float orientacion_otro){
 	b2Rot rotador(nuevo_ang);
 	b2Vec2 vel = objeto->GetLinearVelocity();
 	b2Vec2 nueva_vel = b2Mul(rotador, vel);
-
+	nueva_vel *= 1;
 	b2Vec2 nueva_pos = (cuerpo->GetPosition() + (0.7f * normal));
-
-	std::cout << "vel anterior: " 
-			  << vel.x 
-			  << " " << vel.y 
-			  << ""
-			  << " length: "
-			  << vel.Length()
-			  << std::endl
-			  << " nueva vel: "
-			  << nueva_vel.x
-			  << " " << nueva_vel.y
-			  << " length: " << nueva_vel.Length() << std::endl;
 
 	mundo.agregarTransportador(objeto, nueva_pos, nueva_vel);
 }
@@ -127,7 +112,6 @@ Portal::Portal(Portal&& otro):
 void Portal::empezarContacto(Cuerpo* otro){
 	switch (otro->getId()){
 		case(ID_CHELL):
-			std::cout << "Me estan tocando UwU (* ^ . ^ *)\n";
 			teletransportar(otro->getBody());
 	}
 }

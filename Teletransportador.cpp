@@ -7,14 +7,11 @@ Teletransportador::Teletransportador(b2Body* cuerpo,
 									 float32 angulo):
 			cuerpo(cuerpo), nueva_pos(nueva_pos), 
 			velocidad(velocidad), angulo(angulo){
-	std::cout << "creacion telep, nueva pos: " << nueva_pos.x << " " << nueva_pos.y << std::endl;
 }
 
 void Teletransportador::activar(){
-	
-	std::cout << "teletransport a: " << nueva_pos.x << " " << nueva_pos.y << std::endl;
 	cuerpo->SetTransform(nueva_pos, angulo);
-	cuerpo->SetLinearVelocity(velocidad); // abajo o arriba?
-	
+	cuerpo->SetLinearVelocity(velocidad);
+	//cuerpo->ApplyLinearImpulseToCenter(velocidad, true);
 }
 

@@ -29,7 +29,7 @@ void Chell::activar(b2Vec2& pos){
     b2PolygonShape polygonShape;
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
-    myFixtureDef.density = 4;
+    myFixtureDef.density = 1;
     myFixtureDef.friction = 0;
     myFixtureDef.restitution = 0;
 
@@ -104,4 +104,6 @@ b2Body* Chell::getBody(){
 	return cuerpo;
 }
 
+void Chell::empezarContacto(Cuerpo* otro){
+}
 

@@ -57,8 +57,8 @@ int main() {
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
-	//Portal portal();
-	//Cliente 0
+	b2Vec2 pos_loop(0, 3);
+
 	int id = personajes.agregar_chell();
 
 

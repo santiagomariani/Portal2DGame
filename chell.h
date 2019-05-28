@@ -26,7 +26,7 @@ public:
 	b2Body* getBody();
 
 
-	void empezarContacto(Cuerpo* otro) {}
+	void empezarContacto(Cuerpo* otro);
 };
 
 #endif //CHELL_H
