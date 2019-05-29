@@ -1,5 +1,6 @@
 #include "compuerta.h"
 #include "ids.h"
+#include "estado_cerrada.h"
 #include <iostream>
 
 #define TAM_COMP_CUERPO_X 0.25
@@ -9,7 +10,7 @@
 
 Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica):
 					Cuerpo(TAM_COMP_CUERPO_X*2,
-				   	TAM_COMP_CUERPO_Y*2 + TAM_COMP_BASE_Y*2),
+					TAM_COMP_CUERPO_Y*2 + TAM_COMP_BASE_Y*2),
 					compuerta_logica(compuerta_logica){
 
 	// parte de ariba de la compuerta
@@ -24,7 +25,6 @@ Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logic
 	cuerpo_shape.SetAsBox(TAM_COMP_CUERPO_X, TAM_COMP_CUERPO_Y);
 	cuerpo->CreateFixture(&cuerpo_fixture_def);
 
-
 	// base de la compuerta
 	b2BodyDef base_def;
 	base_def.type = b2_kinematicBody;
@@ -38,6 +38,10 @@ Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logic
 	base_shape.SetAsBox(0.1, TAM_COMP_BASE_Y);
 	base->CreateFixture(&base_fixture_def);
 	base->SetUserData(this);
+
+	mundo.agregarCuerpoAActualizar(this);
+
+	estado = new EstadoCerrada();
 }
 
 bool Compuerta::estaActiva(){
@@ -45,16 +49,15 @@ bool Compuerta::estaActiva(){
 }
 
 void Compuerta::actualizar(){
-	if (!(estaActiva()) /*|| estaAbierta()*/){
-		return;
-	}
-	
+	if (estado){
+        EstadoCompuerta* temp = estado->actualizar(estaActiva());
+        delete estado;
+        estado = temp;
+    }	
 }
 
 void Compuerta::empezarContacto(Cuerpo* otro){
-	if (otro->getId() == ID_CHELL){
-		std::cout << "toco base de compuerta\n";
-	}
+	estado->empezarContacto(otro);
 }
 
 int Compuerta::getId(){

@@ -5,16 +5,18 @@
 #include "mundo.h"
 #include "compuerta_logica.h"
 #include "cuerpo.h"
+#include "estado_compuerta.h"
 
 class Compuerta : public Cuerpo{
 	//std::vector<CompuertaLogica>& compuertas;
 	CompuertaLogica& compuerta_logica;
 	b2Body* cuerpo;
 	b2Body* base;
+	EstadoCompuerta* estado;
 public:
 	Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica);
 	bool estaActiva();
-	void actualizar();
+	void actualizar() override;
 	int getId();
 	const b2Vec2& getPosition();
 	void empezarContacto(Cuerpo* otro);

@@ -17,6 +17,7 @@ public:
 	void activar(b2Vec2& pos);
 	Chell(Chell&& otro);
 	void mover(EstadoTeclado& t);
+	void morir();
 	int getId();
 	void dispararAzul(b2Vec2& pos_click);
 	void dispararNaranja(b2Vec2& pos_click);

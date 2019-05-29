@@ -107,3 +107,7 @@ b2Body* Chell::getBody(){
 void Chell::empezarContacto(Cuerpo* otro){
 }
 
+void Chell::morir(){
+    std::cout << "chell murio\n";
+}
+

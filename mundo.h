@@ -14,6 +14,7 @@ class Mundo{
 	std::vector<Portal*> portales_activar;
 	std::vector<Cuerpo*> cuerpos_desactivar;
 	std::vector<Teletransportador> transportadores;
+	std::vector<Cuerpo*> cuerpos_actualizar;
 	void destruirCuerpos();	
 	void activarPortales();
 	void activarTeletransportadores();
@@ -35,6 +36,8 @@ public:
 									 b2Vec2& nueva_pos,
 									 b2Vec2& velocidad, 
 									 float32 angulo = 0.0f);
+	void agregarCuerpoAActualizar(Cuerpo* cuerpo);
+	void actualizarCuerpos();
 };
 
 #endif //MUNDO_H

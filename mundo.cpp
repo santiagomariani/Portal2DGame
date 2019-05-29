@@ -21,6 +21,7 @@ void Mundo::actualizar(){
 	destruirCuerpos();
 	activarPortales();
 	activarTeletransportadores();
+	actualizarCuerpos();
 	mundo.Step(1.0f / 60.0f, 6, 2);
 }
 
@@ -60,6 +61,16 @@ void Mundo::activarTeletransportadores(){
 		(*it).activar();
 	}
 	transportadores.clear();
+}
+
+void Mundo::agregarCuerpoAActualizar(Cuerpo* cuerpo){
+	cuerpos_actualizar.push_back(cuerpo);
+}
+
+void Mundo::actualizarCuerpos(){
+	for (auto it=cuerpos_actualizar.begin(); it!=cuerpos_actualizar.end(); it++){
+		(*it)->actualizar();
+	}
 }
 
 /*
