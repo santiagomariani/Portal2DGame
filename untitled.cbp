@@ -182,10 +182,31 @@
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ViewChell.h">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/and.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/and.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/boton.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/boton.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/chell.cpp">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/chell.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta_logica.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/contact_listener.cpp">
@@ -201,6 +222,12 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/disparo.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_logico.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_logico.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_teclado.cpp">
@@ -496,6 +523,12 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/mundo.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/or.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/or.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/personajes.cpp">

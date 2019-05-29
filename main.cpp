@@ -16,6 +16,9 @@
 #include "Camera.h"
 #include "CoordConverter.h"
 #include "portal.h"
+#include "boton.h"
+#include "estado_logico.h"
+#include "compuerta.h"
 #include "ids.h"
 
 #include <thread>
@@ -40,6 +43,9 @@ int main() {
 
 	Personajes personajes(world);
 
+	b2Vec2 pos_piedra(-6,-2);
+	BloqueRoca rocaPiedra(ID_ROCA, world, pos_piedra);
+
 	std::vector<BloqueMetal> rocas;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
@@ -48,25 +54,21 @@ int main() {
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
-    std::vector<BloqueMetal> esca;
-    b2Vec2 pos_escalera(-4, -3);
-	BloqueMetal b(ID_METAL, world, pos_escalera);
-    b2Vec2 inc_esca(1, 1);
-    for (int j = 0; j < 5; ++j){
-        BloqueMetal roca3(ID_METAL, world, pos_escalera);
-        esca.push_back(std::move(roca3));
-        pos_escalera += inc_esca;
-    }
 
 	std::vector<BloqueMetal> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
-    for (int j = 0; j < 5; ++j){
-        BloqueMetal roca3(ID_METAL, world, pos_roca);
-        pared.push_back(std::move(roca3));
-        pos_roca += inc_pared;
-    }
-	b2Vec2 pos_loop(0, 3);
+	for (int j = 0; j < 2; ++j){
+		BloqueMetal roca3(ID_METAL, world, pos_roca);
+		pared.push_back(std::move(roca3));
+		pos_roca += inc_pared;
+	}
+	b2Vec2 pos_boton(0, -2.35);
+	Boton b(pos_boton, world);
+
+	EstadoLogico estado_boton(b);
+	b2Vec2 pos_compuerta(-1, 0);
+	Compuerta comp(pos_compuerta, world, estado_boton);
 
 	int id = personajes.agregar_chell();
 
@@ -100,6 +102,16 @@ int main() {
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
+	// Boton apagado
+	std::string botonPath = "assets/miscellaneous.png";
+	SdlTexture botonTexture(botonPath, window);
+	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
+
+	// Compuerta
+	std::string compuertaPath = "assets/gate.png";
+	SdlTexture compuertaTexture(compuertaPath, window);
+	Sprite compuertaSprite(193, 385, 1, 21, 1, compuertaTexture);
+
 	//Portal azul
 	std::string portalAzulPath = "assets/portAzul.png";
 	SdlTexture portalAzulTexture(portalAzulPath, window);
@@ -119,6 +131,8 @@ int main() {
 	texturas[ID_METAL] = &bloqueMetalSprite;
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
+	texturas[ID_BOTON_APAGADO] = &botonSprite;
+	texturas[ID_COMPUERTA] = &compuertaSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -138,12 +152,16 @@ int main() {
 		window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
 		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
+		camera.renderBg();
 		camera.updateCamera(destChell);
 		b2Body *cuerpos = world.obtenerBodies();
-        camera.renderBg();
-        while (cuerpos){
-            Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
-            SDL_Rect dest = coordConverter.box2DToSDL(*actual);
+		while (cuerpos){
+			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
+			if (!actual){
+				cuerpos = cuerpos->GetNext();
+				continue;
+			}
+			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
