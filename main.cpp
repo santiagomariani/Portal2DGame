@@ -41,6 +41,9 @@ int main() {
 
 	Personajes personajes(world);
 
+	b2Vec2 pos_piedra(-6,-2);
+	BloqueRoca rocaPiedra(ID_ROCA, world, pos_piedra);
+
 	std::vector<BloqueMetal> rocas;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
@@ -76,10 +79,15 @@ int main() {
 	const int FPS = 60;
 	const int TICKS_PER_FRAME = 1000/FPS;
 
-	Camera camera(screenWidth, screenHeight);
 
 	SdlWindow window(screenWidth, screenHeight);
-	window.fill(0x33, 0x33, 0x33, 0xFF);
+
+	std::string bgPath = "assets/industrial-background.jpg";
+	SdlTexture background(bgPath, window);
+
+	Camera camera(screenWidth, screenHeight, background);
+
+	// window.fill(0x33, 0x33, 0x33, 0xFF);
 
 	// Disparo
 	std::string fxPath = "assets/fx.png";
@@ -142,6 +150,7 @@ int main() {
 		window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
 		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
+		camera.renderBg();
 		camera.updateCamera(destChell);
 		b2Body *cuerpos = world.obtenerBodies();
 		while (cuerpos){

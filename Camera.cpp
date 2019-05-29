@@ -4,8 +4,8 @@
 
 #include "Camera.h"
 
-Camera::Camera(int screenWidth, int screenHeight) :
-    screenWidth(screenWidth), screenHeight(screenHeight) {
+Camera::Camera(int screenWidth, int screenHeight, SdlTexture &bg) :
+    screenWidth(screenWidth), screenHeight(screenHeight), bg(bg){
     camera.x = 0;
     camera.y = 0;
     camera.w = screenWidth;
@@ -55,4 +55,12 @@ int Camera::getX() {
 
 int Camera::getY() {
     return camera.y;
+}
+
+void Camera::renderBg() {
+    SDL_Rect dest = {0,
+                     0,
+                     camera.w,
+                     camera.h};
+    bg.render(nullptr, &dest);
 }
