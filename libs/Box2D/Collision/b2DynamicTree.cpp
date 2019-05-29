@@ -554,7 +554,7 @@ float32 b2DynamicTree::GetAreaRatio() const
 	return totalArea / rootArea;
 }
 
-// Compute the height of a sub-tree.
+// Compute the setHeight of a sub-tree.
 int32 b2DynamicTree::ComputeHeight(int32 nodeId) const
 {
 	b2Assert(0 <= nodeId && nodeId < m_nodeCapacity);

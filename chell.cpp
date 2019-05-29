@@ -29,9 +29,9 @@ void Chell::activar(b2Vec2& pos){
     b2PolygonShape polygonShape;
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
-    myFixtureDef.density = 1;
+    myFixtureDef.density = 7;
     myFixtureDef.friction = 0;
-    myFixtureDef.restitution = 0;
+    //myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
     polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
@@ -40,9 +40,9 @@ void Chell::activar(b2Vec2& pos){
     b2CircleShape circulo;
     b2FixtureDef circulo_fix_def;
     circulo_fix_def.shape = &circulo;
-    circulo_fix_def.density = 1;
+    circulo_fix_def.density = 7;
     circulo_fix_def.friction = 0;
-    circulo_fix_def.restitution = 0;
+    //circulo_fix_def.restitution = 0;
 
     circulo.m_p.Set(0, -2*RADIO); // posicion del centro del circulo
     circulo.m_radius = RADIO;

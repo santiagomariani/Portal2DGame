@@ -48,15 +48,24 @@ int main() {
 		rocas.push_back(std::move(roca));
 		pos += inc;
 	}
+    std::vector<BloqueMetal> esca;
+    b2Vec2 pos_escalera(-4, -3);
+	BloqueMetal b(ID_METAL, world, pos_escalera);
+    b2Vec2 inc_esca(1, 1);
+    for (int j = 0; j < 5; ++j){
+        BloqueMetal roca3(ID_METAL, world, pos_escalera);
+        esca.push_back(std::move(roca3));
+        pos_escalera += inc_esca;
+    }
 
 	std::vector<BloqueMetal> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
-	for (int j = 0; j < 5; ++j){
-		BloqueMetal roca3(ID_METAL, world, pos_roca);
-		pared.push_back(std::move(roca3));
-		pos_roca += inc_pared;
-	}
+    for (int j = 0; j < 5; ++j){
+        BloqueMetal roca3(ID_METAL, world, pos_roca);
+        pared.push_back(std::move(roca3));
+        pos_roca += inc_pared;
+    }
 	b2Vec2 pos_loop(0, 3);
 
 	int id = personajes.agregar_chell();
@@ -70,10 +79,15 @@ int main() {
 	const int FPS = 60;
 	const int TICKS_PER_FRAME = 1000/FPS;
 
-	Camera camera(screenWidth, screenHeight);
 
 	SdlWindow window(screenWidth, screenHeight);
-	window.fill(0x33, 0x33, 0x33, 0xFF);
+
+	std::string bgPath = "assets/industrial-background.jpg";
+	SdlTexture background(bgPath, window);
+
+	Camera camera(screenWidth, screenHeight, background);
+
+	// window.fill(0x33, 0x33, 0x33, 0xFF);
 
 	// Disparo
 	std::string fxPath = "assets/fx.png";
@@ -126,9 +140,10 @@ int main() {
 		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
 		camera.updateCamera(destChell);
 		b2Body *cuerpos = world.obtenerBodies();
-		while (cuerpos){
-			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
-			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
+        camera.renderBg();
+        while (cuerpos){
+            Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
+            SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
 			if (id == 2) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
