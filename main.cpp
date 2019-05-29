@@ -16,6 +16,7 @@
 #include "Camera.h"
 #include "CoordConverter.h"
 #include "portal.h"
+#include "boton.h"
 #include "ids.h"
 
 #include <thread>
@@ -52,12 +53,13 @@ int main() {
 	std::vector<BloqueMetal> pared;
 	b2Vec2 pos_roca(2, -3);
 	b2Vec2 inc_pared(0, 1);
-	for (int j = 0; j < 5; ++j){
+	for (int j = 0; j < 2; ++j){
 		BloqueMetal roca3(ID_METAL, world, pos_roca);
 		pared.push_back(std::move(roca3));
 		pos_roca += inc_pared;
 	}
-	b2Vec2 pos_loop(0, 3);
+	b2Vec2 pos_boton(0, -2.35);
+	Boton b(true, pos_boton, world);
 
 	int id = personajes.agregar_chell();
 
@@ -86,6 +88,11 @@ int main() {
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
+	// Boton apagado
+	std::string botonPath = "assets/miscellaneous.png";
+	SdlTexture botonTexture(botonPath, window);
+	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
+
 	//Portal azul
 	std::string portalAzulPath = "assets/portAzul.png";
 	SdlTexture portalAzulTexture(portalAzulPath, window);
@@ -105,6 +112,7 @@ int main() {
 	texturas[ID_METAL] = &bloqueMetalSprite;
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
+	texturas[ID_BOTON_APAGADO] = &botonSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -128,6 +136,10 @@ int main() {
 		b2Body *cuerpos = world.obtenerBodies();
 		while (cuerpos){
 			Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
+			if (!actual){
+				cuerpos = cuerpos->GetNext();
+				continue;
+			}
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
 			if (id == 2) {
