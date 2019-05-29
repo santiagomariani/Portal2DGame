@@ -6,17 +6,14 @@
 #include "mundo.h"
 
 class Boton : public Cuerpo{
-	bool activacion_compuerta; // true si activa compuerta cuando
-							  // esta presionado/encendido
-							  // false activa compuerta cuando esta apagado
 	bool estado_actual; // true si presionado/encendido, false si no
 	b2Body* base;
 	b2Body* cuerpo_boton;
 public:
-	Boton(bool abrir_puerta_al_encender, b2Vec2& pos, Mundo& mundo);
+	Boton(b2Vec2& pos, Mundo& mundo);
 
-	// Devuelve true si en su estado puede activar la compuerta
-	bool activoParaCompuerta();
+	// Devuelve si esta encendido o no
+	bool encendido() override;
 
 	// Enciende boton
 	void encender();

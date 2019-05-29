@@ -2,14 +2,13 @@
 #include <iostream>
 #include "ids.h"
 #define TAM_BOTON_X 0.25
-#define TAM_BOTON_Y 0.025//0.0312
+#define TAM_BOTON_Y 0.025
 #define TAMANIO_BASE_X 0.5
-#define TAMANIO_BASE_Y 0.1//0.15
+#define TAMANIO_BASE_Y 0.1
 
-Boton::Boton(bool abrir_puerta_al_encender, b2Vec2& pos, Mundo& mundo):
+Boton::Boton(b2Vec2& pos, Mundo& mundo):
 			Cuerpo(TAMANIO_BASE_X*2,
 				   TAMANIO_BASE_Y*2 + TAM_BOTON_Y*2 + 0.1){
-	this->activacion_compuerta = abrir_puerta_al_encender;
 	this->estado_actual = false;
 
 	b2BodyDef base_def;
@@ -39,8 +38,8 @@ Boton::Boton(bool abrir_puerta_al_encender, b2Vec2& pos, Mundo& mundo):
 	cuerpo_boton->SetUserData(this);
 }
 
-bool Boton::activoParaCompuerta(){
-	return estado_actual == activacion_compuerta;
+bool Boton::encendido(){
+	return estado_actual;
 }
 
 void Boton::encender(){

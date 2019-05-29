@@ -17,6 +17,8 @@
 #include "CoordConverter.h"
 #include "portal.h"
 #include "boton.h"
+#include "estado_logico.h"
+#include "compuerta.h"
 #include "ids.h"
 
 #include <thread>
@@ -59,7 +61,11 @@ int main() {
 		pos_roca += inc_pared;
 	}
 	b2Vec2 pos_boton(0, -2.35);
-	Boton b(true, pos_boton, world);
+	Boton b(pos_boton, world);
+
+	EstadoLogico estado_boton(b);
+	b2Vec2 pos_compuerta(-1, 0);
+	Compuerta comp(pos_compuerta, world, estado_boton);
 
 	int id = personajes.agregar_chell();
 
@@ -93,6 +99,11 @@ int main() {
 	SdlTexture botonTexture(botonPath, window);
 	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
 
+	// Compuerta
+	std::string compuertaPath = "assets/gate.png";
+	SdlTexture compuertaTexture(compuertaPath, window);
+	Sprite compuertaSprite(193, 385, 1, 21, 1, compuertaTexture);
+
 	//Portal azul
 	std::string portalAzulPath = "assets/portAzul.png";
 	SdlTexture portalAzulTexture(portalAzulPath, window);
@@ -113,6 +124,7 @@ int main() {
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
+	texturas[ID_COMPUERTA] = &compuertaSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================

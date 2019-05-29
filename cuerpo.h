@@ -25,6 +25,7 @@ public:
 	virtual void empezarContacto(Cuerpo* otro) = 0;
     virtual void terminarContacto(Cuerpo* otro) {}
     virtual void desactivar() {}
+    virtual bool encendido() {return true;}
 };
 
 #endif
