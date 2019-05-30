@@ -87,8 +87,14 @@ Chell::Chell(Chell&& otro) :
 void Chell::mover(EstadoTeclado& t){
     b2Vec2 vel = cuerpo->GetLinearVelocity();
     vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
-    if (vel.y == 0)
+    if (abs(vel.y) < 0.001) {
         vel.y = SALTAR * t.presionada(SDLK_UP);
+        if (roca && joint_roca) {
+            b2Vec2 vel_roca = roca->getBody()->GetLinearVelocity();
+            vel_roca.y = vel.y;
+            roca->getBody()->SetLinearVelocity(vel_roca);
+        }
+    }
     cuerpo->SetLinearVelocity(vel);
 }
 
@@ -130,8 +136,8 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
                                  this->getPosition(),
                                  roca->getPosition());
             joint_def.collideConnected = true;
-            joint_def.frequencyHz = 4.0f;
-            joint_def.dampingRatio = 0.5f;
+            joint_def.frequencyHz = 0;
+            joint_def.dampingRatio = 1;
             joint_roca = (getBody()->GetWorld())->CreateJoint(&joint_def);
         } else {
             std::cout << "se elimina joint" << std::endl;

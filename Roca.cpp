@@ -10,14 +10,14 @@ Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_dynamicBody;
     cuerpo_def.position.Set(pos.x, pos.y);
-    cuerpo_def.fixedRotation = true;
+    cuerpo_def.fixedRotation = false;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
     b2PolygonShape polygon_shape;
     b2FixtureDef fixture_def;
     fixture_def.shape = &polygon_shape;
-    fixture_def.density = 1;
-
+    fixture_def.density = 100;
+    fixture_def.friction = 100;
     polygon_shape.SetAsBox(TAMANIO_ROCA, TAMANIO_ROCA);
     cuerpo->CreateFixture(&fixture_def);
 

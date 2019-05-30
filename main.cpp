@@ -147,7 +147,7 @@ int main() {
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
 	texturas[ID_COMPUERTA] = &compuertaSprite;
-	texturas[ID_ROCA] = &piedra_sprite4;
+	texturas[ID_ROCA] = &piedra_sprite1;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
