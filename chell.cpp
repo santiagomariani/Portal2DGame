@@ -161,3 +161,7 @@ void Chell::terminarContacto(Cuerpo *otro) {
     }
 }
 
+void Chell::morir(){
+    std::cout << "chell murio\n";
+}
+
