@@ -1,5 +1,6 @@
-#ifndef ROCA_H
-#define ROCA_H
+#ifndef BLOQUE_ROCA_H
+#define BLOQUE_ROCA_H
+
 #include "Box2D/Box2D.h"
 #include "Bloque.h"
 #include "mundo.h"
@@ -18,4 +19,4 @@ public:
 	void empezarContacto(Cuerpo* otro);
 };
 
-#endif //ROCA_H
+#endif //BLOQUE_ROCA_H

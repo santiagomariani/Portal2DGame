@@ -1,6 +1,6 @@
 
-#ifndef UNTITLED_BLOQUEMETAL_H
-#define UNTITLED_BLOQUEMETAL_H
+#ifndef BLOQUEMETAL_H
+#define BLOQUEMETAL_H
 
 #include "Bloque.h"
 #include "Box2D/Box2D.h"
@@ -18,4 +18,4 @@ public:
 };
 
 
-#endif //UNTITLED_BLOQUEMETAL_H
+#endif //BLOQUEMETAL_H

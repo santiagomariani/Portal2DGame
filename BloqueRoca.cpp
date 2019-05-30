@@ -35,7 +35,7 @@ const b2Vec2& BloqueRoca::getPosition(){
 	return cuerpo->GetPosition();
 }
 int BloqueRoca::getId(){
-	return 1;
+	return ID_BLOQUE_ROCA;
 }
 
 void BloqueRoca::recibirDisparo(Disparo* disparo){

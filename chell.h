@@ -5,6 +5,7 @@
 #include "estado_teclado.h"
 #include "cuerpo.h"
 #include "pistola.h"
+#include "Roca.h"
 #include <SDL2/SDL.h>
 
 class Chell : public Cuerpo {
@@ -12,11 +13,14 @@ class Chell : public Cuerpo {
 	b2Body* cuerpo;
 	Pistola pistola;
 	Mundo& mundo;
+	Roca* roca;
+	b2Joint *joint_roca;
 public:
 	Chell(int identidad, Mundo& mundo);
 	void activar(b2Vec2& pos);
 	Chell(Chell&& otro);
 	void mover(EstadoTeclado& t);
+	void agarrarRoca(EstadoTeclado & t);
 	int getId();
 	void dispararAzul(b2Vec2& pos_click);
 	void dispararNaranja(b2Vec2& pos_click);
@@ -24,9 +28,8 @@ public:
 	float getWidth();
 	float getHeight();
 	b2Body* getBody();
-
-
-	void empezarContacto(Cuerpo* otro);
+	void empezarContacto(Cuerpo* otro) override;
+	void terminarContacto(Cuerpo* otro) override;
 };
 
 #endif //CHELL_H

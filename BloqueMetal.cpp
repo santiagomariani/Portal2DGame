@@ -41,7 +41,7 @@ const b2Vec2& BloqueMetal::getPosition(){
 	return cuerpo->GetPosition();
 }
 int BloqueMetal::getId(){
-	return ID_METAL;
+	return ID_BLOQUE_METAL;
 }
 
 void BloqueMetal::recibirDisparo(Disparo* disparo) {

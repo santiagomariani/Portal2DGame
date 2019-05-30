@@ -20,6 +20,7 @@
 #include "estado_logico.h"
 #include "compuerta.h"
 #include "ids.h"
+#include "Roca.h"
 
 #include <thread>
 #include <pthread.h>
@@ -44,24 +45,27 @@ int main() {
 	Personajes personajes(world);
 
 	b2Vec2 pos_piedra(-6,-2);
-	BloqueRoca rocaPiedra(ID_ROCA, world, pos_piedra);
+	BloqueRoca rocaPiedra(ID_BLOQUE_ROCA, world, pos_piedra);
 
-	std::vector<BloqueMetal> rocas;
+	b2Vec2 pos_roca(-8, 0);
+	Roca roca(world, pos_roca);
+
+	std::vector<BloqueMetal> bloques;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
 	for (int j = 0; j < 45; ++j){
-		BloqueMetal roca(ID_METAL, world, pos);
-		rocas.push_back(std::move(roca));
+		BloqueMetal bloque(ID_BLOQUE_METAL, world, pos);
+		bloques.push_back(std::move(bloque));
 		pos += inc;
 	}
 
 	std::vector<BloqueMetal> pared;
-	b2Vec2 pos_roca(2, -3);
+	b2Vec2 pos_bloque(2, -3);
 	b2Vec2 inc_pared(0, 1);
 	for (int j = 0; j < 2; ++j){
-		BloqueMetal roca3(ID_METAL, world, pos_roca);
+		BloqueMetal roca3(ID_BLOQUE_METAL, world, pos_bloque);
 		pared.push_back(std::move(roca3));
-		pos_roca += inc_pared;
+		pos_bloque += inc_pared;
 	}
 	b2Vec2 pos_boton(0, -2.35);
 	Boton b(pos_boton, world);
@@ -122,17 +126,28 @@ int main() {
 	SdlTexture portalNaranjaTexture(portalNaranjaPath, window);
 	Sprite portalNaranjaSprite(193, 193, 0, 0, 1, portalNaranjaTexture);
 
+	// Piedra
+	Sprite piedra_sprite1(85, 83, 1, 4513, 1, fxTexture);
+	Sprite piedra_sprite2(85, 83, 87, 4513, 1, fxTexture);
+	Sprite piedra_sprite3(85, 83, 173, 4513, 1, fxTexture);
+	Sprite piedra_sprite4(85, 83, 259, 4513, 1, fxTexture);
+	Sprite piedra_sprite5(85, 83, 345, 4513, 1, fxTexture);
+	Sprite piedra_sprite6(85, 83, 431, 4513, 1, fxTexture);
+	Sprite piedra_sprite7(85, 83, 517, 4513, 1, fxTexture);
+	Sprite piedra_sprite8(85, 83, 603, 4513, 1, fxTexture);
+
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
 	texturas[ID_CHELL] = &viewChell;
-	texturas[ID_ROCA] = &bloqueSprite;
+	texturas[ID_BLOQUE_ROCA] = &bloqueSprite;
 	texturas[ID_DISPARO] = &disparoSprite;
-	texturas[ID_METAL] = &bloqueMetalSprite;
+	texturas[ID_BLOQUE_METAL] = &bloqueMetalSprite;
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
 	texturas[ID_COMPUERTA] = &compuertaSprite;
+	texturas[ID_ROCA] = &piedra_sprite4;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -204,6 +219,7 @@ int main() {
 			}
 		
 		}
+		chell.agarrarRoca(teclado);
 		chell.mover(teclado);
 		world.actualizar();
 		window.render();

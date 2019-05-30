@@ -2,6 +2,7 @@
 #include "chell.h"
 #include "pistola.h"
 #include "Box2D/Box2D.h"
+#include "ids.h"
 
 #define TAMANIO_CHELL_X 0.40f
 #define TAMANIO_CHELL_Y 0.625f
@@ -9,8 +10,13 @@
 #define CAMINAR 4
 #define SALTAR 5
 
-Chell::Chell(int identidad, Mundo& mundo) : Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
-											id(identidad), mundo(mundo), pistola(mundo){
+Chell::Chell(int identidad, Mundo& mundo) :
+        Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
+        id(identidad),
+        mundo(mundo),
+        pistola(mundo),
+        roca(nullptr),
+        joint_roca(nullptr) {
 	cuerpo = nullptr;
 }
 
@@ -55,18 +61,23 @@ int Chell::getId(){
 
 Chell::Chell(Chell&& otro) :
         Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
-        mundo(otro.mundo), pistola(std::move(otro.pistola)) {
+        mundo(otro.mundo),
+        pistola(std::move(otro.pistola)) {
     if (this == &otro){
         return;
     }
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     cuerpo = otro.cuerpo;
+    roca = otro.roca;
+    joint_roca = otro.joint_roca;
 
     id = otro.id;
     otro.maxWidth = 0;
     otro.maxHeight = 0;
     otro.cuerpo = nullptr;
+    otro.roca = nullptr;
+    otro.joint_roca = nullptr;
 	if (cuerpo){
 		cuerpo->SetUserData(this);
 	}
@@ -104,6 +115,43 @@ b2Body* Chell::getBody(){
 	return cuerpo;
 }
 
+void Chell::agarrarRoca(EstadoTeclado &t) {
+    if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
+        std::cout << "e" << std::endl;
+        if (joint_roca == nullptr) {
+            b2Vec2 nueva_pos_roca(
+                    this->getPosition().x + TAMANIO_CHELL_X + (roca->getMaxWidth() / 2),
+                    this->getPosition().y);
+            roca->getBody()->SetTransform(nueva_pos_roca, 0);
+            std::cout << "se crea joint" << std::endl;
+            b2DistanceJointDef joint_def;
+            joint_def.Initialize(this->getBody(),
+                                 roca->getBody(),
+                                 this->getPosition(),
+                                 roca->getPosition());
+            joint_def.collideConnected = true;
+            joint_def.frequencyHz = 4.0f;
+            joint_def.dampingRatio = 0.5f;
+            joint_roca = (getBody()->GetWorld())->CreateJoint(&joint_def);
+        } else {
+            std::cout << "se elimina joint" << std::endl;
+            getBody()->GetWorld()->DestroyJoint(joint_roca);
+            joint_roca = nullptr;
+        }
+    }
+}
+
 void Chell::empezarContacto(Cuerpo* otro){
+    if (otro->getId() == ID_ROCA) {
+        roca = (Roca*)otro;
+        std::cout << "empezo contacto con roca" << std::endl;
+    }
+}
+
+void Chell::terminarContacto(Cuerpo *otro) {
+    if (otro->getId() == ID_ROCA && !joint_roca) {
+        roca = nullptr;
+        std::cout << "termino contacto con roca" << std::endl;
+    }
 }
 

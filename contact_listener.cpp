@@ -3,7 +3,7 @@
 #include "BloqueRoca.h"
 #include "contact_listener.h"
 
-#define ID_ROCA 1
+#define ID_BLOQUE_ROCA 1
 #define ID_DISPARO 2
 
 Cuerpo* obtenerCuerpo(b2Fixture* fixture){
