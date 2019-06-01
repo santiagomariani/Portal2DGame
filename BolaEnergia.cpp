@@ -12,7 +12,6 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     Cuerpo(RADIO_BOLAENERGIA * 2, RADIO_BOLAENERGIA * 2) {
     contador = 0;
     finalizo = false;
-    std::cout << "CONSTRUCTOR." << std::endl;
     b2BodyDef body_def;
     body_def.type = b2_dynamicBody;
     body_def.position.Set(pos.x, pos.y);
@@ -37,10 +36,8 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
 
 void BolaEnergia::actualizar() {
     contador++;
-    std::cout << "ACTUALIZA BOLA ENERGIA" << std::endl;
     if (contador == TIEMPO_VIDA) {
         finalizo = true;
-        std::cout << "FINALIZO BOLA ENERGIA" << std::endl;
         mundo.destruirBody(cuerpo);
     }
 }
@@ -51,7 +48,6 @@ BolaEnergia::BolaEnergia(BolaEnergia &&otro) :
     if (this == &otro) {
         return;
     }
-    std::cout << "CONSTRUCTOR POR MOV." << std::endl;
     cuerpo = otro.cuerpo;
     contador = otro.contador;
     finalizo = otro.finalizo;
@@ -70,7 +66,6 @@ BolaEnergia &BolaEnergia::operator=(BolaEnergia &&otro) {
     if (this == &otro) {
         return *this;
     }
-    std::cout << "ASIGNACION POR MOV." << std::endl;
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     mundo = otro.mundo;

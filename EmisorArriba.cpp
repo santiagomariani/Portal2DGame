@@ -10,7 +10,6 @@ EmisorArriba::EmisorArriba(Mundo &mundo, const b2Vec2 &pos) :
     mundo(mundo),
     Cuerpo(TAMANIO_EMISOR * 2, TAMANIO_EMISOR * 2){
     contador = 0;
-    std::cout << "HOLA4" << std::endl;
     mundo.agregarCuerpoAActualizar(this);
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_staticBody;
@@ -30,7 +29,6 @@ EmisorArriba::EmisorArriba(EmisorArriba &&otro) :
     if (this == &otro) {
         return;
     }
-    std::cout << "HOLA3" << std::endl;
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     cuerpo = otro.cuerpo;
@@ -48,7 +46,6 @@ EmisorArriba &EmisorArriba::operator=(EmisorArriba &otro) {
     if (this == &otro) {
         return *this;
     }
-    std::cout << "HOLA2" << std::endl;
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     mundo = otro.mundo;
@@ -62,7 +59,6 @@ EmisorArriba &EmisorArriba::operator=(EmisorArriba &&otro) {
     if (this == &otro) {
         return *this;
     }
-    std::cout << "HOLA1" << std::endl;
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     mundo = otro.mundo;
@@ -98,17 +94,15 @@ b2Body *EmisorArriba::getBody() {
 }
 
 void EmisorArriba::emitirBolaEnergia() {
-    /*
     // Veo si finalizo alguna bola de energia.
     for (auto it = bolas_energia.begin();it != bolas_energia.end();) {
-        if ((*it).bolaFinalizo()) {
+        if ((*it)->bolaFinalizo()) {
             it = bolas_energia.erase(it);
         }
         else {
             ++it;
         }
-        std::cout << "COMPRUEBA BOLAS" << std::endl;
-    }*/
+    }
     const b2Vec2 &posEmisor = this->getPosition();
     b2Vec2 pos(posEmisor.x, posEmisor.y + (maxHeight / 2) + RADIO_BOLAENERGIA);
     b2Vec2 dir(0, 1);
@@ -116,10 +110,8 @@ void EmisorArriba::emitirBolaEnergia() {
 }
 
 void EmisorArriba::actualizar() {
-    // std::cout << "ACTUALIZA EMISOR" << std::endl;
     contador++;
     if (contador == FRECUENCIA) {
-        std::cout << "EMITE BOLA ENERGIA" << std::endl;
         this->emitirBolaEnergia();
         contador = 0;
     }
