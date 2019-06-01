@@ -39,14 +39,14 @@
 
 
 
-#include "qt.h"
+#include "editor.h"
 
 
 int main() {
 
 //=====================Pruebas De Ariel===================
-	QT qt;
-	qt();
+	Editor e;
+	e();
 //========================================================
 
 	b2Vec2 gravity(0.0f, -9.8f);
