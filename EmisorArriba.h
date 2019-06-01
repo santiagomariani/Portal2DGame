@@ -16,7 +16,7 @@ private:
     const unsigned int FRECUENCIA = 100;
     unsigned int contador;
     b2Body *cuerpo;
-    std::vector<BolaEnergia> bolas_energia;
+    std::vector<std::unique_ptr<BolaEnergia>> bolas_energia;
     Mundo &mundo;
 public:
     EmisorArriba(Mundo &mundo, const b2Vec2 &pos);

@@ -18,7 +18,7 @@ class BolaEnergia : public Cuerpo {
 private:
     b2Body *cuerpo;
     Mundo& mundo;
-    const unsigned int TIEMPO_VIDA = 80; // aprox. 13 segs.
+    const unsigned int TIEMPO_VIDA = 150; // aprox. 13 segs.
     unsigned int contador;
     bool finalizo;
 public:

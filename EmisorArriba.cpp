@@ -98,7 +98,7 @@ b2Body *EmisorArriba::getBody() {
 }
 
 void EmisorArriba::emitirBolaEnergia() {
-
+    /*
     // Veo si finalizo alguna bola de energia.
     for (auto it = bolas_energia.begin();it != bolas_energia.end();) {
         if ((*it).bolaFinalizo()) {
@@ -108,11 +108,11 @@ void EmisorArriba::emitirBolaEnergia() {
             ++it;
         }
         std::cout << "COMPRUEBA BOLAS" << std::endl;
-    }
+    }*/
     const b2Vec2 &posEmisor = this->getPosition();
     b2Vec2 pos(posEmisor.x, posEmisor.y + (maxHeight / 2) + RADIO_BOLAENERGIA);
     b2Vec2 dir(0, 1);
-    bolas_energia.emplace_back(mundo, pos, dir);
+    bolas_energia.emplace_back(new BolaEnergia(mundo, pos, dir));
 }
 
 void EmisorArriba::actualizar() {
