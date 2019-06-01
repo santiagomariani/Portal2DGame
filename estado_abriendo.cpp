@@ -5,10 +5,13 @@
 EstadoAbriendo::EstadoAbriendo(){
 }
 
-EstadoCompuerta* EstadoAbriendo::actualizar(bool activa){
-	std::cout << "abriendo a abierta\n";
+EstadoCompuerta* EstadoAbriendo::actualizar(bool activa, b2Body* puerta){
 	return new EstadoAbierta();
 }
 
 void EstadoAbriendo::empezarContacto(Cuerpo* cuerpo){
+}
+
+int EstadoAbriendo::getId(){
+	return ID_COMPUERTA_ABRIENDO;
 }

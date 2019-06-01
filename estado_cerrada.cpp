@@ -5,7 +5,7 @@
 EstadoCerrada::EstadoCerrada(){
 }
 
-EstadoCompuerta* EstadoCerrada::actualizar(bool activa){
+EstadoCompuerta* EstadoCerrada::actualizar(bool activa, b2Body* puerta){
 	if (!activa){
 		return new EstadoCerrada();
 	}
@@ -14,4 +14,7 @@ EstadoCompuerta* EstadoCerrada::actualizar(bool activa){
 }
 
 void EstadoCerrada::empezarContacto(Cuerpo* cuerpo){
+}
+int EstadoCerrada::getId(){
+	return ID_COMPUERTA_CERRADA;
 }

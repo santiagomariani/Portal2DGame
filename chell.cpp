@@ -35,9 +35,9 @@ void Chell::activar(b2Vec2& pos){
     b2PolygonShape polygonShape;
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
-    myFixtureDef.density = 7;
-    myFixtureDef.friction = 0;
-    //myFixtureDef.restitution = 0;
+    myFixtureDef.density = 7; //7
+    myFixtureDef.friction = 0; //0
+    myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
     polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
@@ -48,7 +48,7 @@ void Chell::activar(b2Vec2& pos){
     circulo_fix_def.shape = &circulo;
     circulo_fix_def.density = 7;
     circulo_fix_def.friction = 0;
-    //circulo_fix_def.restitution = 0;
+    circulo_fix_def.restitution = 0;
 
     circulo.m_p.Set(0, -2*RADIO); // posicion del centro del circulo
     circulo.m_radius = RADIO;
@@ -123,24 +123,21 @@ b2Body* Chell::getBody(){
 
 void Chell::agarrarRoca(EstadoTeclado &t) {
     if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
-        std::cout << "e" << std::endl;
         if (joint_roca == nullptr) {
             b2Vec2 nueva_pos_roca(
                     this->getPosition().x + TAMANIO_CHELL_X + (roca->getMaxWidth() / 2),
                     this->getPosition().y);
             roca->getBody()->SetTransform(nueva_pos_roca, 0);
-            std::cout << "se crea joint" << std::endl;
             b2DistanceJointDef joint_def;
             joint_def.Initialize(this->getBody(),
                                  roca->getBody(),
                                  this->getPosition(),
                                  roca->getPosition());
             joint_def.collideConnected = true;
-            joint_def.frequencyHz = 0;
+            joint_def.frequencyHz = 10;
             joint_def.dampingRatio = 1;
             joint_roca = (getBody()->GetWorld())->CreateJoint(&joint_def);
         } else {
-            std::cout << "se elimina joint" << std::endl;
             getBody()->GetWorld()->DestroyJoint(joint_roca);
             joint_roca = nullptr;
         }
@@ -148,16 +145,14 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
 }
 
 void Chell::empezarContacto(Cuerpo* otro){
-    if (otro->getId() == ID_ROCA) {
+    if ((otro->getId() == ID_ROCA) && (roca == nullptr)) {
         roca = (Roca*)otro;
-        std::cout << "empezo contacto con roca" << std::endl;
     }
 }
 
 void Chell::terminarContacto(Cuerpo *otro) {
     if (otro->getId() == ID_ROCA && !joint_roca) {
         roca = nullptr;
-        std::cout << "termino contacto con roca" << std::endl;
     }
 }
 

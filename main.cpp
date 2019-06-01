@@ -20,6 +20,8 @@
 #include "estado_logico.h"
 #include "compuerta.h"
 #include "ids.h"
+#include "or.h"
+#include "and.h"
 #include "Roca.h"
 
 #include <thread>
@@ -48,6 +50,9 @@ int main() {
 	b2Vec2 pos_roca(-8, 0);
 	Roca roca(world, pos_roca);
 
+	b2Vec2 pos_roca2(-6, 0);
+	Roca roca2(world, pos_roca2);
+
 	std::vector<BloqueMetal> bloques;
 	b2Vec2 pos(-40, -3);
 	b2Vec2 inc(1, 0);
@@ -67,10 +72,27 @@ int main() {
 	}
 	b2Vec2 pos_boton(0, -2.35);
 	Boton b(pos_boton, world);
+	b2Vec2 pos_boton2(-4, -2.35);
+	Boton b2(pos_boton2, world);
 
-	EstadoLogico estado_boton(b);
-	b2Vec2 pos_compuerta(-1, 0);
-	Compuerta comp(pos_compuerta, world, estado_boton);
+	EstadoLogico* estado_boton = new EstadoLogico(b); //usar unique pointer?
+	EstadoLogico* estado_boton2 = new EstadoLogico(b2);
+
+	// con botones OR:
+	/*Or compuerta_or;
+	compuerta_or.agregar(estado_boton);
+	compuerta_or.agregar(estado_boton2);
+
+	b2Vec2 pos_compuerta(-1, -2);
+	Compuerta comp(pos_compuerta, world, compuerta_or);*/
+
+	// con botones AND:
+	And compuerta_and;
+	compuerta_and.agregar(estado_boton);
+	compuerta_and.agregar(estado_boton2);
+
+	b2Vec2 pos_compuerta(-1, -2);
+	Compuerta comp(pos_compuerta, world, compuerta_and);
 
 	int id = personajes.agregar_chell();
 
@@ -98,21 +120,24 @@ int main() {
 	SdlTexture fxTexture(fxPath, window);
 	Sprite disparoSprite(111, 59, 1, 1920, 3, fxTexture);
 
-	// Bloque
+	// Bloques roca y metal
 	std::string blocksPath = "assets/blocks.png";
 	SdlTexture blocksTexture(blocksPath, window);
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
-	// Boton apagado
+	// Boton apagado y prendidos
 	std::string botonPath = "assets/miscellaneous.png";
 	SdlTexture botonTexture(botonPath, window);
 	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
+	Sprite botonPrendidoSprite(175, 74, 1, 192, 1, botonTexture);
 
-	// Compuerta
+	// Compuerta cerrada y abierta
 	std::string compuertaPath = "assets/gate.png";
 	SdlTexture compuertaTexture(compuertaPath, window);
-	Sprite compuertaSprite(193, 385, 1, 21, 1, compuertaTexture);
+	Sprite compuertaCerradaSprite(193, 385, 1, 21, 1, compuertaTexture);
+	Sprite compuertaAbiertaSprite(193, 385, 1553, 2437, 1, compuertaTexture);
+	Sprite compuertaAbriendoSprite(193, 385, 1, 2051, 19, compuertaTexture);
 
 	//Portal azul
 	std::string portalAzulPath = "assets/portAzul.png";
@@ -144,8 +169,10 @@ int main() {
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
-	texturas[ID_COMPUERTA] = &compuertaSprite;
+	texturas[ID_COMPUERTA_CERRADA] = &compuertaCerradaSprite;
+	texturas[ID_COMPUERTA_ABIERTA] = &compuertaAbiertaSprite;
 	texturas[ID_ROCA] = &piedra_sprite1;
+	texturas[ID_BOTON_PRENDIDO] = &botonPrendidoSprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================

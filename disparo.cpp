@@ -118,7 +118,9 @@ void Disparo::terminar() {
 
 void Disparo::empezarContacto(Cuerpo* otro){
 	int id_otro = otro->getId();
-	if (id_otro == ID_BLOQUE_ROCA || id_otro == ID_BLOQUE_METAL){
+	if (id_otro == ID_BLOQUE_ROCA || id_otro == ID_BLOQUE_METAL || 
+		id_otro == ID_COMPUERTA_CERRADA || id_otro == ID_BOTON_APAGADO ||
+		id_otro == ID_BOTON_PRENDIDO){
 		terminar();
 	}
 }

@@ -1,12 +1,16 @@
 #include "and.h"
 
-And::And(std::vector<CompuertaLogica>& compuertas):
-			compuertas(compuertas){			
+And::And(){			
+}
+
+
+void And::agregar(CompuertaLogica* compuerta){
+	compuertas.push_back(compuerta);
 }
 
 bool And::encendida(){
 	for (auto it=compuertas.begin(); it!=compuertas.end(); it++){
-		if (!(it->encendida())){
+		if (!((*it)->encendida())){
 			return false;
 		}
 	}

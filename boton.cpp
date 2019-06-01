@@ -43,12 +43,10 @@ bool Boton::encendido(){
 }
 
 void Boton::encender(){
-	std::cout << "se encendio\n";
 	this->estado_actual = true;
 }
 
 void Boton::apagar(){
-	std::cout << "se apago\n";
 	this->estado_actual = false;
 }
 
@@ -65,6 +63,9 @@ void Boton::terminarContacto(Cuerpo* otro){
 }
 
 int Boton::getId(){
+	if (estado_actual){
+		return ID_BOTON_PRENDIDO;
+	}
 	return ID_BOTON_APAGADO;
 }
 
