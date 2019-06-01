@@ -3,10 +3,10 @@
 #include "estado_cerrada.h"
 #include <iostream>
 
-#define TAM_COMP_CUERPO_X 0.25
-#define TAM_COMP_CUERPO_Y 0.5
+#define TAM_COMP_CUERPO_X 0.5
+#define TAM_COMP_CUERPO_Y 0.94
 #define TAM_COMP_BASE_X 0.15
-#define TAM_COMP_BASE_Y 0.03
+#define TAM_COMP_BASE_Y 0.06
 
 Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica):
                     Cuerpo(TAM_COMP_CUERPO_X*2,

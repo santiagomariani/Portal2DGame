@@ -72,6 +72,10 @@ int main() {
 		pared.push_back(std::move(roca3));
 		pos_bloque += inc_pared;
 	}
+	pos_bloque.Set(2, 2);
+	BloqueMetal bloque_en_el_aire(ID_BLOQUE_METAL, world, pos_bloque);
+
+
 	b2Vec2 pos_boton(0, -2.35);
 	Boton b(pos_boton, world);
 	b2Vec2 pos_boton2(-4, -2.35);
@@ -93,7 +97,7 @@ int main() {
 	compuerta_and.agregar(estado_boton);
 	compuerta_and.agregar(estado_boton2);
 
-	b2Vec2 pos_compuerta(-1, -2);
+	b2Vec2 pos_compuerta(-1, -1.5);
 	Compuerta comp(pos_compuerta, world, compuerta_and);
 
 	int id = personajes.agregar_chell();
@@ -190,6 +194,7 @@ int main() {
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
 	texturas[ID_COMPUERTA_CERRADA] = &compuertaCerradaSprite;
+	texturas[ID_COMPUERTA_ABRIENDO] = &compuertaAbriendoSprite;
 	texturas[ID_COMPUERTA_ABIERTA] = &compuertaAbiertaSprite;
 	texturas[ID_ROCA] = &piedra_sprite1;
 	texturas[ID_BOTON_PRENDIDO] = &botonPrendidoSprite;
