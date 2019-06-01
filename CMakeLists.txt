@@ -9,6 +9,8 @@ add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlException.cpp S
 
 # ${CMAKE_CURRENT_SOURCE_DIR}
 
+set(CMAKE_AUTOUIC ON)
+
 find_package(Threads REQUIRED)
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")

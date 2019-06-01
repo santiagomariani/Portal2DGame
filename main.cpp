@@ -33,7 +33,17 @@
 #define CONVERSION 100
 #define PI 3.14159265
 
+
+
+#include "qt.h"
+
+
 int main() {
+
+//=====================Pruebas De Ariel===================
+	QT qt;
+	qt();
+//========================================================
 
 	b2Vec2 gravity(0.0f, -9.8f);
 	Mundo world(gravity);
