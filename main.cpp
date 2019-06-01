@@ -21,6 +21,8 @@
 #include "compuerta.h"
 #include "ids.h"
 #include "Roca.h"
+#include "BolaEnergia.h"
+#include "EmisorArriba.h"
 
 #include <thread>
 #include <pthread.h>
@@ -74,6 +76,12 @@ int main() {
 
 	int id = personajes.agregar_chell();
 
+	// Emisor
+	b2Vec2 pos_emisor(-2, -2);
+	EmisorArriba emisor_arriba(world, pos_emisor);
+	// b2Vec2 bola_energia_pos(-2, -1);
+	// b2Vec2 bola_energia_dir(1, 0);
+	// BolaEnergia bola_energia(world, bola_energia_pos, bola_energia_dir);
 
 //======================================SDL======================================
 
@@ -134,6 +142,18 @@ int main() {
 	Sprite piedra_sprite7(85, 83, 517, 4513, 1, fxTexture);
 	Sprite piedra_sprite8(85, 83, 603, 4513, 1, fxTexture);
 
+	// Bola de energia.
+	Sprite bola_energia_sprite(171, 119, 1, 2000, 5, fxTexture);
+
+	// EmisorArriba
+	Sprite emisor_arriba_sprite(193, 193, 1, 1242, 1, blocksTexture);
+	// EmisorDerecha
+	Sprite emisor_derecha_sprite(193, 193, 1, 1028, 1, blocksTexture);
+	// EmisorAbajo
+	Sprite emisor_abajo_sprite(193, 193, 1, 1456, 1, blocksTexture);
+	// EmisorIzquierda
+	Sprite emisor_izquierda_sprite(193, 193, 1, 814, 1, blocksTexture);
+
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
@@ -146,6 +166,11 @@ int main() {
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
 	texturas[ID_COMPUERTA] = &compuertaSprite;
 	texturas[ID_ROCA] = &piedra_sprite1;
+	texturas[ID_EMISORARRIBA] = &emisor_arriba_sprite;
+	texturas[ID_EMISORDERECHA] = &emisor_derecha_sprite;
+	texturas[ID_EMISORABAJO] = &emisor_abajo_sprite;
+	texturas[ID_EMISORIZQUIERDA] = &emisor_izquierda_sprite;
+	texturas[ID_BOLAENERGIA] = &bola_energia_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -176,11 +201,12 @@ int main() {
 			}
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
-			if (id == 2) {
+			if (id == ID_DISPARO) {
 				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
-			}
-			else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
+			} else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
 				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI *-1);
+			} else if (id == ID_BOLAENERGIA) {
+				camera.render(*texturas[id], dest, (((BolaEnergia*)actual)->getAngle()) * 180/PI * -1);
 			} else {
 				camera.render(*texturas[id], dest);
 			}

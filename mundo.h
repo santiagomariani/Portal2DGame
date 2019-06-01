@@ -7,9 +7,14 @@
 #include "cuerpo.h"
 #include "Teletransportador.h"
 #include "Box2D/Box2D.h"
+#include <queue>
 
 class Portal;
 class Mundo{
+private:
+	bool actualizando_cuerpos;
+	std::queue<Cuerpo*> cola_cuerpos_a_agregar;
+	std::queue<Cuerpo*> cola_cuerpos_a_borrar;
 	b2World mundo;
 	std::vector<Portal*> portales_activar;
 	std::vector<Cuerpo*> cuerpos_desactivar;
