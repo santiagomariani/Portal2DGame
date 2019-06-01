@@ -3,6 +3,7 @@
 #include "disparo.h"
 
 Mundo::Mundo(const b2Vec2& gravedad) : mundo(gravedad){
+	actualizando_cuerpos = false;
 }
 
 void Mundo::setContactListener(b2ContactListener& listener){
@@ -14,7 +15,17 @@ b2Body* Mundo::agregarBody(b2BodyDef& cuerpo_def){
 }
 
 void Mundo::destruirBody(b2Body* body){
-	this->mundo.DestroyBody(body);
+	if (actualizando_cuerpos) {
+		cola_cuerpos_a_borrar.push((Cuerpo*)body->GetUserData());
+	} else {
+		for (auto it = cuerpos_actualizar.begin(); it != cuerpos_actualizar.end(); it++){
+			if ((*it) == (Cuerpo*)body->GetUserData()) {
+				cuerpos_actualizar.erase(it);
+				break;
+			}
+		}
+		mundo.DestroyBody(body);
+	}
 }
 
 void Mundo::actualizar(){
@@ -64,13 +75,40 @@ void Mundo::activarTeletransportadores(){
 }
 
 void Mundo::agregarCuerpoAActualizar(Cuerpo* cuerpo){
-	cuerpos_actualizar.push_back(cuerpo);
+	if (actualizando_cuerpos) {
+		cola_cuerpos_a_agregar.push(cuerpo);
+	} else {
+		cuerpos_actualizar.push_back(cuerpo);
+	}
 }
 
 void Mundo::actualizarCuerpos(){
-	for (auto it=cuerpos_actualizar.begin(); it!=cuerpos_actualizar.end(); it++){
+
+    // Borro cuerpos en cola.
+    while (!cola_cuerpos_a_borrar.empty()) {
+        Cuerpo *cuerpo = cola_cuerpos_a_borrar.front();
+        for (auto it = cuerpos_actualizar.begin(); it != cuerpos_actualizar.end(); it++){
+            if ((*it) == cuerpo) {
+                cuerpos_actualizar.erase(it);
+                break;
+            }
+        }
+        mundo.DestroyBody(cuerpo->getBody());
+        cola_cuerpos_a_borrar.pop();
+    }
+    // Agrego cuerpos en cola.
+    while (!cola_cuerpos_a_agregar.empty()) {
+        cuerpos_actualizar.push_back(cola_cuerpos_a_agregar.front());
+        cola_cuerpos_a_agregar.pop();
+    }
+
+	actualizando_cuerpos = true;
+
+	for (auto it = cuerpos_actualizar.begin(); it != cuerpos_actualizar.end(); it++){
 		(*it)->actualizar();
 	}
+
+	actualizando_cuerpos = false;
 }
 
 /*

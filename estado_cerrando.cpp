@@ -7,7 +7,7 @@
 EstadoCerrando::EstadoCerrando(){
 }
 
-EstadoCompuerta* EstadoCerrando::actualizar(bool activa){
+EstadoCompuerta* EstadoCerrando::actualizar(bool activa, b2Body* puerta){
 	std::cout << "cerrando a cerrar\n";
 	return new EstadoCerrada();
 }
@@ -16,4 +16,8 @@ void EstadoCerrando::empezarContacto(Cuerpo* cuerpo){
 	if (cuerpo->getId() == ID_CHELL){
 		((Chell*)cuerpo)->morir();
 	}
+}
+
+int EstadoCerrando::getId(){
+	return ID_COMPUERTA_CERRADA;
 }

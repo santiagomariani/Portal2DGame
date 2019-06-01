@@ -6,9 +6,10 @@
 #include "boton.h"
 
 class And : public CompuertaLogica {
-	std::vector<CompuertaLogica>& compuertas;
+	std::vector<CompuertaLogica*> compuertas;
 public:
-	And(std::vector<CompuertaLogica>& compuertas);
+	And();
+	void agregar(CompuertaLogica* compuerta);
 
 	bool encendida();
 	~And() = default;

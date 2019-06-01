@@ -6,12 +6,13 @@
 #include "boton.h"
 
 class Or : public CompuertaLogica {
-	std::vector<CompuertaLogica>& compuertas;
+	//std::unique_ptr<std::vector<CompuertaLogica>> compuertas;
+	std::vector<CompuertaLogica*> compuertas;
 	//std::vector<Receptor>& receptores;
 public:
-	Or(std::vector<CompuertaLogica>& compuertas);
+	Or();
 	//Or(std::vector<Boton>& receptores);
-
+	void agregar(CompuertaLogica* compuerta);
 	bool encendida();
 	~Or() = default;
 };

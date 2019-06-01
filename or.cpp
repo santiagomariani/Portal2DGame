@@ -1,14 +1,17 @@
 #include "or.h"
 
-Or::Or(std::vector<CompuertaLogica>& compuertas):
-			compuertas(compuertas){			
+Or::Or(){
+}
+
+void Or::agregar(CompuertaLogica* compuerta){
+	compuertas.push_back(compuerta);
 }
 
 bool Or::encendida(){
 	for (auto it=compuertas.begin(); it!=compuertas.end(); it++){
-		if (!(it->encendida())){
-			return false;
+		if (((*it)->encendida())){
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
