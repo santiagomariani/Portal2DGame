@@ -5,8 +5,9 @@
 class EstadoCerrada : public EstadoCompuerta{
 public:
 	EstadoCerrada();
-	EstadoCompuerta* actualizar(bool activa);
+	EstadoCompuerta* actualizar(bool activa, b2Body* puerta);
 	void empezarContacto(Cuerpo* cuerpo);
+	int getId();
 	~EstadoCerrada();
 };
 

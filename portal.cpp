@@ -77,7 +77,7 @@ void Portal::expulsar(b2Body* objeto, float orientacion_otro){
 	b2Vec2 vel = objeto->GetLinearVelocity();
 	b2Vec2 nueva_vel = b2Mul(rotador, vel);
 	nueva_vel *= 1;
-	b2Vec2 nueva_pos = (cuerpo->GetPosition() + (0.7f * normal));
+	b2Vec2 nueva_pos = (cuerpo->GetPosition() + (1.0f * normal));
 
 	mundo.agregarTransportador(objeto, nueva_pos, nueva_vel);
 }
@@ -112,6 +112,7 @@ Portal::Portal(Portal&& otro):
 void Portal::empezarContacto(Cuerpo* otro){
 	switch (otro->getId()){
 		case(ID_CHELL):
+		case(ID_ROCA):
 			teletransportar(otro->getBody());
 	}
 }

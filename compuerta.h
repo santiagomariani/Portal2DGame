@@ -8,7 +8,6 @@
 #include "estado_compuerta.h"
 
 class Compuerta : public Cuerpo{
-	//std::vector<CompuertaLogica>& compuertas;
 	CompuertaLogica& compuerta_logica;
 	b2Body* cuerpo;
 	b2Body* base;
