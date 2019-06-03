@@ -4,6 +4,7 @@
 
 #include "BolaEnergia.h"
 #include "ids.h"
+#include "chell.h"
 #include <math.h>
 #include <iostream>
 
@@ -32,11 +33,12 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     cuerpo->SetLinearVelocity(vel);
     cuerpo->SetUserData(this);
     mundo.agregarCuerpoAActualizar(this);
+    //ya_choque = false;
 }
 
 void BolaEnergia::actualizar() {
     contador++;
-    if (contador == TIEMPO_VIDA) {
+    if ((contador == TIEMPO_VIDA) && cuerpo) {
         finalizo = true;
         mundo.destruirBody(cuerpo);
     }
@@ -100,6 +102,22 @@ int BolaEnergia::getId() {
 }
 
 void BolaEnergia::empezarContacto(Cuerpo *otro) {
+    /*
+    if (ya_choque) {
+        return;
+    }
+    */
+    if (otro->getId() == ID_CHELL) {
+        //ya_choque = true;
+        ((Chell*)otro)->morir();
+    } else if (otro->getId() == ID_BLOQUE_METAL ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_270) {
+        return;
+    }
+    mundo.agregarCuerpoADestruir(this);
 }
 
 void BolaEnergia::terminarContacto(Cuerpo *otro) {
@@ -107,4 +125,15 @@ void BolaEnergia::terminarContacto(Cuerpo *otro) {
 
 b2Body *BolaEnergia::getBody() {
     return cuerpo;
+}
+
+void BolaEnergia::desactivar(){
+    if (this->cuerpo){
+        mundo.destruirBody(this->cuerpo);
+        this->cuerpo = nullptr;
+    }
+}
+
+void BolaEnergia::agregarCuerpoADestruir() {
+    mundo.agregarCuerpoADestruir(this);
 }

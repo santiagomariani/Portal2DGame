@@ -2,13 +2,21 @@
 // Created by santi on 31/05/19.
 //
 
-#ifndef UNTITLED_EMISORDERECHA_H
-#define UNTITLED_EMISORDERECHA_H
+#include "mundo.h"
+#include "BolaEnergia.h"
+#include "Emisor.h"
+
+#ifndef EMISORDERECHA_H
+#define EMISORDERECHA_H
 
 
-class EmisorDerecha {
-
+class EmisorDerecha : public Emisor {
+public:
+    EmisorDerecha(Mundo &mundo, const b2Vec2 &pos);
+    EmisorDerecha(EmisorDerecha &&otro);
+    EmisorDerecha& operator=(EmisorDerecha &&otro);
+    int getId() override;
 };
 
 
-#endif //UNTITLED_EMISORDERECHA_H
+#endif //EMISORDERECHA_H

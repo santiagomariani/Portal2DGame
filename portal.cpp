@@ -113,6 +113,7 @@ void Portal::empezarContacto(Cuerpo* otro){
 	switch (otro->getId()){
 		case(ID_CHELL):
 		case(ID_ROCA):
+		case(ID_BOLAENERGIA):
 			teletransportar(otro->getBody());
 	}
 }
