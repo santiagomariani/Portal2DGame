@@ -4,6 +4,7 @@
 
 #include "BolaEnergia.h"
 #include "ids.h"
+#include "chell.h"
 #include <math.h>
 #include <iostream>
 
@@ -36,9 +37,9 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
 
 void BolaEnergia::actualizar() {
     contador++;
-    if (contador == TIEMPO_VIDA) {
+    if ((contador == TIEMPO_VIDA) && cuerpo) {
         finalizo = true;
-        mundo.destruirBody(cuerpo);
+        mundo.destruirBody(this->cuerpo);
     }
 }
 
@@ -99,7 +100,18 @@ int BolaEnergia::getId() {
     return ID_BOLAENERGIA;
 }
 
+void BolaEnergia::desactivar(){
+    if (this->cuerpo){
+        mundo.destruirBody(this->cuerpo);
+        this->cuerpo = nullptr;
+    }
+}
+
 void BolaEnergia::empezarContacto(Cuerpo *otro) {
+    if (otro->getId() == ID_CHELL){
+        ((Chell*)otro)->morir();
+        mundo.agregarCuerpoADestruir(this);
+    }
 }
 
 void BolaEnergia::terminarContacto(Cuerpo *otro) {

@@ -1,48 +1,54 @@
 
 #include "bloque_metal_diagonal.h"
+#include "angulo_cero.h"
 #include "ids.h"
 #include <iostream>
 #include "cuerpo.h"
 #include <cmath>
+#define PI 3.14159265
 
 
-
-BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, float angulo): 
+BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo): 
     id(identidad), angulo(angulo),
     Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
 
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_staticBody;
     cuerpo_def.position.Set(pos.x, pos.y);
-    cuerpo_def.angle = angulo;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
-    b2PolygonShape polygonShape;
-    b2Rot rotador(angulo);
-    b2Vec2 vertices[2];
-    vertices[0].Set(0,  0);
-    vertices[1].Set(TAMANIO_BLOQUE/2,  0);
+    /*b2PolygonShape polygonShape;
+    b2Rot rotador(180*angulo/PI);
+    b2Vec2 vertices[3];*/
+    /*vertices[0].Set(-TAMANIO_BLOQUE,  -TAMANIO_BLOQUE);
+    vertices[1].Set(TAMANIO_BLOQUE*2 - TAMANIO_BLOQUE,  -TAMANIO_BLOQUE);
     vertices[1] = b2Mul(rotador, vertices[1]);
-    vertices[2].Set(0, TAMANIO_BLOQUE/2);
-    vertices[2] = b2Mul(rotador, vertices[2]);
-  
-    b2PolygonShape polygonShape;
-    polygonShape.Set(vertices, 2);
+    vertices[2].Set(-TAMANIO_BLOQUE, TAMANIO_BLOQUE*2 -TAMANIO_BLOQUE);
+    vertices[2] = b2Mul(rotador, vertices[2]);*/
+    // Mejor que el bloque reciba un Angulo (la clase abstracta) y le pida los vertices
+    // y ademas me olvido de los numeros
+    //polygonShape.Set(vertices, 3);
 
+    b2PolygonShape polygonShape = angulo.obtenerTriangulo();
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
 
     cuerpo->CreateFixture(&myFixtureDef);
     cuerpo->SetUserData(this);
+
+    this->crearMapaIds();
 }
 
 BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) : 
+            angulo(otro.angulo), 
             Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2){
     if (this == &otro){
         return;
     }
+    std::cout << "232323\n";
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
+    mapa_ids = otro.mapa_ids;
 
     otro.maxWidth = 0;
     otro.maxHeight = 0;
@@ -55,40 +61,34 @@ const b2Vec2& BloqueMetalDiagonal::getPosition(){
     return cuerpo->GetPosition();
 }
 
-BloqueMetalDiagonal::crearMapaIds(){
-    std::map<float, int> mapa;
+void BloqueMetalDiagonal::crearMapaIds(){
+    mapa_ids[0] = ID_BLOQUE_DIAGONAL_0;
+    mapa_ids[90] = ID_BLOQUE_DIAGONAL_90;
+    mapa_ids[180] = ID_BLOQUE_DIAGONAL_180;
+    mapa_ids[270] = ID_BLOQUE_DIAGONAL_270;
 }
 
 int BloqueMetalDiagonal::getId(){
-    if (angulo == 0){
-        return ID_BLOQUE_DIAGONAL_0;
-    }
-    if (angulo == ){
-        return ID_BLOQUE_DIAGONAL_0;
-    }
-    return ID_BLOQUE_METAL_DIAGONAL;
+    //return mapa_ids[angulo];
+    return this->angulo.getId();
 }
 
 void BloqueMetalDiagonal::recibirDisparo(Disparo* disparo) {
     b2Vec2 bloque = this->getPosition();
     b2Vec2 pos = disparo->getPosition();
     pos -= bloque;
-    if (std::abs(pos.x) >= std::abs(pos.y)){
-        pos.y = 0;
-    } else {
-        pos.x = 0;
-    }
-    pos *= TAMANIO_BLOQUE / pos.Length();
-    pos += bloque;
 
-    b2Vec2 normal = pos - bloque;
-    normal.Normalize();
+    b2Vec2 pos_portal = this->angulo.obtenerPosPortal(pos);
+    b2Vec2 normal_portal = this->angulo.obtenerNormalPortal(pos);
+    pos_portal += bloque;
+    //std::cout << pos_portal.x << " " << pos_portal.y << std::endl;
 
-    disparo->crearPortal(pos, normal);
+    disparo->crearPortal(pos_portal, normal_portal);
 }
 
 void BloqueMetalDiagonal::empezarContacto(Cuerpo* otro){
     if (otro->getId() == ID_DISPARO){
         this->recibirDisparo((Disparo*)otro);
+        ((Disparo*)otro)->terminar();
     }
 }

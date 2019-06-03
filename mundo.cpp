@@ -84,6 +84,13 @@ void Mundo::agregarCuerpoAActualizar(Cuerpo* cuerpo){
 
 void Mundo::actualizarCuerpos(){
 
+	actualizando_cuerpos = true;
+
+	for (auto it = cuerpos_actualizar.begin(); it != cuerpos_actualizar.end(); it++){
+		(*it)->actualizar();
+	}
+
+	actualizando_cuerpos = false;
     // Borro cuerpos en cola.
     while (!cola_cuerpos_a_borrar.empty()) {
         Cuerpo *cuerpo = cola_cuerpos_a_borrar.front();
@@ -102,39 +109,4 @@ void Mundo::actualizarCuerpos(){
         cola_cuerpos_a_agregar.pop();
     }
 
-	actualizando_cuerpos = true;
-
-	for (auto it = cuerpos_actualizar.begin(); it != cuerpos_actualizar.end(); it++){
-		(*it)->actualizar();
-	}
-
-	actualizando_cuerpos = false;
 }
-
-/*
-Mundo::Mundo(Mundo &&otro): mundo(otro.mundo) {
-    if (this == &otro){
-        return;
-    }
-    //mundo = std::move(otro.mundo);
-    a_destruir = std::move(a_destruir);
-
-
-
-    //portales_activar = std::move(portales_activar);
-    //cuerpos_desactivar = std::move(cuerpos_desactivar);
-}
-
-Mundo& Mundo::operator=(Mundo &&otro) {
-    if (this == &otro){
-        return *this;
-    }
-    mundo = std::move(otro.mundo);
-    	
-	a_destruir = std::move(a_destruir);
-
-    //portales_activar = std::move(portales_activar);
-    //cuerpos_desactivar = std::move(cuerpos_desactivar);
-    return *this;
-}
-*/

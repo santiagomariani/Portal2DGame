@@ -32,6 +32,7 @@ public:
     int getId();
     b2Body* getBody();
     void empezarContacto(Cuerpo *otro);
+    void desactivar() override;
     void terminarContacto(Cuerpo *otro);
 };
 
