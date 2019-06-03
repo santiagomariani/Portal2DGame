@@ -134,13 +134,6 @@ b2Body *BolaEnergia::getBody() {
     return cuerpo;
 }
 
-void BolaEnergia::desactivar(){
-    if (this->cuerpo){
-        mundo.destruirBody(this->cuerpo);
-        this->cuerpo = nullptr;
-    }
-}
-
 void BolaEnergia::agregarCuerpoADestruir() {
     mundo.agregarCuerpoADestruir(this);
 }

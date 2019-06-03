@@ -32,7 +32,6 @@ public:
     double getAngle();
     int getId();
     b2Body* getBody();
-    void desactivar();
     void agregarCuerpoADestruir();
     void empezarContacto(Cuerpo *otro);
     void desactivar() override;

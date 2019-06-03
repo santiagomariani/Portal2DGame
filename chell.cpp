@@ -8,7 +8,7 @@
 #define TAMANIO_CHELL_Y 0.39583f
 #define RADIO 0.15833f
 #define CAMINAR 4
-#define SALTAR 7
+#define SALTAR 5
 
 Chell::Chell(int identidad, Mundo& mundo) :
         Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
