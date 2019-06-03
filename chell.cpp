@@ -8,7 +8,7 @@
 #define TAMANIO_CHELL_Y 0.39583f
 #define RADIO 0.15833f
 #define CAMINAR 4
-#define SALTAR 5
+#define SALTAR 7
 
 Chell::Chell(int identidad, Mundo& mundo) :
         Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
@@ -29,14 +29,14 @@ void Chell::activar(b2Vec2& pos){
     cuerpo_def.type = b2_dynamicBody;
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo_def.fixedRotation = true;
+    //cuerpo_def.linearDamping = 2.5;
     cuerpo = mundo.agregarBody(cuerpo_def);
-    //cuerpo = world.CreateBody(&cuerpo_def);
 
     b2PolygonShape polygonShape;
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
-    myFixtureDef.density = 7; //7
-    myFixtureDef.friction = 0; //0
+    myFixtureDef.density = 7; 
+    myFixtureDef.friction = 0; 
     myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
@@ -86,7 +86,10 @@ Chell::Chell(Chell&& otro) :
 
 void Chell::mover(EstadoTeclado& t){
     b2Vec2 vel = cuerpo->GetLinearVelocity();
+    //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
     vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
+        //cuerpo->SetLinearVelocity(vel);
+    //}
     if (abs(vel.y) < 0.001) {
         vel.y = SALTAR * t.presionada(SDLK_UP);
         if (roca && joint_roca) {
@@ -94,8 +97,9 @@ void Chell::mover(EstadoTeclado& t){
             vel_roca.y = vel.y;
             roca->getBody()->SetLinearVelocity(vel_roca);
         }
+        //cuerpo->SetLinearVelocity(vel);
     }
-    cuerpo->SetLinearVelocity(vel);
+    cuerpo->SetLinearVelocity(vel); // CAMBIAR
 }
 
 const b2Vec2& Chell::getPosition(){
@@ -145,6 +149,8 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
 }
 
 void Chell::empezarContacto(Cuerpo* otro){
+    if (otro->getId() == ID_BLOQUE_METAL){
+    }
     if ((otro->getId() == ID_ROCA) && (roca == nullptr)) {
         roca = (Roca*)otro;
     }

@@ -3,15 +3,20 @@
 #define BLOQUEMETALDIAGONAL_H
 
 #include "Bloque.h"
+#include "angulo.h"
 #include "Box2D/Box2D.h"
 
 class BloqueMetalDiagonal : public Bloque{
     b2Body* cuerpo;
     int id;
-    float angulo;
+    Angulo& angulo;
+    std::map<int, int> mapa_ids;
+    void crearMapaIds();
+
 public:
-    BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos);
-    BloqueMetalDiagonal(BloqueMetaDiagonall&& otro);
+	// El angulo debe ser: 0, 90, 180 o 270
+    BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo);
+    BloqueMetalDiagonal(BloqueMetalDiagonal&& otro);
     void recibirDisparo(Disparo* disparo);
     int getId();
     const b2Vec2& getPosition();

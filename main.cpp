@@ -4,6 +4,7 @@
 #include "disparo.h"
 #include "BloqueRoca.h"
 #include "BloqueMetal.h"
+#include "bloque_metal_diagonal.h"
 #include "chell.h"
 #include "mundo.h"
 #include "estado_teclado.h"
@@ -25,6 +26,10 @@
 #include "Roca.h"
 #include "BolaEnergia.h"
 #include "EmisorArriba.h"
+#include "angulo_cero.h"
+#include "angulo_noventa.h"
+#include "angulo_ciento_ochenta.h"
+#include "angulo_dos_setenta.h"
 
 #include <thread>
 #include <pthread.h>
@@ -63,8 +68,9 @@ int main() {
 
 	Personajes personajes(world);
 
-	b2Vec2 pos_piedra(-6,-2);
-	BloqueRoca rocaPiedra(ID_BLOQUE_ROCA, world, pos_piedra);
+	b2Vec2 pos_diago(-12,0);
+	AnguloDosSetenta angulo;
+	BloqueMetalDiagonal diago(ID_BLOQUE_DIAGONAL_180, world, pos_diago, angulo);
 
 	b2Vec2 pos_roca(-8, 0);
 	Roca roca(world, pos_roca);
@@ -171,6 +177,20 @@ int main() {
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
+	std::string diago_path = "assets/block-diago.png";
+	SdlTexture diago_texture(diago_path, window);
+	Sprite bloqueMetalDiagoSprite(178, 177, 0, 2, 1, diago_texture);
+	std::string diago90_path = "assets/diago-90.png";
+	SdlTexture diago90_texture(diago90_path, window);
+	Sprite bloqueMetalDiago90Sprite(177, 178, 2, 0, 1, diago90_texture);
+	std::string diago180_path = "assets/diago-180.png";
+	SdlTexture diago180_texture(diago180_path, window);
+	Sprite bloqueMetalDiago180Sprite(177, 178, 2, 0, 1, diago180_texture);
+	std::string diago270_path = "assets/diago-270.png";
+	SdlTexture diago270_texture(diago270_path, window);
+	Sprite bloqueMetalDiago270Sprite(177, 178, 2, 0, 1, diago270_texture);
+
+
 	// Boton apagado y prendidos
 	std::string botonPath = "assets/miscellaneous.png";
 	SdlTexture botonTexture(botonPath, window);
@@ -249,6 +269,10 @@ int main() {
 	texturas[ID_BLOQUE_ROCA] = &bloqueSprite;
 	texturas[ID_DISPARO] = &disparoSprite;
 	texturas[ID_BLOQUE_METAL] = &bloqueMetalSprite;
+	texturas[ID_BLOQUE_DIAGONAL_0] = &bloqueMetalDiagoSprite;
+	texturas[ID_BLOQUE_DIAGONAL_90] = &bloqueMetalDiago90Sprite;
+	texturas[ID_BLOQUE_DIAGONAL_180] = &bloqueMetalDiago180Sprite;
+	texturas[ID_BLOQUE_DIAGONAL_270] = &bloqueMetalDiago270Sprite;
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;

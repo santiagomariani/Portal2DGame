@@ -40,7 +40,7 @@ void BolaEnergia::actualizar() {
     contador++;
     if ((contador == TIEMPO_VIDA) && cuerpo) {
         finalizo = true;
-        mundo.destruirBody(cuerpo);
+        mundo.destruirBody(this->cuerpo);
     }
 }
 
@@ -99,6 +99,13 @@ double BolaEnergia::getAngle() {
 
 int BolaEnergia::getId() {
     return ID_BOLAENERGIA;
+}
+
+void BolaEnergia::desactivar(){
+    if (this->cuerpo){
+        mundo.destruirBody(this->cuerpo);
+        this->cuerpo = nullptr;
+    }
 }
 
 void BolaEnergia::empezarContacto(Cuerpo *otro) {

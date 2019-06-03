@@ -110,31 +110,3 @@ void Mundo::actualizarCuerpos(){
 		cola_cuerpos_a_agregar.pop();
 	}
 }
-
-/*
-Mundo::Mundo(Mundo &&otro): mundo(otro.mundo) {
-    if (this == &otro){
-        return;
-    }
-    //mundo = std::move(otro.mundo);
-    a_destruir = std::move(a_destruir);
-
-
-
-    //portales_activar = std::move(portales_activar);
-    //cuerpos_desactivar = std::move(cuerpos_desactivar);
-}
-
-Mundo& Mundo::operator=(Mundo &&otro) {
-    if (this == &otro){
-        return *this;
-    }
-    mundo = std::move(otro.mundo);
-    	
-	a_destruir = std::move(a_destruir);
-
-    //portales_activar = std::move(portales_activar);
-    //cuerpos_desactivar = std::move(cuerpos_desactivar);
-    return *this;
-}
-*/
