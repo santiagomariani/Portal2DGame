@@ -2,13 +2,21 @@
 // Created by santi on 31/05/19.
 //
 
-#ifndef UNTITLED_EMISORABAJO_H
-#define UNTITLED_EMISORABAJO_H
+#include "mundo.h"
+#include "BolaEnergia.h"
+#include "Emisor.h"
+
+#ifndef EMISORABAJO_H
+#define EMISORABAJO_H
 
 
-class EmisorAbajo {
-
+class EmisorAbajo : public Emisor {
+public:
+    EmisorAbajo(Mundo &mundo, const b2Vec2 &pos);
+    EmisorAbajo(EmisorAbajo &&otro);
+    EmisorAbajo& operator=(EmisorAbajo &&otro);
+    int getId() override;
 };
 
 
-#endif //UNTITLED_EMISORABAJO_H
+#endif //EMISORABAJO_H

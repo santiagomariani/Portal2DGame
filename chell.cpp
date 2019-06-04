@@ -4,11 +4,11 @@
 #include "Box2D/Box2D.h"
 #include "ids.h"
 
-#define TAMANIO_CHELL_X 0.40f
-#define TAMANIO_CHELL_Y 0.625f
-#define RADIO 0.25f
+#define TAMANIO_CHELL_X 0.2f
+#define TAMANIO_CHELL_Y 0.39583f
+#define RADIO 0.15833f
 #define CAMINAR 4
-#define SALTAR 7
+#define SALTAR 5
 
 Chell::Chell(int identidad, Mundo& mundo) :
         Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),

@@ -33,6 +33,7 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     cuerpo->SetLinearVelocity(vel);
     cuerpo->SetUserData(this);
     mundo.agregarCuerpoAActualizar(this);
+    //ya_choque = false;
 }
 
 void BolaEnergia::actualizar() {
@@ -108,10 +109,22 @@ void BolaEnergia::desactivar(){
 }
 
 void BolaEnergia::empezarContacto(Cuerpo *otro) {
-    if (otro->getId() == ID_CHELL){
-        ((Chell*)otro)->morir();
-        mundo.agregarCuerpoADestruir(this);
+    /*
+    if (ya_choque) {
+        return;
     }
+    */
+    if (otro->getId() == ID_CHELL) {
+        //ya_choque = true;
+        ((Chell*)otro)->morir();
+    } else if (otro->getId() == ID_BLOQUE_METAL ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
+    otro->getId() == ID_BLOQUE_DIAGONAL_270) {
+        return;
+    }
+    mundo.agregarCuerpoADestruir(this);
 }
 
 void BolaEnergia::terminarContacto(Cuerpo *otro) {
@@ -119,4 +132,8 @@ void BolaEnergia::terminarContacto(Cuerpo *otro) {
 
 b2Body *BolaEnergia::getBody() {
     return cuerpo;
+}
+
+void BolaEnergia::agregarCuerpoADestruir() {
+    mundo.agregarCuerpoADestruir(this);
 }
