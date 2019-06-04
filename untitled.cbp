@@ -102,6 +102,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Bloque.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -140,6 +146,12 @@
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/CoordConverter.h">
 			<Option target="Box2D"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Emisor.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Emisor.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorAbajo.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -162,6 +174,36 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorIzquierda.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Receptor.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Receptor.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorAbajo.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorAbajo.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorArriba.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorArriba.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorDerecha.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorDerecha.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorIzquierda.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ReceptorIzquierda.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Renderable.cpp">
@@ -194,6 +236,18 @@
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlWindow.h">
 			<Option target="untitled"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sensor.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sensor.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SensorReceptor.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SensorReceptor.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sprite.cpp">
 			<Option target="untitled"/>
 		</Unit>
@@ -222,6 +276,39 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/and.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_cero.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_cero.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_ciento_ochenta.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_ciento_ochenta.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_dos_setenta.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_dos_setenta.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_noventa.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo_noventa.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/bloque_metal_diagonal.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/bloque_metal_diagonal.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/boton.cpp">
@@ -258,6 +345,12 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/disparo.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/editor.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/editor.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_abierta.cpp">

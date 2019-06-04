@@ -4,6 +4,7 @@
 #include "disparo.h"
 #include "BloqueRoca.h"
 #include "BloqueMetal.h"
+#include "bloque_metal_diagonal.h"
 #include "chell.h"
 #include "mundo.h"
 #include "estado_teclado.h"
@@ -25,6 +26,10 @@
 #include "Roca.h"
 #include "BolaEnergia.h"
 #include "EmisorArriba.h"
+#include "angulo_cero.h"
+#include "angulo_noventa.h"
+#include "angulo_ciento_ochenta.h"
+#include "angulo_dos_setenta.h"
 
 #include <thread>
 #include <pthread.h>
@@ -40,6 +45,14 @@
 
 
 #include "editor.h"
+#include "EmisorAbajo.h"
+#include "EmisorDerecha.h"
+#include "EmisorIzquierda.h"
+#include "ReceptorArriba.h"
+#include "ReceptorAbajo.h"
+#include "ReceptorDerecha.h"
+#include "ReceptorIzquierda.h"
+#include "Acido.h"
 
 
 int main() {
@@ -56,8 +69,9 @@ int main() {
 
 	Personajes personajes(world);
 
-	b2Vec2 pos_piedra(-6,-2);
-	BloqueRoca rocaPiedra(ID_BLOQUE_ROCA, world, pos_piedra);
+	b2Vec2 pos_diago(-12,0);
+	AnguloDosSetenta angulo;
+	BloqueMetalDiagonal diago(ID_BLOQUE_DIAGONAL_180, world, pos_diago, angulo);
 
 	b2Vec2 pos_roca(-8, 0);
 	Roca roca(world, pos_roca);
@@ -85,6 +99,15 @@ int main() {
 	pos_bloque.Set(2, 2);
 	BloqueMetal bloque_en_el_aire(ID_BLOQUE_METAL, world, pos_bloque);
 
+	// Receptores
+	b2Vec2 pos_receptor(-17, -2);
+	ReceptorArriba receptor_arriba(world, pos_receptor);
+	pos_receptor.Set(-16, 2);
+	ReceptorAbajo receptor_abajo(world, pos_receptor);
+    pos_receptor.Set(-15, 1);
+    ReceptorDerecha receptor_derecha(world, pos_receptor);
+    pos_receptor.Set(-18, 1);
+    ReceptorIzquierda receptor_izquierda(world, pos_receptor);
 
 	b2Vec2 pos_boton(0, -2.35);
 	Boton b(pos_boton, world);
@@ -112,9 +135,20 @@ int main() {
 
 	int id = personajes.agregar_chell();
 
-	// Emisor
-	b2Vec2 pos_emisor(-2, -2);
+	// Emisores
+	b2Vec2 pos_emisor(-16, -2);
 	EmisorArriba emisor_arriba(world, pos_emisor);
+	pos_emisor.Set(-17, 2);
+	EmisorAbajo emisor_abajo(world, pos_emisor);
+	pos_emisor.Set(-22, 1);
+	EmisorDerecha emisor_derecha(world, pos_emisor);
+	pos_emisor.Set(-11, 1);
+	EmisorIzquierda emisor_izquierda(world, pos_emisor);
+
+	// Acido
+	b2Vec2 pos_acido(-24, -2.5 + 0.06);
+	Acido acido(world, pos_acido);
+
 	// b2Vec2 bola_energia_pos(-2, -1);
 	// b2Vec2 bola_energia_dir(1, 0);
 	// BolaEnergia bola_energia(world, bola_energia_pos, bola_energia_dir);
@@ -143,16 +177,30 @@ int main() {
 	Sprite disparoSprite(111, 59, 1, 1920, 3, fxTexture);
 
 	// Bloques roca y metal
-	std::string blocksPath = "assets/blocks.png";
+	std::string blocksPath = "assets/blocks1.png";
 	SdlTexture blocksTexture(blocksPath, window);
 	Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
 	Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
 
+	std::string diago_path = "assets/block-diago.png";
+	SdlTexture diago_texture(diago_path, window);
+	Sprite bloqueMetalDiagoSprite(178, 177, 0, 2, 1, diago_texture);
+	std::string diago90_path = "assets/diago-90.png";
+	SdlTexture diago90_texture(diago90_path, window);
+	Sprite bloqueMetalDiago90Sprite(177, 178, 2, 0, 1, diago90_texture);
+	std::string diago180_path = "assets/diago-180.png";
+	SdlTexture diago180_texture(diago180_path, window);
+	Sprite bloqueMetalDiago180Sprite(177, 178, 2, 0, 1, diago180_texture);
+	std::string diago270_path = "assets/diago-270.png";
+	SdlTexture diago270_texture(diago270_path, window);
+	Sprite bloqueMetalDiago270Sprite(177, 178, 2, 0, 1, diago270_texture);
+
+
 	// Boton apagado y prendidos
 	std::string botonPath = "assets/miscellaneous.png";
-	SdlTexture botonTexture(botonPath, window);
-	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
-	Sprite botonPrendidoSprite(175, 74, 1, 192, 1, botonTexture);
+	SdlTexture miscTexture(botonPath, window);
+	Sprite botonSprite(175, 55, 1, 116, 1, miscTexture);
+	Sprite botonPrendidoSprite(175, 74, 1, 192, 1, miscTexture);
 
 	// Compuerta cerrada y abierta
 	std::string compuertaPath = "assets/gate.png";
@@ -193,6 +241,35 @@ int main() {
 	// EmisorIzquierda
 	Sprite emisor_izquierda_sprite(193, 193, 1, 814, 1, blocksTexture);
 
+	// Receptores
+
+	// ReceptorArriba
+	// 	Activado
+	Sprite receptor_arriba_activado_sprite(192, 192, 466, 1243, 1, blocksTexture);
+	// Desactivado
+	Sprite receptor_arriba_desactivado_sprite(192, 192, 233, 1243, 1, blocksTexture);
+
+	// ReceptorDerecha
+	// 	Activado
+	Sprite receptor_derecha_activado_sprite(192, 192, 465, 1029, 1, blocksTexture);
+	// Desactivado
+	Sprite receptor_derecha_desactivado_sprite(192, 192, 235, 1029, 1, blocksTexture);
+
+	// ReceptorIzquierda
+	// 	Activado
+	Sprite receptor_izquierda_activado_sprite(192, 192, 464, 814, 1, blocksTexture);
+	// Desactivado
+	Sprite receptor_izquierda_desactivado_sprite(192, 192, 235, 814, 1, blocksTexture);
+
+	// ReceptorAbajo
+	// 	Activado
+	Sprite receptor_abajo_activado_sprite(192, 192, 468, 1457, 1, blocksTexture);
+	// Desactivado
+	Sprite receptor_abajo_desactivado_sprite(192, 192, 232, 1457, 1, blocksTexture);
+
+	// Acido
+	Sprite acido_sprite(300, 61, 1, 1545, 8, miscTexture);
+
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
@@ -200,6 +277,10 @@ int main() {
 	texturas[ID_BLOQUE_ROCA] = &bloqueSprite;
 	texturas[ID_DISPARO] = &disparoSprite;
 	texturas[ID_BLOQUE_METAL] = &bloqueMetalSprite;
+	texturas[ID_BLOQUE_DIAGONAL_0] = &bloqueMetalDiagoSprite;
+	texturas[ID_BLOQUE_DIAGONAL_90] = &bloqueMetalDiago90Sprite;
+	texturas[ID_BLOQUE_DIAGONAL_180] = &bloqueMetalDiago180Sprite;
+	texturas[ID_BLOQUE_DIAGONAL_270] = &bloqueMetalDiago270Sprite;
 	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
 	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
 	texturas[ID_BOTON_APAGADO] = &botonSprite;
@@ -213,6 +294,15 @@ int main() {
 	texturas[ID_EMISORABAJO] = &emisor_abajo_sprite;
 	texturas[ID_EMISORIZQUIERDA] = &emisor_izquierda_sprite;
 	texturas[ID_BOLAENERGIA] = &bola_energia_sprite;
+	texturas[ID_RECEPTORARRIBA_ACTIVADO] = &receptor_arriba_activado_sprite;
+	texturas[ID_RECEPTORARRIBA_DESACTIVADO] = &receptor_arriba_desactivado_sprite;
+	texturas[ID_RECEPTORDERECHA_ACTIVADO] = &receptor_derecha_activado_sprite;
+	texturas[ID_RECEPTORDERECHA_DESACTIVADO] = &receptor_derecha_desactivado_sprite;
+	texturas[ID_RECEPTORABAJO_ACTIVADO] = &receptor_abajo_activado_sprite;
+	texturas[ID_RECEPTORABAJO_DESACTIVADO] = &receptor_abajo_desactivado_sprite;
+	texturas[ID_RECEPTORIZQUIERDA_ACTIVADO] = &receptor_izquierda_activado_sprite;
+	texturas[ID_RECEPTORIZQUIERDA_DESACTIVADO] = &receptor_izquierda_desactivado_sprite;
+    texturas[ID_ACIDO] = &acido_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================

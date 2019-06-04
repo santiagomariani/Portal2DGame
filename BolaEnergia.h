@@ -10,15 +10,16 @@
 #include "cuerpo.h"
 #include "mundo.h"
 
-#define RADIO_BOLAENERGIA 0.50f
+#define RADIO_BOLAENERGIA 0.40f
 #define DENSIDAD_BOLAENERGIA 1
-#define CTE_VELOCIDAD_BOLAENERGIA 1
+#define CTE_VELOCIDAD_BOLAENERGIA 0.3
 
 class BolaEnergia : public Cuerpo {
 private:
+    // bool ya_choque;
     b2Body *cuerpo;
     Mundo& mundo;
-    const unsigned int TIEMPO_VIDA = 150; // aprox. 13 segs.
+    const unsigned int TIEMPO_VIDA = 500;
     unsigned int contador;
     bool finalizo;
 public:
@@ -31,7 +32,9 @@ public:
     double getAngle();
     int getId();
     b2Body* getBody();
+    void agregarCuerpoADestruir();
     void empezarContacto(Cuerpo *otro);
+    void desactivar() override;
     void terminarContacto(Cuerpo *otro);
 };
 
