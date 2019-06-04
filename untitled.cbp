@@ -102,6 +102,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Bloque.cpp">
 			<Option target="Box2D"/>
 		</Unit>

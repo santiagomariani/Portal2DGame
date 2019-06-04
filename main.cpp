@@ -52,6 +52,7 @@
 #include "ReceptorAbajo.h"
 #include "ReceptorDerecha.h"
 #include "ReceptorIzquierda.h"
+#include "Acido.h"
 
 
 int main() {
@@ -144,6 +145,10 @@ int main() {
 	pos_emisor.Set(-11, 1);
 	EmisorIzquierda emisor_izquierda(world, pos_emisor);
 
+	// Acido
+	b2Vec2 pos_acido(-24, -2.5 + 0.06);
+	Acido acido(world, pos_acido);
+
 	// b2Vec2 bola_energia_pos(-2, -1);
 	// b2Vec2 bola_energia_dir(1, 0);
 	// BolaEnergia bola_energia(world, bola_energia_pos, bola_energia_dir);
@@ -193,9 +198,9 @@ int main() {
 
 	// Boton apagado y prendidos
 	std::string botonPath = "assets/miscellaneous.png";
-	SdlTexture botonTexture(botonPath, window);
-	Sprite botonSprite(175, 55, 1, 116, 1, botonTexture);
-	Sprite botonPrendidoSprite(175, 74, 1, 192, 1, botonTexture);
+	SdlTexture miscTexture(botonPath, window);
+	Sprite botonSprite(175, 55, 1, 116, 1, miscTexture);
+	Sprite botonPrendidoSprite(175, 74, 1, 192, 1, miscTexture);
 
 	// Compuerta cerrada y abierta
 	std::string compuertaPath = "assets/gate.png";
@@ -262,6 +267,9 @@ int main() {
 	// Desactivado
 	Sprite receptor_abajo_desactivado_sprite(192, 192, 232, 1457, 1, blocksTexture);
 
+	// Acido
+	Sprite acido_sprite(300, 61, 1, 1545, 8, miscTexture);
+
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
@@ -294,6 +302,7 @@ int main() {
 	texturas[ID_RECEPTORABAJO_DESACTIVADO] = &receptor_abajo_desactivado_sprite;
 	texturas[ID_RECEPTORIZQUIERDA_ACTIVADO] = &receptor_izquierda_activado_sprite;
 	texturas[ID_RECEPTORIZQUIERDA_DESACTIVADO] = &receptor_izquierda_desactivado_sprite;
+    texturas[ID_ACIDO] = &acido_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
