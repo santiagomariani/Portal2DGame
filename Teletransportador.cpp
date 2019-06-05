@@ -12,6 +12,7 @@ Teletransportador::Teletransportador(b2Body* cuerpo,
 void Teletransportador::activar(){
 	cuerpo->SetTransform(nueva_pos, angulo);
 	cuerpo->SetLinearVelocity(velocidad);
+	//cuerpo->ApplyForceToCenter(velocidad, true);
 	//cuerpo->ApplyLinearImpulseToCenter(velocidad, true);
 }
 

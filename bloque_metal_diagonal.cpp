@@ -5,12 +5,14 @@
 #include <iostream>
 #include "cuerpo.h"
 #include <cmath>
+#include "config.h"
+
 #define PI 3.14159265
 
 
 BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo): 
     id(identidad), angulo(angulo),
-    Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
+    Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_staticBody;
@@ -20,10 +22,10 @@ BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Ve
     /*b2PolygonShape polygonShape;
     b2Rot rotador(180*angulo/PI);
     b2Vec2 vertices[3];*/
-    /*vertices[0].Set(-TAMANIO_BLOQUE,  -TAMANIO_BLOQUE);
-    vertices[1].Set(TAMANIO_BLOQUE*2 - TAMANIO_BLOQUE,  -TAMANIO_BLOQUE);
+    /*vertices[0].Set(-config::tam_bloque,  -config::tam_bloque);
+    vertices[1].Set(config::tam_bloque*2 - config::tam_bloque,  -config::tam_bloque);
     vertices[1] = b2Mul(rotador, vertices[1]);
-    vertices[2].Set(-TAMANIO_BLOQUE, TAMANIO_BLOQUE*2 -TAMANIO_BLOQUE);
+    vertices[2].Set(-config::tam_bloque, config::tam_bloque*2 -config::tam_bloque);
     vertices[2] = b2Mul(rotador, vertices[2]);*/
     // Mejor que el bloque reciba un Angulo (la clase abstracta) y le pida los vertices
     // y ademas me olvido de los numeros
@@ -41,7 +43,7 @@ BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Ve
 
 BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) : 
             angulo(otro.angulo), 
-            Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2){
+            Bloque(config::tam_bloque * 2, config::tam_bloque * 2){
     if (this == &otro){
         return;
     }

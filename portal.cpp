@@ -4,14 +4,12 @@
 #include "Teletransportador.h"
 #include <math.h>
 #include "Box2D/Box2D.h"
-#include <iostream>
-#define TAMANIO_PORTAL_X 0.04
-#define TAMANIO_PORTAL_Y 0.45
+#include "config.h"
 
 #define PI 3.14159265
 
 Portal::Portal(int identidad, Mundo& mundo) : 
-        Cuerpo(TAMANIO_PORTAL_X*2, TAMANIO_PORTAL_Y*2),
+        Cuerpo(config::tam_portal_x*2, config::tam_portal_y*2),
         id(identidad), mundo(mundo), pos(0, 0), normal(0, 0){
     orientacion = 0.0f;
     hermano = nullptr;
@@ -39,7 +37,7 @@ void Portal::activar(){
     myFixtureDef.shape = &polygonShape;
 
     b2Vec2 centro(0,0);
-    polygonShape.SetAsBox(TAMANIO_PORTAL_X, TAMANIO_PORTAL_Y, centro, orientacion);
+    polygonShape.SetAsBox(config::tam_portal_x, config::tam_portal_y, centro, orientacion);
     cuerpo->CreateFixture(&myFixtureDef);
     cuerpo->SetUserData(this);
 }
@@ -95,7 +93,7 @@ void Portal::establecer(b2Vec2& posicion, b2Vec2& normal_entrada) {
 }
 
 Portal::Portal(Portal&& otro): 
-        Cuerpo(TAMANIO_PORTAL_Y*2, TAMANIO_PORTAL_Y*2),
+        Cuerpo(config::tam_portal_y*2, config::tam_portal_y*2),
         mundo(otro.mundo){
     pos = otro.pos;
     normal = otro.normal;

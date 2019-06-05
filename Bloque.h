@@ -6,9 +6,6 @@
 #include "cuerpo.h"
 #include "disparo.h"
 
-#define TAMANIO_BLOQUE 0.5f
-
-
 class Bloque : public Cuerpo{
 protected:
     float maxWidth;
