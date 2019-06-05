@@ -3,7 +3,7 @@
 
 
 Botonera::Botonera(std::map<int, Imagen*>& imagenes, Cursor& cursor,
-				   Imagen* fondo, int ancho_v, int alto_v, int celda) :
+				   Imagen* fondo, int ancho_v, int alto_v) :
 				   fondo(fondo), ancho_v(ancho_v), alto_v(alto_v){
 
 	int alto_panel = alto_v;
@@ -13,8 +13,8 @@ Botonera::Botonera(std::map<int, Imagen*>& imagenes, Cursor& cursor,
 	division = pos_panel_x;
 	destino_panel = {pos_panel_x, pos_panel_y, ancho_panel, alto_panel};
 
-	botones.emplace_back(cursor, ID_BLOQUE_ROCA, celda, celda, imagenes[ID_BLOQUE_ROCA]);
-	botones.emplace_back(cursor, ID_BLOQUE_METAL, celda, celda, imagenes[ID_BLOQUE_METAL]);
+	botones.emplace_back(cursor, ID_BLOQUE_ROCA, 1, 1, imagenes[ID_BLOQUE_ROCA]);
+	botones.emplace_back(cursor, ID_BLOQUE_METAL, 1, 1, imagenes[ID_BLOQUE_METAL]);
 
 	int separacion = ancho_panel / 4;
 	int medida_boton = ancho_panel / 2;

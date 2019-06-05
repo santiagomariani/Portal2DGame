@@ -1,6 +1,7 @@
 #include "mapa_editor.h"
 #include <SDL2/SDL.h>
-
+#include "yaml-cpp/yaml.h"
+#include <fstream>
 #include <iostream>
 
 bool detectar_colision(SDL_Rect& A, SDL_Rect& B){
@@ -27,7 +28,7 @@ void MapaEditor::agregar(int id, int x, int y, int ancho, int alto){
 	int j = convertirPosicion(x);
 	int k = convertirPosicion(y);
 	mapa[j][k].id = id;
-	mapa[j][k].destino = {j, k, ancho, alto};
+	mapa[j][k].destino = {j, k, ancho * celda, alto * celda};
 }
 
 void MapaEditor::quitar(int x, int y){
@@ -77,4 +78,22 @@ void MapaEditor::recibirEvento(SDL_KeyboardEvent& evento){
 			camara.x -= 10;
 			break;
 	}
+}
+
+void MapaEditor::guardar(std::string nombre){
+	YAML::Emitter salida;
+	/*salida << YAML::BeginMap;
+	salida << YAML::Key << "Bloques:";
+		salida << YAML::Value << YAML::BeginSeq;
+			salida << YAML::BeginMap;
+				salida << YAML::Key << "Pos";
+					salida << YAML::Value << YAML::BeginSeq << 10 << 20 << YAML::EndSeq;
+				salida << YAML::Key << "Id";
+					salida << YAML::Value << 1;
+			salida << YAML::EndMap;
+		salida << YAML::EndSeq;
+	salida << YAML::EndMap;*/
+
+	//std::ofstream archivo(nombre);
+	std::cout << salida.c_str();
 }

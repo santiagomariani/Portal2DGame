@@ -17,7 +17,7 @@ class Botonera{
 	int division;
 public:
 	Botonera(std::map<int, Imagen*>& imagenes, Cursor& cursor, Imagen* fondo,
-			 int ancho_v, int alto_v, int celda);
+			 int ancho_v, int alto_v);
 	void render();
 	bool colisiona(int x, int y);
 	void recibirEvento(SDL_MouseButtonEvent& evento);

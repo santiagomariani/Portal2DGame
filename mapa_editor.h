@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include "imagen.h"
+#include <string>
 
 struct ParIdRect{
 	int id;
@@ -24,6 +25,7 @@ public:
 	void quitar(int x, int y);
 	void render();
 	void recibirEvento(SDL_KeyboardEvent& evento);
+	void guardar(std::string nombre);
 };
 
 #endif //MAPA_EDITOR

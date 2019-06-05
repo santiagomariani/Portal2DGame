@@ -29,7 +29,7 @@ void Editor::operator()(){
 	const int TICKS_PER_FRAME = 1000/FPS;
 	
 	SdlWindow ventana(ancho_pantalla, alto_pantalla);
-	/*
+	
 	//=Imagenes de Bloques=
 
 	std::string ruta_bloques = "assets/blocks.png";
@@ -47,19 +47,19 @@ void Editor::operator()(){
 	SdlTexture textura_panel(ruta_panel, ventana);
 	Imagen panel(0, 0, 400, 640, &textura_panel);
 
-	Cursor cursor(ID_BLOQUE_ROCA, CELDA, CELDA);
+	Cursor cursor(ID_BLOQUE_ROCA, 1, 1);
 	SDL_Rect actual_espacio = {0, 0, CELDA + SEP, CELDA + SEP};
 	SDL_Rect actual = {SEP / 2, SEP / 2, CELDA, CELDA};
 
 	//=Botonera=
-	Botonera botonera(imagenes, cursor, &panel, ancho_pantalla, alto_pantalla, CELDA);
+	Botonera botonera(imagenes, cursor, &panel, ancho_pantalla, alto_pantalla);
 	
 	//=Mapa=
 	MapaEditor mapa(imagenes, ancho_pantalla, alto_pantalla, CELDA);
-*/
+
 	Timer capTimer;
 	SDL_Event event;
-	bool corriendo = true;/*
+	bool corriendo = true;
 	while (corriendo){
 
 		ventana.fill(0x3F, 0x70, 0x4D, 0x00);
@@ -114,7 +114,7 @@ void Editor::operator()(){
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
-*/
+
 	//=Fondo=
 	std::string ruta_fondo = "assets/inicio5.png";
 	SdlTexture textura_fondo(ruta_fondo, ventana);
