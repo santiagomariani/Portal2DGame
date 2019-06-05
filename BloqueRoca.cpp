@@ -2,9 +2,10 @@
 #include "BloqueRoca.h"
 #include "ids.h"
 #include "Box2D/Box2D.h"
+#include "config.h"
 
 BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) : id(identidad),
-	Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
+	Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);
@@ -14,11 +15,11 @@ BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) : id(iden
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
 
-	polygonShape.SetAsBox(TAMANIO_BLOQUE, TAMANIO_BLOQUE);
+	polygonShape.SetAsBox(config::tam_bloque, config::tam_bloque);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
+BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 	if (this == &otro){
 		return;
 	}

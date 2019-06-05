@@ -102,25 +102,26 @@ int main() {
 	// Receptores
 	b2Vec2 pos_receptor(-17, -2);
 	ReceptorArriba receptor_arriba(world, pos_receptor);
-	pos_receptor.Set(-16, 2);
+	/*pos_receptor.Set(-16, 2);
 	ReceptorAbajo receptor_abajo(world, pos_receptor);
     pos_receptor.Set(-15, 1);
     ReceptorDerecha receptor_derecha(world, pos_receptor);
     pos_receptor.Set(-18, 1);
-    ReceptorIzquierda receptor_izquierda(world, pos_receptor);
+    ReceptorIzquierda receptor_izquierda(world, pos_receptor);*/
 
 	b2Vec2 pos_boton(0, -2.35);
 	Boton b(pos_boton, world);
-	b2Vec2 pos_boton2(-4, -2.35);
-	Boton b2(pos_boton2, world);
+	//b2Vec2 pos_boton2(-4, -2.35);
+	//Boton b2(pos_boton2, world);
 
 	EstadoLogico* estado_boton = new EstadoLogico(b); //usar unique pointer?
-	EstadoLogico* estado_boton2 = new EstadoLogico(b2);
+	//EstadoLogico* estado_boton2 = new EstadoLogico(b2);
+	EstadoLogico* estado_receptor = new EstadoLogico(receptor_arriba);
 
 	// con botones OR:
 	/*Or compuerta_or;
 	compuerta_or.agregar(estado_boton);
-	compuerta_or.agregar(estado_boton2);
+	compuerta_or.agregar(estado_receptor);
 
 	b2Vec2 pos_compuerta(-1, -2);
 	Compuerta comp(pos_compuerta, world, compuerta_or);*/
@@ -128,7 +129,7 @@ int main() {
 	// con botones AND:
 	And compuerta_and;
 	compuerta_and.agregar(estado_boton);
-	compuerta_and.agregar(estado_boton2);
+	compuerta_and.agregar(estado_receptor);
 
 	b2Vec2 pos_compuerta(-1, -1.5);
 	Compuerta comp(pos_compuerta, world, compuerta_and);

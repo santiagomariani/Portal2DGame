@@ -24,7 +24,7 @@ public:
     void terminarContacto(Cuerpo *otro) override;
     b2Body* getBody() override;
     void activar();
-    bool estaActivado();
+    bool estaActivado() override;
 };
 
 

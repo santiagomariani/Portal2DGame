@@ -4,9 +4,10 @@
 
 #include "Acido.h"
 #include "ids.h"
+#include "config.h"
 #include "chell.h"
 
-Acido::Acido(Mundo &mundo, b2Vec2 &pos) : Cuerpo(TAMANIO_ACIDO_X * 2, TAMANIO_ACIDO_Y * 2){
+Acido::Acido(Mundo &mundo, b2Vec2 &pos) : Cuerpo(config::tam_acido_x * 2, config::tam_acido_y * 2){
     b2BodyDef body_def;
     body_def.type = b2_staticBody;
     body_def.position.Set(pos.x, pos.y);
@@ -15,7 +16,7 @@ Acido::Acido(Mundo &mundo, b2Vec2 &pos) : Cuerpo(TAMANIO_ACIDO_X * 2, TAMANIO_AC
     b2FixtureDef fixture_def;
     fixture_def.isSensor = true;
     fixture_def.shape = &polygon_shape;
-    polygon_shape.SetAsBox(TAMANIO_ACIDO_X, TAMANIO_ACIDO_Y);
+    polygon_shape.SetAsBox(config::tam_acido_x, config::tam_acido_y);
     cuerpo->CreateFixture(&fixture_def);
     cuerpo->SetUserData(this);
 }

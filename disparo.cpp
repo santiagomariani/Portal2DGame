@@ -3,15 +3,13 @@
 #include "ids.h"
 #include "Box2D/Box2D.h"
 #include <math.h>
+#include "config.h"
 
-#define RADIO_RAYO 0.15f
 #define DENSIDAD_RAYO 1
-#define CTE_VELOCIDAD_RAYO 5
-
 
 Disparo::Disparo(int identidad, Mundo& mundo) : 
 			id(identidad), mundo(mundo),
-			Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
+			Cuerpo(config::radio_disparo * 2, config::radio_disparo * 2) {
 	cuerpo = nullptr;
 	portal = nullptr;
 }
@@ -30,7 +28,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 
 	b2CircleShape circleShape;
 	circleShape.m_p.Set(0, 0);
-	circleShape.m_radius = RADIO_RAYO;
+	circleShape.m_radius = config::radio_disparo;
 	b2FixtureDef circle_fixture_def;
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
@@ -41,7 +39,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	b2Vec2 vel = destino;
 	vel -= origen;
 	vel.Normalize();
-	vel *= CTE_VELOCIDAD_RAYO;
+	vel *= config::velocidad_disparo;
 	cuerpo->SetGravityScale(0);
 	cuerpo->SetLinearVelocity(vel);
 	cuerpo->SetUserData(this);
@@ -49,7 +47,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 
 Disparo::Disparo(Disparo&& otro) : 
 		mundo(otro.mundo),
-		Cuerpo(RADIO_RAYO * 2, RADIO_RAYO * 2) {
+		Cuerpo(config::radio_disparo * 2, config::radio_disparo * 2) {
 	if (this == &otro){
 		return;
 	}

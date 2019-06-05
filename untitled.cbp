@@ -8,100 +8,103 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled">
-				<Option output="/home/santi/Escritorio/tp4 final/TP4---Portal/untitled" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/untitled" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/santi/Escritorio/tp4 final/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 untitled"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 untitled"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="untitled/fast">
-				<Option output="/home/santi/Escritorio/tp4 final/TP4---Portal/untitled" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/untitled" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/santi/Escritorio/tp4 final/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 untitled/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 untitled/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Box2D">
-				<Option output="/home/santi/Escritorio/tp4 final/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/santi/Escritorio/tp4 final/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Box2D/fast">
-				<Option output="/home/santi/Escritorio/tp4 final/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/santi/Escritorio/tp4 final/TP4---Portal"/>
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/santi/Escritorio/tp4 final/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/santi/Escritorio/tp4\ final/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Bloque.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -109,43 +112,47 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Bloque.cpp">
+
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Bloque.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Bloque.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BloqueMetal.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BloqueMetal.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BloqueMetal.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BloqueMetal.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BloqueRoca.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BloqueRoca.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BloqueRoca.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BloqueRoca.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BolaEnergia.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BolaEnergia.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BolaEnergia.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/BolaEnergia.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Camera.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Camera.cpp">
 			<Option target="untitled"/>
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Camera.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Camera.h">
 			<Option target="untitled"/>
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/CoordConverter.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/CoordConverter.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/CoordConverter.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/CoordConverter.h">
 			<Option target="Box2D"/>
 		</Unit>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorAbajo.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Emisor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -153,29 +160,33 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorAbajo.cpp">
+
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorAbajo.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorAbajo.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorArriba.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorArriba.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorArriba.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorArriba.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorDerecha.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorDerecha.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorDerecha.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorDerecha.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorIzquierda.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorIzquierda.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorIzquierda.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/EmisorIzquierda.h">
 			<Option target="Box2D"/>
 		</Unit>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Renderable.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Receptor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -207,35 +218,39 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Renderable.cpp">
+
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Renderable.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Renderable.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Roca.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Roca.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Roca.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Roca.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlException.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlException.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlException.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlException.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlTexture.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlTexture.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlTexture.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlTexture.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlWindow.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlWindow.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SdlWindow.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/SdlWindow.h">
 			<Option target="untitled"/>
 		</Unit>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Sprite.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sensor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -249,35 +264,39 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sprite.cpp">
+
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sprite.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Sprite.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Teletransportador.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Teletransportador.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Teletransportador.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Teletransportador.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Timer.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Timer.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Timer.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/Timer.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ViewChell.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/ViewChell.cpp">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/ViewChell.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/ViewChell.h">
 			<Option target="untitled"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/and.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/and.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/and.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/and.h">
 			<Option target="Box2D"/>
 		</Unit>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/bloque_metal_diagonal.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/angulo.h">
 			<Option target="Box2D"/>
 		</Unit>
@@ -312,41 +331,45 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/boton.cpp">
+
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/boton.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/bloque_metal_diagonal.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/chell.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/boton.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/chell.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/boton.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/chell.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/chell.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/compuerta_logica.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/compuerta.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/contact_listener.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/compuerta.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/contact_listener.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/compuerta_logica.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/cuerpo.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/contact_listener.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/disparo.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/contact_listener.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/disparo.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/cuerpo.h">
 			<Option target="Box2D"/>
 		</Unit>
+
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/disparo.cpp">
+
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/editor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -354,358 +377,371 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_abierta.cpp">
+
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_abierta.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/disparo.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_abriendo.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/editor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_abriendo.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/editor.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_cerrada.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_abierta.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_cerrada.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_abierta.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_cerrando.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_abriendo.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_cerrando.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_abriendo.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_compuerta.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_cerrada.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_logico.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_cerrada.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_logico.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_cerrando.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_teclado.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_cerrando.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/estado_teclado.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_compuerta.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Box2D.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_logico.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_logico.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_teclado.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/estado_teclado.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Box2D.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/Shapes/b2Shape.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2CollideCircle.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2CollideEdge.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2Shape.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2CollidePolygon.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2Collision.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2Collision.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollideCircle.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2Distance.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollideEdge.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2Distance.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollidePolygon.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Collision.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Collision.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Distance.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Distance.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Draw.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Draw.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2GrowableStack.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Math.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Math.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Draw.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Settings.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Draw.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Settings.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2GrowableStack.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2StackAllocator.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Math.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2StackAllocator.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Math.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Timer.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Settings.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Common/b2Timer.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Settings.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2StackAllocator.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2StackAllocator.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Timer.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Timer.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Body.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Body.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Body.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Body.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Island.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2Island.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2TimeStep.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2World.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2World.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Island.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Island.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2TimeStep.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Rope/b2Rope.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2World.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/libs/Box2D/Rope/b2Rope.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2World.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/main.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Rope/b2Rope.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Rope/b2Rope.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/main.cpp">
 			<Option target="untitled"/>
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/mundo.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/mundo.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/mundo.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/mundo.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/or.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/or.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/or.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/or.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/personajes.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/personajes.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/personajes.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/personajes.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/pistola.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/pistola.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/pistola.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/pistola.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/portal.cpp">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/portal.cpp">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/portal.h">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/portal.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/CMakeLists.txt">
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
