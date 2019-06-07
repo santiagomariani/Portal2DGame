@@ -4,5 +4,5 @@ EstadoLogico::EstadoLogico(Cuerpo& cuerpo): cuerpo(cuerpo){
 }
 
 bool EstadoLogico::encendida(){
-	return cuerpo.encendido();
+	return cuerpo.estaActivado();
 }

@@ -4,10 +4,10 @@
 
 #include "Roca.h"
 #include "ids.h"
+#include "config.h"
 
 Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
-    Cuerpo(TAMANIO_ROCA * 2, TAMANIO_ROCA * 2),
-    mundo(mundo) {
+    Cuerpo(config::tam_roca * 2, config::tam_roca * 2) {
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_dynamicBody;
     cuerpo_def.position.Set(pos.x, pos.y);
@@ -19,7 +19,7 @@ Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
     fixture_def.shape = &polygon_shape;
     fixture_def.density = 100;
     fixture_def.friction = 100;
-    polygon_shape.SetAsBox(TAMANIO_ROCA, TAMANIO_ROCA);
+    polygon_shape.SetAsBox(config::tam_roca, config::tam_roca);
     cuerpo->CreateFixture(&fixture_def);
     pos_inicial = pos;
     cuerpo->SetUserData(this);

@@ -13,7 +13,7 @@ public:
 	Boton(b2Vec2& pos, Mundo& mundo);
 
 	// Devuelve si esta encendido o no
-	bool encendido() override;
+	bool estaActivado() override;
 
 	// Enciende boton
 	void encender();

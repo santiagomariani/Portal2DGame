@@ -9,8 +9,6 @@
 #include <Box2D/Common/b2Math.h>
 #include "mundo.h"
 
-#define TAMANIO_ROCA 0.15f
-
 class Roca : public Cuerpo {
 private:
     b2Body* cuerpo;

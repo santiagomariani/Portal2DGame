@@ -2,15 +2,14 @@
 #include "ids.h"
 #include "estado_cerrada.h"
 #include <iostream>
+#include "config.h"
 
-#define TAM_COMP_CUERPO_X 0.5
-#define TAM_COMP_CUERPO_Y 0.94
 #define TAM_COMP_BASE_X 0.15
 #define TAM_COMP_BASE_Y 0.06
 
 Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica):
-                    Cuerpo(TAM_COMP_CUERPO_X*2,
-                    TAM_COMP_CUERPO_Y*2 + TAM_COMP_BASE_Y*2),
+                    Cuerpo(config::tam_compuerta_x*2,
+                    config::tam_compuerta_y*2 + TAM_COMP_BASE_Y*2),
                     compuerta_logica(compuerta_logica){
 
     // parte de ariba de la compuerta
@@ -22,14 +21,14 @@ Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logic
     b2PolygonShape cuerpo_shape;
     b2FixtureDef cuerpo_fixture_def;
     cuerpo_fixture_def.shape = &cuerpo_shape;
-    cuerpo_shape.SetAsBox(TAM_COMP_CUERPO_X, TAM_COMP_CUERPO_Y);
+    cuerpo_shape.SetAsBox(config::tam_compuerta_x, config::tam_compuerta_y);
     cuerpo->CreateFixture(&cuerpo_fixture_def);
     cuerpo->SetUserData(this);
 
     // base de la compuerta
     b2BodyDef base_def;
     base_def.type = b2_kinematicBody;
-    base_def.position.Set(pos.x, pos.y - TAM_COMP_CUERPO_Y - TAM_COMP_BASE_Y);
+    base_def.position.Set(pos.x, pos.y - config::tam_compuerta_y - TAM_COMP_BASE_Y);
     base = mundo.agregarBody(base_def);
 
     b2PolygonShape base_shape;

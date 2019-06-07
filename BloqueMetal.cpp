@@ -4,9 +4,10 @@
 #include <iostream>
 #include "cuerpo.h"
 #include <cmath>
+#include "config.h"
 
 BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(identidad),
-	Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2) {
+	Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
@@ -17,13 +18,13 @@ BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(ide
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
 
-	polygonShape.SetAsBox(TAMANIO_BLOQUE, TAMANIO_BLOQUE);
+	polygonShape.SetAsBox(config::tam_bloque, config::tam_bloque);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
 
 BloqueMetal::BloqueMetal(BloqueMetal&& otro) : 
-			Bloque(TAMANIO_BLOQUE * 2, TAMANIO_BLOQUE * 2){
+			Bloque(config::tam_bloque * 2, config::tam_bloque * 2){
 	if (this == &otro){
 		return;
 	}
@@ -53,7 +54,7 @@ void BloqueMetal::recibirDisparo(Disparo* disparo) {
 	} else {
 		pos.x = 0;
 	}
-	pos *= TAMANIO_BLOQUE / pos.Length();
+	pos *= config::tam_bloque / pos.Length();
 	pos += bloque;
 
 	b2Vec2 normal = pos - bloque;

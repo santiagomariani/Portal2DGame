@@ -3,17 +3,14 @@
 #include "pistola.h"
 #include "Box2D/Box2D.h"
 #include "ids.h"
+#include "config.h"
 
-#define TAMANIO_CHELL_X 0.2f
-#define TAMANIO_CHELL_Y 0.39583f
 #define TAMANIO_SENSOR_CHELL_X 0.001
 #define TAMANIO_SENSOR_CHELL_Y 0.02
 #define RADIO 0.15833f
-#define CAMINAR 4
-#define SALTAR 5
 
 Chell::Chell(int identidad, Mundo& mundo) :
-        Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
+        Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
         id(identidad),
         mundo(mundo),
         pistola(mundo),
@@ -32,25 +29,25 @@ void Chell::activar(b2Vec2& pos){
     cuerpo_def.type = b2_dynamicBody;
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo_def.fixedRotation = true;
-    //cuerpo_def.linearDamping = 2.5;
+    cuerpo_def.linearDamping = 0.006;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
     b2PolygonShape polygonShape;
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &polygonShape;
-    myFixtureDef.density = 7; 
+    myFixtureDef.density = 1; 
     myFixtureDef.friction = 0; 
     myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
-    polygonShape.SetAsBox(TAMANIO_CHELL_X, TAMANIO_CHELL_Y, pos_poligono, 0);
+    polygonShape.SetAsBox(config::tam_chell_x, config::tam_chell_y, pos_poligono, 0);
     cuerpo->CreateFixture(&myFixtureDef);
 
     b2CircleShape circulo;
     b2FixtureDef circulo_fix_def;
     circulo_fix_def.shape = &circulo;
     circulo_fix_def.density = 7;
-    circulo_fix_def.friction = 0;
+    circulo_fix_def.friction = 0.1;
     circulo_fix_def.restitution = 0;
 
     circulo.m_p.Set(0, -2*RADIO); // posicion del centro del circulo
@@ -76,7 +73,7 @@ int Chell::getId(){
 }
 
 Chell::Chell(Chell&& otro) :
-        Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
+        Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
         mundo(otro.mundo),
         pistola(std::move(otro.pistola)),
         estado_chell(std::move(otro.estado_chell)){
@@ -105,12 +102,12 @@ Chell::Chell(Chell&& otro) :
 void Chell::mover(EstadoTeclado& t){
     b2Vec2 vel = cuerpo->GetLinearVelocity();
     //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
-    vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
-        //cuerpo->SetLinearVelocity(vel);
+    vel.x = config::velocidad_chell * t.presionada(SDLK_RIGHT) + -config::velocidad_chell * t.presionada(SDLK_LEFT);
+    //cuerpo->SetLinearVelocity(vel);
     //}
 
     if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
-        vel.y = SALTAR * t.presionada(SDLK_UP);
+        vel.y = config::salto_chell * t.presionada(SDLK_UP);
         if (roca && joint_roca) {
             b2Vec2 vel_roca = roca->getBody()->GetLinearVelocity();
             vel_roca.y = vel.y;
@@ -136,10 +133,10 @@ void Chell::dispararNaranja(b2Vec2& pos_click){
 }
 
 float Chell::getWidth(){
-    return float(TAMANIO_CHELL_X * 2);
+    return float(config::tam_chell_x * 2);
 }
 float Chell::getHeight(){
-    return float(TAMANIO_CHELL_Y * 2 + 0.25);
+    return float(config::tam_chell_y * 2 + 0.25);
 }
 
 b2Body* Chell::getBody(){
@@ -150,7 +147,7 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
     if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
         if (joint_roca == nullptr) {
             b2Vec2 nueva_pos_roca(
-                    this->getPosition().x + TAMANIO_CHELL_X + (roca->getMaxWidth() / 2),
+                    this->getPosition().x + config::tam_chell_x + (roca->getMaxWidth() / 2),
                     this->getPosition().y);
             roca->getBody()->SetTransform(nueva_pos_roca, 0);
             b2DistanceJointDef joint_def;

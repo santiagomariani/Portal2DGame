@@ -5,9 +5,6 @@
 #ifndef ACIDO_H
 #define ACIDO_H
 
-#define TAMANIO_ACIDO_X 0.5
-#define TAMANIO_ACIDO_Y 0.06
-
 #include "cuerpo.h"
 #include "mundo.h"
 

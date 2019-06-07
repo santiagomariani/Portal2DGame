@@ -1,14 +1,11 @@
 #include "boton.h"
 #include <iostream>
 #include "ids.h"
-#define TAM_BOTON_X 0.25
-#define TAM_BOTON_Y 0.025
-#define TAMANIO_BASE_X 0.5
-#define TAMANIO_BASE_Y 0.1
+#include "config.h"
 
 Boton::Boton(b2Vec2& pos, Mundo& mundo):
-			Cuerpo(TAMANIO_BASE_X*2,
-				   TAMANIO_BASE_Y*2 + TAM_BOTON_Y*2 + 0.1){
+			Cuerpo(config::tam_base_boton_x*2,
+				   config::tam_base_boton_y*2 + config::tam_sensor_boton_y*2 + 0.1){
 	this->estado_actual = false;
 
 	b2BodyDef base_def;
@@ -21,24 +18,24 @@ Boton::Boton(b2Vec2& pos, Mundo& mundo):
 	base_fixture_def.shape = &base_shape;
 
 	b2Vec2 centro(0,0);
-	base_shape.SetAsBox(TAMANIO_BASE_X, TAMANIO_BASE_Y);
+	base_shape.SetAsBox(config::tam_base_boton_x, config::tam_base_boton_y);
 	base->CreateFixture(&base_fixture_def);
 
 	b2BodyDef boton_cuerpo_def;
 	boton_cuerpo_def.type = b2_staticBody;
-	boton_cuerpo_def.position.Set(pos.x, pos.y + TAMANIO_BASE_Y + TAM_BOTON_Y);
+	boton_cuerpo_def.position.Set(pos.x, pos.y + config::tam_base_boton_y + config::tam_sensor_boton_y);
 	cuerpo_boton = mundo.agregarBody(boton_cuerpo_def);
 
 	b2PolygonShape cuerpo_shape;
 	b2FixtureDef cuerpo_fixture_def;
 	cuerpo_fixture_def.shape = &cuerpo_shape;
 
-	cuerpo_shape.SetAsBox(TAM_BOTON_X, TAM_BOTON_Y);
+	cuerpo_shape.SetAsBox(config::tam_sensor_boton_x, config::tam_sensor_boton_y);
 	cuerpo_boton->CreateFixture(&cuerpo_fixture_def);
 	cuerpo_boton->SetUserData(this);
 }
 
-bool Boton::encendido(){
+bool Boton::estaActivado(){
 	return estado_actual;
 }
 
