@@ -108,6 +108,12 @@
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Acido.h">
 			<Option target="Box2D"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BarraDeEnergia.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/BarraDeEnergia.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Bloque.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -176,6 +182,12 @@
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EmisorIzquierda.h">
 			<Option target="Box2D"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EstadoChell.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/EstadoChell.h">
+			<Option target="Box2D"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Receptor.cpp">
 			<Option target="Box2D"/>
 		</Unit>
@@ -240,6 +252,12 @@
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/Sensor.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SensorChell.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SensorChell.h">
 			<Option target="Box2D"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4 final/TP4---Portal/SensorReceptor.cpp">

@@ -38,7 +38,7 @@ void Sprite::render(SDL_Rect &dest,
                     SDL_Point *center,
                     SDL_RendererFlip flip) {
     if (numberImages == 1) {
-      texture.render(&srcArea, &dest, angle);
+      texture.render(&srcArea, &dest, angle, center, flip);
       return;
     }
     framesCounter++;

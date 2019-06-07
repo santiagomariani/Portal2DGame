@@ -15,12 +15,13 @@ private:
 	bool actualizando_cuerpos;
 	std::queue<Cuerpo*> cola_cuerpos_a_agregar;
 	std::queue<Cuerpo*> cola_cuerpos_a_borrar;
-	b2World mundo;
 	std::vector<Portal*> portales_activar;
 	std::vector<Cuerpo*> cuerpos_desactivar;
 	std::vector<Teletransportador> transportadores;
 	std::vector<Cuerpo*> cuerpos_actualizar;
-	void destruirCuerpos();	
+	std::vector<b2Joint*> joints_a_destruir;
+	b2World mundo;
+	void destruirCuerpos();
 	void activarPortales();
 	void activarTeletransportadores();
 public:
@@ -37,6 +38,8 @@ public:
 
 	void agregarPortal(Portal* portal);
 	void agregarCuerpoADestruir(Cuerpo* cuerpo);
+	void agregarJointADestruir(b2Joint* joint);
+	void destruirJoints();
 	void agregarTransportador(b2Body* cuerpo,
 									 b2Vec2& nueva_pos,
 									 b2Vec2& velocidad, 

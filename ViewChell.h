@@ -16,10 +16,11 @@ class ViewChell : public Renderable {
 private:
     SdlTexture chellTextures;
     std::vector<Sprite> sprites;
-    int actualSprite;
+    uint8_t estado_actual;
     void spritesCreation();
 public:
     explicit ViewChell(SdlWindow &window);
+    void cambiarEstado(uint8_t estado);
     void render(SDL_Rect &dest,
                      double angle,
                      SDL_Point *center,

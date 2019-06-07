@@ -122,7 +122,7 @@ void Disparo::empezarContacto(Cuerpo* otro){
 		id_otro == ID_COMPUERTA_CERRADA || id_otro == ID_BOTON_APAGADO ||
 		id_otro == ID_BOTON_PRENDIDO || id_otro == ID_EMISORARRIBA ||
 		id_otro == ID_EMISORDERECHA || id_otro == ID_EMISORIZQUIERDA ||
-		id_otro == ID_EMISORABAJO){
+		id_otro == ID_EMISORABAJO || id_otro == ID_BARRAENERGIA){
 		terminar();
 	}
 }

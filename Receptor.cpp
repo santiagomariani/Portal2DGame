@@ -31,7 +31,6 @@ b2Body *Receptor::getBody() {
 
 void Receptor::activar() {
     activado = true;
-    std::cout << "se activa receptor" << std::endl;
 }
 
 bool Receptor::estaActivado() {

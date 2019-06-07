@@ -6,6 +6,8 @@
 
 #define TAMANIO_CHELL_X 0.2f
 #define TAMANIO_CHELL_Y 0.39583f
+#define TAMANIO_SENSOR_CHELL_X 0.001
+#define TAMANIO_SENSOR_CHELL_Y 0.02
 #define RADIO 0.15833f
 #define CAMINAR 4
 #define SALTAR 5
@@ -16,7 +18,8 @@ Chell::Chell(int identidad, Mundo& mundo) :
         mundo(mundo),
         pistola(mundo),
         roca(nullptr),
-        joint_roca(nullptr) {
+        joint_roca(nullptr),
+        sensor(new SensorChell()) {
 	cuerpo = nullptr;
 }
 
@@ -53,6 +56,19 @@ void Chell::activar(b2Vec2& pos){
     circulo.m_p.Set(0, -2*RADIO); // posicion del centro del circulo
     circulo.m_radius = RADIO;
     cuerpo->CreateFixture(&circulo_fix_def);
+
+    b2PolygonShape sensor_shape;
+    b2FixtureDef sensor_fix_def;
+    sensor_fix_def.shape = &sensor_shape;
+    sensor_fix_def.isSensor = true;
+    sensor_fix_def.userData = sensor.get();
+    b2Vec2 pos_sensor(0, -3*RADIO - TAMANIO_SENSOR_CHELL_Y);
+    sensor_shape.SetAsBox(TAMANIO_SENSOR_CHELL_X,
+            TAMANIO_SENSOR_CHELL_Y,
+            pos_sensor,
+            0);
+    cuerpo->CreateFixture(&sensor_fix_def);
+
     cuerpo->SetUserData(this);
 }
 int Chell::getId(){
@@ -62,7 +78,8 @@ int Chell::getId(){
 Chell::Chell(Chell&& otro) :
         Cuerpo(TAMANIO_CHELL_X*2, TAMANIO_CHELL_Y*2 + RADIO),
         mundo(otro.mundo),
-        pistola(std::move(otro.pistola)) {
+        pistola(std::move(otro.pistola)),
+        estado_chell(std::move(otro.estado_chell)){
     if (this == &otro){
         return;
     }
@@ -71,8 +88,9 @@ Chell::Chell(Chell&& otro) :
     cuerpo = otro.cuerpo;
     roca = otro.roca;
     joint_roca = otro.joint_roca;
-
+    sensor = std::move(otro.sensor);
     id = otro.id;
+
     otro.maxWidth = 0;
     otro.maxHeight = 0;
     otro.cuerpo = nullptr;
@@ -90,16 +108,19 @@ void Chell::mover(EstadoTeclado& t){
     vel.x = CAMINAR * t.presionada(SDLK_RIGHT) + -CAMINAR * t.presionada(SDLK_LEFT);
         //cuerpo->SetLinearVelocity(vel);
     //}
-    if (abs(vel.y) < 0.001) {
+
+    if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
         vel.y = SALTAR * t.presionada(SDLK_UP);
         if (roca && joint_roca) {
             b2Vec2 vel_roca = roca->getBody()->GetLinearVelocity();
             vel_roca.y = vel.y;
             roca->getBody()->SetLinearVelocity(vel_roca);
         }
-        //cuerpo->SetLinearVelocity(vel);
     }
+    //cuerpo->SetLinearVelocity(vel);
     cuerpo->SetLinearVelocity(vel); // CAMBIAR
+
+    estado_chell.actualizarEstado(*sensor, vel);
 }
 
 const b2Vec2& Chell::getPosition(){
@@ -166,3 +187,19 @@ void Chell::morir(){
     std::cout << "chell murio\n";
 }
 
+void Chell::destruirRoca() {
+    if (roca && joint_roca) {
+        mundo.agregarJointADestruir(joint_roca);
+        joint_roca = nullptr;
+        roca->resetear();
+        roca = nullptr;
+    }
+}
+
+uint8_t Chell::obtenerEstado() {
+    return estado_chell.obtenerEstado();
+}
+
+uint8_t Chell::obtenerOrientacion() {
+    return estado_chell.obtenerOrientacion();
+}

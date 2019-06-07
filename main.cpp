@@ -30,7 +30,7 @@
 #include "angulo_noventa.h"
 #include "angulo_ciento_ochenta.h"
 #include "angulo_dos_setenta.h"
-
+#include "EstadoChell.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -53,6 +53,7 @@
 #include "ReceptorDerecha.h"
 #include "ReceptorIzquierda.h"
 #include "Acido.h"
+#include "BarraDeEnergia.h"
 
 
 int main() {
@@ -148,6 +149,10 @@ int main() {
 	// Acido
 	b2Vec2 pos_acido(-24, -2.5 + 0.06);
 	Acido acido(world, pos_acido);
+
+	// Barra Energia
+	b2Vec2 pos_barra_energia(-26, -1.5);
+	BarraDeEnergia barra_energia(world, pos_barra_energia);
 
 	// b2Vec2 bola_energia_pos(-2, -1);
 	// b2Vec2 bola_energia_dir(1, 0);
@@ -270,6 +275,9 @@ int main() {
 	// Acido
 	Sprite acido_sprite(300, 61, 1, 1545, 8, miscTexture);
 
+	// Barra Energia
+	Sprite barra_energia_sprite(8, 220, 528, 689, 1, miscTexture);
+
 	ViewChell viewChell(window);
 
 	std::map<int, Renderable*> texturas;
@@ -303,6 +311,7 @@ int main() {
 	texturas[ID_RECEPTORIZQUIERDA_ACTIVADO] = &receptor_izquierda_activado_sprite;
 	texturas[ID_RECEPTORIZQUIERDA_DESACTIVADO] = &receptor_izquierda_desactivado_sprite;
     texturas[ID_ACIDO] = &acido_sprite;
+    texturas[ID_BARRAENERGIA] = &barra_energia_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 //======================================Loop======================================
@@ -339,6 +348,15 @@ int main() {
 				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI *-1);
 			} else if (id == ID_BOLAENERGIA) {
 				camera.render(*texturas[id], dest, (((BolaEnergia*)actual)->getAngle()) * 180/PI * -1);
+			} else if (id == ID_CHELL) {
+				uint8_t estado_actual_chell = ((Chell*)actual)->obtenerEstado();
+				((ViewChell*)texturas[id])->cambiarEstado(estado_actual_chell);
+				uint8_t orientacion_actual_chell = ((Chell*)actual)->obtenerOrientacion();
+				if (orientacion_actual_chell == CHELL_MIRA_IZQ) {
+					camera.render(*texturas[id], dest, 0, nullptr, SDL_FLIP_HORIZONTAL);
+				} else {
+					camera.render(*texturas[id], dest);
+				}
 			} else {
 				camera.render(*texturas[id], dest);
 			}

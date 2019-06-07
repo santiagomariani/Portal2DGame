@@ -30,6 +30,7 @@ void Mundo::destruirBody(b2Body* body){
 
 void Mundo::actualizar(){
 	destruirCuerpos();
+	destruirJoints();
 	activarPortales();
 	activarTeletransportadores();
 	actualizarCuerpos();
@@ -49,6 +50,19 @@ void Mundo::activarPortales(){
 	}
 	portales_activar.clear();
 }
+
+
+void Mundo::agregarJointADestruir(b2Joint *joint) {
+    joints_a_destruir.push_back(joint);
+}
+
+void Mundo::destruirJoints() {
+    for (auto it = joints_a_destruir.begin(); it != joints_a_destruir.end(); it++) {
+        mundo.DestroyJoint(*it);
+    }
+    joints_a_destruir.clear();
+}
+
 void Mundo::agregarCuerpoADestruir(Cuerpo* cuerpo){
 	cuerpos_desactivar.push_back(cuerpo);
 }
@@ -110,3 +124,4 @@ void Mundo::actualizarCuerpos(){
 		cola_cuerpos_a_agregar.pop();
 	}
 }
+

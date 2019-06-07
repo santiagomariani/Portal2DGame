@@ -6,6 +6,8 @@
 #include "cuerpo.h"
 #include "pistola.h"
 #include "Roca.h"
+#include "SensorChell.h"
+#include "EstadoChell.h"
 #include <SDL2/SDL.h>
 
 class Chell : public Cuerpo {
@@ -15,6 +17,8 @@ class Chell : public Cuerpo {
 	Mundo& mundo;
 	Roca* roca;
 	b2Joint *joint_roca;
+	std::unique_ptr<SensorChell> sensor;
+	EstadoChell estado_chell;
 public:
 	Chell(int identidad, Mundo& mundo);
 	void activar(b2Vec2& pos);
@@ -29,6 +33,9 @@ public:
 	float getWidth();
 	float getHeight();
 	b2Body* getBody();
+	uint8_t obtenerEstado();
+	uint8_t obtenerOrientacion();
+	void destruirRoca();
 	void empezarContacto(Cuerpo* otro) override;
 	void terminarContacto(Cuerpo* otro) override;
 };

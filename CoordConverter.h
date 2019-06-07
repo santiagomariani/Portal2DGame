@@ -13,7 +13,7 @@
 
 class CoordConverter {
 private:
-    const int CONVERSION = 100;
+    const int CONVERSION = 80;
     int screenWidth, screenHeight;
 public:
     CoordConverter(int screenWidth, int screenHeight);

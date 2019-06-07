@@ -14,12 +14,15 @@
 class Roca : public Cuerpo {
 private:
     b2Body* cuerpo;
+    Mundo &mundo;
+    b2Vec2 pos_inicial;
 public:
     Roca(Mundo& mundo, const b2Vec2& pos);
     Roca(Roca &&otro);
     int getId() override;
     const b2Vec2& getPosition() override;
     b2Body* getBody();
+    void resetear();
     virtual void empezarContacto(Cuerpo* otro);
     virtual void terminarContacto(Cuerpo* otro);
 };
