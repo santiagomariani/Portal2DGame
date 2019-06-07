@@ -7,7 +7,8 @@
 #include "config.h"
 
 Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
-    Cuerpo(config::tam_roca * 2, config::tam_roca * 2) {
+    Cuerpo(config::tam_roca * 2, config::tam_roca * 2) ,
+    mundo(mundo) {
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_dynamicBody;
     cuerpo_def.position.Set(pos.x, pos.y);
