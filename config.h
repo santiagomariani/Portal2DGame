@@ -3,9 +3,9 @@
 #define CONFIG_H
 
 namespace config{
-	extern int velocidad_chell;
+	extern float velocidad_chell;
 
-    extern int salto_chell;
+    extern float salto_chell;
 
     extern float tam_chell_x;
 

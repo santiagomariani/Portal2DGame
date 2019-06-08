@@ -159,6 +159,13 @@ int main() {
 	// b2Vec2 bola_energia_dir(1, 0);
 	// BolaEnergia bola_energia(world, bola_energia_pos, bola_energia_dir);
 
+
+
+//====_====_====_====_====_====_===_FISICA_====_====_====_====_====_====_===_
+
+	Fisica juego(protocolo, world);
+
+
 //======================================SDL======================================
 
 	const int screenWidth = 800;
@@ -315,6 +322,28 @@ int main() {
     texturas[ID_BARRAENERGIA] = &barra_energia_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
+
+
+//====_====_====_====_====_====_===_VISTA_====_====_====_====_====_====_===_
+	Vista cliente(window, camera, texturas);
+
+
+// ---------------------------------LOOP REFACTORIZADO ---------------------------------
+
+	bool running = true;
+	while(running){
+		running = cliente.obtenerInput(coordConverter); //cliente enviar teclado
+		juego.actualizar() // servidor recibir teclado
+		juego.enviarCuerpos(); // servidor enviar cuerpo
+		cliente.renderizar() // Cliente recibir cuerpos
+	}
+	return 0;
+
+
+
+//---------------
+//LOOP VIEJO:
+
 //======================================Loop======================================
 
 

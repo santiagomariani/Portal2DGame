@@ -2,14 +2,14 @@
 
 namespace config{
 	// Velocidad caminata de Chell
-    int velocidad_chell = 4;
+    float velocidad_chell = 4;
 
-    int salto_chell = 6;
+    float salto_chell = 6;
 
-    // Mitad del ancho del Chell
+    // Ancho del Chell
     float tam_chell_x = 0.2f;
 
-    // Mitad del alto de Chell
+    // Alto de Chell
     float tam_chell_y = 0.39583f;
 
     // Alto y ancho del bloque
