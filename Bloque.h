@@ -16,7 +16,7 @@ protected:
             Cuerpo(maxWidth, maxHeight) {};
 public:
     virtual void recibirDisparo(Disparo* disparo) = 0;
-    virtual int getId() = 0;
+    virtual uint8_t getId() = 0;
     virtual const b2Vec2& getPosition() = 0;
     virtual void empezarContacto(Cuerpo* otro) = 0;
 };

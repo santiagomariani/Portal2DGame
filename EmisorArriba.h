@@ -17,7 +17,7 @@ public:
     EmisorArriba(Mundo &mundo, const b2Vec2 &pos);
     EmisorArriba(EmisorArriba &&otro);
     EmisorArriba& operator=(EmisorArriba &&otro);
-    int getId() override;
+    uint8_t getId() override;
 };
 
 

@@ -35,7 +35,7 @@ BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(config::tam_bloque * 2, confi
 const b2Vec2& BloqueRoca::getPosition(){
 	return cuerpo->GetPosition();
 }
-int BloqueRoca::getId(){
+uint8_t BloqueRoca::getId(){
 	return ID_BLOQUE_ROCA;
 }
 

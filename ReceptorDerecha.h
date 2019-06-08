@@ -16,7 +16,7 @@
 class ReceptorDerecha : public Receptor {
 public:
     ReceptorDerecha(Mundo &mundo, const b2Vec2 &pos);
-    int getId() override;
+    uint8_t getId() override;
 };
 
 

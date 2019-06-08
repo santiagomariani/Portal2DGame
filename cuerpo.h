@@ -12,8 +12,11 @@ protected:
         maxHeight(maxHeight) {};
     Cuerpo() {};
 public:
-	virtual int getId() = 0;
+	virtual uint8_t getId() = 0;
 	virtual const b2Vec2& getPosition() = 0;
+	virtual int32_t getAngle() {
+	    return 0;
+	}
 	float getMaxWidth() {
         return maxWidth;
     }

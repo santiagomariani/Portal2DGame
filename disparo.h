@@ -18,8 +18,8 @@ public:
 	void desactivar();
 	Disparo& operator=(Disparo&& otro);
 	const b2Vec2& getPosition();
-	double getAngle();
-	int getId();
+	int32_t getAngle() override;
+	uint8_t getId();
 	void empezarContacto(Cuerpo* otro);
 
     void crearPortal(b2Vec2& pos, b2Vec2& normal);

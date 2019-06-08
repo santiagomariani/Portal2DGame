@@ -8,6 +8,8 @@
 #include <math.h>
 #include <iostream>
 
+#define PI 3.14159265
+
 BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     mundo(mundo),
     Cuerpo(RADIO_BOLAENERGIA * 2, RADIO_BOLAENERGIA * 2) {
@@ -92,12 +94,13 @@ const b2Vec2 &BolaEnergia::getPosition() {
     return cuerpo->GetPosition();
 }
 
-double BolaEnergia::getAngle() {
+int32_t BolaEnergia::getAngle() {
     b2Vec2 vel = cuerpo->GetLinearVelocity();
-    return atan2(vel.y,vel.x);
+    float angulo = atan2(vel.y, vel.x);
+    return (uint32_t)(angulo * 180/PI);
 }
 
-int BolaEnergia::getId() {
+uint8_t BolaEnergia::getId() {
     return ID_BOLAENERGIA;
 }
 

@@ -41,7 +41,7 @@ BloqueMetal::BloqueMetal(BloqueMetal&& otro) :
 const b2Vec2& BloqueMetal::getPosition(){
 	return cuerpo->GetPosition();
 }
-int BloqueMetal::getId(){
+uint8_t BloqueMetal::getId(){
 	return ID_BLOQUE_METAL;
 }
 

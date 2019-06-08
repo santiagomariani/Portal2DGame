@@ -53,6 +53,6 @@ EmisorIzquierda &EmisorIzquierda::operator=(EmisorIzquierda &&otro) {
     return *this;
 }
 
-int EmisorIzquierda::getId() {
+uint8_t EmisorIzquierda::getId() {
     return ID_EMISORIZQUIERDA;
 }

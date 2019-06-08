@@ -288,38 +288,38 @@ int main() {
 
 	ViewChell viewChell(window);
 
-	std::map<int, Renderable*> texturas;
-	texturas[ID_CHELL] = &viewChell;
-	texturas[ID_BLOQUE_ROCA] = &bloqueSprite;
-	texturas[ID_DISPARO] = &disparoSprite;
-	texturas[ID_BLOQUE_METAL] = &bloqueMetalSprite;
-	texturas[ID_BLOQUE_DIAGONAL_0] = &bloqueMetalDiagoSprite;
-	texturas[ID_BLOQUE_DIAGONAL_90] = &bloqueMetalDiago90Sprite;
-	texturas[ID_BLOQUE_DIAGONAL_180] = &bloqueMetalDiago180Sprite;
-	texturas[ID_BLOQUE_DIAGONAL_270] = &bloqueMetalDiago270Sprite;
-	texturas[ID_PORTAL_AZUL] = &portalAzulSprite;
-	texturas[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
-	texturas[ID_BOTON_APAGADO] = &botonSprite;
-	texturas[ID_COMPUERTA_CERRADA] = &compuertaCerradaSprite;
-	texturas[ID_COMPUERTA_ABRIENDO] = &compuertaAbriendoSprite;
-	texturas[ID_COMPUERTA_ABIERTA] = &compuertaAbiertaSprite;
-	texturas[ID_ROCA] = &piedra_sprite1;
-	texturas[ID_BOTON_PRENDIDO] = &botonPrendidoSprite;
-	texturas[ID_EMISORARRIBA] = &emisor_arriba_sprite;
-	texturas[ID_EMISORDERECHA] = &emisor_derecha_sprite;
-	texturas[ID_EMISORABAJO] = &emisor_abajo_sprite;
-	texturas[ID_EMISORIZQUIERDA] = &emisor_izquierda_sprite;
-	texturas[ID_BOLAENERGIA] = &bola_energia_sprite;
-	texturas[ID_RECEPTORARRIBA_ACTIVADO] = &receptor_arriba_activado_sprite;
-	texturas[ID_RECEPTORARRIBA_DESACTIVADO] = &receptor_arriba_desactivado_sprite;
-	texturas[ID_RECEPTORDERECHA_ACTIVADO] = &receptor_derecha_activado_sprite;
-	texturas[ID_RECEPTORDERECHA_DESACTIVADO] = &receptor_derecha_desactivado_sprite;
-	texturas[ID_RECEPTORABAJO_ACTIVADO] = &receptor_abajo_activado_sprite;
-	texturas[ID_RECEPTORABAJO_DESACTIVADO] = &receptor_abajo_desactivado_sprite;
-	texturas[ID_RECEPTORIZQUIERDA_ACTIVADO] = &receptor_izquierda_activado_sprite;
-	texturas[ID_RECEPTORIZQUIERDA_DESACTIVADO] = &receptor_izquierda_desactivado_sprite;
-    texturas[ID_ACIDO] = &acido_sprite;
-    texturas[ID_BARRAENERGIA] = &barra_energia_sprite;
+	std::map<int, Renderable*> renderizales;
+	renderizales[ID_CHELL] = &viewChell;
+	renderizales[ID_BLOQUE_ROCA] = &bloqueSprite;
+	renderizales[ID_DISPARO] = &disparoSprite;
+	renderizales[ID_BLOQUE_METAL] = &bloqueMetalSprite;
+	renderizales[ID_BLOQUE_DIAGONAL_0] = &bloqueMetalDiagoSprite;
+	renderizales[ID_BLOQUE_DIAGONAL_90] = &bloqueMetalDiago90Sprite;
+	renderizales[ID_BLOQUE_DIAGONAL_180] = &bloqueMetalDiago180Sprite;
+	renderizales[ID_BLOQUE_DIAGONAL_270] = &bloqueMetalDiago270Sprite;
+	renderizales[ID_PORTAL_AZUL] = &portalAzulSprite;
+	renderizales[ID_PORTAL_NARANJA] = &portalNaranjaSprite;
+	renderizales[ID_BOTON_APAGADO] = &botonSprite;
+	renderizales[ID_COMPUERTA_CERRADA] = &compuertaCerradaSprite;
+	renderizales[ID_COMPUERTA_ABRIENDO] = &compuertaAbriendoSprite;
+	renderizales[ID_COMPUERTA_ABIERTA] = &compuertaAbiertaSprite;
+	renderizales[ID_ROCA] = &piedra_sprite1;
+	renderizales[ID_BOTON_PRENDIDO] = &botonPrendidoSprite;
+	renderizales[ID_EMISORARRIBA] = &emisor_arriba_sprite;
+	renderizales[ID_EMISORDERECHA] = &emisor_derecha_sprite;
+	renderizales[ID_EMISORABAJO] = &emisor_abajo_sprite;
+	renderizales[ID_EMISORIZQUIERDA] = &emisor_izquierda_sprite;
+	renderizales[ID_BOLAENERGIA] = &bola_energia_sprite;
+	renderizales[ID_RECEPTORARRIBA_ACTIVADO] = &receptor_arriba_activado_sprite;
+	renderizales[ID_RECEPTORARRIBA_DESACTIVADO] = &receptor_arriba_desactivado_sprite;
+	renderizales[ID_RECEPTORDERECHA_ACTIVADO] = &receptor_derecha_activado_sprite;
+	renderizales[ID_RECEPTORDERECHA_DESACTIVADO] = &receptor_derecha_desactivado_sprite;
+	renderizales[ID_RECEPTORABAJO_ACTIVADO] = &receptor_abajo_activado_sprite;
+	renderizales[ID_RECEPTORABAJO_DESACTIVADO] = &receptor_abajo_desactivado_sprite;
+	renderizales[ID_RECEPTORIZQUIERDA_ACTIVADO] = &receptor_izquierda_activado_sprite;
+	renderizales[ID_RECEPTORIZQUIERDA_DESACTIVADO] = &receptor_izquierda_desactivado_sprite;
+    renderizales[ID_ACIDO] = &acido_sprite;
+    renderizales[ID_BARRAENERGIA] = &barra_energia_sprite;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
 
@@ -373,22 +373,32 @@ int main() {
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
 			if (id == ID_DISPARO) {
-				camera.render(*texturas[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
+				camera.render(*renderizales[id], dest, (((Disparo*)actual)->getAngle()) * -1);
 			} else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
-				camera.render(*texturas[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI *-1);
+				camera.render(*renderizales[id], dest, (((Portal*)actual)->getAngle()) * -1);
 			} else if (id == ID_BOLAENERGIA) {
-				camera.render(*texturas[id], dest, (((BolaEnergia*)actual)->getAngle()) * 180/PI * -1);
+				camera.render(*renderizales[id], dest, (((BolaEnergia*)actual)->getAngle()) * -1);
 			} else if (id == ID_CHELL) {
 				uint8_t estado_actual_chell = ((Chell*)actual)->obtenerEstado();
-				((ViewChell*)texturas[id])->cambiarEstado(estado_actual_chell);
 				uint8_t orientacion_actual_chell = ((Chell*)actual)->obtenerOrientacion();
-				if (orientacion_actual_chell == CHELL_MIRA_IZQ) {
-					camera.render(*texturas[id], dest, 0, nullptr, SDL_FLIP_HORIZONTAL);
+				if (estado_actual_chell == CHELL_CAMBIA_ORIENTACION) {
+					if (orientacion_actual_chell == CHELL_MIRA_IZQ) {
+						((ViewChell*)renderizales[id])->cambiarEstado(estado_actual_chell,
+																	  0, nullptr, SDL_FLIP_NONE);
+					} else {
+						((ViewChell*)renderizales[id])->cambiarEstado(estado_actual_chell,
+																	  0, nullptr, SDL_FLIP_HORIZONTAL);
+					}
 				} else {
-					camera.render(*texturas[id], dest);
+					((ViewChell*)renderizales[id])->cambiarEstado(estado_actual_chell);
+				}
+				if (orientacion_actual_chell == CHELL_MIRA_IZQ) {
+					camera.render(*renderizales[id], dest, 0, nullptr, SDL_FLIP_HORIZONTAL);
+				} else {
+					camera.render(*renderizales[id], dest);
 				}
 			} else {
-				camera.render(*texturas[id], dest);
+				camera.render(*renderizales[id], dest);
 			}
 			cuerpos = cuerpos->GetNext();
 		}

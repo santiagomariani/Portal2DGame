@@ -34,6 +34,7 @@ public:
                 SDL_RendererFlip flip) override;
     int getFrameWidth();
     int getFrameHeight();
+    bool finalizoAnimacion();
     ~Sprite() = default;
 };
 

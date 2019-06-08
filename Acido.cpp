@@ -25,7 +25,7 @@ const b2Vec2 &Acido::getPosition() {
     return cuerpo->GetPosition();
 }
 
-int Acido::getId() {
+uint8_t Acido::getId() {
     return ID_ACIDO;
 }
 

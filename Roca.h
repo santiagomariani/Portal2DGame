@@ -17,7 +17,7 @@ private:
 public:
     Roca(Mundo& mundo, const b2Vec2& pos);
     Roca(Roca &&otro);
-    int getId() override;
+    uint8_t getId() override;
     const b2Vec2& getPosition() override;
     b2Body* getBody();
     void resetear();

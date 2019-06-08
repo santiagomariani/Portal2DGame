@@ -8,7 +8,9 @@
 #define CHELL_EN_EL_AIRE 0
 #define CHELL_MOVIENDOSE 1
 #define CHELL_QUIETA 2
+#define CHELL_CAMBIA_ORIENTACION 3
 
+/*
 #define FIREIDLETOREST 3
 #define JIG 4
 #define SWEAT 5
@@ -29,8 +31,9 @@
 #define SMASHED 20
 #define ENTER 21
 #define DIE 22
+*/
 
-ViewChell::ViewChell(SdlWindow &window) {
+ViewChell::ViewChell(SdlWindow &window) : renderizando_estado_transitorio(false) {
     std::string shootingPath = "assets/chelltextures.png";
     chellTextures = std::move(SdlTexture(shootingPath, window));
     spritesCreation();
@@ -38,12 +41,20 @@ ViewChell::ViewChell(SdlWindow &window) {
 
 void ViewChell::spritesCreation() {
     // JumpApex
-    sprites.emplace_back(137, 207, 1, 21, 1, chellTextures);
+    sprites.insert(std::make_pair(CHELL_EN_EL_AIRE,
+            Sprite(137, 207, 1, 21, 1, chellTextures)));
     // Run
-    sprites.emplace_back(194, 204, 1, 4123, 12, chellTextures);
+    sprites.insert(std::make_pair(CHELL_MOVIENDOSE,
+                                  Sprite(194, 204, 1, 4123, 12, chellTextures)));
     // RestingIdle
-    sprites.emplace_back(104, 215, 1, 2073, 7, chellTextures);
+    sprites.insert(std::make_pair(CHELL_QUIETA,
+                                  Sprite(104, 215, 1, 2073, 7, chellTextures)));
+    // Turn
+    sprites.insert(std::make_pair(CHELL_CAMBIA_ORIENTACION,
+                                  Sprite(192, 203, 1, 3223, 8, chellTextures)));
 
+    estado_actual = CHELL_QUIETA;
+    /*
     // FireIdleToRest
     sprites.emplace_back(143, 213, 1, 1104, 4, chellTextures);
     // Jig
@@ -56,8 +67,6 @@ void ViewChell::spritesCreation() {
     sprites.emplace_back(165, 215, 1, 3671, 12, chellTextures);
     // Spiked
     sprites.emplace_back(173, 203, 1, 3447, 9, chellTextures);
-    // Turn
-    sprites.emplace_back(192, 203, 1, 3223, 8, chellTextures);
     // JumpFire
     sprites.emplace_back(188, 225, 1, 2977, 8, chellTextures);
     // Idle
@@ -82,18 +91,42 @@ void ViewChell::spritesCreation() {
     sprites.emplace_back(207, 281, 1, 6025, 16, chellTextures);
     // Die
     sprites.emplace_back(175, 261, 1, 8825, 72, chellTextures);
-
-    estado_actual = CHELL_QUIETA;
+    */
 }
 
 void ViewChell::render(SDL_Rect &dest,
         double angle,
         SDL_Point *center,
         SDL_RendererFlip flip) {
-    Sprite &sprite = sprites.at(estado_actual);
-    sprite.render(dest, angle, center, flip);
+
+    Sprite &sprite_actual = sprites.at(estado_actual);
+
+    if (renderizando_estado_transitorio) {
+        sprite_actual.render(dest,
+                angulo_transitorio,
+                centro_transitorio,
+                flip_transitorio);
+        if (sprite_actual.finalizoAnimacion()) {
+            renderizando_estado_transitorio = false;
+        }
+    } else {
+        sprite_actual.render(dest, angle, center, flip);
+    }
 }
 
-void ViewChell::cambiarEstado(uint8_t estado) {
-    estado_actual = estado;
+void ViewChell::cambiarEstado(uint8_t estado,
+        double angle, SDL_Point *center,
+        SDL_RendererFlip flip) {
+    if (!renderizando_estado_transitorio) {
+        estado_actual = estado;
+        std::cout << unsigned(estado) << std::endl;
+        // estado es un estado transitorio?
+        if (estado == CHELL_CAMBIA_ORIENTACION) {
+            std::cout << "CHEL CAMBIA ORIENTACION" << std::endl;
+            renderizando_estado_transitorio = true;
+            flip_transitorio = flip;
+            angulo_transitorio = angle;
+            centro_transitorio = center;
+        }
+    }
 }

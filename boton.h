@@ -24,7 +24,7 @@ public:
 	void empezarContacto(Cuerpo* otro);
 	void terminarContacto(Cuerpo* otro) override;
 	const b2Vec2& getPosition();
-	int getId();
+	uint8_t getId();
 	~Boton() = default;
 };
 

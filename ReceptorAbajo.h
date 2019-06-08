@@ -15,7 +15,7 @@
 class ReceptorAbajo : public Receptor {
 public:
     ReceptorAbajo(Mundo &mundo, const b2Vec2 &pos);
-    int getId() override;
+    uint8_t getId() override;
 };
 
 #endif //RECEPTORABAJO_H

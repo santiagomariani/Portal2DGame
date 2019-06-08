@@ -15,7 +15,7 @@ public:
     EmisorIzquierda(Mundo &mundo, const b2Vec2 &pos);
     EmisorIzquierda(EmisorIzquierda &&otro);
     EmisorIzquierda& operator=(EmisorIzquierda &&otro);
-    int getId() override;
+    uint8_t getId() override;
 };
 
 

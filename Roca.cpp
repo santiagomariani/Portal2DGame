@@ -43,7 +43,7 @@ Roca::Roca(Roca &&otro) : mundo(otro.mundo){
     cuerpo->SetUserData(this);
 }
 
-int Roca::getId() {
+uint8_t Roca::getId() {
     return ID_ROCA;
 }
 

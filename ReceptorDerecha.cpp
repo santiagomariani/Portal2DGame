@@ -17,7 +17,7 @@ ReceptorDerecha::ReceptorDerecha(Mundo &mundo, const b2Vec2 &pos) :
     cuerpo->CreateFixture(&fixture_def);
 }
 
-int ReceptorDerecha::getId() {
+uint8_t ReceptorDerecha::getId() {
     if (activado) {
         return ID_RECEPTORDERECHA_ACTIVADO;
     } else {

@@ -50,7 +50,7 @@ float Portal::getAnguloSalida(){
     return orientacion;
 }
 
-int Portal::getId(){
+uint8_t Portal::getId(){
     return id;
 }
 
@@ -113,5 +113,9 @@ void Portal::empezarContacto(Cuerpo* otro){
 		case(ID_BOLAENERGIA):
 			teletransportar(otro->getBody());
 	}
+}
+
+int32_t Portal::getAngle() {
+    return (uint32_t)(orientacion * 180/PI);
 }
 

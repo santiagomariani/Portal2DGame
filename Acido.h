@@ -14,7 +14,7 @@ private:
 public:
     Acido(Mundo &mundo, b2Vec2 &pos);
     const b2Vec2& getPosition();
-    int getId();
+    uint8_t getId();
     b2Body* getBody();
     void empezarContacto(Cuerpo* otro);
     void terminarContacto(Cuerpo* otro);

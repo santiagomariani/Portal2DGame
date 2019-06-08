@@ -64,3 +64,7 @@ int Sprite::getFrameWidth() {
 int Sprite::getFrameHeight() {
     return frameHeight;
 }
+
+bool Sprite::finalizoAnimacion() {
+    return countedImages == numberImages;
+}
