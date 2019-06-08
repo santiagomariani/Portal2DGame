@@ -28,14 +28,14 @@ public:
     BolaEnergia& operator=(BolaEnergia &&otro);
     void actualizar() override;
     bool bolaFinalizo();
-    const b2Vec2& getPosition();
-    double getAngle();
-    int getId();
-    b2Body* getBody();
+    const b2Vec2& getPosition() override;
+    int32_t getAngle() override;
+    uint8_t getId() override;
+    b2Body* getBody() override;
     void agregarCuerpoADestruir();
-    void empezarContacto(Cuerpo *otro);
+    void empezarContacto(Cuerpo *otro) override;
     void desactivar() override;
-    void terminarContacto(Cuerpo *otro);
+    void terminarContacto(Cuerpo *otro) override;
 };
 
 #endif //BOLAENERGIA_H

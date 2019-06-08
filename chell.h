@@ -26,7 +26,7 @@ public:
 	void mover(EstadoTeclado& t);
 	void morir();
 	void agarrarRoca(EstadoTeclado & t);
-	int getId();
+	uint8_t getId();
 	void dispararAzul(b2Vec2& pos_click);
 	void dispararNaranja(b2Vec2& pos_click);
 	const b2Vec2& getPosition();

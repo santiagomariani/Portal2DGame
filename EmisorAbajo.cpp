@@ -53,6 +53,6 @@ EmisorAbajo &EmisorAbajo::operator=(EmisorAbajo &&otro) {
     return *this;
 }
 
-int EmisorAbajo::getId() {
+uint8_t EmisorAbajo::getId() {
     return ID_EMISORABAJO;
 }

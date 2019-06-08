@@ -27,7 +27,7 @@ const b2Vec2 &BarraDeEnergia::getPosition() {
     return cuerpo->GetPosition();
 }
 
-int BarraDeEnergia::getId() {
+uint8_t BarraDeEnergia::getId() {
     return ID_BARRAENERGIA;
 }
 

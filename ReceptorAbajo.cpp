@@ -17,7 +17,7 @@ ReceptorAbajo::ReceptorAbajo(Mundo &mundo, const b2Vec2 &pos) :
     cuerpo->CreateFixture(&fixture_def);
 }
 
-int ReceptorAbajo::getId() {
+uint8_t ReceptorAbajo::getId() {
     if (activado) {
         return ID_RECEPTORABAJO_ACTIVADO;
     } else {

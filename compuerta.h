@@ -16,7 +16,7 @@ public:
 	Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica);
 	bool estaActiva();
 	void actualizar() override;
-	int getId();
+	uint8_t getId();
 	const b2Vec2& getPosition();
 	void empezarContacto(Cuerpo* otro);
 	~Compuerta() = default;

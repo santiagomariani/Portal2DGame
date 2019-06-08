@@ -70,7 +70,7 @@ void BloqueMetalDiagonal::crearMapaIds(){
     mapa_ids[270] = ID_BLOQUE_DIAGONAL_270;
 }
 
-int BloqueMetalDiagonal::getId(){
+uint8_t BloqueMetalDiagonal::getId(){
     //return mapa_ids[angulo];
     return this->angulo.getId();
 }

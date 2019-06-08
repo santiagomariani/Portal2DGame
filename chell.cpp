@@ -68,7 +68,7 @@ void Chell::activar(b2Vec2& pos){
 
     cuerpo->SetUserData(this);
 }
-int Chell::getId(){
+uint8_t Chell::getId(){
     return id;
 }
 

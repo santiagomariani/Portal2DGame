@@ -61,7 +61,7 @@ void Compuerta::empezarContacto(Cuerpo* otro){
     estado->empezarContacto(otro);
 }
 
-int Compuerta::getId(){
+uint8_t Compuerta::getId(){
     return estado->getId();
     //return ID_COMPUERTA;
 }

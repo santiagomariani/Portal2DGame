@@ -15,7 +15,7 @@ public:
     EmisorAbajo(Mundo &mundo, const b2Vec2 &pos);
     EmisorAbajo(EmisorAbajo &&otro);
     EmisorAbajo& operator=(EmisorAbajo &&otro);
-    int getId() override;
+    uint8_t getId() override;
 };
 
 

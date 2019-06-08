@@ -18,7 +18,7 @@ public:
     BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo);
     BloqueMetalDiagonal(BloqueMetalDiagonal&& otro);
     void recibirDisparo(Disparo* disparo);
-    int getId();
+    uint8_t getId();
     const b2Vec2& getPosition();
     void empezarContacto(Cuerpo* otro);
 };

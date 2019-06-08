@@ -59,7 +59,7 @@ void Boton::terminarContacto(Cuerpo* otro){
 	}
 }
 
-int Boton::getId(){
+uint8_t Boton::getId(){
 	if (estado_actual){
 		return ID_BOTON_PRENDIDO;
 	}

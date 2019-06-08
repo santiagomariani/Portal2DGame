@@ -15,3 +15,7 @@ bool EstadoTeclado::presionada(SDL_Keycode keyCode) {
 bool EstadoTeclado::liberada(SDL_Keycode keyCode) {
     return (estado_tecla[keyCode] == SDL_RELEASED);
 }
+
+std::map<SDL_Keycode, uint8_t> &EstadoTeclado::obtenerMapa() {
+    return estado_tecla;
+}

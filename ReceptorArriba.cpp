@@ -17,7 +17,7 @@ ReceptorArriba::ReceptorArriba(Mundo &mundo, const b2Vec2 &pos) :
     cuerpo->CreateFixture(&fixture_def);
 }
 
-int ReceptorArriba::getId() {
+uint8_t ReceptorArriba::getId() {
     if (activado) {
         return ID_RECEPTORARRIBA_ACTIVADO;
     } else {

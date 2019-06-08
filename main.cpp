@@ -344,11 +344,11 @@ int main() {
 			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
 			int id = actual->getId();
 			if (id == ID_DISPARO) {
-				camera.render(*renderizales[id], dest, (((Disparo*)actual)->getAngle()) * 180/PI * -1);
+				camera.render(*renderizales[id], dest, (((Disparo*)actual)->getAngle()) * -1);
 			} else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
-				camera.render(*renderizales[id], dest, (((Portal*)actual)->getAnguloSalida()) * 180/PI *-1);
+				camera.render(*renderizales[id], dest, (((Portal*)actual)->getAngle()) * -1);
 			} else if (id == ID_BOLAENERGIA) {
-				camera.render(*renderizales[id], dest, (((BolaEnergia*)actual)->getAngle()) * 180/PI * -1);
+				camera.render(*renderizales[id], dest, (((BolaEnergia*)actual)->getAngle()) * -1);
 			} else if (id == ID_CHELL) {
 				uint8_t estado_actual_chell = ((Chell*)actual)->obtenerEstado();
 				uint8_t orientacion_actual_chell = ((Chell*)actual)->obtenerOrientacion();

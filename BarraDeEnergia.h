@@ -18,7 +18,7 @@ private:
 public:
     BarraDeEnergia(Mundo &mundo, b2Vec2 &pos);
     const b2Vec2& getPosition() override;
-    int getId() override;
+    uint8_t getId() override;
     b2Body* getBody() override;
     void empezarContacto(Cuerpo *cuerpo);
     void terminarContacto(Cuerpo *cuerpo);

@@ -5,6 +5,8 @@
 #include <math.h>
 #include "config.h"
 
+#define PI 3.14159265
+
 #define DENSIDAD_RAYO 1
 
 Disparo::Disparo(int identidad, Mundo& mundo) : 
@@ -76,11 +78,12 @@ void Disparo::crearPortal(b2Vec2& pos, b2Vec2& normal){
 const b2Vec2& Disparo::getPosition(){
 	return cuerpo->GetPosition();
 }
-double Disparo::getAngle(){
+int32_t Disparo::getAngle(){
 	b2Vec2 vel = cuerpo->GetLinearVelocity();
-	return atan2(vel.y,vel.x);
+	float angulo = atan2(vel.y, vel.x);
+	return (uint32_t)(angulo * 180/PI);
 }
-int Disparo::getId(){
+uint8_t Disparo::getId(){
 	return ID_DISPARO;
 }
 
