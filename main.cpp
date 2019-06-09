@@ -31,6 +31,9 @@
 #include "angulo_ciento_ochenta.h"
 #include "angulo_dos_setenta.h"
 #include "EstadoChell.h"
+#include "Protocolo.h"
+#include "fisica.h"
+#include "vista.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -161,15 +164,19 @@ int main() {
 
 
 
+// PROTOCOLO----------------------------------
+	const int screenWidth = 800;
+	const int screenHeight = 600;
+
+	CoordConverter coordConverter(screenWidth, screenHeight);
+	Protocolo protocolo(coordConverter);
+
 //====_====_====_====_====_====_===_FISICA_====_====_====_====_====_====_===_
 
 	Fisica juego(protocolo, world);
 
 
 //======================================SDL======================================
-
-	const int screenWidth = 800;
-	const int screenHeight = 600;
 
 	const int FPS = 60;
 	const int TICKS_PER_FRAME = 1000/FPS;
@@ -321,11 +328,11 @@ int main() {
     renderizales[ID_ACIDO] = &acido_sprite;
     renderizales[ID_BARRAENERGIA] = &barra_energia_sprite;
 
-	CoordConverter coordConverter(screenWidth, screenHeight);
+	
 
 
 //====_====_====_====_====_====_===_VISTA_====_====_====_====_====_====_===_
-	Vista cliente(window, camera, texturas);
+	Vista cliente(window, camera, protocolo, renderizales);
 
 
 // ---------------------------------LOOP REFACTORIZADO ---------------------------------
@@ -333,10 +340,11 @@ int main() {
 	bool running = true;
 	while(running){
 		running = cliente.obtenerInput(coordConverter); //cliente enviar teclado
-		juego.actualizar() // servidor recibir teclado
+		juego.actualizar(); // servidor recibir teclado
 		juego.enviarCuerpos(); // servidor enviar cuerpo
-		cliente.renderizar() // Cliente recibir cuerpos
+		cliente.renderizar(); // Cliente recibir cuerpos
 	}
+	std::cout << "salio\n";
 	return 0;
 
 
@@ -347,7 +355,6 @@ int main() {
 //======================================Loop======================================
 
 
-	bool running = true;
 	EstadoTeclado teclado;
 
 	Timer fpsTimer;

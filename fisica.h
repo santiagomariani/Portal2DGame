@@ -3,7 +3,7 @@
 
 #include "mundo.h"
 #include "personajes.h"
-#include "protocolo.h"
+#include "Protocolo.h"
 
 class Fisica{
 	Mundo& mundo;

@@ -1,4 +1,5 @@
 #include "personajes.h"
+#include <iostream>
 
 Personajes::Personajes(Mundo& m) : mundo(m){
 	this->siguiente_client = 0;
@@ -11,6 +12,7 @@ int Personajes::agregar_chell(){
 	chell.activar(pos);
 	this->personajes.emplace(id, std::move(chell)); //mov
 	this->siguiente_client += 1;
+	std::cout << "id: " << id << std::endl;
 	return id;
 }
 

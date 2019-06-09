@@ -40,9 +40,6 @@ void EstadoChell::actualizarEstado(SensorChell &s, b2Vec2 &vel) {
     }
     estado_actual = estado_nuevo;
     orientacion_actual = orientacion_nueva;
-
-    std::cout << "ESTADO: " << unsigned(estado_actual) << std::endl;
-    std::cout << "ORI: " << unsigned(orientacion_actual) << std::endl;
 }
 
 uint8_t EstadoChell::obtenerEstado() {

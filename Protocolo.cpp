@@ -15,6 +15,10 @@ Protocolo::Protocolo(CoordConverter &coord_converter) :
     memset(cuerpo_serializado, 0, 500);
 }
 
+void Protocolo::enviarCant(int cant){
+    cant = cant;
+}
+
 void Protocolo::enviarTeclado(EstadoTeclado &estado_teclado) {
     /*
      *  1 - Se manda cantidad de teclas: uint8_t
@@ -81,9 +85,10 @@ void Protocolo::enviarCuerpo(Cuerpo &cuerpo) {
     if (id == ID_CHELL) {
         estado = ((Chell*)&cuerpo)->obtenerEstado();
         orientacion = ((Chell*)&cuerpo)->obtenerOrientacion();
+    } else {
+        estado = 0;
+        orientacion = 0;
     }
-    estado = 0;
-    orientacion = 0;
     int32_t angulo = cuerpo.getAngle();
     SDL_Rect dest = coord_converter.box2DToSDL(cuerpo);
 
@@ -202,4 +207,18 @@ void Protocolo::recibirCuerpo(InfoCuerpo &info_cuerpo) {
             }
         }
     }
+}
+
+
+
+
+void Protocolo::terminar(){
+    terminado = true;
+}
+bool Protocolo::termino(){
+    return terminado;
+}
+
+int Protocolo::recibirCant() {
+    return cant;
 }

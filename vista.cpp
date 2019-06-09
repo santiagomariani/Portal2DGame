@@ -2,15 +2,20 @@
 #include "estado_mouse.h"
 #include "CoordConverter.h"
 #include "ViewChell.h"
+#include "InfoCuerpo.h"
+#include "ids.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_image.h>
 #include "Box2D/Box2D.h"
 
-#define FPS 60;
-#define TICKS_PER_FRAME 1000/FPS;
+#define FPS 60
+#define TICKS_PER_FRAME 1000/FPS
 
-Vista::Vista(SdlWindow& ventana, Camera& camara, std::map<int, Renderable*> texturas): 
-			ventana(ventana), camara(camara), texturas(texturas){
+Vista::Vista(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
+			 std::map<int, Renderable*> texturas): 
+			protocolo(protocolo), ventana(ventana), 
+			camara(camara), texturas(texturas){
 }
 
 bool Vista::obtenerInput(CoordConverter& coordConverter){
@@ -32,11 +37,11 @@ bool Vista::obtenerInput(CoordConverter& coordConverter){
 			case SDL_MOUSEBUTTONDOWN:{
 				SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 				if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera)
+					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camara);
 					mouse.agregarClickIzquierdo(click);
 				}
 				if ((mouseEvent.button) == SDL_BUTTON_RIGHT){
-					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camera);
+					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camara);
 					mouse.agregarClickDerecho(click);
 				}
 				break;
@@ -45,7 +50,7 @@ bool Vista::obtenerInput(CoordConverter& coordConverter){
 				seguir = false;
 		}	
 	}
-	protocolo.enviarTeclado(teclado, mouse);
+	protocolo.enviarTeclado(teclado);
 	return seguir;
 }
 
@@ -53,31 +58,30 @@ bool Vista::obtenerInput(CoordConverter& coordConverter){
 void Vista::renderizar(){
 	fpsTimer.start();
 	ventana.fill(0x33, 0x33, 0x33, 0xFF); 
-	camera.renderBg(); 
-	
-	bool hay_cuerpo = true;
-	while (hay_cuerpo){
-		struct InfoCuerpo;
-		bool hay_cuerpo = protocolo.recibirCuerpo(cuerpo_info);
+	camara.renderBg(); 
+	int cant  = protocolo.recibirCant();
+	while (!(protocolo.termino())){
+		struct InfoCuerpo cuerpo_info;
+		protocolo.recibirCuerpo(cuerpo_info);
 
-		SDL_Rect dest = cuerpo_info->dest;
-		int id = cuerpo_info->id;
-		int estado = cuerpo_info->estado;
-		double angulo = cuerpo_info->angulo;
+		SDL_Rect dest = cuerpo_info.dest;
+		int id = cuerpo_info.id;
+		int estado = cuerpo_info.estado;
+		double angulo = cuerpo_info.angulo;
 
 		if (id == ID_DISPARO) {
-			camera.render(*texturas[id], dest, angulo);
+			camara.render(*texturas[id], dest, angulo);
 		} else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
-			camera.render(*texturas[id], dest, angulo);
+			camara.render(*texturas[id], dest, angulo);
 		} else if (id == ID_BOLAENERGIA) {
-			camera.render(*texturas[id], dest, angulo);
+			camara.render(*texturas[id], dest, angulo);
 		} else if (id == ID_CHELL) {
-			camera.updateCamera(dest); // tiene que ser la chell del cliente
+			camara.updateCamera(dest); // tiene que ser la chell del cliente
 			((ViewChell*)texturas[id])->cambiarEstado(estado);
-			SDL_Renderflip flip = cuerpo_info->flip;
-			camera.render(*texturas[id], dest, 0, nullptr, flip);
+			SDL_RendererFlip flip = cuerpo_info.flip;
+			camara.render(*texturas[id], dest, 0, nullptr, flip);
 		} else {
-			camera.render(*texturas[id], dest);
+			camara.render(*texturas[id], dest);
 		}
 	}
 	ventana.render();

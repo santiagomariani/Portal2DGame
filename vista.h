@@ -2,7 +2,7 @@
 #define VISTA_H
 
 #include "estado_teclado.h"
-#include "protocolo.h"
+#include "Protocolo.h"
 #include "Timer.h"
 #include "SdlWindow.h"
 #include "Camera.h"
@@ -11,14 +11,15 @@
 
 class Vista{
 	EstadoTeclado teclado;
-	Protocolo protocolo;
+	Protocolo& protocolo;
 	Timer fpsTimer;
 	Timer capTimer;
 	SdlWindow& ventana;
-	Camera& camara
+	Camera& camara;
 	std::map<int, Renderable*> texturas;
 public:
-	Vista(SdlWindow& ventana, Camera& camara, std::map<int, Renderable*> texturas);
+	Vista(SdlWindow& ventana, Camera& camara, Protocolo& protocolo, 
+		std::map<int, Renderable*> texturas);
 	bool obtenerInput(CoordConverter& coordConverter);
 	void renderizar();
 	~Vista() = default;	
