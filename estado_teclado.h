@@ -8,6 +8,8 @@ private:
     std::map<SDL_Keycode, uint8_t> estado_tecla;
 public:
     EstadoTeclado();
+    EstadoTeclado(EstadoTeclado &&otro);
+    EstadoTeclado& operator=(EstadoTeclado &&otro);
     void agregar_evento(SDL_KeyboardEvent evento);
     bool presionada(SDL_Keycode keyCode);
     bool liberada(SDL_Keycode keyCode);

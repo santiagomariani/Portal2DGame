@@ -51,3 +51,11 @@ SdlWindow::~SdlWindow() {
     }
     SDL_Quit();
 }
+
+int SdlWindow::obtenerAncho() {
+    return width;
+}
+
+int SdlWindow::obtenerAlto() {
+    return height;
+}

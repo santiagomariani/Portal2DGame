@@ -15,7 +15,7 @@ Fisica::Fisica(Protocolo& protocolo, Mundo& mundo):
 void Fisica::actualizar(){
 	EstadoTeclado teclado;
 	EstadoMouse mouse;
-	protocolo.recibirTeclado(teclado);
+    protocolo.recibirInput(teclado);
 	int id = 0; // SUPER HARDCODE
 	Chell& chell = personajes.obtener_chell(id);
 	chell.agarrarRoca(teclado);
