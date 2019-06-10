@@ -43,6 +43,12 @@ Mensajero &Mensajero::operator<<(int32_t numero) {
     return *this;
 }
 
+Mensajero &Mensajero::operator<<(float32 numero) {
+    uint32_t aux = htonf(numero);
+    skt.enviarMensaje((char *) &aux, CUATROBYTES);
+    return *this;
+}
+
 Mensajero &Mensajero::operator>>(uint8_t &numero) {
     skt.leerMensaje((char *) &numero, UNBYTE);
     return *this;
@@ -71,15 +77,9 @@ Mensajero &Mensajero::operator>>(std::string &cadena) {
 }
 
 Mensajero &Mensajero::operator>>(int32_t &numero) {
-    uint32_t aux;
+    int32_t aux;
     skt.leerMensaje((char *) &aux, CUATROBYTES);
     numero = ntohl(aux);
-    return *this;
-}
-
-Mensajero &Mensajero::operator<<(float32 numero) {
-    uint32_t aux = htonf(numero);
-    skt.enviarMensaje((char *) &aux, CUATROBYTES);
     return *this;
 }
 

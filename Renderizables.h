@@ -16,7 +16,7 @@ private:
     void creacionRenderizables(SdlWindow &ventana);
 public:
     explicit Renderizables(SdlWindow &ventana);
-    const Renderable* obtenerRenderizable(uint8_t id);
+    Renderable * obtenerRenderizable(uint8_t id);
 };
 
 

@@ -16,16 +16,22 @@
 #include "Skt.h"
 #include "Mensajero.h"
 
+#define MSJ_INPUT 1
+#define MSJ_CUERPO 2
+#define MSJ_FINALIZO_FOTOGRAMA 3
+
 class Protocolo {
 private:
     Mensajero &mensajero;
 public:
     explicit Protocolo(Mensajero &mensajero);
     void enviarInput(Input &input);
-    void recibirInput(Input &input);
     void enviarCuerpo(Cuerpo &cuerpo);
+    void enviarFinalizoFotograma();
+    void recibirInput(Input &input);
     void recibirCuerpo(InfoCuerpo &info_cuerpo,
             CoordConverter &coord_converter);
+    uint8_t recibirCodigoMensaje();
 };
 
 

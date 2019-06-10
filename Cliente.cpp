@@ -14,27 +14,7 @@
 #include "Input.h"
 #include "ThInput.h"
 #include "Skt.h"
-
-#define FPS 60
-#define TICKS_PER_FRAME 1000/FPS
-
-/*
-Cliente::Cliente(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
-			 std::map<int, Renderable*> texturas):
-			protocolo(protocolo), ventana(ventana),
-			camara(camara), texturas(texturas){
-}
-*/
-
-
-
-
-Cliente::Cliente(int screen_width, int screen_height) :
-	window(screen_width, screen_height),
-
-	{
-
-}
+#include "ThRenderizado.h"
 
 void Cliente::iniciar() {
 	const int screen_width = 800;
@@ -44,9 +24,9 @@ void Cliente::iniciar() {
 
 	std::string bg_path = "assets/industrial-background.jpg";
 	SdlTexture background(bg_path, ventana);
-
 	Camera camara(screen_width, screen_height, background);
-    CoordConverter coord_converter(screen_width, screen_width);
+
+	CoordConverter coord_converter(screen_width, screen_width);
 	ColaBloqueante<Input> cola_input;
 	ObtenedorInput obtenedor_input(coord_converter, camara, cola_input);
 	Renderizables renderizables(ventana);
@@ -58,88 +38,36 @@ void Cliente::iniciar() {
 	skt.conectar();
 
 	Mensajero mensajero(skt);
-	Protocolo protocolo(coord_converter, mensajero);
+	Protocolo protocolo(mensajero);
 	ThInput th_input(cola_input, protocolo);
+
+	ColaBloqueante<InfoCuerpo> cola_renderizado;
+
+	Renderizador renderizador(ventana,
+			camara,
+			cola_renderizado,
+			renderizables);
+
+	ThRenderizado th_renderizado(cola_renderizado,
+			protocolo,
+			renderizador,
+			coord_converter);
+
 	th_input.start();
-
-
-
-
-
-    //Renderizador renderizador()
-	// ventana.fill(0x33, 0x33, 0x33, 0xFF);
-}
-
-bool Cliente::obtenerInput(CoordConverter& coordConverter){
-	EstadoMouse mouse;
-	SDL_Event event;
-	bool seguir = true;
-	while (SDL_PollEvent(&event) != 0){
-		switch(event.type) {
-			case SDL_KEYDOWN:{
-				SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-				teclado.agregar_evento(keyEvent);
-				break;
-			}
-			case SDL_KEYUP:{
-				SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-				teclado.agregar_evento(keyEvent);
-				break;
-			}
-			case SDL_MOUSEBUTTONDOWN:{
-				SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
-				if ((mouseEvent.button) == SDL_BUTTON_LEFT){
-					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camara);
-					mouse.agregarClickIzquierdo(click);
-				}
-				if ((mouseEvent.button) == SDL_BUTTON_RIGHT){
-					b2Vec2 click = coordConverter.sdlToBox2D(mouseEvent.x, mouseEvent.y, camara);
-					mouse.agregarClickDerecho(click);
-				}
-				break;
-			}
-			case SDL_QUIT:
-				seguir = false;
+	th_renderizado.start();
+	bool terminado = false;
+	Timer capTimer;
+	while(!terminado) {
+		capTimer.start();
+	    terminado = obtenedor_input.obtenerInput();
+		renderizador.renderizar();
+		int frameTicks = capTimer.getTicks();
+		if (frameTicks < TICKS_PER_FRAME) {
+			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
-	protocolo.enviarTeclado(teclado);
-	return seguir;
+	th_renderizado.terminar();
+	th_renderizado.join();
+	th_input.terminar();
+	th_input.join();
 }
-
-void Cliente::renderizar(){
-	fpsTimer.start();
-	ventana.fill(0x33, 0x33, 0x33, 0xFF);
-	camara.renderBg();
-	int cant  = protocolo.recibirCant();
-	while (!(protocolo.termino())){
-		struct InfoCuerpo cuerpo_info;
-		protocolo.recibirCuerpo(cuerpo_info);
-
-		SDL_Rect dest = cuerpo_info.dest;
-		int id = cuerpo_info.id;
-		int estado = cuerpo_info.estado;
-		double angulo = cuerpo_info.angulo;
-
-		if (id == ID_DISPARO) {
-			camara.render(*texturas[id], dest, angulo);
-		} else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
-			camara.render(*texturas[id], dest, angulo);
-		} else if (id == ID_BOLAENERGIA) {
-			camara.render(*texturas[id], dest, angulo);
-		} else if (id == ID_CHELL) {
-			camara.updateCamera(dest); // tiene que ser la chell del cliente
-			((ViewChell*)texturas[id])->cambiarEstado(estado);
-			SDL_RendererFlip flip = cuerpo_info.flip;
-			camara.render(*texturas[id], dest, 0, nullptr, flip);
-		} else {
-			camara.render(*texturas[id], dest);
-		}
-	}
-	ventana.render();
-
-	int frameTicks = capTimer.getTicks();
-	if (frameTicks < TICKS_PER_FRAME) {
-		SDL_Delay(TICKS_PER_FRAME - frameTicks);
-	}
-}
-

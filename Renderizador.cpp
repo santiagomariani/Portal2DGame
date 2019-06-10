@@ -4,62 +4,44 @@
 
 #include <SDL2/SDL_timer.h>
 #include "Renderizador.h"
+#include "ids.h"
+#include "ViewChell.h"
 
 Renderizador::Renderizador(SdlWindow &ventana,
+        Camera &camara,
+        ColaBloqueante<InfoCuerpo> &cola_renderizado,
         Renderizables &renderizables) :
-    ventana(ventana),
-    renderizables(renderizables),
-    camara(ventana.obtenerAncho(), ventana.obtenerAlto()) {
-
+        ventana(ventana),
+        camara(camara),
+        cola_renderizado(cola_renderizado),
+        renderizables(renderizables),
+        finalizo_fotograma(false) {
 }
 
 void Renderizador::renderizar() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-    fpsTimer.start();
+    InfoCuerpo ic;
     ventana.fill(0x33, 0x33, 0x33, 0xFF);
     camara.renderBg();
-    int cant  = protocolo.recibirCant();
-    while (!(protocolo.termino())){
-        struct InfoCuerpo cuerpo_info;
-        protocolo.recibirCuerpo(cuerpo_info);
-
-        SDL_Rect dest = cuerpo_info.dest;
-        int id = cuerpo_info.id;
-        int estado = cuerpo_info.estado;
-        double angulo = cuerpo_info.angulo;
-
-        if (id == ID_DISPARO) {
-            camara.render(*texturas[id], dest, angulo);
-        } else if (id == ID_PORTAL_AZUL || id == ID_PORTAL_NARANJA){
-            camara.render(*texturas[id], dest, angulo);
-        } else if (id == ID_BOLAENERGIA) {
-            camara.render(*texturas[id], dest, angulo);
-        } else if (id == ID_CHELL) {
-            camara.updateCamera(dest); // tiene que ser la chell del cliente
-            ((ViewChell*)texturas[id])->cambiarEstado(estado);
-            SDL_RendererFlip flip = cuerpo_info.flip;
-            camara.render(*texturas[id], dest, 0, nullptr, flip);
-        } else {
-            camara.render(*texturas[id], dest);
+    while (!finalizo_fotograma) {
+        cola_renderizado.pop(ic);
+        if (ic.id == ID_CHELL) {
+            camara.updateCamera(ic.dest); // tiene que ser la chell del cliente
+            ((ViewChell *) renderizables.
+            obtenerRenderizable(ic.id))->cambiarEstado(ic.estado,
+                    ic.angulo*-1,
+                    nullptr,
+                    ic.flip);
         }
+        camara.render(*renderizables.obtenerRenderizable(ic.id),
+                ic.dest,
+                ic.angulo*-1,
+                nullptr,
+                ic.flip);
     }
     ventana.render();
+    finalizo_fotograma = false;
+}
 
-    int frameTicks = capTimer.getTicks();
-    if (frameTicks < TICKS_PER_FRAME) {
-        SDL_Delay(TICKS_PER_FRAME - frameTicks);
-    }
-
+void Renderizador::finalizoFotograma() {
+    finalizo_fotograma = true;
 }

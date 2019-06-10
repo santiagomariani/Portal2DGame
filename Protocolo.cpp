@@ -9,9 +9,6 @@
 #include "BolaEnergia.h"
 #include "CoordConverter.h"
 
-#define INPUT 1
-#define CUERPO 2
-
 Protocolo::Protocolo(Mensajero &mensajero) :
     mensajero(mensajero) {
 }
@@ -27,7 +24,7 @@ void Protocolo::enviarInput(Input &input) {
      */
 
     // Codigo de mensaje
-    uint8_t codigo_mensaje = INPUT;
+    uint8_t codigo_mensaje = MSJ_INPUT;
     mensajero << codigo_mensaje;
 
     auto mapa_teclado = input.estado_teclado.obtenerMapa();
@@ -74,7 +71,7 @@ void Protocolo::recibirInput(Input &input) {
     uint8_t cant_teclas;
     mensajero >> cant_teclas;
 
-    for (int i = 0, j = 1; i < cant_teclas; ++i) {
+    for (int i = 0; i < cant_teclas; ++i) {
         int32_t key_code;
         uint8_t estado_tecla;
         mensajero >> key_code >> estado_tecla;
@@ -113,7 +110,7 @@ void Protocolo::enviarCuerpo(Cuerpo &cuerpo) {
     alto maximo: float32
     */
 
-    uint8_t codigo_mensaje = CUERPO;
+    uint8_t codigo_mensaje = MSJ_CUERPO;
     mensajero << codigo_mensaje;
 
     uint8_t id =  cuerpo.getId();
@@ -167,4 +164,15 @@ void Protocolo::recibirCuerpo(InfoCuerpo &info_cuerpo, CoordConverter &coord_con
     } else {
         info_cuerpo.flip = SDL_FLIP_NONE;
     }
+}
+
+void Protocolo::enviarFinalizoFotograma() {
+    uint8_t codigo_mensaje = MSJ_FINALIZO_FOTOGRAMA;
+    mensajero << codigo_mensaje;
+}
+
+uint8_t Protocolo::recibirCodigoMensaje() {
+    uint8_t codigo_mensaje;
+    mensajero >> codigo_mensaje;
+    return codigo_mensaje;
 }

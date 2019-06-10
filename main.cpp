@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include "Box2D/Box2D.h"
 
@@ -169,11 +171,11 @@ int main() {
 	const int screenHeight = 600;
 
 	CoordConverter coordConverter(screenWidth, screenHeight);
-	Protocolo protocolo(coordConverter);
+	//Protocolo protocolo(coordConverter);
 
 //====_====_====_====_====_====_===_FISICA_====_====_====_====_====_====_===_
 
-	Fisica juego(protocolo, world);
+	//Fisica juego(protocolo, world);
 
 
 //======================================SDL======================================
