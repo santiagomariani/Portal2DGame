@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="untitled"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="servidor">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/servidor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 servidor"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="servidor/fast">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/servidor" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 servidor/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Box2D">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Box2D/fast">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/libBox2D.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 Box2D/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cliente">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/cliente" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 cliente"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cliente/fast">
+				<Option output="/home/seba/Desktop/taller/TP4---Portal/cliente" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/seba/Desktop/taller/TP4---Portal"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/libs"/>
+					<Add directory="/home/seba/Desktop/taller/TP4---Portal/src/comun"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 cliente/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/seba/Desktop/taller/TP4---Portal/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Box2D.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2ChainShape.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2CircleShape.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2EdgeShape.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2PolygonShape.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/Shapes/b2Shape.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2BroadPhase.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollideCircle.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollideEdge.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2CollidePolygon.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Collision.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Collision.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Distance.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2Distance.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2DynamicTree.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Collision/b2TimeOfImpact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2BlockAllocator.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Draw.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Draw.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2GrowableStack.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Math.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Math.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Settings.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Settings.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2StackAllocator.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2StackAllocator.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Timer.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Common/b2Timer.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndCircleContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ChainAndPolygonContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2CircleContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2Contact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2ContactSolver.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndCircleContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2EdgeAndPolygonContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Contacts/b2PolygonContact.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2DistanceJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2FrictionJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2GearJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2Joint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MotorJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2MouseJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PrismaticJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2PulleyJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RevoluteJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2RopeJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WeldJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/Joints/b2WheelJoint.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Body.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Body.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2ContactManager.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Fixture.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Island.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2Island.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2TimeStep.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2World.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2World.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Dynamics/b2WorldCallbacks.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Rope/b2Rope.cpp">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/libs/Box2D/Rope/b2Rope.h">
+			<Option target="Box2D"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Cliente.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Cliente.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ObtenedorInput.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ObtenedorInput.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Protocolo.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Protocolo.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Renderizables.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Renderizables.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Renderizador.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Renderizador.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Sprite.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Sprite.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThInput.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThInput.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Timer.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Timer.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ViewChell.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ViewChell.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/main.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Camera.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Camera.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/ColaBloqueante.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/ColaBloqueante.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/CoordConverter.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/CoordConverter.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/InfoCuerpo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/InfoCuerpo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Input.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Input.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Mensajero.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Mensajero.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Protocolo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Protocolo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Renderable.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Renderable.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlException.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlException.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlTexture.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlTexture.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlWindow.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlWindow.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Skt.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Skt.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SktAceptador.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SktAceptador.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SocketError.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SocketError.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Thread.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Thread.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/click.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/config.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/config.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/cuerpo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/estado_mouse.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/estado_mouse.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/estado_teclado.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/estado_teclado.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/ids.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Acido.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Acido.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BarraDeEnergia.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BarraDeEnergia.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Bloque.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Bloque.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueMetal.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueMetal.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueRoca.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueRoca.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BolaEnergia.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BolaEnergia.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Emisor.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Emisor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorAbajo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorAbajo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorArriba.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorArriba.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorDerecha.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorDerecha.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorIzquierda.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorIzquierda.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EstadoChell.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EstadoChell.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/InfoCuerpo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/InfoCuerpo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Input.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Input.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Mensajero.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Mensajero.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Receptor.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Receptor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorAbajo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorAbajo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorArriba.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorArriba.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorDerecha.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorDerecha.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorIzquierda.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorIzquierda.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Roca.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Roca.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Sensor.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Sensor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorChell.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorChell.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorReceptor.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorReceptor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Skt.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Skt.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SktAceptador.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SktAceptador.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SocketError.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SocketError.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Teletransportador.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Teletransportador.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/and.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/and.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_cero.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_cero.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_ciento_ochenta.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_ciento_ochenta.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_dos_setenta.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_dos_setenta.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_noventa.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_noventa.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/bloque_metal_diagonal.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/bloque_metal_diagonal.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/chell.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/chell.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta_logica.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/contact_listener.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/contact_listener.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/disparo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/disparo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/enviar_cuerpos.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/enviar_cuerpos.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_abierta.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_abierta.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_abriendo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_abriendo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_cerrada.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_cerrada.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_cerrando.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_cerrando.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_compuerta.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_logico.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/estado_logico.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/fisica.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/fisica.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/iniciar_partida.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/iniciar_partida.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/main.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/mundo.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/mundo.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/or.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/or.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/partida.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/partida.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/personajes.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/personajes.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/pistola.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/pistola.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/portal.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/portal.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/proceso_cliente.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/proceso_cliente.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/recibir_input.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/recibir_input.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/servidor.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/servidor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
