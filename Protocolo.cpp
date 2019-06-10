@@ -9,46 +9,76 @@
 #include "BolaEnergia.h"
 #include "CoordConverter.h"
 
-Protocolo::Protocolo(CoordConverter &coord_converter) :
-    coord_converter(coord_converter) {
-    memset(input_serializado, 0, 500);
-    memset(cuerpo_serializado, 0, 500);
+#define INPUT 1
+#define CUERPO 2
+
+Protocolo::Protocolo(CoordConverter &coord_converter,
+        Mensajero &mensajero) :
+    coord_converter(coord_converter),
+    mensajero(mensajero) {
 }
 
-void Protocolo::enviarCant(int cant){
-    cant = cant;
-}
-
-void Protocolo::enviarTeclado(EstadoTeclado &estado_teclado) {
+void Protocolo::enviarInput(Input &input) {
     /*
-     *  1 - Se manda cantidad de teclas: uint8_t
-     *  2 - Se manda la tecla y si esta presionado o no:
+     *  1 - Mando codigo de mensaje.
+     *  2 - Se manda cantidad de teclas: uint8_t
+     *  3 - Se manda la tecla y si esta presionado o no:
      *         tecla: sint32
-     *         presionado/no presionada: uint8_t
+     *         estado tecla: uint8_t
+     *  4 - Mando estado de mouse.
      */
-    auto mapa_teclado = estado_teclado.obtenerMapa();
-    uint8_t cant_teclas = mapa_teclado.size();
+
+    // Codigo de mensaje
+    uint8_t codigo_mensaje = INPUT;
+    mensajero << codigo_mensaje;
+
+    auto mapa_teclado = input.estado_teclado.obtenerMapa();
     // Cantidad de teclas.
-    input_serializado[0] = (((char*)(&(cant_teclas)))[0]);
-    int j = 1;
+    uint8_t cant_teclas = mapa_teclado.size();
+    mensajero << cant_teclas;
+
     for (auto it = mapa_teclado.begin(); it != mapa_teclado.end(); it++) {
         // SDL_Keycode -> sint32
         Sint32 key_code = it->first;
-        key_code = htonl(key_code);
-        for (int i = 0; i < 4; ++i) {
-            input_serializado[j] = (((char*)(&(key_code)))[i]);
-            ++j;
-        }
-        // Tecla presionada o no.
-        uint8_t tecla_presionada = it->second;
-        input_serializado[j] = (((char*)(&(tecla_presionada)))[0]);
-        ++j;
+        mensajero << key_code;
+        // Estado tecla.
+        uint8_t estado_tecla = it->second;
+        mensajero << estado_tecla;
+    }
+
+    EstadoMouse &estado_mouse = input.estado_mouse;
+    uint8_t click_derecho;
+    uint8_t click_izquierdo;
+
+    // Mando click derecho.
+    if (estado_mouse.clickDerecho()) {
+        click_derecho = 1;
+        mensajero << click_derecho;
+        b2Vec2 pos = estado_mouse.posClickDerecho();
+        mensajero << pos.x;
+        mensajero << pos.y;
+    } else {
+        click_derecho = 0;
+        mensajero << click_derecho;
+    }
+
+    // Mando click izquierdo.
+    if (estado_mouse.clickIzquierdo()) {
+        click_izquierdo = 1;
+        mensajero << click_izquierdo;
+        b2Vec2 pos = estado_mouse.posClickIzquierdo();
+        mensajero << pos.x;
+        mensajero << pos.y;
+    } else {
+        click_izquierdo = 0;
+        mensajero << click_izquierdo;
     }
 }
 
-void Protocolo::recibirTeclado(EstadoTeclado &estado_teclado) {
+void Protocolo::recibirInput(Input &input) {
     // Cantidad de teclas
 
+    /*
     uint8_t cant_teclas;
     ((char*)(&cant_teclas))[0] = input_serializado[0];
 
@@ -68,6 +98,7 @@ void Protocolo::recibirTeclado(EstadoTeclado &estado_teclado) {
         event.state = tecla_presionada;
         estado_teclado.agregar_evento(event);
     }
+    */
 }
 
 void Protocolo::enviarCuerpo(Cuerpo &cuerpo) {
@@ -217,8 +248,4 @@ void Protocolo::terminar(){
 }
 bool Protocolo::termino(){
     return terminado;
-}
-
-int Protocolo::recibirCant() {
-    return cant;
 }

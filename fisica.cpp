@@ -6,8 +6,8 @@
 #include "Box2D/Box2D.h"
 
 
-Fisica::Fisica(Protocolo& protocolo, Mundo& mundo): 
-				mundo(mundo), personajes(mundo), protocolo(protocolo){
+Fisica::Fisica(Mundo& mundo): 
+				mundo(mundo), personajes(mundo){
 		personajes.agregar_chell();
 }
 
@@ -43,18 +43,4 @@ std::vector<Cuerpo*> Fisica::obtenerCuerpos(){
 	return vector_cuerpos;
 }
 
-
-void Fisica::enviarCuerpos(){
-	b2Body *cuerpos = mundo.obtenerBodies();
-	while (cuerpos){
-		Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
-		if (!actual){
-			cuerpos = cuerpos->GetNext();
-			continue;
-		}
-		protocolo.enviarCuerpo(*actual);
-		cuerpos = cuerpos->GetNext();
-	}
-	protocolo.terminar();
-}
 

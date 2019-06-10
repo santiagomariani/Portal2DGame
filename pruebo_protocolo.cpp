@@ -44,8 +44,8 @@ int main() {
 
     EstadoTeclado estado_teclado2;
 
-    protocolo.enviarTeclado(estado_teclado1);
-    protocolo.recibirTeclado(estado_teclado2);
+    protocolo.enviarInput(estado_teclado1);
+    protocolo.recibirInput(estado_teclado2);
 
     auto &mapa_teclado2 = estado_teclado2.obtenerMapa();
 

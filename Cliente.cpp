@@ -1,4 +1,4 @@
-#include "vista.h"
+#include "Cliente.h"
 #include "estado_mouse.h"
 #include "CoordConverter.h"
 #include "ViewChell.h"
@@ -8,17 +8,69 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
 #include "Box2D/Box2D.h"
+#include "ObtenedorInput.h"
+#include "Renderizador.h"
+#include "ColaBloqueante.h"
+#include "Input.h"
+#include "ThInput.h"
+#include "Skt.h"
 
 #define FPS 60
 #define TICKS_PER_FRAME 1000/FPS
 
-Vista::Vista(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
-			 std::map<int, Renderable*> texturas): 
-			protocolo(protocolo), ventana(ventana), 
+/*
+Cliente::Cliente(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
+			 std::map<int, Renderable*> texturas):
+			protocolo(protocolo), ventana(ventana),
 			camara(camara), texturas(texturas){
 }
+*/
 
-bool Vista::obtenerInput(CoordConverter& coordConverter){
+
+
+
+Cliente::Cliente(int screen_width, int screen_height) :
+	window(screen_width, screen_height),
+
+	{
+
+}
+
+void Cliente::iniciar() {
+	const int screen_width = 800;
+	const int screen_height = 600;
+
+	SdlWindow ventana(screen_width, screen_height);
+
+	std::string bg_path = "assets/industrial-background.jpg";
+	SdlTexture background(bg_path, ventana);
+
+	Camera camara(screen_width, screen_height, background);
+    CoordConverter coord_converter(screen_width, screen_width);
+	ColaBloqueante<Input> cola_input;
+	ObtenedorInput obtenedor_input(coord_converter, camara, cola_input);
+	Renderizables renderizables(ventana);
+
+	// Conexion con servidor.
+	std::string host = "localhost";
+	std::string port = "8080";
+	Skt skt(host, port);
+	skt.conectar();
+
+	Mensajero mensajero(skt);
+	Protocolo protocolo(coord_converter, mensajero);
+	ThInput th_input(cola_input, protocolo);
+	th_input.start();
+
+
+
+
+
+    //Renderizador renderizador()
+	// ventana.fill(0x33, 0x33, 0x33, 0xFF);
+}
+
+bool Cliente::obtenerInput(CoordConverter& coordConverter){
 	EstadoMouse mouse;
 	SDL_Event event;
 	bool seguir = true;
@@ -48,17 +100,16 @@ bool Vista::obtenerInput(CoordConverter& coordConverter){
 			}
 			case SDL_QUIT:
 				seguir = false;
-		}	
+		}
 	}
 	protocolo.enviarTeclado(teclado);
 	return seguir;
 }
 
-
-void Vista::renderizar(){
+void Cliente::renderizar(){
 	fpsTimer.start();
-	ventana.fill(0x33, 0x33, 0x33, 0xFF); 
-	camara.renderBg(); 
+	ventana.fill(0x33, 0x33, 0x33, 0xFF);
+	camara.renderBg();
 	int cant  = protocolo.recibirCant();
 	while (!(protocolo.termino())){
 		struct InfoCuerpo cuerpo_info;

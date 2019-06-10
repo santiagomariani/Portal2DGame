@@ -11,12 +11,15 @@ class EstadoMouse{
 	struct click derecho;
 public:
 	EstadoMouse();
+	EstadoMouse(EstadoMouse &&otro);
+	EstadoMouse& operator=(EstadoMouse &&otro);
 	void agregarClickDerecho(b2Vec2& pos_click);
 	void agregarClickIzquierdo(b2Vec2& pos_click);
 	bool clickDerecho();
 	bool clickIzquierdo();
 	b2Vec2& posClickDerecho();
 	b2Vec2& posClickIzquierdo();
+	void resetear();
 	~EstadoMouse() = default;
 };
 

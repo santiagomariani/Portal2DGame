@@ -33,7 +33,7 @@
 #include "EstadoChell.h"
 #include "Protocolo.h"
 #include "fisica.h"
-#include "vista.h"
+#include "Cliente.h"
 #include <thread>
 #include <pthread.h>
 #include <vector>
@@ -332,7 +332,7 @@ int main() {
 
 
 //====_====_====_====_====_====_===_VISTA_====_====_====_====_====_====_===_
-	Vista cliente(window, camera, protocolo, renderizales);
+	Cliente cliente(window, camera, protocolo, renderizales);
 
 
 // ---------------------------------LOOP REFACTORIZADO ---------------------------------
