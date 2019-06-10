@@ -17,6 +17,7 @@ private:
     Protocolo &protocolo;
 public:
     ThInput(ColaBloqueante<Input> &cola_input, Protocolo &protocolo);
+    void terminar();
     virtual void run();
 };
 

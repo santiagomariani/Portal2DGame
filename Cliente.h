@@ -14,10 +14,8 @@ private:
 public:
 	// Cliente(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
 	//	std::map<int, Renderable*> texturas);
-	Cliente();
+	Cliente() = default;
 	void iniciar();
-	bool obtenerInput(CoordConverter& coordConverter);
-	void renderizar();
 	~Cliente() = default;
 };
 

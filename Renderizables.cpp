@@ -149,6 +149,6 @@ void Renderizables::creacionRenderizables(SdlWindow &ventana) {
     renderizales[ID_BARRAENERGIA] = &barra_energia_sprite;
 }
 
-const Renderable* Renderizables::obtenerRenderizable(uint8_t id) {
+Renderable * Renderizables::obtenerRenderizable(uint8_t id) {
     return renderizales[id];
 }

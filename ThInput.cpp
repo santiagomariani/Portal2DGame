@@ -16,3 +16,7 @@ void ThInput::run() {
         protocolo.enviarInput(input);
     }
 }
+
+void ThInput::terminar() {
+    cola_input.finalizado();
+}

@@ -7,6 +7,8 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread
 set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_FLAGS_RELEASE "-O0")
 
+# add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlTexture.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
+
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/libs)
@@ -19,6 +21,7 @@ include_directories(${CMAKE_SOURCE_DIR}/src/comun)
 
 message("[INFO] Adding Box2D as library")
 file(GLOB_RECURSE BOX2D_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/Box2D/*.cpp" "libs/Box2D/*.h")
+
 
 add_library(Box2D STATIC ${BOX2D_SOURCES})
 
@@ -37,6 +40,5 @@ file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/
 
 add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES})
 target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT})
-
 
 
