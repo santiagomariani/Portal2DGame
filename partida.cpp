@@ -1,5 +1,6 @@
 #include "partida.h"
 #include "proceso_cliente.h"
+#include "SocketError.h"
 
 Partida::Partida(Fisica& fisica, SktAceptador skt): 
                 fisica(fisica), skt(std::move(skt)){
@@ -13,7 +14,7 @@ void Partida::correrPartida(){ //
         if (!(this->cola_input.pop(input))){
             continue;
         }
-        this->fisica.actualizar(input.teclado, input.mouse);
+        this->fisica.actualizar(input.estado_teclado, estado_input.mouse);
 
         std::vector<Cuerpo*> cuerpos = this->fisica.obtenerCuerpos();
 

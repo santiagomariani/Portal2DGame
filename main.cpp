@@ -169,11 +169,11 @@ int main() {
     const int screenHeight = 600;
 
     CoordConverter coordConverter(screenWidth, screenHeight);
-    Protocolo protocolo(coordConverter);
+    //Protocolo protocolo(coordConverter);
 
 //====_====_====_====_====_====_===_FISICA_====_====_====_====_====_====_===_
 
-    Fisica juego(protocolo, world);
+    //Fisica juego(protocolo, world);
 
 
 //======================================SDL======================================
@@ -332,12 +332,12 @@ int main() {
 
 
 //====_====_====_====_====_====_===_VISTA_====_====_====_====_====_====_===_
-    Cliente cliente(window, camera, protocolo, renderizales);
+   // Cliente cliente(window, camera, protocolo, renderizales);
 
 
 // ---------------------------------LOOP REFACTORIZADO ---------------------------------
 
-    bool running = true;
+    /*bool running = true;
     while(running){
         running = cliente.obtenerInput(coordConverter); //cliente enviar teclado
         juego.actualizar(); // servidor recibir teclado
@@ -345,7 +345,7 @@ int main() {
         cliente.renderizar(); // Cliente recibir cuerpos
     }
     std::cout << "salio\n";
-    return 0;
+    return 0;*/
 
 
 
@@ -360,13 +360,16 @@ int main() {
     Timer capTimer;
 
     int countedFrames = 1;
-
+    bool running = true;
     while (running) {
         fpsTimer.start();
         SDL_Event event;
         window.fill(0x33, 0x33, 0x33, 0xFF);
         Chell& chell = personajes.obtener_chell(id);
-        SDL_Rect destChell = coordConverter.box2DToSDL(chell);
+        b2Vec2 pos = chell.getPosition();
+        float ancho = chell.getWidth();
+        float alto = chell.getHeight();
+        SDL_Rect destChell = coordConverter.box2DToSDL(pos, ancho, alto);
         camera.renderBg();
         camera.updateCamera(destChell);
         b2Body *cuerpos = world.obtenerBodies();
@@ -376,7 +379,10 @@ int main() {
                 cuerpos = cuerpos->GetNext();
                 continue;
             }
-            SDL_Rect dest = coordConverter.box2DToSDL(*actual);
+            b2Vec2 pos = actual->getPosition();
+            float ancho = actual->getMaxWidth();
+            float alto = actual->getMaxHeight();
+            SDL_Rect dest = coordConverter.box2DToSDL(pos, ancho, alto);
             int id = actual->getId();
             if (id == ID_DISPARO) {
                 camera.render(*renderizales[id], dest, (((Disparo*)actual)->getAngle()) * -1);
