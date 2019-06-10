@@ -1,17 +1,18 @@
 #include "partida.h"
+#include "proceso_cliente.h"
 
-Partida::Partida(ColaProtegida& cola, Fisica& fisica): 
-                    cola(cola), fisica(fisica){
+Partida::Partida(Fisica& fisica, SktAceptador skt): 
+                fisica(fisica), skt(std::move(skt)){
     this->continuar_juego = true;
     this->recibir_clientes = true;
 }
 
 void Partida::correrPartida(){ // 
     while (this->continuar_juego){
-        if (this->cola_input.estaVacia()){
+        struct Input input;
+        if (!(this->cola_input.pop(input))){
             continue;
         }
-        struct Input input = this->cola_input.pop();
         this->fisica.actualizar(input.teclado, input.mouse);
 
         std::vector<Cuerpo*> cuerpos = this->fisica.obtenerCuerpos();
@@ -22,6 +23,11 @@ void Partida::correrPartida(){ //
             }
         }
     }
+
+    for (auto it=colas_clientes.begin(); it!=colas_clientes.end(); it++){
+        it->finalizado();
+    }
+
     for (size_t i = 0; i < this->threads_clientes.size(); ++i){
         this->threads_clientes[i]->join();
         delete this->threads_clientes[i];
@@ -37,12 +43,10 @@ void Partida::terminarPartida(){
 
 
 int Partidas::recibirClientes(){ 
-    std::vector<HeapProtected> colas_clientes;
     int i = 0;
     //while (this->recibir_clientes){
         try{
-            Socket acept_skt = std::move(this->socket.aceptarClientes());
-
+            Skt acept_skt = std::move(this->skt.aceptarClientes());
             colas_clientes.emplace_back();
             ProcesoCliente* proceso = new ProcesoCliente(
                                             std::move(acept_skt),
@@ -67,3 +71,10 @@ int Partidas::recibirClientes(){
 void Partida::terminarRecibirClientes(){
     this->recibir_clientes = false;
 }
+
+
+void Partida::comezar(){
+    this->recibirClientes();
+    this->correrPartida();
+}
+

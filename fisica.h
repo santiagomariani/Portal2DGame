@@ -14,7 +14,6 @@ public:
 	Fisica(Mundo& mundo);
 	void actualizar(EstadoTeclado& teclado, EstadoMouse& mouse);
 	std::vector<Cuerpo*> obtenerCuerpos();
-	void enviarCuerpos();
 	~Fisica() = default;
 };
 

@@ -1,23 +1,24 @@
 #ifndef PROCESO_CLIENTE_H
 #define PROCESO_CLIENTE_H
 
-#include "cola_protegida.h"
+#include "ColaBloqueante.h"
 #include "protocolo.h"
 #include "threads.h"
+#include "Input.h"
 
 
 class ProcesoCliente : public Thread {
 private:
-	Protocolo protocolo;
-    ColaProtegida& cola_input;
-    ColaProtegida& cola_cuerpos;
+	Skt socket;
+    ColaBloqueante<Input>& cola_input;
+    ColaBloqueante<Cuerpo*>& cola_cuerpos;
     bool terminar;
     std::vector<Thread*> threads;
 
 public:
-    explicit ProcesoCliente(Protocolo protocolo, 
-    						ColaProtegida& cola_input, 
-    						ColaProtegida& cola_cuerpos);
+    explicit ProcesoCliente(Skt socket, 
+    						ColaBloqueante<Input>& cola_input, 
+    						ColaBloqueante<Cuerpo*>& cola_cuerpos);
 
     void run() override;
 

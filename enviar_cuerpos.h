@@ -1,19 +1,19 @@
 #ifndef ENVIAR_CUERPOS_H
 #define ENVIAR_CUERPOS_H
 
-#include "cola_protegida.h"
+#include "ColaBloqueante.h"
 #include "protocolo.h"
 #include "threads.h"
 
 
 class EnviarCuerpos : public Thread {
 private:
-    ColaProtegida& cola;
+    ColaBloqueante<Cuerpo*>& cola;
     Protocolo& protocolo;
     bool terminar;
 
 public:
-    explicit EnviarCuerpos(ColaProtegida& cola, Protocolo& protocolo);
+    explicit EnviarCuerpos(ColaBloqueante<Cuerpo*>& cola, Protocolo& protocolo);
 
     void run() override;
 
