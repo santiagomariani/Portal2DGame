@@ -6,16 +6,13 @@
 #include "Box2D/Box2D.h"
 
 
-Fisica::Fisica(Protocolo& protocolo, Mundo& mundo): 
-				mundo(mundo), personajes(mundo), protocolo(protocolo){
+Fisica::Fisica(Mundo& mundo): 
+				mundo(mundo), personajes(mundo){
 		personajes.agregar_chell();
 }
 
 
-void Fisica::actualizar(){
-	EstadoTeclado teclado;
-	EstadoMouse mouse;
-    protocolo.recibirInput(teclado);
+void Fisica::actualizar(EstadoTeclado& teclado, EstadoMouse& mouse){
 	int id = 0; // SUPER HARDCODE
 	Chell& chell = personajes.obtener_chell(id);
 	chell.agarrarRoca(teclado);
@@ -31,7 +28,8 @@ void Fisica::actualizar(){
 	mundo.actualizar();
 }
 
-void Fisica::enviarCuerpos(){
+std::vector<Cuerpo*> Fisica::obtenerCuerpos(){
+	std::vector<Cuerpo*> vector_cuerpos;
 	b2Body *cuerpos = mundo.obtenerBodies();
 	while (cuerpos){
 		Cuerpo *actual = (Cuerpo*)cuerpos->GetUserData();
@@ -39,9 +37,10 @@ void Fisica::enviarCuerpos(){
 			cuerpos = cuerpos->GetNext();
 			continue;
 		}
-		protocolo.enviarCuerpo(*actual);
+		vector_cuerpos.push_back(actual);
 		cuerpos = cuerpos->GetNext();
 	}
-	protocolo.terminar();
+	return vector_cuerpos;
 }
+
 

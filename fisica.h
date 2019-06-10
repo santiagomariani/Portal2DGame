@@ -4,15 +4,16 @@
 #include "mundo.h"
 #include "personajes.h"
 #include "Protocolo.h"
+#include "cuerpo.h"
+#include <vector>
 
 class Fisica{
 	Mundo& mundo;
 	Personajes personajes;
-	Protocolo& protocolo;
 public:
-	Fisica(Protocolo& protocolo, Mundo& mundo);
-	void actualizar();
-	void enviarCuerpos();
+	Fisica(Mundo& mundo);
+	void actualizar(EstadoTeclado& teclado, EstadoMouse& mouse);
+	std::vector<Cuerpo*> obtenerCuerpos();
 	~Fisica() = default;
 };
 
