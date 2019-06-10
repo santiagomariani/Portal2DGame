@@ -2,6 +2,7 @@
 #include <arpa/inet.h>
 #include <string>
 #include <SDL2/SDL_quit.h>
+#include <Box2D/Common/b2Settings.h>
 
 #include "Mensajero.h"
 
@@ -76,21 +77,21 @@ Mensajero &Mensajero::operator>>(int32_t &numero) {
     return *this;
 }
 
-Mensajero &Mensajero::operator<<(float numero) {
+Mensajero &Mensajero::operator<<(float32 numero) {
     uint32_t aux = htonf(numero);
     skt.enviarMensaje((char *) &aux, CUATROBYTES);
     return *this;
 }
 
-Mensajero &Mensajero::operator>>(float &numero) {
+Mensajero &Mensajero::operator>>(float32 &numero) {
     uint32_t aux;
     skt.leerMensaje((char *) &aux, CUATROBYTES);
     numero = ntohf(aux);
     return *this;
 }
 
-float Mensajero::ntohf(uint32_t p) {
-    float f = ((p>>16)&0x7fff);
+float32 Mensajero::ntohf(uint32_t p) {
+    float32 f = ((p>>16)&0x7fff);
     f += (p&0xffff) / 65536.0f;
 
     if (((p>>31)&0x1) == 0x1) { f = -f; }
@@ -98,7 +99,7 @@ float Mensajero::ntohf(uint32_t p) {
     return f;
 }
 
-uint32_t Mensajero::htonf(float f) {
+uint32_t Mensajero::htonf(float32 f) {
     uint32_t p;
     uint32_t sign;
 

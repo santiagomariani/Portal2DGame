@@ -367,7 +367,7 @@ int main() {
 		SDL_Event event;
 		window.fill(0x33, 0x33, 0x33, 0xFF);
 		Chell& chell = personajes.obtener_chell(id);
-		SDL_Rect destChell = coordConverter.box2DToSDL(chell);
+		SDL_Rect destChell = coordConverter.box2DToSDL(chell, 0, 0);
 		camera.renderBg();
 		camera.updateCamera(destChell);
 		b2Body *cuerpos = world.obtenerBodies();
@@ -377,7 +377,7 @@ int main() {
 				cuerpos = cuerpos->GetNext();
 				continue;
 			}
-			SDL_Rect dest = coordConverter.box2DToSDL(*actual);
+			SDL_Rect dest = coordConverter.box2DToSDL(*actual, 0, 0);
 			int id = actual->getId();
 			if (id == ID_DISPARO) {
 				camera.render(*renderizales[id], dest, (((Disparo*)actual)->getAngle()) * -1);

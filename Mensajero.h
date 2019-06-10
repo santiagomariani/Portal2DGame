@@ -13,8 +13,8 @@
 class Mensajero {
 private:
     Skt &skt;
-    uint32_t htonf(float f);
-    float ntohf(uint32_t p);
+    uint32_t htonf(float32 f);
+    float32 ntohf(uint32_t p);
 public:
     explicit Mensajero(Skt &skt);
     // Envia un uint8_t.
@@ -29,7 +29,7 @@ public:
     // Envia Sint32.
     Mensajero& operator<<(int32_t numero);
     // Envia float.
-    Mensajero& operator<<(float numero);
+    Mensajero& operator<<(float32 numero);
     // Recibe un uint8_t.
     Mensajero& operator>>(uint8_t& numero);
     // Recibe un uint16_t.
@@ -41,7 +41,7 @@ public:
     // Recibe Sint32.
     Mensajero& operator>>(int32_t& numero);
     // Recibe float.
-    Mensajero& operator>>(float& numero);
+    Mensajero& operator>>(float32 &numero);
     ~Mensajero() = default;
 };
 

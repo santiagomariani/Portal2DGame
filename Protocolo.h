@@ -18,14 +18,14 @@
 
 class Protocolo {
 private:
-    CoordConverter &coord_converter;
     Mensajero &mensajero;
 public:
-    explicit Protocolo(CoordConverter &coord_converter, Mensajero &mensajero);
+    explicit Protocolo(Mensajero &mensajero);
     void enviarInput(Input &input);
     void recibirInput(Input &input);
     void enviarCuerpo(Cuerpo &cuerpo);
-    void recibirCuerpo(InfoCuerpo &info_cuerpo);
+    void recibirCuerpo(InfoCuerpo &info_cuerpo,
+            CoordConverter &coord_converter);
 };
 
 

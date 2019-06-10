@@ -17,7 +17,7 @@ private:
     int screenWidth, screenHeight;
 public:
     CoordConverter(int screenWidth, int screenHeight);
-    SDL_Rect box2DToSDL(Cuerpo &cuerpo);
+    SDL_Rect box2DToSDL(b2Vec2 posicion, float32 ancho_maximo, float32 alto_maximo);
     b2Vec2 sdlToBox2D(int x, int y, Camera &camera);
 };
 

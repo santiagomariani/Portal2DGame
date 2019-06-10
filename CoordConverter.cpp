@@ -8,16 +8,15 @@ CoordConverter::CoordConverter(int screenWidth, int screenHeight) :
     screenWidth(screenWidth), screenHeight(screenHeight) {
 }
 
-SDL_Rect CoordConverter::box2DToSDL(Cuerpo &cuerpo) {
-    b2Vec2 position = cuerpo.getPosition();
-    float maxWidth = cuerpo.getMaxWidth();
-    float maxHeight = cuerpo.getMaxHeight();
-    SDL_Rect res = {int((position.x) * CONVERSION) + (screenWidth / 2),
-                    int((position.y) * CONVERSION * -1) + (screenHeight / 2),
-                    int(maxWidth * CONVERSION),
-                    int(maxHeight * CONVERSION)};
-    res.x -= int((maxWidth / 2) * CONVERSION);
-    res.y -= int((maxHeight / 2) * CONVERSION);
+SDL_Rect CoordConverter::box2DToSDL(b2Vec2 posicion,
+        float32 ancho_maximo,
+        float32 alto_maximo) {
+    SDL_Rect res = {int((posicion.x) * CONVERSION) + (screenWidth / 2),
+                    int((posicion.y) * CONVERSION * -1) + (screenHeight / 2),
+                    int(ancho_maximo * CONVERSION),
+                    int(alto_maximo* CONVERSION)};
+    res.x -= int((ancho_maximo / 2) * CONVERSION);
+    res.y -= int((alto_maximo / 2) * CONVERSION);
     return res;
     /*
     int posX = (position.x * CONVERSION) + (screenWidth / 2);
