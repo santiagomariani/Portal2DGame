@@ -354,7 +354,6 @@ int main() {
 
 //======================================Loop======================================
 
-
     EstadoTeclado teclado;
 
     Timer fpsTimer;
