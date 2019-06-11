@@ -16,6 +16,7 @@
 #include "ThInput.h"
 #include "Skt.h"
 #include "ThRenderizado.h"
+#include "msj_renderizado.h"
 
 void Cliente::iniciar() {
 
@@ -178,12 +179,12 @@ void Cliente::iniciar() {
 	Skt skt(host, port);
 	skt.conectar();
     std::cout << "conectado a servidor (supuestamente)\n";
-    
+
 	Mensajero mensajero(skt);
 	Protocolo protocolo(mensajero);
 	ThInput th_input(cola_input, protocolo);
 
-	ColaBloqueante<InfoCuerpo> cola_renderizado;
+	ColaBloqueante<MsjRenderizado> cola_renderizado;
 
 	Renderizador renderizador(ventana,
 			camara,
@@ -197,17 +198,18 @@ void Cliente::iniciar() {
 
 	th_input.start();
 	th_renderizado.start();
-	bool terminado = false;
+	bool seguir = true;
 	Timer capTimer;
-	while(!terminado) {
-		capTimer.start();
-	    terminado = obtenedor_input.obtenerInput();
+	while(seguir) {
+		//capTimer.start();
+	    seguir = obtenedor_input.obtenerInput();
 		renderizador.renderizar();
 		int frameTicks = capTimer.getTicks();
 		if (frameTicks < TICKS_PER_FRAME) {
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
+	skt.cerrarCanales(); // ver aca
 	th_renderizado.terminar();
 	th_renderizado.join();
 	th_input.terminar();

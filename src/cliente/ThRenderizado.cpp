@@ -5,7 +5,7 @@
 #include "ThRenderizado.h"
 #include <iostream>
 
-ThRenderizado::ThRenderizado(ColaBloqueante<InfoCuerpo> &cola_renderizado,
+ThRenderizado::ThRenderizado(ColaBloqueante<MsjRenderizado> &cola_renderizado,
         Protocolo &protocolo,
         Renderizador &renderizador,
         CoordConverter &coord_converter) :
@@ -19,14 +19,16 @@ ThRenderizado::ThRenderizado(ColaBloqueante<InfoCuerpo> &cola_renderizado,
 void ThRenderizado::run() {
     while (!terminado) {
         InfoCuerpo info_cuerpo;
+        MsjRenderizado msj;
         uint8_t codigo_mensaje = protocolo.recibirCodigoMensaje();
         if (codigo_mensaje == MSJ_FINALIZO_FOTOGRAMA) {
-            renderizador.finalizoFotograma();
+            msj.ultimo = true;
         } else if (codigo_mensaje == MSJ_CUERPO) {
             protocolo.recibirCuerpo(info_cuerpo, coord_converter);
-            cola_renderizado.push(info_cuerpo);
-            std::cout << "cuerpo recibido\n";
+            msj.info_cuerpo = std::move(info_cuerpo);
+            msj.ultimo = false;
         }
+        cola_renderizado.push(msj);
     }
 }
 

@@ -30,7 +30,7 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES})
+add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h)
 target_link_libraries(cliente SDL2 SDL2_image Box2D ${CMAKE_THREAD_LIBS_INIT})
 
 
@@ -38,7 +38,7 @@ message("[INFO] Loading sources to the server")
 file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cpp" "src/servidor/*.h")
 file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES})
+add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES} src/comun/info_cuerpo_box_2_d.h)
 target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT})
 
 

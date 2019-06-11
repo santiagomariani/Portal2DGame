@@ -2,7 +2,12 @@
 #include "proceso_cliente.h"
 #include "SocketError.h"
 #include "cuerpo_a_enviar.h"
+#include "ids.h"
+#include "Timer.h"
 #include <iostream>
+
+#define FPS 60
+#define TICKS_PER_FRAME 1340/FPS
 
 Partida::Partida(Fisica& fisica, SktAceptador skt): 
                 fisica(fisica), skt_aceptador(std::move(skt)){
@@ -10,31 +15,58 @@ Partida::Partida(Fisica& fisica, SktAceptador skt):
     this->recibir_clientes = true;
 }
 
-void Partida::correrPartida(){ // 
+InfoCuerpoBox2D Partida::obtenerInfo(Cuerpo* cuerpo){
+    InfoCuerpoBox2D info;
+    info.id = cuerpo->getId();
+    info.angulo = cuerpo->getAngle();
+    info.pos = cuerpo->getPosition();
+    info.ancho = cuerpo->getMaxWidth();
+    info.alto = cuerpo->getMaxHeight();
+    if (info.id == ID_CHELL){
+        info.estado = ((Chell*)cuerpo)->obtenerEstado();
+        info.orientacion = ((Chell*)cuerpo)->obtenerOrientacion();
+    } else {
+        info.estado = 0;
+        info.orientacion = 0;
+    }
+    return info;
+}
+
+
+void Partida::correrPartida(){ //
+    Timer capTimer;
+
     while (this->continuar_juego){
-        struct Input input;
-        if (!(this->cola_input.pop(input))){
-            continue;
-        }
-        std::cout << "parece que popeo input\n";
-        this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
+        capTimer.start();
+
+        if (!(this->cola_input.empty())){
+            Input input = std::move(this->cola_input.front()); // habria que mantener el estado teclado anterior, etc.
+            this->cola_input.pop();
+            this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
+        }/* else {
+            Input input;
+            this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
+        }*/
 
         std::vector<Cuerpo*> cuerpos = this->fisica.obtenerCuerpos();
 
         for (auto it=cuerpos.begin(); it!=cuerpos.end(); it++){
             for (auto c=colas_clientes.begin(); c!=colas_clientes.end(); c++){
                 CuerpoAEnviar cuerpo_a_enviar;
-                cuerpo_a_enviar.cuerpo = (*it);
+                cuerpo_a_enviar.info_cuerpo = obtenerInfo(*it);
                 cuerpo_a_enviar.ultimo = false;
-                (*c)->push(std::move(cuerpo_a_enviar));
+                (*c)->push(cuerpo_a_enviar); // aca se esta copiando
             }
         }
         CuerpoAEnviar cuerpo_a_enviar;
-        cuerpo_a_enviar.cuerpo = nullptr;
         cuerpo_a_enviar.ultimo = true;
         for (auto c=colas_clientes.begin(); c!=colas_clientes.end(); c++){
-            (*c)->push(std::move(cuerpo_a_enviar));
-            std::cout << "cuerpo pusheado\n";
+            (*c)->push(cuerpo_a_enviar); // aca se esta copiando
+        }
+
+        int frameTicks = capTimer.getTicks();
+        if (frameTicks < TICKS_PER_FRAME) {
+            SDL_Delay(TICKS_PER_FRAME - frameTicks);
         }
     }
 

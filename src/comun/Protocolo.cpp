@@ -97,7 +97,7 @@ Input Protocolo::recibirInput() {
     return std::move(input);
 }
 
-void Protocolo::enviarCuerpo(Cuerpo &cuerpo) {
+void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     /*
     codigo mensaje: uint8_t
     id: uint8_t
@@ -113,22 +113,15 @@ void Protocolo::enviarCuerpo(Cuerpo &cuerpo) {
     uint8_t codigo_mensaje = MSJ_CUERPO;
     mensajero << codigo_mensaje;
 
-    uint8_t id =  cuerpo.getId();
-    uint8_t estado;
-    uint8_t orientacion;
-    if (id == ID_CHELL) {
-        estado = ((Chell*)&cuerpo)->obtenerEstado();
-        orientacion = ((Chell*)&cuerpo)->obtenerOrientacion();
-    } else {
-        estado = 0;
-        orientacion = 0;
-    }
-    int32_t angulo = cuerpo.getAngle();
-    b2Vec2 pos_cuerpo = cuerpo.getPosition();
+    uint8_t id =  info_cuerpo.id;
+    uint8_t estado = info_cuerpo.estado;
+    uint8_t orientacion = info_cuerpo.orientacion;
+    int32_t angulo = info_cuerpo.angulo;
+    b2Vec2 pos_cuerpo = info_cuerpo.pos;
     float32 x = pos_cuerpo.x;
     float32 y = pos_cuerpo.y;
-    float32 ancho_maximo = cuerpo.getMaxWidth();
-    float32 alto_maximo = cuerpo.getMaxHeight();
+    float32 ancho_maximo = info_cuerpo.ancho;
+    float32 alto_maximo = info_cuerpo.alto;
 
     mensajero << id << estado << orientacion << angulo;
     mensajero << x << y << ancho_maximo << alto_maximo;

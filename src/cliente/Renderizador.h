@@ -11,6 +11,7 @@
 #include "Camera.h"
 #include "InfoCuerpo.h"
 #include "ColaBloqueante.h"
+#include "msj_renderizado.h"
 
 #define FPS 60
 #define TICKS_PER_FRAME 1000/FPS
@@ -20,15 +21,13 @@ private:
     Camera &camara;
     SdlWindow &ventana;
     std::map<uint8_t,Renderable*> &renderizables;
-    ColaBloqueante<InfoCuerpo> &cola_renderizado;
-    bool finalizo_fotograma;
+    ColaBloqueante<MsjRenderizado> &cola_renderizado;
 public:
     Renderizador(SdlWindow &ventana,
             Camera &camara,
-            ColaBloqueante<InfoCuerpo> &cola_renderizado,
+            ColaBloqueante<MsjRenderizado> &cola_renderizado,
             std::map<uint8_t,Renderable*> &renderizables);
     void renderizar();
-    void finalizoFotograma();
 };
 
 

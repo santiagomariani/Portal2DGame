@@ -6,24 +6,29 @@
 #include "Renderizador.h"
 #include "ids.h"
 #include "ViewChell.h"
+#include "msj_renderizado.h"
 
 Renderizador::Renderizador(SdlWindow &ventana,
         Camera &camara,
-        ColaBloqueante<InfoCuerpo> &cola_renderizado,
+        ColaBloqueante<MsjRenderizado> &cola_renderizado,
         std::map<uint8_t,Renderable*>& renderizables) :
         ventana(ventana),
         camara(camara),
         cola_renderizado(cola_renderizado),
-        renderizables(renderizables),
-        finalizo_fotograma(false) {
+        renderizables(renderizables){
 }
 
 void Renderizador::renderizar() {
-    InfoCuerpo ic;
     ventana.fill(0x33, 0x33, 0x33, 0xFF);
     camara.renderBg();
-    while (!finalizo_fotograma) {
-        cola_renderizado.pop(ic);
+    while (true) {
+        MsjRenderizado msj;
+        cola_renderizado.pop(msj);
+        if (msj.ultimo){
+            break;
+        }
+        InfoCuerpo ic;
+        ic = msj.info_cuerpo;
         if (ic.id == ID_CHELL) {
             camara.updateCamera(ic.dest); // tiene que ser la chell del cliente
             ((ViewChell *) renderizables[ic.id])->cambiarEstado(ic.estado,
@@ -38,9 +43,4 @@ void Renderizador::renderizar() {
                 ic.flip);
     }
     ventana.render();
-    finalizo_fotograma = false;
-}
-
-void Renderizador::finalizoFotograma() {
-    finalizo_fotograma = true;
 }

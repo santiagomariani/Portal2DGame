@@ -14,7 +14,7 @@ EstadoMouse::EstadoMouse(EstadoMouse &&otro) {
 	derecho.pos = otro.derecho.pos;
 	izquierdo.clickeado = otro.izquierdo.clickeado;
 	izquierdo.pos = otro.izquierdo.pos;
-	this->resetear();
+	otro.resetear();
 }
 
 EstadoMouse &EstadoMouse::operator=(EstadoMouse &&otro) {
@@ -25,7 +25,7 @@ EstadoMouse &EstadoMouse::operator=(EstadoMouse &&otro) {
 	derecho.pos = otro.derecho.pos;
 	izquierdo.clickeado = otro.izquierdo.clickeado;
 	izquierdo.pos = otro.izquierdo.pos;
-	this->resetear();
+	otro.resetear();
 	return *this;
 }
 

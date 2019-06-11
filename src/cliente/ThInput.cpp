@@ -15,7 +15,6 @@ void ThInput::run() {
     Input input;
     while (cola_input.pop(input)) {
         protocolo.enviarInput(input);
-        std::cout << "popeo cola input\n";
     }
 }
 

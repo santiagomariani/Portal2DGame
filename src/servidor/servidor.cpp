@@ -57,8 +57,7 @@ void Servidor::iniciar(std::string puerto){
     Mundo mundo(gravity);
     ContactListener listener;
     mundo.setContactListener(listener);
-
-    Personajes personajes(mundo);
+    
 
     b2Vec2 pos_diago(-12,0);
     AnguloDosSetenta angulo;
@@ -124,9 +123,7 @@ void Servidor::iniciar(std::string puerto){
 
     b2Vec2 pos_compuerta(-1, -1.5);
     Compuerta comp(pos_compuerta, mundo, compuerta_and);
-
-    int id = personajes.agregar_chell();
-
+    
     // Emisores
     b2Vec2 pos_emisor(-16, -2);
     EmisorArriba emisor_arriba(mundo, pos_emisor);

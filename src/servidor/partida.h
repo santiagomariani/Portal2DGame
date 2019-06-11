@@ -9,13 +9,16 @@
 #include "SktAceptador.h"
 
 class Partida{
-    ColaBloqueante<Input> cola_input;
+private:
+    //ColaBloqueante<Input> cola_input;
+    std::queue<Input> cola_input;
     Fisica& fisica;
     std::vector<Thread*> threads_clientes;
     std::vector<ColaBloqueanteCuerpos*> colas_clientes;
     SktAceptador skt_aceptador;
     bool continuar_juego;
     bool recibir_clientes;
+    InfoCuerpoBox2D obtenerInfo(Cuerpo *cuerpo);
 public:
     Partida(Fisica& fisica, SktAceptador skt);
     void correrPartida();
@@ -23,7 +26,7 @@ public:
     int recibirClientes();
     void terminarRecibirClientes();
     void comenzar();
-    ~Partida();    
+    ~Partida();
 };
 
 #endif

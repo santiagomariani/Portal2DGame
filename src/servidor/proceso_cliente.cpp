@@ -4,7 +4,7 @@
 #include "recibir_input.h"
 
 ProcesoCliente::ProcesoCliente(Skt socket, 
-                            ColaBloqueante<Input>& cola_input, 
+                            std::queue<Input>& cola_input, 
                             ColaBloqueanteCuerpos* cola_cuerpos):
                             socket(std::move(socket)),
                             cola_input(cola_input),

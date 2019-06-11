@@ -14,13 +14,13 @@
 
 class ThRenderizado : public Thread {
 private:
-    ColaBloqueante<InfoCuerpo> &cola_renderizado;
+    ColaBloqueante<MsjRenderizado> &cola_renderizado;
     Protocolo &protocolo;
     Renderizador &renderizador;
     CoordConverter &coord_converter;
     bool terminado;
 public:
-    ThRenderizado(ColaBloqueante<InfoCuerpo> &cola_renderizado,
+    ThRenderizado(ColaBloqueante<MsjRenderizado> &cola_renderizado,
             Protocolo &protocolo,
             Renderizador &renderizador,
             CoordConverter &coord_converter);

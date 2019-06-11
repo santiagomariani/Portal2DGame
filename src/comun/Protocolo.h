@@ -7,6 +7,7 @@
 
 
 #include <deque>
+#include <info_cuerpo_box_2_d.h>
 
 #include "estado_teclado.h"
 #include "cuerpo.h"
@@ -26,7 +27,7 @@ private:
 public:
     explicit Protocolo(Mensajero &mensajero);
     void enviarInput(Input &input);
-    void enviarCuerpo(Cuerpo &cuerpo);
+    void enviarCuerpo(InfoCuerpoBox2D &info_cuerpo);
     void enviarFinalizoFotograma();
     Input recibirInput();
     void recibirCuerpo(InfoCuerpo &info_cuerpo,

@@ -122,7 +122,6 @@ void ViewChell::cambiarEstado(uint8_t estado,
         std::cout << unsigned(estado) << std::endl;
         // estado es un estado transitorio?
         if (estado == CHELL_CAMBIA_ORIENTACION) {
-            std::cout << "CHEL CAMBIA ORIENTACION" << std::endl;
             renderizando_estado_transitorio = true;
             flip_transitorio = flip;
             angulo_transitorio = angle;

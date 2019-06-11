@@ -11,14 +11,14 @@
 class ProcesoCliente : public Thread {
 private:
 	Skt socket;
-    ColaBloqueante<Input>& cola_input;
+    std::queue<Input>& cola_input;
     ColaBloqueanteCuerpos* cola_cuerpos;
     bool terminar_proceso;
     std::vector<Thread*> threads;
 
 public:
     explicit ProcesoCliente(Skt socket, 
-    						ColaBloqueante<Input>& cola_input, 
+    						std::queue<Input>& cola_input, 
     						ColaBloqueanteCuerpos* cola_cuerpos);
 
     void run() override;

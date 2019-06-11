@@ -8,18 +8,18 @@
 
 class RecibirInput : public Thread {
 private:
-    ColaBloqueante<Input>& cola;
+    std::queue<Input>& cola;
     Protocolo& protocolo;
     bool terminar_proceso;
 
 public:
-    explicit RecibirInput(ColaBloqueante<Input>& cola, Protocolo& protocolo);
+    explicit RecibirInput(std::queue<Input>& cola, Protocolo& protocolo);
 
     void run() override;
 
     void terminar();
 
-    ~RecibirInput();
+    ~RecibirInput() = default;
 };
 
 #endif

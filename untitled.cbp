@@ -431,12 +431,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ObtenedorInput.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Protocolo.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Protocolo.h">
-			<Option target="cliente"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Renderizables.cpp">
 			<Option target="cliente"/>
 		</Unit>
@@ -461,6 +455,12 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThInput.h">
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThRenderizado.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThRenderizado.h">
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Timer.cpp">
 			<Option target="cliente"/>
 		</Unit>
@@ -474,6 +474,33 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/main.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/msj_renderizado.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Bloque.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Bloque.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/BloqueMetal.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/BloqueMetal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/BloqueRoca.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/BloqueRoca.h">
+			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Camera.cpp">
@@ -497,6 +524,14 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/CoordConverter.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/EstadoChell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/EstadoChell.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -540,6 +575,14 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Roca.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Roca.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlException.cpp">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -561,6 +604,22 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SdlWindow.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Sensor.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Sensor.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SensorChell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/SensorChell.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -588,6 +647,14 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Teletransportador.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Teletransportador.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Thread.cpp">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -596,7 +663,70 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_cero.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_cero.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_ciento_ochenta.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_ciento_ochenta.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_dos_setenta.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_dos_setenta.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_noventa.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_noventa.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/assets/info_cuerpo_box_2_d.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/bloque_metal_diagonal.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/bloque_metal_diagonal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/chell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/chell.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/click.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/cola_bloqueante_cuerpos.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/cola_bloqueante_cuerpos.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -608,7 +738,27 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/contact_listener.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/contact_listener.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/cuerpo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/cuerpo_a_enviar.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/disparo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/disparo.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -632,6 +782,30 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mundo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mundo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/pistola.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/pistola.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/portal.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/portal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Acido.cpp">
 			<Option target="servidor"/>
 		</Unit>
@@ -642,24 +816,6 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BarraDeEnergia.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Bloque.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Bloque.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueMetal.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueMetal.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueRoca.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BloqueRoca.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/BolaEnergia.cpp">
@@ -698,12 +854,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EmisorIzquierda.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EstadoChell.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/EstadoChell.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/InfoCuerpo.cpp">
 			<Option target="servidor"/>
 		</Unit>
@@ -714,12 +864,6 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Input.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Mensajero.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Mensajero.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Receptor.cpp">
@@ -752,40 +896,10 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/ReceptorIzquierda.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Roca.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Roca.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Sensor.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Sensor.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorChell.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorChell.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorReceptor.cpp">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SensorReceptor.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Skt.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Skt.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SktAceptador.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SktAceptador.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SocketError.cpp">
@@ -794,61 +908,16 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/SocketError.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Teletransportador.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Teletransportador.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/and.cpp">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/and.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_cero.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_cero.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_ciento_ochenta.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_ciento_ochenta.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_dos_setenta.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_dos_setenta.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_noventa.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/angulo_noventa.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/bloque_metal_diagonal.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/bloque_metal_diagonal.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.cpp">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/chell.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/chell.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta.cpp">
@@ -858,18 +927,6 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta_logica.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/contact_listener.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/contact_listener.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/disparo.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/disparo.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/enviar_cuerpos.cpp">
@@ -926,12 +983,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/mundo.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/mundo.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/or.cpp">
 			<Option target="servidor"/>
 		</Unit>
@@ -948,18 +999,6 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/personajes.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/pistola.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/pistola.h">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/portal.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/portal.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/proceso_cliente.cpp">
