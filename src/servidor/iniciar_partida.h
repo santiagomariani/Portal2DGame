@@ -11,6 +11,8 @@ public:
     void run() override;
     void terminar() override;
 	~IniciarPartida();
+
+    void terminar_recibir_clientes();
 };
 
 #endif

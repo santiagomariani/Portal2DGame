@@ -7,9 +7,8 @@
 
 class BloqueMetal : public Bloque{
     b2Body* cuerpo;
-    int id;
 public:
-    BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos);
+    BloqueMetal(Mundo &mundo, const b2Vec2 &pos);
     BloqueMetal(BloqueMetal&& otro);
     void recibirDisparo(Disparo* disparo);
     uint8_t getId();

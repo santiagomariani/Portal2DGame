@@ -47,7 +47,6 @@ BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) :
     if (this == &otro){
         return;
     }
-    std::cout << "232323\n";
     maxWidth = otro.maxWidth;
     maxHeight = otro.maxHeight;
     mapa_ids = otro.mapa_ids;

@@ -12,3 +12,7 @@ void IniciarPartida::terminar(){
 }
 
 IniciarPartida::~IniciarPartida(){}
+
+void IniciarPartida::terminar_recibir_clientes() {
+    this->partida.terminarRecibirClientes();
+}

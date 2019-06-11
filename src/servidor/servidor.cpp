@@ -45,6 +45,7 @@
 #include "BarraDeEnergia.h"
 
 #define TECLA_TERMINAR 'q'
+#define TECLA_TERMINAR_RECIBIR_CLIENTES 't'
 
 Servidor::Servidor(){
 }
@@ -73,7 +74,7 @@ void Servidor::iniciar(std::string puerto){
     b2Vec2 pos(-40, -3);
     b2Vec2 inc(1, 0);
     for (int j = 0; j < 45; ++j){
-        BloqueMetal bloque(ID_BLOQUE_METAL, mundo, pos);
+        BloqueMetal bloque(mundo, pos);
         bloques.push_back(std::move(bloque));
         pos += inc;
     }
@@ -82,12 +83,12 @@ void Servidor::iniciar(std::string puerto){
     b2Vec2 pos_bloque(2, -3);
     b2Vec2 inc_pared(0, 1);
     for (int j = 0; j < 2; ++j){
-        BloqueMetal roca3(ID_BLOQUE_METAL, mundo, pos_bloque);
+        BloqueMetal roca3(mundo, pos_bloque);
         pared.push_back(std::move(roca3));
         pos_bloque += inc_pared;
     }
     pos_bloque.Set(2, 2);
-    BloqueMetal bloque_en_el_aire(ID_BLOQUE_METAL, mundo, pos_bloque);
+    BloqueMetal bloque_en_el_aire(mundo, pos_bloque);
 
     // Receptores
     b2Vec2 pos_receptor(-17, -2);
@@ -157,8 +158,12 @@ void Servidor::iniciar(std::string puerto){
     IniciarPartida iniciar_partida(partida);
     iniciar_partida.start();
 
-
     char pressed_key = 0;
+    while (pressed_key != TECLA_TERMINAR_RECIBIR_CLIENTES){
+        std::cin >> pressed_key;
+    }
+    iniciar_partida.terminar_recibir_clientes();
+
     while (pressed_key != TECLA_TERMINAR){
         std::cin >> pressed_key;
     }

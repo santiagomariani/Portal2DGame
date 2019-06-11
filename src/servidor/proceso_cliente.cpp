@@ -5,16 +5,20 @@
 
 ProcesoCliente::ProcesoCliente(Skt socket, 
                             std::queue<Input>& cola_input, 
-                            ColaBloqueanteCuerpos* cola_cuerpos):
+                            ColaBloqueanteCuerpos* cola_cuerpos,
+                            int id):
                             socket(std::move(socket)),
                             cola_input(cola_input),
-                            cola_cuerpos(cola_cuerpos){
+                            cola_cuerpos(cola_cuerpos),
+                            id(id){
     this->terminar_proceso = false;
 }
 
 void ProcesoCliente::run(){
     Mensajero mensajero(socket);
     Protocolo protocolo(mensajero);
+
+    protocolo.enviarId(id);
 
     EnviarCuerpos* enviar_cuerpos = new EnviarCuerpos(cola_cuerpos, protocolo);
     RecibirInput* recibir_input = new RecibirInput(cola_input, protocolo);

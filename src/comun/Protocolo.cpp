@@ -15,16 +15,22 @@ Protocolo::Protocolo(Mensajero &mensajero) :
 void Protocolo::enviarInput(Input &input) {
     /*
      *  1 - Mando codigo de mensaje: uint8_t
-     *  2 - Se manda cantidad de teclas: uint8_t
-     *  3 - Se manda la tecla y si esta presionado o no:
+     *  2 - Mando id de la chell: uint32_t
+     *  3 - Se manda cantidad de teclas: uint8_t
+     *  4 - Se manda la tecla y si esta presionado o no:
      *         tecla: sint32
      *         estado tecla: uint8_t
-     *  4 - Mando estado de mouse.
+     *  5 - Mando estado de mouse.
      */
 
     // Codigo de mensaje
     uint8_t codigo_mensaje = MSJ_INPUT;
     mensajero << codigo_mensaje;
+
+    // Id de Chell
+    uint32_t id = input.id;
+    mensajero << id;
+
 
     auto mapa_teclado = input.estado_teclado.obtenerMapa();
 
@@ -67,9 +73,13 @@ void Protocolo::enviarInput(Input &input) {
 }
 
 Input Protocolo::recibirInput() {
+    Input input;
+    uint32_t id;
+    mensajero >> id;
+    input.id = id;
+
     uint8_t cant_teclas;
     mensajero >> cant_teclas;
-    Input input;
     for (int i = 0; i < cant_teclas; ++i) {
         int32_t key_code;
         uint8_t estado_tecla;
@@ -168,4 +178,14 @@ uint8_t Protocolo::recibirCodigoMensaje() {
     uint8_t codigo_mensaje;
     mensajero >> codigo_mensaje;
     return codigo_mensaje;
+}
+
+void Protocolo::enviarId(uint32_t id) {
+    mensajero << id;
+}
+
+uint32_t Protocolo::recibirId() {
+    uint32_t id;
+    mensajero >> id;
+    return id;
 }

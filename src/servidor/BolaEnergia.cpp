@@ -11,8 +11,8 @@
 #define PI 3.14159265
 
 BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
-    mundo(mundo),
-    Cuerpo(RADIO_BOLAENERGIA * 2, RADIO_BOLAENERGIA * 2) {
+    Cuerpo(RADIO_BOLAENERGIA * 2, RADIO_BOLAENERGIA * 2),
+    mundo(mundo){
     contador = 0;
     finalizo = false;
     b2BodyDef body_def;
@@ -47,8 +47,8 @@ void BolaEnergia::actualizar() {
 }
 
 BolaEnergia::BolaEnergia(BolaEnergia &&otro) :
-    mundo(otro.mundo),
-    Cuerpo(otro.maxWidth, otro.maxHeight) {
+    Cuerpo(otro.maxWidth, otro.maxHeight),
+    mundo(otro.mundo){
     if (this == &otro) {
         return;
     }

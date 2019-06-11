@@ -11,9 +11,9 @@ protected:
     float maxWidth;
     float maxHeight;
     Bloque(float maxWidth, float maxHeight) :
+            Cuerpo(maxWidth, maxHeight),
             maxWidth(maxWidth),
-            maxHeight(maxHeight),
-            Cuerpo(maxWidth, maxHeight) {};
+            maxHeight(maxHeight){};
 public:
     virtual void recibirDisparo(Disparo* disparo) = 0;
     virtual uint8_t getId() = 0;

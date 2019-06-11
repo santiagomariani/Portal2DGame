@@ -135,8 +135,9 @@ public:
     }
     bool pop(T **elemento) {
         void *aux;
-        ColaBloqueante<void*>::pop(&aux);
+        bool resul = ColaBloqueante<void*>::pop(&aux);
         *elemento = (T*) aux;
+        return resul;
     }
 
 };

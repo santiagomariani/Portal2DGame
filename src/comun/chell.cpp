@@ -12,8 +12,8 @@
 Chell::Chell(int identidad, Mundo& mundo) :
         Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
         id(identidad),
-        mundo(mundo),
         pistola(mundo),
+        mundo(mundo),
         roca(nullptr),
         joint_roca(nullptr),
         sensor(new SensorChell()) {
@@ -30,6 +30,7 @@ void Chell::activar(b2Vec2& pos){
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo_def.fixedRotation = true;
     cuerpo_def.linearDamping = 0.006;
+    //cuerpo_def.gravityScale = 2.0f;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
     b2PolygonShape polygonShape;
@@ -74,8 +75,8 @@ uint8_t Chell::getId(){
 
 Chell::Chell(Chell&& otro) :
         Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
-        mundo(otro.mundo),
         pistola(std::move(otro.pistola)),
+        mundo(otro.mundo),
         estado_chell(std::move(otro.estado_chell)){
     if (this == &otro){
         return;

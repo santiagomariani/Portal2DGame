@@ -7,8 +7,8 @@
 #include "ids.h"
 
 Emisor::Emisor(Mundo &mundo, const b2Vec2 &pos) :
-        mundo(mundo),
-        Cuerpo(TAMANIO_EMISOR * 2, TAMANIO_EMISOR * 2){
+        Cuerpo(TAMANIO_EMISOR * 2, TAMANIO_EMISOR * 2),
+        mundo(mundo){
     contador = 0;
     mundo.agregarCuerpoAActualizar(this);
     b2BodyDef cuerpo_def;

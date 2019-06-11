@@ -12,7 +12,8 @@ class Fisica{
 	Personajes personajes;
 public:
 	Fisica(Mundo& mundo);
-	void actualizar(EstadoTeclado& teclado, EstadoMouse& mouse);
+	void actualizar();
+	void actualizarChell(int id, EstadoTeclado& teclado, EstadoMouse& mouse);
 	std::vector<Cuerpo*> obtenerCuerpos();
 	~Fisica() = default;
 };

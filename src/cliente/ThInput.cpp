@@ -6,14 +6,16 @@
 #include "ThInput.h"
 
 ThInput::ThInput(ColaBloqueante<Input> &cola_input,
-        Protocolo &protocolo) :
+        Protocolo &protocolo, int id) :
         cola_input(cola_input),
-        protocolo(protocolo) {
+        protocolo(protocolo),
+        id(id){
 }
 
 void ThInput::run() {
     Input input;
     while (cola_input.pop(input)) {
+        input.id = id;
         protocolo.enviarInput(input);
     }
 }

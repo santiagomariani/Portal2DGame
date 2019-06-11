@@ -461,12 +461,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ThRenderizado.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Timer.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/Timer.h">
-			<Option target="cliente"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ViewChell.cpp">
 			<Option target="cliente"/>
 		</Unit>
@@ -663,6 +657,14 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Timer.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Timer.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -698,9 +700,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/angulo_noventa.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/assets/info_cuerpo_box_2_d.h">
-			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/bloque_metal_diagonal.cpp">
 			<Option target="servidor"/>
@@ -779,6 +778,10 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/ids.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/info_cuerpo_box_2_d.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>

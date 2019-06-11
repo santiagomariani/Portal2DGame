@@ -15,11 +15,13 @@ private:
     ColaBloqueanteCuerpos* cola_cuerpos;
     bool terminar_proceso;
     std::vector<Thread*> threads;
+    int id;
 
 public:
     explicit ProcesoCliente(Skt socket, 
     						std::queue<Input>& cola_input, 
-    						ColaBloqueanteCuerpos* cola_cuerpos);
+    						ColaBloqueanteCuerpos* cola_cuerpos,
+    						int id);
 
     void run() override;
 

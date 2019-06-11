@@ -20,7 +20,6 @@ void SensorChell::empezarContacto(Cuerpo *otro) {
     || otro->getId() == ID_CHELL) {
         return;
     }
-    std::cout << "SE ACTIVA SENSOR CHELL" << std::endl;
     cant_contactos++;
     if (cant_contactos == 0) {
         activado = false;
@@ -35,7 +34,6 @@ void SensorChell::terminarContacto(Cuerpo *otro) {
         || otro->getId() == ID_CHELL) {
         return;
     }
-    std::cout << "SE DESACTIVA SENSOR CHELL" << std::endl;
     cant_contactos--;
     if (cant_contactos == 0) {
         activado = false;

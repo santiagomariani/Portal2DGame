@@ -6,7 +6,7 @@
 #include <cmath>
 #include "config.h"
 
-BloqueMetal::BloqueMetal(int identidad, Mundo& mundo, const b2Vec2& pos): id(identidad),
+BloqueMetal::BloqueMetal(Mundo &mundo, const b2Vec2 &pos) :
 	Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 
 	b2BodyDef cuerpo_def;

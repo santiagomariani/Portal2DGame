@@ -178,11 +178,11 @@ void Cliente::iniciar() {
 	std::string port = "8080";
 	Skt skt(host, port);
 	skt.conectar();
-    std::cout << "conectado a servidor (supuestamente)\n";
 
 	Mensajero mensajero(skt);
 	Protocolo protocolo(mensajero);
-	ThInput th_input(cola_input, protocolo);
+	int id = protocolo.recibirId();
+	ThInput th_input(cola_input, protocolo, id);
 
 	ColaBloqueante<MsjRenderizado> cola_renderizado;
 

@@ -4,7 +4,7 @@
 EstadoTeclado::EstadoTeclado(){
 }
 
-EstadoTeclado::EstadoTeclado(EstadoTeclado &&otro) {
+/*EstadoTeclado::EstadoTeclado(EstadoTeclado &&otro) {
     if (this == &otro){
         return;
     }
@@ -18,7 +18,7 @@ EstadoTeclado &EstadoTeclado::operator=(EstadoTeclado &&otro) {
     estado_tecla = std::move(otro.estado_tecla);
     return *this;
 }
-
+*/
 void EstadoTeclado::agregar_evento(SDL_KeyboardEvent evento) {
     // conversion
     estado_tecla[evento.keysym.sym] = evento.state;

@@ -119,7 +119,6 @@ void ViewChell::cambiarEstado(uint8_t estado,
         SDL_RendererFlip flip) {
     if (!renderizando_estado_transitorio) {
         estado_actual = estado;
-        std::cout << unsigned(estado) << std::endl;
         // estado es un estado transitorio?
         if (estado == CHELL_CAMBIA_ORIENTACION) {
             renderizando_estado_transitorio = true;

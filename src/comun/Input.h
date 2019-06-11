@@ -10,6 +10,7 @@
 #include "estado_mouse.h"
 
 struct Input {
+    int id;
     EstadoTeclado estado_teclado;
     EstadoMouse estado_mouse;
 };

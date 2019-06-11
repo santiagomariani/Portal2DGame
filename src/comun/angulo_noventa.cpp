@@ -10,7 +10,6 @@ AnguloNoventa::AnguloNoventa(){
 
 b2Vec2 AnguloNoventa::obtenerPosPortal(b2Vec2& dif_choque){
     if (dif_choque.x >= config::tam_bloque){
-        std::cout << " derecha\n";
         return b2Vec2(config::tam_bloque, 0); //derecha
     }
     if (dif_choque.y <= -config::tam_bloque){

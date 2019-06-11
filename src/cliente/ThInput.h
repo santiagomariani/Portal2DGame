@@ -15,8 +15,9 @@ class ThInput : public Thread {
 private:
     ColaBloqueante<Input> &cola_input;
     Protocolo &protocolo;
+    int id;
 public:
-    ThInput(ColaBloqueante<Input> &cola_input, Protocolo &protocolo);
+    ThInput(ColaBloqueante<Input> &cola_input, Protocolo &protocolo, int id);
     void terminar();
     virtual void run();
 };

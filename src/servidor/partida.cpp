@@ -42,11 +42,12 @@ void Partida::correrPartida(){ //
         if (!(this->cola_input.empty())){
             Input input = std::move(this->cola_input.front()); // habria que mantener el estado teclado anterior, etc.
             this->cola_input.pop();
-            this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
+            this->fisica.actualizarChell(input.id, input.estado_teclado, input.estado_mouse);
         }/* else {
             Input input;
             this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
         }*/
+        this->fisica.actualizar();
 
         std::vector<Cuerpo*> cuerpos = this->fisica.obtenerCuerpos();
 
@@ -90,7 +91,7 @@ void Partida::terminarPartida(){
 
 int Partida::recibirClientes(){ 
     int i = 0;
-    //while (this->recibir_clientes){
+    while (this->recibir_clientes){
         try{
             Skt acept_skt = std::move(this->skt_aceptador.aceptarCliente());
             ColaBloqueanteCuerpos* c = new ColaBloqueanteCuerpos();
@@ -98,25 +99,27 @@ int Partida::recibirClientes(){
             ProcesoCliente* proceso = new ProcesoCliente(
                                             std::move(acept_skt),
                                             this->cola_input,
-                                            colas_clientes[i]);
+                                            colas_clientes[i], i);
             this->threads_clientes.push_back(proceso);
 
             proceso->start();
 
         } catch(const SocketError &e){
-            if (!this->recibir_clientes){ // si no fue forzado
+            if (this->recibir_clientes){ // si no fue forzado
                 std::cerr << "Error accepting client:\n";
                 std::cerr << e.what();
             }
-            //break;
+            break;
         }
         i++;
-    //}
+    }
     return 0;
 }
 
 void Partida::terminarRecibirClientes(){
     this->recibir_clientes = false;
+    this->skt_aceptador.cerrarCanales();
+    this->skt_aceptador.cerrarSocket();
 }
 
 

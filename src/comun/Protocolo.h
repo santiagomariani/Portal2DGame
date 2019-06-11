@@ -33,6 +33,8 @@ public:
     void recibirCuerpo(InfoCuerpo &info_cuerpo,
             CoordConverter &coord_converter);
     uint8_t recibirCodigoMensaje();
+    void enviarId(uint32_t id);
+    uint32_t recibirId();
 };
 
 

@@ -9,22 +9,11 @@
 Fisica::Fisica(Mundo& mundo): 
 				mundo(mundo), personajes(mundo){
 		personajes.agregar_chell();
+		//personajes.agregar_chell();
 }
 
 
-void Fisica::actualizar(EstadoTeclado& teclado, EstadoMouse& mouse){
-	int id = 0; // SUPER HARDCODE
-	Chell& chell = personajes.obtener_chell(id);
-	chell.agarrarRoca(teclado);
-	chell.mover(teclado);
-	if (mouse.clickDerecho()){
-		b2Vec2 click = mouse.posClickDerecho();
-		chell.dispararNaranja(click);
-	}
-	if (mouse.clickIzquierdo()){
-		b2Vec2 click = mouse.posClickIzquierdo();
-		chell.dispararAzul(click);
-	}
+void Fisica::actualizar(){
 	mundo.actualizar();
 }
 
@@ -41,6 +30,20 @@ std::vector<Cuerpo*> Fisica::obtenerCuerpos(){
 		cuerpos = cuerpos->GetNext();
 	}
 	return vector_cuerpos;
+}
+
+void Fisica::actualizarChell(int id, EstadoTeclado &teclado, EstadoMouse &mouse){
+    Chell& chell = personajes.obtener_chell(id);
+    chell.agarrarRoca(teclado);
+    chell.mover(teclado);
+    if (mouse.clickDerecho()){
+        b2Vec2 click = mouse.posClickDerecho();
+        chell.dispararNaranja(click);
+    }
+    if (mouse.clickIzquierdo()){
+        b2Vec2 click = mouse.posClickIzquierdo();
+        chell.dispararAzul(click);
+    }
 }
 
 
