@@ -3,6 +3,10 @@
 #define CONFIG_H
 
 namespace config{
+    extern float gravedad;
+    
+    extern float escala_gravedad_chell;
+    
 	extern float velocidad_chell;
 
     extern float salto_chell;

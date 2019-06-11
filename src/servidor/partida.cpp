@@ -7,7 +7,7 @@
 #include <iostream>
 
 #define FPS 60
-#define TICKS_PER_FRAME 1340/FPS
+#define TICKS_PER_FRAME 1245/FPS
 
 Partida::Partida(Fisica& fisica, SktAceptador skt): 
                 fisica(fisica), skt_aceptador(std::move(skt)){

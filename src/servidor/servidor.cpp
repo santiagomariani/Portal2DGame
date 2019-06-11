@@ -43,6 +43,7 @@
 #include "ReceptorIzquierda.h"
 #include "Acido.h"
 #include "BarraDeEnergia.h"
+#include "config.h"
 
 #define TECLA_TERMINAR 'q'
 #define TECLA_TERMINAR_RECIBIR_CLIENTES 't'
@@ -54,7 +55,7 @@ void Servidor::iniciar(std::string puerto){
     //
     // Creacion del mundo y el mapa (en realidad no deberia ir aca)
     //
-    b2Vec2 gravity(0.0f, -9.8f);
+    b2Vec2 gravity(0.0f, config::gravedad);
     Mundo mundo(gravity);
     ContactListener listener;
     mundo.setContactListener(listener);

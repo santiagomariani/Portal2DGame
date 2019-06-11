@@ -1,6 +1,11 @@
 #include "config.h"
 
 namespace config{
+    // Gravedad (eje y)
+    float gravedad = -9.8;
+
+    float escala_gravedad_chell = 1.0f;
+    
 	// Velocidad caminata de Chell
     float velocidad_chell = 4;
 

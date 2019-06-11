@@ -30,7 +30,7 @@ void Chell::activar(b2Vec2& pos){
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo_def.fixedRotation = true;
     cuerpo_def.linearDamping = 0.006;
-    //cuerpo_def.gravityScale = 2.0f;
+    cuerpo_def.gravityScale = config::escala_gravedad_chell;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
     b2PolygonShape polygonShape;
