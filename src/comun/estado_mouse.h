@@ -13,6 +13,8 @@ public:
 	EstadoMouse();
 	EstadoMouse(EstadoMouse &&otro);
 	EstadoMouse& operator=(EstadoMouse &&otro);
+	EstadoMouse& operator=(const EstadoMouse &otro);
+	EstadoMouse(const EstadoMouse &otro);
 	void agregarClickDerecho(b2Vec2& pos_click);
 	void agregarClickIzquierdo(b2Vec2& pos_click);
 	bool clickDerecho();

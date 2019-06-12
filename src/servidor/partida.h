@@ -7,11 +7,12 @@
 #include "Thread.h"
 #include <vector>
 #include "SktAceptador.h"
+#include "cola_protegida.h"
 
 class Partida{
 private:
     //ColaBloqueante<Input> cola_input;
-    std::queue<Input> cola_input;
+    ColaProtegidaInput cola_input;
     Fisica& fisica;
     std::vector<Thread*> threads_clientes;
     std::vector<ColaBloqueanteCuerpos*> colas_clientes;

@@ -3,7 +3,7 @@
 
 #define RECIBIR_INPUT 1
 
-RecibirInput::RecibirInput(std::queue<Input>& cola, Protocolo& protocolo):
+RecibirInput::RecibirInput(ColaProtegidaInput& cola, Protocolo& protocolo):
                             cola(cola), protocolo(protocolo){
     this->terminar_proceso = false;
 }
@@ -14,8 +14,10 @@ void RecibirInput::run(){
         if (msj != RECIBIR_INPUT){
             continue;
         }
-        Input input = this->protocolo.recibirInput();
-        this->cola.push(std::move(input));
+        Input input;
+        input = this->protocolo.recibirInput();
+        std::cout << "id al pushear: " << input.id << std::endl;
+        this->cola.push(input);
     }
 }
 

@@ -49,7 +49,7 @@ public:
                 cond_var.wait(lock);
             }
             if (!cola.empty()) {
-                elemento = std::move(cola.front());
+                elemento = cola.front();
                 cola.pop();
                 return true;
             }

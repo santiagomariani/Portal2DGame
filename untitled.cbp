@@ -863,12 +863,6 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/InfoCuerpo.h">
 			<Option target="servidor"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Input.cpp">
-			<Option target="servidor"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Input.h">
-			<Option target="servidor"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/Receptor.cpp">
 			<Option target="servidor"/>
 		</Unit>
@@ -921,6 +915,12 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/cola_protegida.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/cola_protegida.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/compuerta.cpp">

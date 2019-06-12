@@ -38,24 +38,20 @@ void Partida::correrPartida(){ //
 
     while (this->continuar_juego){
         capTimer.start();
-
-        if (!(this->cola_input.empty())){
-            Input input = std::move(this->cola_input.front()); // habria que mantener el estado teclado anterior, etc.
-            this->cola_input.pop();
+        Input input;
+        if (this->cola_input.pop(input)){
             this->fisica.actualizarChell(input.id, input.estado_teclado, input.estado_mouse);
-        }/* else {
-            Input input;
-            this->fisica.actualizar(input.estado_teclado, input.estado_mouse);
-        }*/
+        }
+        
         this->fisica.actualizar();
 
         std::vector<Cuerpo*> cuerpos = this->fisica.obtenerCuerpos();
 
         for (auto it=cuerpos.begin(); it!=cuerpos.end(); it++){
+            CuerpoAEnviar cuerpo_a_enviar;
+            cuerpo_a_enviar.info_cuerpo = obtenerInfo(*it);
+            cuerpo_a_enviar.ultimo = false;
             for (auto c=colas_clientes.begin(); c!=colas_clientes.end(); c++){
-                CuerpoAEnviar cuerpo_a_enviar;
-                cuerpo_a_enviar.info_cuerpo = obtenerInfo(*it);
-                cuerpo_a_enviar.ultimo = false;
                 (*c)->push(cuerpo_a_enviar); // aca se esta copiando
             }
         }
@@ -94,6 +90,7 @@ int Partida::recibirClientes(){
     while (this->recibir_clientes){
         try{
             Skt acept_skt = std::move(this->skt_aceptador.aceptarCliente());
+            //std::shared_ptr<ColaBloqueanteCuerpos> c(new ColaBloqueanteCuerpos);
             ColaBloqueanteCuerpos* c = new ColaBloqueanteCuerpos();
             colas_clientes.push_back(c);
             ProcesoCliente* proceso = new ProcesoCliente(
@@ -101,9 +98,7 @@ int Partida::recibirClientes(){
                                             this->cola_input,
                                             colas_clientes[i], i);
             this->threads_clientes.push_back(proceso);
-
-            proceso->start();
-
+            i++;
         } catch(const SocketError &e){
             if (this->recibir_clientes){ // si no fue forzado
                 std::cerr << "Error accepting client:\n";
@@ -111,7 +106,9 @@ int Partida::recibirClientes(){
             }
             break;
         }
-        i++;
+    }
+    for (auto th=threads_clientes.begin(); th!=threads_clientes.end(); th++){
+        (*th)->start();
     }
     return 0;
 }

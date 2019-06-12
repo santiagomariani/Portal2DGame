@@ -61,3 +61,18 @@ void EstadoMouse::resetear() {
 	izquierdo.clickeado = false;
 	izquierdo.pos.Set(0, 0);
 }
+
+EstadoMouse &EstadoMouse::operator=(const EstadoMouse &otro) {
+    derecho.clickeado = otro.derecho.clickeado;
+    derecho.pos = otro.derecho.pos;
+    izquierdo.clickeado = otro.izquierdo.clickeado;
+    izquierdo.pos = otro.izquierdo.pos;
+    return *this;
+}
+
+EstadoMouse::EstadoMouse(const EstadoMouse &otro) {
+    derecho.clickeado = otro.derecho.clickeado;
+    derecho.pos = otro.derecho.pos;
+    izquierdo.clickeado = otro.izquierdo.clickeado;
+    izquierdo.pos = otro.izquierdo.pos;
+}

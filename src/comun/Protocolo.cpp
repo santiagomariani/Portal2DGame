@@ -104,7 +104,7 @@ Input Protocolo::recibirInput() {
         mensajero >> pos_click.x >> pos_click.y;
         input.estado_mouse.agregarClickIzquierdo(pos_click);
     }
-    return std::move(input);
+    return input;
 }
 
 void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {

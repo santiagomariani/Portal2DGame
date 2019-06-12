@@ -4,7 +4,7 @@
 #include "recibir_input.h"
 
 ProcesoCliente::ProcesoCliente(Skt socket, 
-                            std::queue<Input>& cola_input, 
+                            ColaProtegidaInput& cola_input,
                             ColaBloqueanteCuerpos* cola_cuerpos,
                             int id):
                             socket(std::move(socket)),
@@ -32,7 +32,11 @@ void ProcesoCliente::run(){
 
 void ProcesoCliente::terminar(){
     for (auto it=threads.begin(); it!=threads.end(); ++it){
-        (*it)->terminar();     
+        (*it)->terminar();
+    }
+    for (auto it=threads.begin(); it!=threads.end(); ++it){
+        (*it)->join();
+        delete *it;
     }
 }
 

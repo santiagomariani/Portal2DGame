@@ -5,19 +5,20 @@
 #include "Protocolo.h"
 #include "Thread.h"
 #include "Input.h"
+#include "cola_protegida.h"
 
 class RecibirInput : public Thread {
 private:
-    std::queue<Input>& cola;
+    ColaProtegidaInput& cola;
     Protocolo& protocolo;
     bool terminar_proceso;
 
 public:
-    explicit RecibirInput(std::queue<Input>& cola, Protocolo& protocolo);
+    explicit RecibirInput(ColaProtegidaInput& cola, Protocolo& protocolo);
 
     void run() override;
 
-    void terminar();
+    void terminar() override;
 
     ~RecibirInput() = default;
 };

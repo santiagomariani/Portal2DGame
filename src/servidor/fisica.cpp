@@ -9,7 +9,7 @@
 Fisica::Fisica(Mundo& mundo): 
 				mundo(mundo), personajes(mundo){
 		personajes.agregar_chell();
-		//personajes.agregar_chell();
+		personajes.agregar_chell();
 }
 
 

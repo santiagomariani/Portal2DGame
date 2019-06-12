@@ -7,7 +7,7 @@ Personajes::Personajes(Mundo& m) : mundo(m){
 
 int Personajes::agregar_chell(){
 	int id = this->siguiente_client;
-	float posx = 2 + 1*id;
+	float posx = 2 + 3*id;
 	float posy = 2;
 	b2Vec2 pos(posx, posy); // POS INICIAL
 	Chell chell(0, this->mundo);
