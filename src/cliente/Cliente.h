@@ -17,6 +17,10 @@ public:
 	Cliente() = default;
 	void iniciar();
 	~Cliente() = default;
+
+    std::string requestNuevaPartida(Protocolo &protocolo);
+
+    std::string requestUnirsePartida(Protocolo &protocolo);
 };
 
 #endif

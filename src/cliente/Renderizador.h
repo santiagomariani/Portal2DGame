@@ -22,11 +22,13 @@ private:
     SdlWindow &ventana;
     std::map<uint8_t,Renderable*> &renderizables;
     ColaBloqueante<MsjRenderizado> &cola_renderizado;
+    int id_chell;
 public:
     Renderizador(SdlWindow &ventana,
             Camera &camara,
             ColaBloqueante<MsjRenderizado> &cola_renderizado,
-            std::map<uint8_t,Renderable*> &renderizables);
+            std::map<uint8_t,Renderable*> &renderizables,
+            int id_chell);
     void renderizar();
 };
 

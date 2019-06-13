@@ -1,12 +1,14 @@
 #ifndef PERSONAJES_H
 #define PERSONAJES_H
 #include <map>
+#include <estado_mouse.h>
 #include "chell.h"
 #include "Box2D/Box2D.h"
 #include "mundo.h"
 
 class Personajes{
 	std::map<int,Chell> personajes;
+	std::map<int, EstadoTeclado> teclados;
 	int siguiente_client;
 	Mundo& mundo;
 public:
@@ -16,14 +18,17 @@ public:
 	int agregar_chell();
 
 	Chell& obtener_chell(int chell_id);
+	
 
-	//void disparar(int chell_id, b2Vec2& click_pos);
+    void actualizarChells();
 
-	//void mover_chell(int chell_id, EstadoTeclado& teclado);
+    void moverChell(int chell_id, EstadoTeclado &teclado);
 
-	//std::map<int, Chell>& getPersonajes();
+    void agregarClick(int chell_id, EstadoMouse &mouse);
 
-	~Personajes() = default;
+    void agregarTeclado(int id, EstadoTeclado teclado);
+
+    ~Personajes() = default;
 };
 
 

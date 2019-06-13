@@ -19,15 +19,18 @@ private:
     SktAceptador skt_aceptador;
     bool continuar_juego;
     bool recibir_clientes;
+    int cant_clientes;
     InfoCuerpoBox2D obtenerInfo(Cuerpo *cuerpo);
 public:
-    Partida(Fisica& fisica, SktAceptador skt);
+    Partida(Fisica& fisica, SktAceptador skt, int cant_clientes);
     void correrPartida();
     void terminarPartida();
     int recibirClientes();
     void terminarRecibirClientes();
     void comenzar();
     ~Partida();
+
+
 };
 
 #endif

@@ -8,6 +8,8 @@ public:
 	Servidor();
 	void iniciar(std::string puerto);
 	~Servidor();
+
+    void iniciarMultiPartidas(std::string puerto);
 };
 
 #endif

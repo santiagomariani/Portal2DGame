@@ -17,6 +17,7 @@ struct InfoCuerpoBox2D {
     b2Vec2 pos;
     float32 ancho;
     float32 alto;
+    uint8_t id_chell;
 };
 
 

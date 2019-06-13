@@ -8,6 +8,8 @@
 #include "chell.h"
 #include "CoordConverter.h"
 
+
+
 Protocolo::Protocolo(Mensajero &mensajero) :
     mensajero(mensajero) {
 }
@@ -118,6 +120,7 @@ void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     y: float32
     ancho maximo: float32
     alto maximo: float32
+    id_chell: uint8_t
     */
 
     uint8_t codigo_mensaje = MSJ_CUERPO;
@@ -132,9 +135,11 @@ void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     float32 y = pos_cuerpo.y;
     float32 ancho_maximo = info_cuerpo.ancho;
     float32 alto_maximo = info_cuerpo.alto;
+    uint8_t id_chell = info_cuerpo.id_chell;
 
     mensajero << id << estado << orientacion << angulo;
     mensajero << x << y << ancho_maximo << alto_maximo;
+    mensajero << id_chell;
 }
 
 void Protocolo::recibirCuerpo(InfoCuerpo &info_cuerpo, CoordConverter &coord_converter) {
@@ -146,6 +151,7 @@ void Protocolo::recibirCuerpo(InfoCuerpo &info_cuerpo, CoordConverter &coord_con
     mensajero >> info_cuerpo.id >> info_cuerpo.estado >> orientacion;
     mensajero >> info_cuerpo.angulo >> pos_cuerpo.x >> pos_cuerpo.y;
     mensajero >> ancho_maximo >> alto_maximo;
+    mensajero >> info_cuerpo.id_chell;
 
     info_cuerpo.dest = coord_converter.box2DToSDL(pos_cuerpo,
             ancho_maximo,
@@ -188,4 +194,30 @@ uint32_t Protocolo::recibirId() {
     uint32_t id;
     mensajero >> id;
     return id;
+}
+
+void Protocolo::enviarOpcionNuevaPartida() {
+    uint8_t codigo_mensaje = MSJ_OPCION_NUEVA_PARTIDA;
+    mensajero << codigo_mensaje;
+
+}
+
+void Protocolo::enviarPuerto(std::string puerto) {
+    mensajero << puerto;
+}
+
+std::string Protocolo::recibirPuerto() {
+    std::string puerto;
+    mensajero >> puerto;
+    return puerto;
+}
+
+void Protocolo::enviarPartidaCreada() {
+    uint8_t codigo_mensaje = MSJ_PARTIDA_CREADA;
+    mensajero << codigo_mensaje;
+}
+
+void Protocolo::enviarOpcionUnirsePartida() {
+    uint8_t codigo_mensaje = MSJ_OPCION_UNIRSE_PARTIDA;
+    mensajero << codigo_mensaje;
 }

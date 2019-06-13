@@ -785,6 +785,14 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mapa_mundo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mapa_mundo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mundo.cpp">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -986,6 +994,12 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/main.cpp">
 			<Option target="servidor"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/manejador_partidas.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/manejador_partidas.h">
+			<Option target="servidor"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/or.cpp">
 			<Option target="servidor"/>
 		</Unit>
@@ -1020,6 +1034,18 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/servidor.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/th_aceptador_clientes.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/th_aceptador_clientes.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/th_opcion_partida.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/th_opcion_partida.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/CMakeLists.txt">

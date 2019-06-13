@@ -1,5 +1,6 @@
 #include "personajes.h"
 #include <iostream>
+#include <estado_mouse.h>
 
 Personajes::Personajes(Mundo& m) : mundo(m){
 	this->siguiente_client = 0;
@@ -7,10 +8,10 @@ Personajes::Personajes(Mundo& m) : mundo(m){
 
 int Personajes::agregar_chell(){
 	int id = this->siguiente_client;
-	float posx = 2 + 3*id;
+	float posx = 2 + 1*id;
 	float posy = 2;
 	b2Vec2 pos(posx, posy); // POS INICIAL
-	Chell chell(0, this->mundo);
+	Chell chell(id, this->mundo);
 	chell.activar(pos);
 	this->personajes.emplace(id, std::move(chell)); //mov
 	this->siguiente_client += 1;
@@ -25,19 +26,32 @@ Chell& Personajes::obtener_chell(int chell_id){
 	return this->personajes.at(chell_id);
 }
 
-/*
-void Personajes::disparar(int chell_id, b2Vec2& click_pos){
-	b2Vec2 pos_chell = this->personajes[chell_id].getPosition();
-	pos_chell.x += 10;
-	this->mundo.crearDisparo(pos_chell, click_pos);
+void Personajes::agregarTeclado(int id, EstadoTeclado teclado){
+    this->teclados[id] = teclado;
 }
 
-void Personajes::mover_chell(int chell_id, EstadoTeclado& teclado){
-	this->personajes[chell_id].mover(teclado);
+void Personajes::actualizarChells(){
+    for (auto tc=teclados.begin(); tc!=teclados.end(); tc++){
+        this->moverChell(tc->first, tc->second);
+    }
 }
 
+void Personajes::moverChell(int chell_id, EstadoTeclado& teclado){
+    Chell& chell = personajes.at(chell_id);
+    chell.agarrarRoca(teclado);
+    chell.mover(teclado);
 
-std::map<int, Chell>& Personajes::getPersonajes(){
-	return this->personajes;
 }
-*/
+
+void Personajes::agregarClick(int chell_id, EstadoMouse& mouse){
+    Chell& chell = personajes.at(chell_id);
+    if (mouse.clickDerecho()){
+        b2Vec2 click = mouse.posClickDerecho();
+        chell.dispararNaranja(click);
+    }
+    if (mouse.clickIzquierdo()){
+        b2Vec2 click = mouse.posClickIzquierdo();
+        chell.dispararAzul(click);
+    }
+}
+

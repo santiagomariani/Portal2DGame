@@ -7,10 +7,10 @@
 class AnguloDosSetenta : public Angulo{
 public:
 	AnguloDosSetenta();
-	b2Vec2 obtenerPosPortal(b2Vec2& dif_choque);
-	b2Vec2 obtenerNormalPortal(b2Vec2& dif_choque);
-	b2PolygonShape obtenerTriangulo();
-	int getId();
+	b2Vec2 obtenerPosPortal(b2Vec2& dif_choque) override ;
+	b2Vec2 obtenerNormalPortal(b2Vec2& dif_choque) override ;
+	b2PolygonShape obtenerTriangulo() override ;
+	int getId() override ;
 	~AnguloDosSetenta() = default;
 };
 

@@ -8,14 +8,13 @@
 
 class BloqueMetalDiagonal : public Bloque{
     b2Body* cuerpo;
-    int id;
     Angulo& angulo;
     std::map<int, int> mapa_ids;
     void crearMapaIds();
 
 public:
 	// El angulo debe ser: 0, 90, 180 o 270
-    BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo);
+    BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos, Angulo& angulo);
     BloqueMetalDiagonal(BloqueMetalDiagonal&& otro);
     void recibirDisparo(Disparo* disparo);
     uint8_t getId();

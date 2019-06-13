@@ -8,12 +8,11 @@
 
 Fisica::Fisica(Mundo& mundo): 
 				mundo(mundo), personajes(mundo){
-		personajes.agregar_chell();
-		personajes.agregar_chell();
 }
 
 
 void Fisica::actualizar(){
+    this->personajes.actualizarChells();
 	mundo.actualizar();
 }
 
@@ -32,18 +31,17 @@ std::vector<Cuerpo*> Fisica::obtenerCuerpos(){
 	return vector_cuerpos;
 }
 
-void Fisica::actualizarChell(int id, EstadoTeclado &teclado, EstadoMouse &mouse){
-    Chell& chell = personajes.obtener_chell(id);
-    chell.agarrarRoca(teclado);
-    chell.mover(teclado);
-    if (mouse.clickDerecho()){
-        b2Vec2 click = mouse.posClickDerecho();
-        chell.dispararNaranja(click);
-    }
-    if (mouse.clickIzquierdo()){
-        b2Vec2 click = mouse.posClickIzquierdo();
-        chell.dispararAzul(click);
-    }
+
+void Fisica::agregarTeclado(int id, EstadoTeclado& teclado){
+    this->personajes.agregarTeclado(id, teclado);
+}
+
+void Fisica::agregarMouse(int id, EstadoMouse& mouse){
+    this->personajes.agregarClick(id, mouse);
+}
+
+void Fisica::agregarNuevaChell() {
+    personajes.agregar_chell();
 }
 
 

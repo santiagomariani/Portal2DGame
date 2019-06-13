@@ -10,26 +10,14 @@
 #define PI 3.14159265
 
 
-BloqueMetalDiagonal::BloqueMetalDiagonal(int identidad, Mundo& mundo, const b2Vec2& pos, Angulo& angulo): 
-    id(identidad), angulo(angulo),
+BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos, Angulo& angulo) :
+    angulo(angulo),
     Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
 
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_staticBody;
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo = mundo.agregarBody(cuerpo_def);
-
-    /*b2PolygonShape polygonShape;
-    b2Rot rotador(180*angulo/PI);
-    b2Vec2 vertices[3];*/
-    /*vertices[0].Set(-config::tam_bloque,  -config::tam_bloque);
-    vertices[1].Set(config::tam_bloque*2 - config::tam_bloque,  -config::tam_bloque);
-    vertices[1] = b2Mul(rotador, vertices[1]);
-    vertices[2].Set(-config::tam_bloque, config::tam_bloque*2 -config::tam_bloque);
-    vertices[2] = b2Mul(rotador, vertices[2]);*/
-    // Mejor que el bloque reciba un Angulo (la clase abstracta) y le pida los vertices
-    // y ademas me olvido de los numeros
-    //polygonShape.Set(vertices, 3);
 
     b2PolygonShape polygonShape = angulo.obtenerTriangulo();
     b2FixtureDef myFixtureDef;

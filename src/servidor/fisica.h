@@ -11,11 +11,19 @@ class Fisica{
 	Mundo& mundo;
 	Personajes personajes;
 public:
-	Fisica(Mundo& mundo);
+	explicit Fisica(Mundo& mundo);
+	
+	void agregarNuevaChell();
+	
 	void actualizar();
-	void actualizarChell(int id, EstadoTeclado& teclado, EstadoMouse& mouse);
+	
 	std::vector<Cuerpo*> obtenerCuerpos();
-	~Fisica() = default;
+
+    void agregarTeclado(int id, EstadoTeclado &teclado);
+
+    void agregarMouse(int id, EstadoMouse &mouse);
+
+    ~Fisica() = default;
 };
 
 #endif

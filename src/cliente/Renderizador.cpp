@@ -11,11 +11,13 @@
 Renderizador::Renderizador(SdlWindow &ventana,
         Camera &camara,
         ColaBloqueante<MsjRenderizado> &cola_renderizado,
-        std::map<uint8_t,Renderable*>& renderizables) :
-        ventana(ventana),
+        std::map<uint8_t,Renderable*>& renderizables,
+        int id_chell) :
         camara(camara),
+        ventana(ventana),
+        renderizables(renderizables),
         cola_renderizado(cola_renderizado),
-        renderizables(renderizables){
+        id_chell(id_chell){
 }
 
 void Renderizador::renderizar() {
@@ -30,7 +32,9 @@ void Renderizador::renderizar() {
         InfoCuerpo ic;
         ic = msj.info_cuerpo;
         if (ic.id == ID_CHELL) {
-            camara.updateCamera(ic.dest); // tiene que ser la chell del cliente
+            if (ic.id_chell == this->id_chell){
+                camara.updateCamera(ic.dest); // tiene que ser la chell del cliente
+            }
             ((ViewChell *) renderizables[ic.id])->cambiarEstado(ic.estado,
                     ic.angulo*-1,
                     nullptr,

@@ -70,7 +70,7 @@ void Chell::activar(b2Vec2& pos){
     cuerpo->SetUserData(this);
 }
 uint8_t Chell::getId(){
-    return id;
+    return ID_CHELL;
 }
 
 Chell::Chell(Chell&& otro) :
@@ -200,4 +200,8 @@ uint8_t Chell::obtenerEstado() {
 
 uint8_t Chell::obtenerOrientacion() {
     return estado_chell.obtenerOrientacion();
+}
+
+int Chell::getIdPersonaje() {
+    return id;
 }

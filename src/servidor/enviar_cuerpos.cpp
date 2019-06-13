@@ -1,5 +1,6 @@
 #include "enviar_cuerpos.h"
 #include "cuerpo_a_enviar.h"
+#include "SocketError.h"
 #include <cstdint>
 #include <iostream>
 
@@ -19,7 +20,12 @@ void EnviarCuerpos::run(){
         if (cuerpo_a_enviar.ultimo){
             this->protocolo.enviarFinalizoFotograma();
         } else {
-            this->protocolo.enviarCuerpo(cuerpo_a_enviar.info_cuerpo);
+            try {
+                this->protocolo.enviarCuerpo(cuerpo_a_enviar.info_cuerpo);
+            } catch(const SocketError &e){
+                this->terminar_envio = true;
+                std::cout << "se desconecto un cliente.\n";
+            }
         }
     }
 }

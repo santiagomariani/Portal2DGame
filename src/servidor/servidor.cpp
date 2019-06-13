@@ -44,11 +44,19 @@
 #include "Acido.h"
 #include "BarraDeEnergia.h"
 #include "config.h"
+#include "th_aceptador_clientes.h"
 
-#define TECLA_TERMINAR 'q'
+#define TECLA_TERMINAR 'u'
 #define TECLA_TERMINAR_RECIBIR_CLIENTES 't'
 
 Servidor::Servidor(){
+}
+
+void Servidor::iniciarMultiPartidas(std::string puerto){
+    ThAceptadorClientes aceptador_clientes(puerto);
+    aceptador_clientes.start();
+
+    aceptador_clientes.join();
 }
 
 void Servidor::iniciar(std::string puerto){
@@ -63,7 +71,7 @@ void Servidor::iniciar(std::string puerto){
 
     b2Vec2 pos_diago(-12,0);
     AnguloDosSetenta angulo;
-    BloqueMetalDiagonal diago(ID_BLOQUE_DIAGONAL_180, mundo, pos_diago, angulo);
+    BloqueMetalDiagonal diago(mundo, pos_diago, angulo);
 
     b2Vec2 pos_roca(-8, 0);
     Roca roca(mundo, pos_roca);
@@ -155,7 +163,7 @@ void Servidor::iniciar(std::string puerto){
     //....
     SktAceptador skt(puerto);
     skt.escucharClientes();
-    Partida partida(fisica, std::move(skt));
+    Partida partida(fisica, std::move(skt), 2);
     IniciarPartida iniciar_partida(partida);
     iniciar_partida.start();
 

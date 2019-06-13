@@ -20,6 +20,9 @@
 #define MSJ_INPUT 1
 #define MSJ_CUERPO 2
 #define MSJ_FINALIZO_FOTOGRAMA 3
+#define MSJ_OPCION_NUEVA_PARTIDA 4
+#define MSJ_PARTIDA_CREADA 5
+#define MSJ_OPCION_UNIRSE_PARTIDA 6
 
 class Protocolo {
 private:
@@ -35,6 +38,16 @@ public:
     uint8_t recibirCodigoMensaje();
     void enviarId(uint32_t id);
     uint32_t recibirId();
+
+    void enviarOpcionNuevaPartida();
+
+    void enviarOpcionUnirsePartida();
+
+    void enviarPuerto(std::string basicString);
+
+    std::string recibirPuerto();
+
+    void enviarPartidaCreada();
 };
 
 

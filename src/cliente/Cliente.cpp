@@ -179,8 +179,36 @@ void Cliente::iniciar() {
 	Skt skt(host, port);
 	skt.conectar();
 
-	Mensajero mensajero(skt);
-	Protocolo protocolo(mensajero);
+	Mensajero mensajero_opcion(skt);
+	Protocolo protocolo_opcion(mensajero_opcion);
+
+	// ...
+	// ELEGIR NUEVA PARTIDA O UNIRSE A PARTIDA
+	// ...
+
+	std::cout << "Presionar 'n' para crear la partida\n";
+    std::cout << "O presionar 'u' para unirse a la partida ya creada\n";
+    char tecla;
+    std::cin >> tecla;
+    std::string puerto_partida;
+    if (tecla == 'n') {
+        puerto_partida = this->requestNuevaPartida(protocolo_opcion);
+    }
+    if (tecla == 'u'){
+        puerto_partida = this->requestUnirsePartida(protocolo_opcion);
+    }
+    skt.cerrarCanales();
+	skt.cerrarSocket();
+	
+
+
+	Skt skt_partida(host, puerto_partida);
+	skt_partida.conectar();
+    std::cout << "partida creada\n";
+
+    Mensajero mensajero(skt_partida);
+    Protocolo protocolo(mensajero);
+	// ...
 	int id = protocolo.recibirId();
 	ThInput th_input(cola_input, protocolo, id);
 
@@ -189,7 +217,8 @@ void Cliente::iniciar() {
 	Renderizador renderizador(ventana,
 			camara,
 			cola_renderizado,
-			renderizables);
+			renderizables,
+			id);
 
 	ThRenderizado th_renderizado(cola_renderizado,
 			protocolo,
@@ -209,9 +238,29 @@ void Cliente::iniciar() {
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
-	skt.cerrarCanales(); // ver aca
+	//skt.cerrarCanales();
 	th_renderizado.terminar();
 	th_renderizado.join();
 	th_input.terminar();
 	th_input.join();
+}
+
+std::string Cliente::requestNuevaPartida(Protocolo& protocolo){
+    std::cout << "enviando nueva partida request\n";
+    protocolo.enviarOpcionNuevaPartida();
+    std::cout << "enviado req\n";
+    std::string puerto_partida("8081");
+    protocolo.enviarPuerto(puerto_partida);
+    uint8_t respuesta = protocolo.recibirCodigoMensaje();
+    if (respuesta != MSJ_PARTIDA_CREADA){
+        return std::string(); // error al crear el socket en el servidor
+    }
+    return puerto_partida;
+}
+
+std::string Cliente::requestUnirsePartida(Protocolo& protocolo){
+    // CASO UNIRSE A PARTIDA:
+    protocolo.enviarOpcionUnirsePartida();
+    std::string puerto_partida("8081");
+    return puerto_partida;
 }

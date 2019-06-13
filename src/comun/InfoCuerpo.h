@@ -16,6 +16,7 @@ public:
     int32_t angulo;
     SDL_Rect dest;
     SDL_RendererFlip flip;
+    uint8_t id_chell;
 };
 
 
