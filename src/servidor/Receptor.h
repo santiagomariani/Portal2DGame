@@ -25,6 +25,7 @@ public:
     b2Body* getBody() override;
     void activar();
     bool estaActivado() override;
+    virtual ~Receptor();
 };
 
 

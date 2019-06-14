@@ -8,7 +8,7 @@ public:
 	EstadoCompuerta* actualizar(bool activa, b2Body* puerta);
 	void empezarContacto(Cuerpo* cuerpo);
 	int getId();
-	~EstadoAbriendo();
+	~EstadoAbriendo() override = default;
 };
 
 #endif

@@ -19,7 +19,7 @@ public:
 	uint8_t getId();
 	const b2Vec2& getPosition();
 	void empezarContacto(Cuerpo* otro);
-	~Compuerta() = default;
+	~Compuerta();
 };
 
 #endif

@@ -38,6 +38,7 @@ void ProcesoCliente::terminar(){
         (*it)->join();
         delete *it;
     }
+    threads.clear();
 }
 
 ProcesoCliente::~ProcesoCliente(){}

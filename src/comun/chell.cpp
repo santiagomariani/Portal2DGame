@@ -10,7 +10,7 @@
 #define RADIO 0.15833f
 
 Chell::Chell(int identidad, Mundo& mundo) :
-        Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
+        Cuerpo(config.tam_chell_x*2, config.tam_chell_y*2 + RADIO),
         id(identidad),
         pistola(mundo),
         mundo(mundo),
@@ -30,7 +30,7 @@ void Chell::activar(b2Vec2& pos){
     cuerpo_def.position.Set(pos.x, pos.y);
     cuerpo_def.fixedRotation = true;
     cuerpo_def.linearDamping = 0.006;
-    cuerpo_def.gravityScale = config::escala_gravedad_chell;
+    cuerpo_def.gravityScale = config.escala_gravedad_chell;
     cuerpo = mundo.agregarBody(cuerpo_def);
 
     b2PolygonShape polygonShape;
@@ -41,7 +41,7 @@ void Chell::activar(b2Vec2& pos){
     myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
-    polygonShape.SetAsBox(config::tam_chell_x, config::tam_chell_y, pos_poligono, 0);
+    polygonShape.SetAsBox(config.tam_chell_x, config.tam_chell_y, pos_poligono, 0);
     cuerpo->CreateFixture(&myFixtureDef);
 
     b2CircleShape circulo;
@@ -74,7 +74,7 @@ uint8_t Chell::getId(){
 }
 
 Chell::Chell(Chell&& otro) :
-        Cuerpo(config::tam_chell_x*2, config::tam_chell_y*2 + RADIO),
+        Cuerpo(config.tam_chell_x*2, config.tam_chell_y*2 + RADIO),
         pistola(std::move(otro.pistola)),
         mundo(otro.mundo),
         estado_chell(std::move(otro.estado_chell)){
@@ -103,12 +103,12 @@ Chell::Chell(Chell&& otro) :
 void Chell::mover(EstadoTeclado& t){
     b2Vec2 vel = cuerpo->GetLinearVelocity();
     //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
-    vel.x = config::velocidad_chell * t.presionada(SDLK_RIGHT) + -config::velocidad_chell * t.presionada(SDLK_LEFT);
+    vel.x = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
     //cuerpo->SetLinearVelocity(vel);
     //}
 
     if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
-        vel.y = config::salto_chell * t.presionada(SDLK_UP);
+        vel.y = config.salto_chell * t.presionada(SDLK_UP);
         if (roca && joint_roca) {
             b2Vec2 vel_roca = roca->getBody()->GetLinearVelocity();
             vel_roca.y = vel.y;
@@ -134,10 +134,10 @@ void Chell::dispararNaranja(b2Vec2& pos_click){
 }
 
 float Chell::getWidth(){
-    return float(config::tam_chell_x * 2);
+    return float(config.tam_chell_x * 2);
 }
 float Chell::getHeight(){
-    return float(config::tam_chell_y * 2 + 0.25);
+    return float(config.tam_chell_y * 2 + 0.25);
 }
 
 b2Body* Chell::getBody(){
@@ -148,7 +148,7 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
     if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
         if (joint_roca == nullptr) {
             b2Vec2 nueva_pos_roca(
-                    this->getPosition().x + config::tam_chell_x + (roca->getMaxWidth() / 2),
+                    this->getPosition().x + config.tam_chell_x + (roca->getMaxWidth() / 2),
                     this->getPosition().y);
             roca->getBody()->SetTransform(nueva_pos_roca, 0);
             b2DistanceJointDef joint_def;

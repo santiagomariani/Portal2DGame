@@ -12,6 +12,7 @@ class Thread {
         void join();
         virtual void terminar() = 0;
         virtual void run() = 0;
+        virtual bool termino();
         virtual ~Thread();
         Thread(const Thread&) = delete;
         Thread& operator=(const Thread&) = delete;

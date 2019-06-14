@@ -42,3 +42,8 @@ void Receptor::empezarContacto(Cuerpo *otro) {
 
 void Receptor::terminarContacto(Cuerpo *otro) {
 }
+
+Receptor::~Receptor() {
+    std::cout << "destructor receptor\n";
+    sensor.reset();
+}

@@ -24,19 +24,24 @@ void ThOpcionPartida::run() {
         std::cout << "puerto: " << puerto << std::endl;
         partidas.nuevaPartida(puerto, protocolo);
     }
-    //if (opcion == MSJ_OPCION_UNIRSE_PARTIDA){
+    if (opcion == MSJ_OPCION_UNIRSE_PARTIDA){
         // enviar puertos activos (esperando clientes)
-    //}
+        //partidas.enviarPartidasEsperando(protocolo);
+    }
     this->terminado = true;
 }
 
 void ThOpcionPartida::terminar() {
-
+    partidas.terminarPartidas();
 }
 
 ThOpcionPartida::~ThOpcionPartida() {
     this->skt.cerrarCanales();
     this->skt.cerrarSocket();
+}
+
+bool ThOpcionPartida::termino() {
+    return this->terminado;
 }
 
 

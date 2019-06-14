@@ -16,6 +16,8 @@ class ReceptorArriba : public Receptor {
 public:
     ReceptorArriba(Mundo &mundo, const b2Vec2 &pos);
     uint8_t getId() override;
+
+    ~ReceptorArriba();
 };
 
 #endif //RECEPTORARRIBA_H

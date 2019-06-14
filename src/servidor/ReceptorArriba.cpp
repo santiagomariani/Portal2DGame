@@ -24,3 +24,7 @@ uint8_t ReceptorArriba::getId() {
         return ID_RECEPTORARRIBA_DESACTIVADO;
     }
 }
+
+ReceptorArriba::~ReceptorArriba() {
+
+}

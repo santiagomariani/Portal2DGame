@@ -50,13 +50,13 @@ class CargadorMapa {
     std::vector<BloqueMetalDiagonal> bloques_diagonal;
     std::list<Roca> rocas;
 
-    std::map<int,Cuerpo*> botones_y_receptores;
+    std::map<int,std::unique_ptr<Cuerpo>> botones_y_receptores;
 
     /*std::map<int,ReceptorAbajo> receptores_abajo;
     std::map<int,ReceptorIzquierda> receptores_izquierda;
     std::map<int,ReceptorDerecha> receptores_derecha;*/
 
-    std::map<int,CompuertaLogica*> compuertas_logicas;
+    std::map<int,std::shared_ptr<CompuertaLogica>> compuertas_logicas;
 
     std::list<Compuerta> compuertas;
     std::list<EmisorArriba> emisores_arriba;

@@ -49,24 +49,29 @@ void CargadorMapa::cargarMapa() {
 // Receptores
     posiciones.emplace_back(-17, -2);
 
-    ReceptorArriba* receptor_arriba = new ReceptorArriba(mundo, posiciones.back());
+    //ReceptorArriba* receptor_arriba = new ReceptorArriba(mundo, posiciones.back());
+    std::unique_ptr<ReceptorArriba> receptor_arriba(new ReceptorArriba(mundo, posiciones.back()));
+
     int i = 0;
-    botones_y_receptores[i] = receptor_arriba;
+    botones_y_receptores[i] = std::move(receptor_arriba);
     i++;
 
     posiciones.emplace_back(0, -2.35);
-    Boton* b = new Boton(posiciones.back(), mundo);
-    botones_y_receptores[i] = b;
+    //Boton* b = new Boton(posiciones.back(), mundo);
+    std::unique_ptr<Boton> b(new Boton(posiciones.back(), mundo));
+    botones_y_receptores[i] = std::move(b);
     i++;
 //b2Vec2 pos_boton2(-4, -2.35);
 //Boton b2(pos_boton2, mundo);
 
-    EstadoLogico* estado_boton = new EstadoLogico(*b); //usar unique pointer?
-    compuertas_logicas[i] = estado_boton;
+    //EstadoLogico* estado_boton = new EstadoLogico(*b); //usar unique pointer?
+    std::shared_ptr<EstadoLogico> estado_boton(new EstadoLogico(*(botones_y_receptores[1])));
+    compuertas_logicas[i] = std::move(estado_boton);
     i++;
 //EstadoLogico* estado_boton2 = new EstadoLogico(b2);
-    EstadoLogico* estado_receptor = new EstadoLogico(*receptor_arriba);
-    compuertas_logicas[i] = estado_receptor;
+    //EstadoLogico* estado_receptor = new EstadoLogico(*receptor_arriba);
+    std::shared_ptr<EstadoLogico> estado_receptor(new EstadoLogico(*(botones_y_receptores[0])));
+    compuertas_logicas[i] = std::move(estado_receptor);
     i++;
 
 // con botones OR:
@@ -78,13 +83,14 @@ b2Vec2 pos_compuerta(-1, -2);
 Compuerta comp(pos_compuerta, mundo, compuerta_or);*/
 
 // con botones AND:
-    And* compuerta_and = new And();
-    compuerta_and->agregar(estado_boton);
-    compuerta_and->agregar(estado_receptor);
-    compuertas_logicas[i] = compuerta_and;
+    std::shared_ptr<And> compuerta_and(new And());
+    //And* compuerta_and = new And();
+    compuerta_and->agregar((compuertas_logicas[2]));
+    compuerta_and->agregar((compuertas_logicas[3]));
+    compuertas_logicas[i] = std::move(compuerta_and);
 
     posiciones.emplace_back(-1, -1.5);
-    compuertas.emplace_back(posiciones.back(), mundo, *compuerta_and);
+    compuertas.emplace_back(posiciones.back(), mundo, *(compuertas_logicas[i]));
 
 // Emisores
     posiciones.emplace_back(-16, -2);
@@ -112,10 +118,10 @@ Fisica &CargadorMapa::obtenerFisica() {
 
 CargadorMapa::~CargadorMapa() {
     for (auto it=botones_y_receptores.begin(); it!=botones_y_receptores.end(); it++){
-        delete it->second;
+        //delete it->second;
     }
     for (auto it=compuertas_logicas.begin(); it!=compuertas_logicas.end(); it++){
-        delete it->second;
+        //delete it->second;
     }
 }
 
