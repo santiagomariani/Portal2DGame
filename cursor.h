@@ -1,12 +1,27 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
-struct Cursor{ //Por default empieza con la roca normal...
-	int ancho;	//El ancho esta contado en Celdas
-	int alto;	//El alto esta contado en Celdas
+#include "constructor_piezas.h"
+#include "pieza.h"
+#include "imagen.h"
+#include <map>
+
+class Cursor{
+	ConstructorDePiezas constructor;
 	int id;
-	Cursor(int id, int ancho, int alto) :
-		   ancho(ancho), alto(alto), id(id) {}
+	std::map<int, Imagen*>& imagenes;
+	SDL_Rect actual_destino = {20, 20, 50, 50};
+	int ultimo_click = -1;
+	int anteultimo_click = -1;
+	friend class MapaEditor;
+public:
+	Cursor(std::map<int, Imagen*>& imagenes, int id);
+	void setId(int _id);
+	Pieza actual();
+	void render();
+	void click(int identificador);
+	void resetClick();
+
 };
 
 

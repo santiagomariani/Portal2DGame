@@ -7,10 +7,8 @@
 class BotonBloque : public Presionable{
 	Cursor& cursor;
 	int id;
-	int ancho;
-	int alto;
 public:
-	BotonBloque(Cursor& cursor, int id, int ancho, int alto, Imagen* imagen);
+	BotonBloque(Cursor& cursor, int id, Imagen* imagen);
 	void presionar() override;
 	void mover(int offset_x, int offset_y);
 };

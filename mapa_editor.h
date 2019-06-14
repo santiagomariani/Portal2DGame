@@ -5,27 +5,28 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include "imagen.h"
+#include "pieza.h"
+#include "cursor.h"
 #include <string>
-
-struct ParIdRect{
-	int id;
-	SDL_Rect destino;
-};
 
 class MapaEditor{
 	SDL_Rect camara;
-	std::map<int, std::map<int, ParIdRect>> mapa;
-	std::map<int, Imagen*>& imagenes;
+	std::map<int, std::map<int, Pieza>> mapa;
+	std::map<int, int> conexiones;
 	int celda;
+	bool estado_logico;
+	Cursor& cursor;
 
 	int convertirPosicion(int a);
 public:
-	MapaEditor(std::map<int, Imagen*>& img, int ancho_cam, int alto_cam, int celda);
-	void agregar(int id, int x, int y, int ancho, int alto);
+	MapaEditor(int ancho_cam, int alto_cam, int celda, Cursor& cursor);
+	void agregar(int x, int y, Pieza pieza);
 	void quitar(int x, int y);
 	void render();
 	void recibirEvento(SDL_KeyboardEvent& evento);
+	void recibirEvento(SDL_MouseButtonEvent& evento);
 	void guardar(std::string nombre);
+	void conectar();
 };
 
 #endif //MAPA_EDITOR

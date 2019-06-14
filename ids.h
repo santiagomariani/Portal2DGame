@@ -33,5 +33,8 @@
 #define ID_RECEPTORIZQUIERDA_ACTIVADO 29
 #define ID_ACIDO 30
 
+#define ID_AND 100
+#define ID_OR 101
+
 
 #endif //IDS_H

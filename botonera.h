@@ -10,14 +10,13 @@
 
 class Botonera{
 	Imagen* fondo;
-	int ancho_v;
-	int alto_v;
+	int lado_boton;
+	int separacion;
 	SDL_Rect destino_panel;
-	std::vector<BotonBloque> botones;
-	int division;
+	std::vector<BotonBloque>* botones;
 public:
-	Botonera(std::map<int, Imagen*>& imagenes, Cursor& cursor, Imagen* fondo,
-			 int ancho_v, int alto_v);
+	Botonera(Imagen* fondo, int ancho_v, int alto_v);
+	void setBotones(std::vector<BotonBloque>* _botones);
 	void render();
 	bool colisiona(int x, int y);
 	void recibirEvento(SDL_MouseButtonEvent& evento);
