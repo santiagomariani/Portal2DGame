@@ -38,7 +38,7 @@ message("[INFO] Loading sources to the server")
 file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cpp" "src/servidor/*.h")
 file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES} src/comun/info_cuerpo_box_2_d.h src/servidor/cola_protegida.cpp src/servidor/cola_protegida.h src/servidor/th_opcion_partida.cpp src/servidor/th_opcion_partida.h src/servidor/manejador_partidas.cpp src/servidor/manejador_partidas.h src/servidor/th_aceptador_clientes.cpp src/servidor/th_aceptador_clientes.h)
+add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES} src/comun/info_cuerpo_box_2_d.h src/servidor/cola_protegida.cpp src/servidor/cola_protegida.h src/servidor/th_opcion_partida.cpp src/servidor/th_opcion_partida.h src/servidor/manejador_partidas.cpp src/servidor/manejador_partidas.h src/servidor/th_aceptador_clientes.cpp src/servidor/th_aceptador_clientes.h src/servidor/cargador_mapa.cpp src/servidor/cargador_mapa.h)
 target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT})
 
 

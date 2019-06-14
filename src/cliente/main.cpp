@@ -10,6 +10,9 @@
 #include "ViewChell.h"
 #include "ids.h"
 #include "Cliente.h"
+#include "config.h"
+
+Config config;
 
 int main(int argc, const char *argv[]){
     Cliente cliente;
