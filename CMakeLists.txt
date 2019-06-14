@@ -1,25 +1,43 @@
 cmake_minimum_required(VERSION 3.14)
 project(untitled)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS_RELEASE "-O0")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb")
 
-add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Camera.cpp Roca.cpp)
+#set(CMAKE_CXX_STANDARD 11)
+#set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_CXX_FLAGS_RELEASE "-O0")
 
-# ${CMAKE_CURRENT_SOURCE_DIR}
+# add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlTexture.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
 
-find_package(Threads REQUIRED)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/libs/yaml-cpp)
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/libs)
 
+
+message("[INFO] Adding '${CMAKE_SOURCE_DIR}/src/comun' as include directory")
+include_directories(${CMAKE_SOURCE_DIR}/src/comun)
+
+
+
 message("[INFO] Adding Box2D as library")
 file(GLOB_RECURSE BOX2D_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/Box2D/*.cpp" "libs/Box2D/*.h")
 
+add_library(Box2D STATIC ${BOX2D_SOURCES})
 
-add_library(Box2D STATIC ${BOX2D_SOURCES} BloqueRoca.h BloqueRoca.cpp disparo.h disparo.cpp main.cpp chell.h chell.cpp estado_teclado.cpp personajes.cpp mundo.cpp cuerpo.h contact_listener.cpp CoordConverter.cpp Bloque.cpp Bloque.h BloqueMetal.cpp BloqueMetal.h pistola.h pistola.cpp portal.cpp Camera.cpp Teletransportador.cpp Teletransportador.h boton.h boton.cpp compuerta_logica.h or.h or.cpp and.h and.cpp compuerta.cpp compuerta.h estado_logico.cpp estado_logico.h estado_compuerta.h estado_abierta.h estado_abierta.cpp estado_cerrada.cpp estado_cerrada.h estado_abriendo.cpp estado_cerrando.h estado_cerrando.cpp estado_abriendo.h EmisorArriba.cpp EmisorDerecha.cpp EmisorAbajo.cpp EmisorIzquierda.cpp BolaEnergia.cpp BolaEnergia.h editor.cpp Emisor.cpp ReceptorArriba.cpp ReceptorArriba.h ReceptorDerecha.cpp ReceptorDerecha.h ReceptorAbajo.cpp ReceptorAbajo.h ReceptorIzquierda.cpp ReceptorIzquierda.h SensorReceptor.cpp SensorReceptor.h Receptor.cpp Receptor.h Sensor.cpp Sensor.h bloque_metal_diagonal.cpp bloque_metal_diagonal.h angulo.h angulo_noventa.h angulo_noventa.cpp angulo_cero.cpp angulo_cero.h angulo_ciento_ochenta.cpp angulo_ciento_ochenta.h angulo_dos_setenta.h angulo_dos_setenta.cpp Acido.cpp Acido.h fondo_continuo.cpp imagen.cpp presionable.cpp boton_jugar.cpp boton_editar.cpp mapa_editor.cpp boton_bloque.cpp botonera.cpp config.h config.cpp pieza.cpp cursor.cpp constructor_piezas.cpp)
 
-target_link_libraries(untitled Box2D ${CMAKE_THREAD_LIBS_INIT} SDL2 SDL2_image yaml-cpp)
+message("[INFO] Loading sources to the client")
+file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
+file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
+
+add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h)
+target_link_libraries(cliente SDL2 SDL2_image Box2D ${CMAKE_THREAD_LIBS_INIT})
+
+
+message("[INFO] Loading sources to the server")
+file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cpp" "src/servidor/*.h")
+file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
+
+add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES} src/comun/info_cuerpo_box_2_d.h src/servidor/cola_protegida.cpp src/servidor/cola_protegida.h src/servidor/th_opcion_partida.cpp src/servidor/th_opcion_partida.h src/servidor/manejador_partidas.cpp src/servidor/manejador_partidas.h src/servidor/th_aceptador_clientes.cpp src/servidor/th_aceptador_clientes.h)
+target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT})

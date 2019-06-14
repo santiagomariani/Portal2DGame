@@ -4,6 +4,6 @@
 Objeto | ID
 ============
 Chell  | 0
-Roca   | 1
+BloqueRoca   | 1
 Disparo| 2
 Metal
