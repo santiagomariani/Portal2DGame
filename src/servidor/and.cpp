@@ -4,7 +4,7 @@ And::And(){
 }
 
 
-void And::agregar(CompuertaLogica* compuerta){
+void And::agregar(std::shared_ptr<CompuertaLogica>& compuerta){
 	compuertas.push_back(compuerta);
 }
 
@@ -15,4 +15,7 @@ bool And::encendida(){
 		}
 	}
 	return true;
+}
+
+And::~And() {
 }

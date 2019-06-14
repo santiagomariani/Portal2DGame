@@ -11,7 +11,7 @@
 
 Disparo::Disparo(int identidad, Mundo& mundo) : 
 			id(identidad), mundo(mundo),
-			Cuerpo(config::radio_disparo * 2, config::radio_disparo * 2) {
+			Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2) {
 	cuerpo = nullptr;
 	portal = nullptr;
 }
@@ -30,7 +30,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 
 	b2CircleShape circleShape;
 	circleShape.m_p.Set(0, 0);
-	circleShape.m_radius = config::radio_disparo;
+	circleShape.m_radius = config.radio_disparo;
 	b2FixtureDef circle_fixture_def;
 	circle_fixture_def.shape = &circleShape;
 	circle_fixture_def.density = DENSIDAD_RAYO;
@@ -41,7 +41,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	b2Vec2 vel = destino;
 	vel -= origen;
 	vel.Normalize();
-	vel *= config::velocidad_disparo;
+	vel *= config.velocidad_disparo;
 	cuerpo->SetGravityScale(0);
 	cuerpo->SetLinearVelocity(vel);
 	cuerpo->SetUserData(this);
@@ -49,7 +49,7 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 
 Disparo::Disparo(Disparo&& otro) : 
 		mundo(otro.mundo),
-		Cuerpo(config::radio_disparo * 2, config::radio_disparo * 2) {
+		Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2) {
 	if (this == &otro){
 		return;
 	}

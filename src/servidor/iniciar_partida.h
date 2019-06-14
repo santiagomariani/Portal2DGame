@@ -4,6 +4,11 @@
 #include "partida.h"
 #include "Thread.h"
 
+// iniciar partida cree la partida adentro. (puede recibir el skt y nombre del mapa)
+// y partida tenga un mapa como atributo
+// y al iniciar la partida cargue el mapa del archivo
+// y el mapa tiene al mundo como atributo
+
 class IniciarPartida : public Thread{
 	Partida& partida;
 public:

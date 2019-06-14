@@ -10,23 +10,23 @@
 #define TICKS_PER_FRAME 1245/FPS
 
 Partida::Partida(Fisica& fisica, SktAceptador skt, int cant_clientes):
-                fisica(fisica), skt_aceptador(std::move(skt)){
+                fisica(fisica), skt_aceptador(std::move(skt)),
+                continuar_juego(true){
     this->cant_clientes = cant_clientes;
-    this->continuar_juego = true;
     this->recibir_clientes = true;
 }
 
 InfoCuerpoBox2D Partida::obtenerInfo(Cuerpo* cuerpo){
     InfoCuerpoBox2D info;
-    info.id = cuerpo->getId();
-    info.angulo = cuerpo->getAngle();
+    info.id = (uint8_t )cuerpo->getId();
+    info.angulo = (int32_t)cuerpo->getAngle();
     info.pos = cuerpo->getPosition();
-    info.ancho = cuerpo->getMaxWidth();
-    info.alto = cuerpo->getMaxHeight();
+    info.ancho = (float32)cuerpo->getMaxWidth();
+    info.alto = (float32)cuerpo->getMaxHeight();
     if (info.id == ID_CHELL){
-        info.estado = ((Chell*)cuerpo)->obtenerEstado();
-        info.orientacion = ((Chell*)cuerpo)->obtenerOrientacion();
-        info.id_chell = ((Chell*)cuerpo)->getIdPersonaje();
+        info.estado = (uint8_t)((Chell*)cuerpo)->obtenerEstado();
+        info.orientacion = (uint8_t)((Chell*)cuerpo)->obtenerOrientacion();
+        info.id_chell = (uint8_t)((Chell*)cuerpo)->getIdPersonaje();
     } else {
         info.estado = 0;
         info.orientacion = 0;
@@ -76,19 +76,12 @@ void Partida::correrPartida(){ //
     }
 
     for (size_t i = 0; i < this->threads_clientes.size(); ++i){
+        this->threads_clientes[i]->terminar();
         this->threads_clientes[i]->join();
-        delete this->threads_clientes[i];
+        this->threads_clientes[i].reset();
     }
 }
 
-void Partida::terminarPartida(){
-    this->continuar_juego = false;
-    for (auto it=threads_clientes.begin(); it!=threads_clientes.begin(); it++){
-        (*it)->terminar();
-        (*it)->join();
-        delete (*it);
-    }
-}
 
 
 int Partida::recibirClientes(){ 
@@ -99,11 +92,11 @@ int Partida::recibirClientes(){
             //std::shared_ptr<ColaBloqueanteCuerpos> c(new ColaBloqueanteCuerpos);
             ColaBloqueanteCuerpos* c = new ColaBloqueanteCuerpos();
             colas_clientes.push_back(c);
-            ProcesoCliente* proceso = new ProcesoCliente(
-                                            std::move(acept_skt),
-                                            this->cola_input,
-                                            colas_clientes[i], i);
-            this->threads_clientes.push_back(proceso);
+
+            this->threads_clientes.emplace_back(new ProcesoCliente(
+                                                std::move(acept_skt),
+                                                this->cola_input,
+                                                colas_clientes[i], i));
             i++;
             this->fisica.agregarNuevaChell();
         } catch(const SocketError &e){
@@ -114,6 +107,7 @@ int Partida::recibirClientes(){
             break;
         }
     }
+    this->recibir_clientes = false;
     for (auto th=threads_clientes.begin(); th!=threads_clientes.end(); th++){
         (*th)->start();
     }
@@ -128,13 +122,32 @@ void Partida::terminarRecibirClientes(){
     this->skt_aceptador.cerrarSocket();
 }
 
+void Partida::terminarPartida(){
+    this->continuar_juego = false;
+}
+
 
 void Partida::comenzar(){
     this->recibirClientes();
     this->correrPartida();
 }
 
-Partida::~Partida(){}
+bool Partida::estaAceptando() {
+    return this->recibir_clientes;
+}
+
+Partida::~Partida(){
+    for (uint i = 0; i < this->colas_clientes.size();i++){
+        delete (colas_clientes[i]);
+    }
+    colas_clientes.clear();
+}
+
+std::string Partida::obtenerPuerto() {
+    return this->skt_aceptador.obtenerPuerto();
+}
+
+
 
 
 

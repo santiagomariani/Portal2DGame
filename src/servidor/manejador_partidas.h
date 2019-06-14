@@ -6,16 +6,20 @@
 
 #include <map>
 #include "partida.h"
+#include "cargador_mapa.h"
 
 class ManejadorPartidas {
-    std::map<std::string,Partida> partidas;
-    std::vector<Thread*> threads_partidas;
+    //std::map<std::string,Partida> partidas;
+    std::vector<std::unique_ptr<Partida>> partidas;
+    std::vector<std::unique_ptr<Thread>> threads_partidas;
+    std::list<CargadorMapa> mapas;
 
 public:
     ManejadorPartidas();
     void nuevaPartida(std::string puerto, Protocolo& protocolo);
+    void terminarPartidas();
+    void enviarPartidasEsperando(Protocolo& protocolo);
     ~ManejadorPartidas() = default;
-
 };
 
 

@@ -261,6 +261,7 @@ std::string Cliente::requestNuevaPartida(Protocolo& protocolo){
 std::string Cliente::requestUnirsePartida(Protocolo& protocolo){
     // CASO UNIRSE A PARTIDA:
     protocolo.enviarOpcionUnirsePartida();
+    // recorrer los puertos que van llegando
     std::string puerto_partida("8081");
     return puerto_partida;
 }

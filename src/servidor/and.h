@@ -6,13 +6,13 @@
 #include "boton.h"
 
 class And : public CompuertaLogica {
-	std::vector<CompuertaLogica*> compuertas;
+	std::vector<std::shared_ptr<CompuertaLogica>> compuertas;
 public:
 	And();
-	void agregar(CompuertaLogica* compuerta);
+	void agregar(std::shared_ptr<CompuertaLogica>& compuerta);
 
 	bool encendida();
-	~And() = default;
+	~And();
 };
 
 #endif

@@ -7,7 +7,7 @@
 #include "config.h"
 
 Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
-    Cuerpo(config::tam_roca * 2, config::tam_roca * 2) ,
+    Cuerpo(config.tam_roca * 2, config.tam_roca * 2) ,
     mundo(mundo) {
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_dynamicBody;
@@ -20,7 +20,7 @@ Roca::Roca(Mundo &mundo, const b2Vec2 &pos) :
     fixture_def.shape = &polygon_shape;
     fixture_def.density = 100;
     fixture_def.friction = 100;
-    polygon_shape.SetAsBox(config::tam_roca, config::tam_roca);
+    polygon_shape.SetAsBox(config.tam_roca, config.tam_roca);
     cuerpo->CreateFixture(&fixture_def);
     pos_inicial = pos;
     cuerpo->SetUserData(this);
