@@ -2,46 +2,66 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-namespace config{
-    extern float gravedad;
+struct Config{
+    // Gravedad (eje y)
+    float gravedad = -9.8;
+
+    float escala_gravedad_chell = 1.0f;
     
-    extern float escala_gravedad_chell;
-    
-	extern float velocidad_chell;
+    // Velocidad caminata de Chell
+    float velocidad_chell = 4;
 
-    extern float salto_chell;
+    float salto_chell = 6;
 
-    extern float tam_chell_x;
+    // Ancho del Chell
+    float tam_chell_x = 0.2f;
 
-    extern float tam_chell_y;
+    // Alto de Chell
+    float tam_chell_y = 0.39583f;
 
-    extern float tam_bloque;
+    // Alto y ancho del bloque
+    float tam_bloque = 0.5f;
 
-    extern float tam_base_boton_x;
+    // Ancho base del boton
+    float tam_base_boton_x = 0.5;
 
-    extern float tam_base_boton_y;
+    // Alto base del boton
+    float tam_base_boton_y = 0.1;
 
-    extern float tam_sensor_boton_x;
+    // Ancho sensor del boton (sensor del peso)
+    float tam_sensor_boton_x = 0.25;
 
-    extern float tam_sensor_boton_y;
+    // Alto sensor del boton (sensor del peso)
+    float tam_sensor_boton_y = 0.025;
 
-    extern float radio_disparo;
+    // Radio del disparo de Chell
+    float radio_disparo = 0.15f;
 
-    extern float velocidad_disparo;
+    // Velocidad del disparo
+    float velocidad_disparo = 5;
 
-    extern float tam_portal_x;
+    // Ancho portal
+    float tam_portal_x = 0.04;
 
-    extern float tam_portal_y;
+    // Alto portal
+    float tam_portal_y = 0.45;
 
-    extern float tam_roca;
+    // Ancho y alto de rocas
+    float tam_roca = 0.15f;
 
-    extern float tam_acido_x;
+    // Ancho del acido
+    float tam_acido_x = 0.5;
 
-    extern float tam_acido_y;
+    // Alto acido
+    float tam_acido_y = 0.06;
 
-    extern float tam_compuerta_x;
+    // Ancho compuerta
+    float tam_compuerta_x = 0.5;
 
-    extern float tam_compuerta_y;
-}
+    // Alto compuerta
+    float tam_compuerta_y = 0.94;
+};
+
+extern Config config;
 
 #endif
