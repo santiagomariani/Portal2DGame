@@ -20,7 +20,7 @@
 #include "Acido.h"
 #include "BarraDeEnergia.h"
 
-#define CANTIDAD_DE_CLIENTES 2
+#define CANTIDAD_DE_CLIENTES 1
 #define TECLA_TERMINAR 'q'
 
 ManejadorPartidas::ManejadorPartidas() {

@@ -36,7 +36,7 @@ namespace config{
     float radio_disparo = 0.15f;
 
     // Velocidad del disparo
-    float velocidad_disparo = 5;
+    float velocidad_disparo = 20;
 
     // Ancho portal
     float tam_portal_x = 0.04;

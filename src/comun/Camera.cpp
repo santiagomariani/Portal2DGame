@@ -4,7 +4,7 @@
 
 #include "Camera.h"
 
-Camera::Camera(int screenWidth, int screenHeight, SdlTexture &bg) :
+Camera::Camera(int screenWidth, int screenHeight, Textura &bg) :
     screenWidth(screenWidth), screenHeight(screenHeight), bg(bg){
     camera.x = 0;
     camera.y = 0;
@@ -17,9 +17,7 @@ void Camera::render(Renderable &renderable,
         double angle,
         SDL_Point *center,
         SDL_RendererFlip flip) {
-    if ((dest.x >= (camera.x + camera.w)) || ((dest.x + dest.w - 1) < camera.x)) {
-        return;
-    } else if ((dest.y >= (camera.y + camera.h)) || ((dest.y + dest.h - 1) < camera.y)) {
+    if (!dentroDeCamara(dest)) {
         return;
     }
     SDL_Rect copia = dest;
@@ -63,4 +61,20 @@ void Camera::renderBg() {
                      camera.w,
                      camera.h};
     bg.render(nullptr, &dest);
+}
+
+void Camera::reproducirSonidoChell(SonidosChell &sonidos_chell, SDL_Rect &dest, uint8_t estado) {
+    if (!dentroDeCamara(dest)) {
+        return;
+    }
+    sonidos_chell.reproducir(estado);
+}
+
+bool Camera::dentroDeCamara(SDL_Rect &dest) {
+    if ((dest.x >= (camera.x + camera.w)) || ((dest.x + dest.w - 1) < camera.x)) {
+        return false;
+    } else if ((dest.y >= (camera.y + camera.h)) || ((dest.y + dest.h - 1) < camera.y)) {
+        return false;
+    }
+    return true;
 }

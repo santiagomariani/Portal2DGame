@@ -1,7 +1,7 @@
 
 
 
-add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlTexture.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
+add_executable(untitled main.cpp Ventana.cpp Textura.cpp Textura.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
 
 add_executable(cliente cliente.cpp)
 add_executable(servidor servidor_main.cpp)

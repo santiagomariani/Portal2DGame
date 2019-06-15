@@ -12,7 +12,7 @@
 #include "estado_teclado.h"
 #include "personajes.h"
 #include "cuerpo.h"
-#include "SdlWindow.h"
+#include "Ventana.h"
 #include "ViewChell.h"
 #include "contact_listener.h"
 #include "Timer.h"

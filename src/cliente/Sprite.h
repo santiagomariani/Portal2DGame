@@ -6,8 +6,8 @@
 #define TP4_SPRITE_H
 
 
-#include "SdlTexture.h"
-#include "SdlWindow.h"
+#include "Textura.h"
+#include "Ventana.h"
 #include "Renderable.h"
 
 class Sprite : public Renderable {
@@ -19,14 +19,14 @@ private:
     int countedImages;
     int framesCounter;
     SDL_Rect srcArea;
-    SdlTexture &texture;
+    Textura &texture;
 public:
     Sprite(int frameWidth,
             int frameHeight,
             int x,
             int y,
             unsigned int numberFrames,
-            SdlTexture &texture);
+            Textura &texture);
     void resetAnimation();
     void render(SDL_Rect &dest,
                 double angle,

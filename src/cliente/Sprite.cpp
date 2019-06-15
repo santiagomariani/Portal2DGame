@@ -10,7 +10,7 @@ Sprite::Sprite(int frameWidth,
        int x,
        int y,
        unsigned int numberFrames,
-       SdlTexture &texture) :
+       Textura &texture) :
        frameWidth(frameWidth),
        frameHeight(frameHeight),
        x(x),

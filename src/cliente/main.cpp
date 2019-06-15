@@ -3,8 +3,8 @@
 //
 
 #include <map>
-#include "SdlWindow.h"
-#include "SdlTexture.h"
+#include "Ventana.h"
+#include "Textura.h"
 #include "Camera.h"
 #include "Sprite.h"
 #include "ViewChell.h"

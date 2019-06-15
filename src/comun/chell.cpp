@@ -127,10 +127,12 @@ const b2Vec2& Chell::getPosition(){
 
 void Chell::dispararAzul(b2Vec2& pos_click){
     pistola.dispararAzul(getPosition(), pos_click);
+    estado_chell.ocurrioDisparo();
 }
 
 void Chell::dispararNaranja(b2Vec2& pos_click){
     pistola.dispararNaranja(getPosition(), pos_click);
+    estado_chell.ocurrioDisparo();
 }
 
 float Chell::getWidth(){
@@ -183,6 +185,7 @@ void Chell::terminarContacto(Cuerpo *otro) {
 
 void Chell::morir(){
     std::cout << "chell murio\n";
+    estado_chell.chellMurio();
 }
 
 void Chell::destruirRoca() {

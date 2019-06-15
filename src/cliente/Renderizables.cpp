@@ -3,61 +3,61 @@
 //
 
 #include "Renderizables.h"
-#include "SdlWindow.h"
+#include "Ventana.h"
 #include "ids.h"
-#include "SdlTexture.h"
+#include "Textura.h"
 #include "Sprite.h"
 #include "ViewChell.h"
 
-Renderizables::Renderizables(SdlWindow &ventana) {
+Renderizables::Renderizables(Ventana &ventana) {
     creacionRenderizables(ventana);
 }
 
-void Renderizables::creacionRenderizables(SdlWindow &ventana) {
+void Renderizables::creacionRenderizables(Ventana &ventana) {
     // Disparo
     std::string efectos_path = "assets/fx.png";
-    SdlTexture efectos_textura(efectos_path, ventana);
+    Textura efectos_textura(efectos_path, ventana);
     Sprite disparoSprite(111, 59, 1, 1920, 3, efectos_textura);
 
     // Bloques roca y metal
     std::string blocksPath = "assets/blocks1.png";
-    SdlTexture blocksTexture(blocksPath, ventana);
+    Textura blocksTexture(blocksPath, ventana);
     Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
     Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
     std::string diago_path = "assets/block-diago.png";
-    SdlTexture diago_texture(diago_path, ventana);
+    Textura diago_texture(diago_path, ventana);
     Sprite bloqueMetalDiagoSprite(178, 177, 0, 2, 1, diago_texture);
     std::string diago90_path = "assets/diago-90.png";
-    SdlTexture diago90_texture(diago90_path, ventana);
+    Textura diago90_texture(diago90_path, ventana);
     Sprite bloqueMetalDiago90Sprite(177, 178, 2, 0, 1, diago90_texture);
     std::string diago180_path = "assets/diago-180.png";
-    SdlTexture diago180_texture(diago180_path, ventana);
+    Textura diago180_texture(diago180_path, ventana);
     Sprite bloqueMetalDiago180Sprite(177, 178, 2, 0, 1, diago180_texture);
     std::string diago270_path = "assets/diago-270.png";
-    SdlTexture diago270_texture(diago270_path, ventana);
+    Textura diago270_texture(diago270_path, ventana);
     Sprite bloqueMetalDiago270Sprite(177, 178, 2, 0, 1, diago270_texture);
 
     // Boton apagado y prendidos
     std::string botonPath = "assets/miscellaneous.png";
-    SdlTexture miscTexture(botonPath, ventana);
+    Textura miscTexture(botonPath, ventana);
     Sprite botonSprite(175, 55, 1, 116, 1, miscTexture);
     Sprite botonPrendidoSprite(175, 74, 1, 192, 1, miscTexture);
 
     // Compuerta cerrada y abierta
     std::string compuertaPath = "assets/gate.png";
-    SdlTexture compuertaTexture(compuertaPath, ventana);
+    Textura compuertaTexture(compuertaPath, ventana);
     Sprite compuertaCerradaSprite(193, 385, 1, 21, 1, compuertaTexture);
     Sprite compuertaAbiertaSprite(193, 385, 1553, 2437, 1, compuertaTexture);
     Sprite compuertaAbriendoSprite(193, 385, 1, 2051, 19, compuertaTexture);
 
     //Portal azul
     std::string portalAzulPath = "assets/portAzul.png";
-    SdlTexture portalAzulTexture(portalAzulPath, ventana);
+    Textura portalAzulTexture(portalAzulPath, ventana);
     Sprite portalAzulSprite(193, 193, 0, 0, 1, portalAzulTexture);
 
     //Portal naranja
     std::string portalNaranjaPath = "assets/portNaranja.png";
-    SdlTexture portalNaranjaTexture(portalNaranjaPath, ventana);
+    Textura portalNaranjaTexture(portalNaranjaPath, ventana);
     Sprite portalNaranjaSprite(193, 193, 0, 0, 1, portalNaranjaTexture);
 
     // Piedra
@@ -114,9 +114,9 @@ void Renderizables::creacionRenderizables(SdlWindow &ventana) {
     // Barra Energia
     Sprite barra_energia_sprite(8, 220, 528, 689, 1, miscTexture);
 
-    ViewChell viewChell(ventana);
+    //ViewChell viewChell(ventana);
 
-    renderizales[ID_CHELL] = &viewChell;
+    //renderizales[ID_CHELL] = &viewChell;
     renderizales[ID_BLOQUE_ROCA] = &bloqueSprite;
     renderizales[ID_DISPARO] = &disparoSprite;
     renderizales[ID_BLOQUE_METAL] = &bloqueMetalSprite;

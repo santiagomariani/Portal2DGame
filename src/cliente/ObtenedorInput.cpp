@@ -11,10 +11,12 @@
 
 ObtenedorInput::ObtenedorInput(CoordConverter &coord_converter,
         Camera &camara,
-        ColaBloqueante<Input> &cola_input) :
+        ColaBloqueante<Input> &cola_input,
+        Ventana &ventana) :
         coord_converter(coord_converter),
         camara(camara),
-        cola_input(cola_input)
+        cola_input(cola_input),
+        ventana(ventana)
     {
 }
 
@@ -53,6 +55,10 @@ bool ObtenedorInput::obtenerInput() {
             case SDL_QUIT:
                 seguir = false;
         }
+    }
+    if (estado_teclado.presionada(SDLK_LALT)
+        && estado_teclado.presionada(SDLK_RETURN)) {
+        ventana.cambiarPantalla();
     }
 
     if (hay_input) {

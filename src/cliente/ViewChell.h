@@ -10,13 +10,14 @@
 #include <vector>
 #include <map>
 
-#include "SdlTexture.h"
+#include "Textura.h"
 #include "Sprite.h"
 
 class ViewChell : public Renderable {
 private:
-    SdlTexture chellTextures;
+    Textura chellTextures;
     std::map<uint8_t, Sprite> sprites;
+    std::map<uint8_t, Sprite> sprites_transitorios;
     uint8_t estado_actual;
     bool renderizando_estado_transitorio;
     SDL_RendererFlip flip_transitorio;
@@ -24,7 +25,9 @@ private:
     SDL_Point *centro_transitorio;
     void spritesCreation();
 public:
-    explicit ViewChell(SdlWindow &window);
+    explicit ViewChell(Ventana &window, std::string nombre_archivo);
+    ViewChell(ViewChell &&otro);
+    ViewChell& operator=(ViewChell &&otro);
     void render(SDL_Rect &dest,
                      double angle,
                      SDL_Point *center,

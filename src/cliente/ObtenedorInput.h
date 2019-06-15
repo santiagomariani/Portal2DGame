@@ -20,10 +20,10 @@ private:
     EstadoTeclado estado_teclado;
     EstadoMouse estado_mouse;
     ColaBloqueante<Input> &cola_input;
+    Ventana &ventana;
 public:
-    ObtenedorInput(CoordConverter &coord_converter,
-            Camera &camara,
-            ColaBloqueante<Input> &cola_input);
+    ObtenedorInput(CoordConverter &coord_converter, Camera &camara, ColaBloqueante<Input> &cola_input,
+                       Ventana &ventana);
     bool obtenerInput();
 };
 

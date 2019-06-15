@@ -17,72 +17,77 @@
 #include "Skt.h"
 #include "ThRenderizado.h"
 #include "msj_renderizado.h"
+#include "Sonido.h"
+#include "Mixer.h"
+#include "Musica.h"
+#include "ColeccionViewChells.h"
 
 void Cliente::iniciar() {
 
-    const int screen_width = 800;
-    const int screen_height = 600;
+    const int ancho_nivel = 1280;
+    const int alto_nivel = 720;
 
-    SdlWindow ventana(screen_width, screen_height);
+    Ventana ventana(ancho_nivel, alto_nivel);
+    Mixer();
 
     // Disparo
-    std::string efectos_path = "assets/fx.png";
-    SdlTexture efectos_textura(efectos_path, ventana);
-    Sprite disparoSprite(111, 59, 1, 1920, 3, efectos_textura);
+    std::string arch_textura_efectos = "assets/fx.png";
+    Textura textura_efectos(arch_textura_efectos, ventana);
+    Sprite disparoSprite(111, 59, 1, 1920, 3, textura_efectos);
 
     // Bloques roca y metal
     std::string blocksPath = "assets/blocks1.png";
-    SdlTexture blocksTexture(blocksPath, ventana);
+    Textura blocksTexture(blocksPath, ventana);
     Sprite bloqueSprite(193, 193, 1, 172, 1, blocksTexture);
     Sprite bloqueMetalSprite(193, 193, 1, 600, 1, blocksTexture);
     std::string diago_path = "assets/block-diago.png";
-    SdlTexture diago_texture(diago_path, ventana);
+    Textura diago_texture(diago_path, ventana);
     Sprite bloqueMetalDiagoSprite(178, 177, 0, 2, 1, diago_texture);
     std::string diago90_path = "assets/diago-90.png";
-    SdlTexture diago90_texture(diago90_path, ventana);
+    Textura diago90_texture(diago90_path, ventana);
     Sprite bloqueMetalDiago90Sprite(177, 178, 2, 0, 1, diago90_texture);
     std::string diago180_path = "assets/diago-180.png";
-    SdlTexture diago180_texture(diago180_path, ventana);
+    Textura diago180_texture(diago180_path, ventana);
     Sprite bloqueMetalDiago180Sprite(177, 178, 2, 0, 1, diago180_texture);
     std::string diago270_path = "assets/diago-270.png";
-    SdlTexture diago270_texture(diago270_path, ventana);
+    Textura diago270_texture(diago270_path, ventana);
     Sprite bloqueMetalDiago270Sprite(177, 178, 2, 0, 1, diago270_texture);
 
     // Boton apagado y prendidos
     std::string botonPath = "assets/miscellaneous.png";
-    SdlTexture miscTexture(botonPath, ventana);
+    Textura miscTexture(botonPath, ventana);
     Sprite botonSprite(175, 55, 1, 116, 1, miscTexture);
     Sprite botonPrendidoSprite(175, 74, 1, 192, 1, miscTexture);
 
     // Compuerta cerrada y abierta
     std::string compuertaPath = "assets/gate.png";
-    SdlTexture compuertaTexture(compuertaPath, ventana);
+    Textura compuertaTexture(compuertaPath, ventana);
     Sprite compuertaCerradaSprite(193, 385, 1, 21, 1, compuertaTexture);
     Sprite compuertaAbiertaSprite(193, 385, 1553, 2437, 1, compuertaTexture);
     Sprite compuertaAbriendoSprite(193, 385, 1, 2051, 19, compuertaTexture);
 
     //Portal azul
     std::string portalAzulPath = "assets/portAzul.png";
-    SdlTexture portalAzulTexture(portalAzulPath, ventana);
+    Textura portalAzulTexture(portalAzulPath, ventana);
     Sprite portalAzulSprite(193, 193, 0, 0, 1, portalAzulTexture);
 
     //Portal naranja
     std::string portalNaranjaPath = "assets/portNaranja.png";
-    SdlTexture portalNaranjaTexture(portalNaranjaPath, ventana);
+    Textura portalNaranjaTexture(portalNaranjaPath, ventana);
     Sprite portalNaranjaSprite(193, 193, 0, 0, 1, portalNaranjaTexture);
 
     // Piedra
-    Sprite piedra_sprite1(85, 83, 1, 4513, 1, efectos_textura);
-    Sprite piedra_sprite2(85, 83, 87, 4513, 1, efectos_textura);
-    Sprite piedra_sprite3(85, 83, 173, 4513, 1, efectos_textura);
-    Sprite piedra_sprite4(85, 83, 259, 4513, 1, efectos_textura);
-    Sprite piedra_sprite5(85, 83, 345, 4513, 1, efectos_textura);
-    Sprite piedra_sprite6(85, 83, 431, 4513, 1, efectos_textura);
-    Sprite piedra_sprite7(85, 83, 517, 4513, 1, efectos_textura);
-    Sprite piedra_sprite8(85, 83, 603, 4513, 1, efectos_textura);
+    Sprite piedra_sprite1(85, 83, 1, 4513, 1, textura_efectos);
+    Sprite piedra_sprite2(85, 83, 87, 4513, 1, textura_efectos);
+    Sprite piedra_sprite3(85, 83, 173, 4513, 1, textura_efectos);
+    Sprite piedra_sprite4(85, 83, 259, 4513, 1, textura_efectos);
+    Sprite piedra_sprite5(85, 83, 345, 4513, 1, textura_efectos);
+    Sprite piedra_sprite6(85, 83, 431, 4513, 1, textura_efectos);
+    Sprite piedra_sprite7(85, 83, 517, 4513, 1, textura_efectos);
+    Sprite piedra_sprite8(85, 83, 603, 4513, 1, textura_efectos);
 
     // Bola de energia.
-    Sprite bola_energia_sprite(171, 119, 1, 2000, 5, efectos_textura);
+    Sprite bola_energia_sprite(171, 119, 1, 2000, 5, textura_efectos);
 
     // EmisorArriba
     Sprite emisor_arriba_sprite(193, 193, 1, 1242, 1, blocksTexture);
@@ -125,10 +130,9 @@ void Cliente::iniciar() {
     // Barra Energia
     Sprite barra_energia_sprite(8, 220, 528, 689, 1, miscTexture);
 
-    ViewChell viewChell(ventana);
+    ColeccionViewChells coleccion_viewchells(ventana);
 
     std::map<uint8_t,Renderable*> renderizables;
-    renderizables[ID_CHELL] = &viewChell;
     renderizables[ID_BLOQUE_ROCA] = &bloqueSprite;
     renderizables[ID_DISPARO] = &disparoSprite;
     renderizables[ID_BLOQUE_METAL] = &bloqueMetalSprite;
@@ -160,17 +164,18 @@ void Cliente::iniciar() {
     renderizables[ID_ACIDO] = &acido_sprite;
     renderizables[ID_BARRAENERGIA] = &barra_energia_sprite;
 
-
-
-
+    std::string musica_path("assets/sonidos/musica_juego.wav");
+    Musica musica_portal(musica_path);
+    musica_portal.setearVolumen(MIX_MAX_VOLUME / 5);
+    Mix_AllocateChannels(16);
 
 	std::string bg_path = "assets/industrial-background.jpg";
-	SdlTexture background(bg_path, ventana);
-	Camera camara(screen_width, screen_height, background);
+	Textura background(bg_path, ventana);
+	Camera camara(ancho_nivel, alto_nivel, background);
 
-	CoordConverter coord_converter(screen_width, screen_width);
+	CoordConverter coord_converter(ancho_nivel, ancho_nivel);
 	ColaBloqueante<Input> cola_input;
-	ObtenedorInput obtenedor_input(coord_converter, camara, cola_input);
+	ObtenedorInput obtenedor_input(coord_converter, camara, cola_input, ventana);
 	//Renderizables renderizables(ventana);
 
 	// Conexion con servidor.
@@ -218,7 +223,8 @@ void Cliente::iniciar() {
 			camara,
 			cola_renderizado,
 			renderizables,
-			id);
+			id,
+			coleccion_viewchells);
 
 	ThRenderizado th_renderizado(cola_renderizado,
 			protocolo,
@@ -228,6 +234,7 @@ void Cliente::iniciar() {
 	th_input.start();
 	th_renderizado.start();
 	bool seguir = true;
+    musica_portal.reproducirEnLoop();
 	Timer capTimer;
 	while(seguir) {
 		//capTimer.start();

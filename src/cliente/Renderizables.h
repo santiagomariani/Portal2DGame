@@ -7,15 +7,15 @@
 
 
 #include "Renderable.h"
-#include "SdlWindow.h"
+#include "Ventana.h"
 #include <map>
 
 class Renderizables {
 private:
     std::map<uint8_t, Renderable*> renderizales;
-    void creacionRenderizables(SdlWindow &ventana);
+    void creacionRenderizables(Ventana &ventana);
 public:
-    explicit Renderizables(SdlWindow &ventana);
+    explicit Renderizables(Ventana &ventana);
     Renderable * obtenerRenderizable(uint8_t id);
 };
 

@@ -3,7 +3,7 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
-#include "SdlWindow.h"
+#include "Ventana.h"
 #include "Timer.h"
 #include "fondo_continuo.h"
 #include "imagen.h"
