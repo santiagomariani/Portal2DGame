@@ -1,17 +1,17 @@
-//
-// Created by santi on 02/06/19.
-//
-
 #ifndef RECEPTOR_H
 #define RECEPTOR_H
-
 
 #include "cuerpo.h"
 #include "mundo.h"
 #include "SensorReceptor.h"
 
-#define TAMANIO_RECEPTOR 0.5f
 class SensorReceptor;
+
+// Representa el receptor de las Bolas de Energia.
+// Pueden activarse cuando les llega una bola de energia.
+// Hay varios tipos de receptores, segun de donde recibe la bola de energia:
+// Abajo, arriba, derecha, izquierda.
+
 class Receptor : public Cuerpo {
 protected:
     bool activado;
@@ -23,6 +23,7 @@ public:
     void empezarContacto(Cuerpo *otro) override;
     void terminarContacto(Cuerpo *otro) override;
     b2Body* getBody() override;
+    // Activa el receptor.
     void activar();
     bool estaActivado() override;
     virtual ~Receptor();

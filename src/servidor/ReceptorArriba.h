@@ -1,11 +1,6 @@
-//
-// Created by santi on 02/06/19.
-//
-
 #ifndef RECEPTORARRIBA_H
 #define RECEPTORARRIBA_H
 
-#define TAMANIO_SENSOR_X TAMANIO_RECEPTOR
 #define TAMANIO_SENSOR_Y 0.01
 
 #include "cuerpo.h"

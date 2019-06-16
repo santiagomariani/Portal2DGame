@@ -1,7 +1,3 @@
-//
-// Created by santi on 02/06/19.
-//
-
 #ifndef SENSORRECEPTOR_H
 #define SENSORRECEPTOR_H
 
@@ -12,6 +8,10 @@
 #include "Sensor.h"
 
 class Receptor;
+
+// Sensor que sirve para detectar cuando una bola de energia
+// ingresa en el receptor de bolas de energia y puede ser activado.
+
 class SensorReceptor : public Sensor {
 private:
     Receptor &receptor;

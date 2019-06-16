@@ -2,6 +2,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <Box2D/Common/b2Settings.h>
+
 struct Config{
     // Gravedad (eje y)
     float gravedad = -9.8;
@@ -60,6 +62,24 @@ struct Config{
 
     // Alto compuerta
     float tam_compuerta_y = 0.94;
+    
+    // Ancho y alto de los receptores
+    float  tam_receptor = 0.5f;
+
+    // Alto barra energia
+    float tam_barra_energia_y = 1;
+
+    // Ancho barra energia
+    float tam_barra_energia_x = 0.05;
+
+    // Radio bola energia
+    float radio_bola_energia = 0.40f;
+
+    // Velocidad constante de la bola de energia
+    float vel_bola_energia = 0.3;
+
+    // Ancho y alto de los emisores de energia
+    float tam_emisor = 0.5f;
 };
 
 extern Config config;

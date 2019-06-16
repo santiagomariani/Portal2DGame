@@ -6,10 +6,11 @@
 
 class Pistola{
 	Mundo& mundo;
+    Disparo d_azul;
+    Disparo d_naranja;
 	Portal p_azul;
 	Portal p_naranja;
-	Disparo d_azul;
-	Disparo d_naranja;
+
 public:
 	Pistola(Mundo& mundo);
     //Pistola& operator=(Pistola&& otro);

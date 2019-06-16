@@ -7,8 +7,8 @@
 #include "Box2D/Box2D.h"
 
 class BloqueMetalDiagonal : public Bloque{
-    b2Body* cuerpo;
     Angulo& angulo;
+    b2Body* cuerpo;
     std::map<int, int> mapa_ids;
     void crearMapaIds();
 

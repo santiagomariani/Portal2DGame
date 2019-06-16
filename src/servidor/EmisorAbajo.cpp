@@ -1,14 +1,13 @@
-//
-// Created by santi on 31/05/19.
-//
 
 #include <iostream>
+#include <config.h>
 #include "EmisorAbajo.h"
 #include "ids.h"
 
 EmisorAbajo::EmisorAbajo(Mundo &mundo, const b2Vec2 &pos) :
         Emisor(mundo, pos) {
-    pos_creacion = b2Vec2(pos.x, pos.y - (maxHeight / 2) - RADIO_BOLAENERGIA - 0.1);
+    pos_creacion = b2Vec2(pos.x,
+            pos.y-(maxHeight/2)-config.radio_bola_energia-0.1);
     dir_vel = b2Vec2(0, -1);
 }
 

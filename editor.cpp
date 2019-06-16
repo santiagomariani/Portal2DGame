@@ -19,7 +19,6 @@
 #define CELDA 50
 #define SEP 40
 
-#include <iostream>
 
 void Editor::operator()(){
 	const int ancho_pantalla = 800;
@@ -29,7 +28,7 @@ void Editor::operator()(){
 	const int TICKS_PER_FRAME = 1000/FPS;
 	
 	SdlWindow ventana(ancho_pantalla, alto_pantalla);
-	/*
+	
 	//=Imagenes de Bloques=
 
 	std::string ruta_bloques = "assets/blocks.png";
@@ -37,29 +36,96 @@ void Editor::operator()(){
 	Imagen bloque_roca(1, 172, 193, 193, &textura_bloques);
 	Imagen bloque_metal(1, 600, 193, 193, &textura_bloques);
 
+	std::string ruta_bloques_1 = "assets/blocks1.png";
+	SdlTexture textura_bloques_1(ruta_bloques_1, ventana);
+	Imagen emisor_arriba_sprite(1, 1242, 193, 193, &textura_bloques_1);
+	Imagen emisor_derecha_sprite(1, 1028, 193, 193, &textura_bloques_1);
+	Imagen emisor_abajo_sprite(1, 1456, 193, 193, &textura_bloques_1);
+	Imagen emisor_izquierda_sprite(1, 814, 193, 193, &textura_bloques_1);
+
+	std::string ruta_boton = "assets/miscellaneous.png";
+	SdlTexture textura_misc(ruta_boton, ventana);
+	Imagen boton(1, 116, 175, 55, &textura_misc);
+
+	std::string compuertaPath = "assets/gate.png";
+	SdlTexture compuertaTexture(compuertaPath, ventana);
+	Imagen compuerta_cerrada(1, 21, 193, 385, &compuertaTexture);
+
+	std::string diago_path = "assets/block-diago.png";
+	SdlTexture diago_texture(diago_path, ventana);
+	Imagen bloqueMetalDiagoSprite(1, 2, 178, 177, &diago_texture);
+	std::string diago90_path = "assets/diago-90.png";
+	SdlTexture diago90_texture(diago90_path, ventana);
+	Imagen bloqueMetalDiago90Sprite(0, 2, 177, 178, &diago90_texture);
+	std::string diago180_path = "assets/diago-180.png";
+	SdlTexture diago180_texture(diago180_path, ventana);
+	Imagen bloqueMetalDiago180Sprite(2, 0, 177, 178, &diago180_texture);
+	std::string diago270_path = "assets/diago-270.png";
+	SdlTexture diago270_texture(diago270_path, ventana);
+	Imagen bloqueMetalDiago270Sprite(2, 0, 177, 178, &diago270_texture);
+
+	std::string ruta_and = "assets/and.png";
+	SdlTexture textura_and(ruta_and, ventana);
+	Imagen imagen_and(0, 0, 290, 174, &textura_and);
+
+	std::string ruta_or = "assets/or.png";
+	SdlTexture textura_or(ruta_or, ventana);
+	Imagen imagen_or(0, 0, 466, 299, &textura_or);
+
 
 	std::map<int, Imagen*> imagenes;
 	imagenes.emplace(ID_BLOQUE_ROCA, &bloque_roca);
 	imagenes.emplace(ID_BLOQUE_METAL, &bloque_metal);
+	imagenes.emplace(ID_BOTON_APAGADO, &boton);
+	imagenes.emplace(ID_COMPUERTA_CERRADA, &compuerta_cerrada);
+	imagenes.emplace(ID_EMISORARRIBA, &emisor_arriba_sprite);
+	imagenes.emplace(ID_EMISORDERECHA, &emisor_derecha_sprite);
+	imagenes.emplace(ID_EMISORABAJO, &emisor_abajo_sprite);
+	imagenes.emplace(ID_EMISORIZQUIERDA, &emisor_izquierda_sprite);
+	imagenes.emplace(ID_BLOQUE_DIAGONAL_0, &bloqueMetalDiagoSprite);
+	imagenes.emplace(ID_BLOQUE_DIAGONAL_90, &bloqueMetalDiago90Sprite);
+	imagenes.emplace(ID_BLOQUE_DIAGONAL_180, &bloqueMetalDiago180Sprite);
+	imagenes.emplace(ID_BLOQUE_DIAGONAL_270, &bloqueMetalDiago270Sprite);
+	imagenes.emplace(ID_AND, &imagen_and);
+	imagenes.emplace(ID_OR, &imagen_or);
 	
 	//=Panel=
 	std::string ruta_panel = "assets/panel_blanco.png";
 	SdlTexture textura_panel(ruta_panel, ventana);
 	Imagen panel(0, 0, 400, 640, &textura_panel);
 
-	Cursor cursor(ID_BLOQUE_ROCA, CELDA, CELDA);
-	SDL_Rect actual_espacio = {0, 0, CELDA + SEP, CELDA + SEP};
-	SDL_Rect actual = {SEP / 2, SEP / 2, CELDA, CELDA};
+	Cursor cursor(imagenes, ID_BLOQUE_ROCA);
+	SDL_Rect actual_espacio = {0, 0, 90, 90};
 
 	//=Botonera=
-	Botonera botonera(imagenes, cursor, &panel, ancho_pantalla, alto_pantalla, CELDA);
+	Botonera botonera(&panel, ancho_pantalla, alto_pantalla);
+
+	std::vector<BotonBloque> botones_principales;
+	botones_principales.emplace_back(cursor, ID_BLOQUE_ROCA, imagenes[ID_BLOQUE_ROCA]);
+	botones_principales.emplace_back(cursor, ID_BLOQUE_METAL, imagenes[ID_BLOQUE_METAL]);
+	botones_principales.emplace_back(cursor, ID_BOTON_APAGADO, imagenes[ID_BOTON_APAGADO]);
+	botones_principales.emplace_back(cursor, ID_COMPUERTA_CERRADA, imagenes[ID_COMPUERTA_CERRADA]);
+	botones_principales.emplace_back(cursor, ID_EMISORARRIBA, imagenes[ID_EMISORARRIBA]);
+	botones_principales.emplace_back(cursor, ID_EMISORDERECHA, imagenes[ID_EMISORDERECHA]);
+	botones_principales.emplace_back(cursor, ID_EMISORABAJO, imagenes[ID_EMISORABAJO]);
+	botones_principales.emplace_back(cursor, ID_EMISORIZQUIERDA, imagenes[ID_EMISORIZQUIERDA]);
+	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_0, imagenes[ID_BLOQUE_DIAGONAL_0]);
+	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_90, imagenes[ID_BLOQUE_DIAGONAL_90]);
+	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_180, imagenes[ID_BLOQUE_DIAGONAL_180]);
+	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_270, imagenes[ID_BLOQUE_DIAGONAL_270]);
+
+	//std::vector<BotonBloque> botones_logicos;
+	botones_principales.emplace_back(cursor, ID_AND, imagenes[ID_AND]);
+	botones_principales.emplace_back(cursor, ID_OR, imagenes[ID_OR]);
+
+	botonera.setBotones(&botones_principales);
 	
 	//=Mapa=
-	MapaEditor mapa(imagenes, ancho_pantalla, alto_pantalla, CELDA);
-*/
+	MapaEditor mapa(ancho_pantalla, alto_pantalla, CELDA, cursor);
+
 	Timer capTimer;
 	SDL_Event event;
-	bool corriendo = true;/*
+	bool corriendo = true;
 	while (corriendo){
 
 		ventana.fill(0x3F, 0x70, 0x4D, 0x00);
@@ -68,7 +134,7 @@ void Editor::operator()(){
 
 		botonera.render();
 		panel.render(actual_espacio);
-		imagenes[cursor.id]->render(actual);
+		cursor.render();
 
 		ventana.render();
 
@@ -82,11 +148,7 @@ void Editor::operator()(){
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if (!(botonera.colisiona(mouseEvent.x, mouseEvent.y))){
-						if (mouseEvent.button == SDL_BUTTON_LEFT){
-							mapa.agregar(cursor.id, mouseEvent.x, mouseEvent.y, cursor.ancho, cursor.alto);
-						} else if (mouseEvent.button == SDL_BUTTON_RIGHT){
-							mapa.quitar(mouseEvent.x, mouseEvent.y);
-						}
+						mapa.recibirEvento(mouseEvent);
 					} else {
 						botonera.recibirEvento(mouseEvent);
 					}
@@ -114,7 +176,8 @@ void Editor::operator()(){
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
-*/
+	mapa.guardar("prueba.txt");
+
 	//=Fondo=
 	std::string ruta_fondo = "assets/inicio5.png";
 	SdlTexture textura_fondo(ruta_fondo, ventana);
@@ -163,7 +226,6 @@ void Editor::operator()(){
 					corriendo = false;
 					break;
 			}
-		
 		}
 		int frameTicks = capTimer.getTicks();
 

@@ -9,9 +9,11 @@
 #include "SktAceptador.h"
 #include "cola_protegida.h"
 
-class Partida{
+// Thread que maneja el flujo de una partida mientras actualiza 
+// la fisica del juego
+
+class Partida : public Thread {
 private:
-    //ColaBloqueante<Input> cola_input;
     ColaProtegidaInput cola_input;
     Fisica& fisica;
     std::vector<std::unique_ptr<Thread>> threads_clientes;
@@ -22,17 +24,24 @@ private:
     int cant_clientes;
     InfoCuerpoBox2D obtenerInfo(Cuerpo *cuerpo);
 public:
+    // Recibe la cantidad de clientes que deben entrar para comenzar
+    // la partida.
     Partida(Fisica& fisica, SktAceptador skt, int cant_clientes);
+    void run() override;
+    void terminar() override;
+    bool termino() override;
+    // Comienza el loop del juego.
     void correrPartida();
-    void terminarPartida();
+    // Comienza a recibir los clientes que van a jugar.
     int recibirClientes();
     void terminarRecibirClientes();
-    void comenzar();
+    // Devuelve si esta todavia aceptado clientes para 
+    // entrar a la partida.
     bool estaAceptando();
+    // Devuelve el puerto por el cual esta aceptando
+    // clientes.
     std::string obtenerPuerto();
     ~Partida();
-
-
 };
 
 #endif

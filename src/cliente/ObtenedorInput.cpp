@@ -14,8 +14,7 @@ ObtenedorInput::ObtenedorInput(CoordConverter &coord_converter,
         ColaBloqueante<Input> &cola_input) :
         coord_converter(coord_converter),
         camara(camara),
-        cola_input(cola_input)
-    {
+        cola_input(cola_input){
 }
 
 bool ObtenedorInput::obtenerInput() {
@@ -23,7 +22,7 @@ bool ObtenedorInput::obtenerInput() {
     estado_mouse.resetear();
     bool seguir = true;
     bool hay_input = false;
-    while (SDL_PollEvent(&event) != 0) {
+    while (SDL_PollEvent(&event) != 0 && seguir) {
         switch(event.type) {
             case SDL_KEYDOWN:{
                 SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
@@ -52,6 +51,11 @@ bool ObtenedorInput::obtenerInput() {
             }
             case SDL_QUIT:
                 seguir = false;
+                Input input;
+                input.chell_muerta = 1;
+                cola_input.push(std::move(input));
+                hay_input = false;
+                break;
         }
     }
 
@@ -59,7 +63,6 @@ bool ObtenedorInput::obtenerInput() {
         Input input;
         input.estado_mouse = std::move(estado_mouse);
         input.estado_teclado = estado_teclado;
-        // Pushear estado del mouse y del teclado en una cola.
         cola_input.push(std::move(input));
     }
 

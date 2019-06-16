@@ -23,6 +23,7 @@
 #define MSJ_OPCION_NUEVA_PARTIDA 4
 #define MSJ_PARTIDA_CREADA 5
 #define MSJ_OPCION_UNIRSE_PARTIDA 6
+#define MSJ_CHELL_MUERTA 7
 
 class Protocolo {
 private:
@@ -36,14 +37,20 @@ public:
     void recibirCuerpo(InfoCuerpo &info_cuerpo,
             CoordConverter &coord_converter);
     uint8_t recibirCodigoMensaje();
-    void enviarId(uint32_t id);
-    uint32_t recibirId();
+    void enviarId(uint8_t id);
+    uint8_t recibirId();
+
+    void enviarChellMuerta(uint8_t id);
 
     void enviarOpcionNuevaPartida();
 
     void enviarOpcionUnirsePartida();
 
     void enviarPuerto(std::string basicString);
+
+    void enviarCantidad(uint16_t cant);
+
+    uint16_t recibirCantidad();
 
     std::string recibirPuerto();
 

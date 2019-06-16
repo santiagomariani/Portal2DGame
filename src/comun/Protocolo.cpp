@@ -3,6 +3,7 @@
 //
 
 #include <netinet/in.h>
+#include <iostream>
 #include "Protocolo.h"
 #include "ids.h"
 #include "chell.h"
@@ -17,7 +18,7 @@ Protocolo::Protocolo(Mensajero &mensajero) :
 void Protocolo::enviarInput(Input &input) {
     /*
      *  1 - Mando codigo de mensaje: uint8_t
-     *  2 - Mando id de la chell: uint32_t
+     *  2 - Mando id de la chell: uint8_t
      *  3 - Se manda cantidad de teclas: uint8_t
      *  4 - Se manda la tecla y si esta presionado o no:
      *         tecla: sint32
@@ -30,7 +31,7 @@ void Protocolo::enviarInput(Input &input) {
     mensajero << codigo_mensaje;
 
     // Id de Chell
-    uint32_t id = input.id;
+    uint8_t id = input.id;
     mensajero << id;
 
 
@@ -76,7 +77,7 @@ void Protocolo::enviarInput(Input &input) {
 
 Input Protocolo::recibirInput() {
     Input input;
-    uint32_t id;
+    uint8_t id;
     mensajero >> id;
     input.id = id;
 
@@ -137,7 +138,9 @@ void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     float32 alto_maximo = info_cuerpo.alto;
     uint8_t id_chell = info_cuerpo.id_chell;
 
-    mensajero << id << estado << orientacion;
+    mensajero << id;
+    mensajero << estado;
+    mensajero << orientacion;
     mensajero << angulo;
     mensajero << x << y << ancho_maximo << alto_maximo;
     mensajero << id_chell;
@@ -182,28 +185,32 @@ void Protocolo::enviarFinalizoFotograma() {
 }
 
 uint8_t Protocolo::recibirCodigoMensaje() {
-    uint8_t codigo_mensaje;
+    uint8_t codigo_mensaje = 0;
     mensajero >> codigo_mensaje;
     return codigo_mensaje;
 }
 
-void Protocolo::enviarId(uint32_t id) {
+void Protocolo::enviarId(uint8_t id) {
     mensajero << id;
+    std::cout << "enviando id: " << +id << std::endl;
 }
 
-uint32_t Protocolo::recibirId() {
-    uint32_t id;
+uint8_t Protocolo::recibirId() {
+    uint8_t id;
     mensajero >> id;
+    std::cout << "recibiendo id: " << +id << std::endl;
     return id;
 }
 
 void Protocolo::enviarOpcionNuevaPartida() {
+    std::cout << "enviando opcion nueva partida\n";
     uint8_t codigo_mensaje = MSJ_OPCION_NUEVA_PARTIDA;
     mensajero << codigo_mensaje;
 
 }
 
 void Protocolo::enviarPuerto(std::string puerto) {
+    std::cout << "enviando puerto\n";
     mensajero << puerto;
 }
 
@@ -221,4 +228,21 @@ void Protocolo::enviarPartidaCreada() {
 void Protocolo::enviarOpcionUnirsePartida() {
     uint8_t codigo_mensaje = MSJ_OPCION_UNIRSE_PARTIDA;
     mensajero << codigo_mensaje;
+}
+
+void Protocolo::enviarChellMuerta(uint8_t id) {
+    uint8_t codigo_mensaje = MSJ_CHELL_MUERTA;
+    mensajero << codigo_mensaje;
+    std::cout <<"id chell muerta: " << +id << std::endl;
+    mensajero << id;
+}
+
+void Protocolo::enviarCantidad(uint16_t cant) {
+    mensajero << cant;
+}
+
+uint16_t Protocolo::recibirCantidad() {
+    uint16_t cant;
+    mensajero >> cant;
+    return cant;
 }

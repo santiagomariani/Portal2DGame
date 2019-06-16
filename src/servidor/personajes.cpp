@@ -1,6 +1,7 @@
 #include "personajes.h"
 #include <iostream>
 #include <estado_mouse.h>
+#include "EstadoChell.h"
 
 Personajes::Personajes(Mundo& m) : mundo(m){
 	this->siguiente_client = 0;
@@ -15,10 +16,6 @@ int Personajes::agregar_chell(){
 	chell.activar(pos);
 	this->personajes.emplace(id, std::move(chell)); //mov
 	this->siguiente_client += 1;
-
-    std::cout << "id: " << id << std::endl;
-    std::cout << "pos_x: " << posx << std::endl;
-    std::cout << "pos_y: " << posy << std::endl;
 	return id;
 }
 
@@ -33,6 +30,16 @@ void Personajes::agregarTeclado(int id, EstadoTeclado teclado){
 void Personajes::actualizarChells(){
     for (auto tc=teclados.begin(); tc!=teclados.end(); tc++){
         this->moverChell(tc->first, tc->second);
+    }
+
+    auto it = personajes.begin();
+    while (it != personajes.end()) {
+        if (it->second.obtenerEstado() == CHELL_MUERTA) {
+            teclados.erase((it->first));
+            it = personajes.erase(it);
+        } else {
+            ++it;
+        }
     }
 }
 
@@ -53,5 +60,15 @@ void Personajes::agregarClick(int chell_id, EstadoMouse& mouse){
         b2Vec2 click = mouse.posClickIzquierdo();
         chell.dispararAzul(click);
     }
+}
+
+void Personajes::eliminarChell(int id) {
+    Chell& chell = personajes.at(id);
+    chell.morir();
+    teclados.erase(id);
+}
+
+int Personajes::cantChells() {
+    return personajes.size();
 }
 

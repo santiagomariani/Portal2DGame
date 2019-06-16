@@ -4,8 +4,9 @@
 #include "Box2D/Box2D.h"
 #include "config.h"
 
-BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) : id(identidad),
-	Bloque(config.tam_bloque * 2, config.tam_bloque * 2) {
+BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) :
+	Bloque(config.tam_bloque * 2, config.tam_bloque * 2),
+    id(identidad){
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
 	cuerpo_def.position.Set(pos.x, pos.y);

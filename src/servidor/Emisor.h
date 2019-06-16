@@ -1,15 +1,12 @@
-//
-// Created by santi on 01/06/19.
-//
-
 #ifndef EMISOR_H
 #define EMISOR_H
-
 
 #include "mundo.h"
 #include "BolaEnergia.h"
 
-#define TAMANIO_EMISOR 0.5f
+// Emisor de bolas de energia.
+// Hay cuatro tipos de emisores segun para donde emiten las bolas de energia:
+// Derecha, Izquierda, Arriba, Abajo
 
 class Emisor : public Cuerpo {
 protected:
@@ -23,6 +20,7 @@ protected:
 public:
     Emisor(Mundo &mundo, const b2Vec2 &pos);
     explicit Emisor(Mundo &mundo);
+    // Actualiza el emisor para ver si debe emitir una bola de energia
     void actualizar() override;
     const b2Vec2& getPosition() override;
     void emitirBolaEnergia();

@@ -34,5 +34,8 @@
 #define ID_ACIDO 30
 #define ID_BARRAENERGIA 31
 
+#define ID_AND 100
+#define ID_OR 101
+
 
 #endif //IDS_H

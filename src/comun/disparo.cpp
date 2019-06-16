@@ -9,9 +9,10 @@
 
 #define DENSIDAD_RAYO 1
 
-Disparo::Disparo(int identidad, Mundo& mundo) : 
-			id(identidad), mundo(mundo),
-			Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2) {
+Disparo::Disparo(int identidad, Mundo& mundo) :
+			Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2),
+            id(identidad),
+            mundo(mundo){
 	cuerpo = nullptr;
 	portal = nullptr;
 }
@@ -47,9 +48,9 @@ void Disparo::activar(const b2Vec2& origen, const b2Vec2& destino){
 	cuerpo->SetUserData(this);
 }
 
-Disparo::Disparo(Disparo&& otro) : 
-		mundo(otro.mundo),
-		Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2) {
+Disparo::Disparo(Disparo&& otro) :
+		Cuerpo(config.radio_disparo * 2, config.radio_disparo * 2),
+        mundo(otro.mundo){
 	if (this == &otro){
 		return;
 	}
@@ -123,7 +124,8 @@ void Disparo::empezarContacto(Cuerpo* otro){
 		id_otro == ID_COMPUERTA_CERRADA || id_otro == ID_BOTON_APAGADO ||
 		id_otro == ID_BOTON_PRENDIDO || id_otro == ID_EMISORARRIBA ||
 		id_otro == ID_EMISORDERECHA || id_otro == ID_EMISORIZQUIERDA ||
-		id_otro == ID_EMISORABAJO || id_otro == ID_BARRAENERGIA){
+		id_otro == ID_EMISORABAJO || id_otro == ID_BARRAENERGIA ||
+		id_otro == ID_PORTAL_AZUL || id_otro == ID_PORTAL_NARANJA){
 		terminar();
 	}
 }

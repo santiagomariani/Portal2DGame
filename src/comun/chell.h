@@ -39,6 +39,7 @@ public:
 	void destruirRoca();
 	void empezarContacto(Cuerpo* otro) override;
 	void terminarContacto(Cuerpo* otro) override;
+	void desactivar() override;
 };
 
 #endif //CHELL_H

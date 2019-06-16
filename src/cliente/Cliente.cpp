@@ -8,6 +8,7 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include <SocketError.h>
 #include "Box2D/Box2D.h"
 #include "ObtenedorInput.h"
 #include "Renderizador.h"
@@ -17,8 +18,49 @@
 #include "Skt.h"
 #include "ThRenderizado.h"
 #include "msj_renderizado.h"
+#include "pantalla_elegir_partida.h"
+#include "pantalla_error_partida.h"
 
-void Cliente::iniciar() {
+void Cliente::iniciar(int* etapa) {
+
+    // Conexion con servidor.
+    std::string host = "localhost";
+    std::string port = "8080";
+
+    // ELEGIR NUEVA PARTIDA O UNIRSE A PARTIDA
+    // ...
+    std::string puerto_partida;
+    try {
+        PantallaElegirPartida elegir_partida(port, host, puerto_partida);
+        if (!elegir_partida()){
+            *etapa = 0; // volver a inicio
+            return; // cerrar programa (o ventana)
+        }
+    } catch (SocketError& e){
+        PantallaErrorPartida error_partida;
+        error_partida();
+        *etapa = 0;
+        return;
+    }
+    
+    Skt skt_partida(host, puerto_partida);
+    
+    skt_partida.conectar();
+
+    std::cout << "partida creada\n";
+
+    Mensajero mensajero(skt_partida); // poner en pantalla el puerto de la partida
+    Protocolo protocolo(mensajero);
+    int id;
+    try {
+        id = protocolo.recibirId();
+        std::cout << "id recibido es: " << +id << std::endl;
+    } catch (SocketError& e) {
+        PantallaErrorPartida error_partida;
+        error_partida();
+        *etapa = 0;
+        return;
+    }
 
     const int screen_width = 800;
     const int screen_height = 600;
@@ -162,8 +204,6 @@ void Cliente::iniciar() {
 
 
 
-
-
 	std::string bg_path = "assets/industrial-background.jpg";
 	SdlTexture background(bg_path, ventana);
 	Camera camara(screen_width, screen_height, background);
@@ -171,45 +211,9 @@ void Cliente::iniciar() {
 	CoordConverter coord_converter(screen_width, screen_width);
 	ColaBloqueante<Input> cola_input;
 	ObtenedorInput obtenedor_input(coord_converter, camara, cola_input);
-	//Renderizables renderizables(ventana);
-
-	// Conexion con servidor.
-	std::string host = "localhost";
-	std::string port = "8080";
-	Skt skt(host, port);
-	skt.conectar();
-
-	Mensajero mensajero_opcion(skt);
-	Protocolo protocolo_opcion(mensajero_opcion);
-
-	// ...
-	// ELEGIR NUEVA PARTIDA O UNIRSE A PARTIDA
-	// ...
-
-	std::cout << "Presionar 'n' para crear la partida\n";
-    std::cout << "O presionar 'u' para unirse a la partida ya creada\n";
-    char tecla;
-    std::cin >> tecla;
-    std::string puerto_partida;
-    if (tecla == 'n') {
-        puerto_partida = this->requestNuevaPartida(protocolo_opcion);
-    }
-    if (tecla == 'u'){
-        puerto_partida = this->requestUnirsePartida(protocolo_opcion);
-    }
-    skt.cerrarCanales();
-	skt.cerrarSocket();
-	
 
 
-	Skt skt_partida(host, puerto_partida);
-	skt_partida.conectar();
-    std::cout << "partida creada\n";
 
-    Mensajero mensajero(skt_partida);
-    Protocolo protocolo(mensajero);
-	// ...
-	int id = protocolo.recibirId();
 	ThInput th_input(cola_input, protocolo, id);
 
 	ColaBloqueante<MsjRenderizado> cola_renderizado;
@@ -249,12 +253,13 @@ std::string Cliente::requestNuevaPartida(Protocolo& protocolo){
     std::cout << "enviando nueva partida request\n";
     protocolo.enviarOpcionNuevaPartida();
     std::cout << "enviado req\n";
-    std::string puerto_partida("8081");
+    std::string puerto_partida("8081"); //8081
     protocolo.enviarPuerto(puerto_partida);
     uint8_t respuesta = protocolo.recibirCodigoMensaje();
     if (respuesta != MSJ_PARTIDA_CREADA){
         return std::string(); // error al crear el socket en el servidor
     }
+    puerto_partida.assign("8083");
     return puerto_partida;
 }
 

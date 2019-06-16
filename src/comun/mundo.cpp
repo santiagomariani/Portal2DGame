@@ -25,6 +25,7 @@ void Mundo::destruirBody(b2Body* body){
 			}
 		}
 		mundo.DestroyBody(body);
+
 	}
 }
 

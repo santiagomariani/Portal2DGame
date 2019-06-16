@@ -1,7 +1,3 @@
-//
-// Created by santi on 04/06/19.
-//
-
 #include "Acido.h"
 #include "ids.h"
 #include "config.h"

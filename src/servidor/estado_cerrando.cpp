@@ -8,7 +8,6 @@ EstadoCerrando::EstadoCerrando(){
 }
 
 EstadoCompuerta* EstadoCerrando::actualizar(bool activa, b2Body* puerta){
-	std::cout << "cerrando a cerrar\n";
 	return new EstadoCerrada();
 }
 

@@ -1,13 +1,10 @@
-//
-// Created by santi on 08/06/19.
-//
-
 #ifndef INFOCUERPO_H
 #define INFOCUERPO_H
 
-
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
+
+// Contiene informacion de un Cuerpo
 
 struct InfoCuerpo {
 public:

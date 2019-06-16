@@ -101,11 +101,27 @@ Chell::Chell(Chell&& otro) :
 
 
 void Chell::mover(EstadoTeclado& t){
+    if (!cuerpo){
+        return;
+    }
     b2Vec2 vel = cuerpo->GetLinearVelocity();
+    float32 tecla = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
+
     //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
-    vel.x = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
+    //vel.x = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
     //cuerpo->SetLinearVelocity(vel);
     //}
+    if (tecla == 0){
+        if (abs(vel.x) < 0.2) {
+            vel.x = 0;
+        } else if (vel.x < 0){
+            vel.x +=0.2;
+        } else if (vel.x > 0){
+            vel.x -=0.2;
+        }
+    } else {
+        vel.x = tecla;
+    }
 
     if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
         vel.y = config.salto_chell * t.presionada(SDLK_UP);
@@ -115,7 +131,6 @@ void Chell::mover(EstadoTeclado& t){
             roca->getBody()->SetLinearVelocity(vel_roca);
         }
     }
-    //cuerpo->SetLinearVelocity(vel);
     cuerpo->SetLinearVelocity(vel); // CAMBIAR
 
     estado_chell.actualizarEstado(*sensor, vel);
@@ -126,10 +141,16 @@ const b2Vec2& Chell::getPosition(){
 }
 
 void Chell::dispararAzul(b2Vec2& pos_click){
+    if (!cuerpo){
+        return;
+    }
     pistola.dispararAzul(getPosition(), pos_click);
 }
 
 void Chell::dispararNaranja(b2Vec2& pos_click){
+    if (!cuerpo){
+        return;
+    }
     pistola.dispararNaranja(getPosition(), pos_click);
 }
 
@@ -183,6 +204,7 @@ void Chell::terminarContacto(Cuerpo *otro) {
 
 void Chell::morir(){
     std::cout << "chell murio\n";
+    mundo.agregarCuerpoADestruir(this);
 }
 
 void Chell::destruirRoca() {
@@ -204,4 +226,11 @@ uint8_t Chell::obtenerOrientacion() {
 
 int Chell::getIdPersonaje() {
     return id;
+}
+
+void Chell::desactivar() {
+    if (this->cuerpo){
+        mundo.destruirBody(this->cuerpo);
+        this->cuerpo = nullptr;
+    }
 }

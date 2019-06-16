@@ -1,17 +1,15 @@
-//
-// Created by santi on 31/05/19.
-//
 
 #include "BolaEnergia.h"
 #include "ids.h"
 #include "chell.h"
 #include <math.h>
 #include <iostream>
+#include <config.h>
 
 #define PI 3.14159265
 
 BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
-    Cuerpo(RADIO_BOLAENERGIA * 2, RADIO_BOLAENERGIA * 2),
+    Cuerpo(config.radio_bola_energia * 2, config.radio_bola_energia * 2),
     mundo(mundo){
     contador = 0;
     finalizo = false;
@@ -23,19 +21,18 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     cuerpo = mundo.agregarBody(body_def);
     b2CircleShape circle_shape;
     circle_shape.m_p.Set(0, 0);
-    circle_shape.m_radius = RADIO_BOLAENERGIA;
+    circle_shape.m_radius = config.radio_bola_energia;
     b2FixtureDef fixture_def;
     fixture_def.shape = &circle_shape;
     fixture_def.density = DENSIDAD_BOLAENERGIA;
     cuerpo->CreateFixture(&fixture_def);
     b2Vec2 vel = dir_vel;
     vel.Normalize();
-    vel *= CTE_VELOCIDAD_BOLAENERGIA;
+    vel *= config.vel_bola_energia;
     cuerpo->SetGravityScale(0);
     cuerpo->SetLinearVelocity(vel);
     cuerpo->SetUserData(this);
     mundo.agregarCuerpoAActualizar(this);
-    //ya_choque = false;
 }
 
 void BolaEnergia::actualizar() {
@@ -124,7 +121,8 @@ void BolaEnergia::empezarContacto(Cuerpo *otro) {
     otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
     otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
     otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
-    otro->getId() == ID_BLOQUE_DIAGONAL_270) {
+    otro->getId() == ID_BLOQUE_DIAGONAL_270 ||
+    otro->getId() == ID_DISPARO){
         return;
     }
     mundo.agregarCuerpoADestruir(this);

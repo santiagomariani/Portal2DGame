@@ -1,6 +1,3 @@
-//
-// Created by santi on 31/05/19.
-//
 
 #ifndef EMISORARRIBA_H
 #define EMISORARRIBA_H

@@ -8,8 +8,8 @@
 #include "disparo.h"
 
 class BloqueRoca : public Bloque{
+    int id;
 	b2Body* cuerpo;
-	int id;
 public:
 	BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& posicion);
 	BloqueRoca(BloqueRoca&& otro);

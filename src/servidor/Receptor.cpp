@@ -1,12 +1,9 @@
-//
-// Created by santi on 02/06/19.
-//
-
 #include <iostream>
+#include <config.h>
 #include "Receptor.h"
 
 Receptor::Receptor(Mundo &mundo, const b2Vec2 &pos) :
-    Cuerpo(TAMANIO_RECEPTOR * 2, TAMANIO_RECEPTOR * 2),
+    Cuerpo(config.tam_receptor * 2, config.tam_receptor * 2),
     activado(false),
     sensor(new SensorReceptor(*this)) {
     b2BodyDef receptor_def;
@@ -16,7 +13,7 @@ Receptor::Receptor(Mundo &mundo, const b2Vec2 &pos) :
     b2PolygonShape polygon_shape;
     b2FixtureDef fixture_def;
     fixture_def.shape = &polygon_shape;
-    polygon_shape.SetAsBox(TAMANIO_RECEPTOR, TAMANIO_RECEPTOR);
+    polygon_shape.SetAsBox(config.tam_receptor, config.tam_receptor);
     cuerpo->CreateFixture(&fixture_def);
     cuerpo->SetUserData(this);
 }

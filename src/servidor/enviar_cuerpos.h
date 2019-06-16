@@ -6,6 +6,7 @@
 #include "Protocolo.h"
 #include "Thread.h"
 
+// Thread para enviar los cuerpos a un cliente
 
 class EnviarCuerpos : public Thread {
 private:
@@ -15,11 +16,8 @@ private:
 
 public:
     explicit EnviarCuerpos(ColaBloqueanteCuerpos* cola, Protocolo& protocolo);
-
     void run() override;
-
     void terminar();
-
     ~EnviarCuerpos();
 };
 

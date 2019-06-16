@@ -40,11 +40,22 @@ void Partida::correrPartida(){ //
 
     while (this->continuar_juego){
         capTimer.start();
+
+        if (this->fisica.cantChells() == 0){
+            this->continuar_juego = false;
+            break;
+        }
+
         Input input;
         if (this->cola_input.pop(input)){
             //this->fisica.actualizarChell(input.id, input.estado_teclado, input.estado_mouse);
-            this->fisica.agregarTeclado(input.id, input.estado_teclado);
-            this->fisica.agregarMouse(input.id, input.estado_mouse);
+            if (input.chell_muerta == 1){
+                std::cout << "chell muerta\n";
+                this->fisica.eliminarChell(input.id);
+            } else {
+                this->fisica.agregarTeclado(input.id, input.estado_teclado);
+                this->fisica.agregarMouse(input.id, input.estado_mouse);
+            }
         }
         
         this->fisica.actualizar();
@@ -76,6 +87,7 @@ void Partida::correrPartida(){ //
     }
 
     for (size_t i = 0; i < this->threads_clientes.size(); ++i){
+        std::cout << "joinin clientes\n";
         this->threads_clientes[i]->terminar();
         this->threads_clientes[i]->join();
         this->threads_clientes[i].reset();
@@ -101,7 +113,7 @@ int Partida::recibirClientes(){
             this->fisica.agregarNuevaChell();
         } catch(const SocketError &e){
             if (this->recibir_clientes){ // si no fue forzado
-                std::cerr << "Error accepting client:\n";
+                std::cerr << "Error aceptando clientes:\n";
                 std::cerr << e.what();
             }
             break;
@@ -122,18 +134,27 @@ void Partida::terminarRecibirClientes(){
     this->skt_aceptador.cerrarSocket();
 }
 
-void Partida::terminarPartida(){
+void Partida::terminar(){
     this->continuar_juego = false;
 }
 
 
-void Partida::comenzar(){
+void Partida::run(){
     this->recibirClientes();
     this->correrPartida();
 }
 
 bool Partida::estaAceptando() {
     return this->recibir_clientes;
+}
+
+
+std::string Partida::obtenerPuerto() {
+    return this->skt_aceptador.obtenerPuerto();
+}
+
+bool Partida::termino() {
+    return !(this->continuar_juego);
 }
 
 Partida::~Partida(){
@@ -143,9 +164,6 @@ Partida::~Partida(){
     colas_clientes.clear();
 }
 
-std::string Partida::obtenerPuerto() {
-    return this->skt_aceptador.obtenerPuerto();
-}
 
 
 

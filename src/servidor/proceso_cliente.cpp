@@ -1,12 +1,13 @@
 #include "proceso_cliente.h"
 #include <cstdint>
+#include <iostream>
 #include "enviar_cuerpos.h"
 #include "recibir_input.h"
 
 ProcesoCliente::ProcesoCliente(Skt socket, 
                             ColaProtegidaInput& cola_input,
                             ColaBloqueanteCuerpos* cola_cuerpos,
-                            int id):
+                            uint8_t id):
                             socket(std::move(socket)),
                             cola_input(cola_input),
                             cola_cuerpos(cola_cuerpos),
@@ -34,6 +35,8 @@ void ProcesoCliente::terminar(){
     for (auto it=threads.begin(); it!=threads.end(); ++it){
         (*it)->terminar();
     }
+    socket.cerrarCanales();
+    socket.cerrarSocket();
     for (auto it=threads.begin(); it!=threads.end(); ++it){
         (*it)->join();
         delete *it;

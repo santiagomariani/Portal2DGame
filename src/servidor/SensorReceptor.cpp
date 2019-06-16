@@ -1,7 +1,3 @@
-//
-// Created by santi on 02/06/19.
-//
-
 #include "SensorReceptor.h"
 #include "ids.h"
 #include "BolaEnergia.h"

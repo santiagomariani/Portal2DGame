@@ -7,9 +7,10 @@
 
 class Disparo : public Cuerpo{
 	int id;
+    Mundo& mundo;
 	b2Body* cuerpo;
 	Portal* portal;
-	Mundo& mundo;
+
 public:
 	Disparo(int identidad, Mundo& mundo);
 	void activar(const b2Vec2& origen, const b2Vec2& destino);

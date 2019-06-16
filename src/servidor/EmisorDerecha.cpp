@@ -1,14 +1,12 @@
-//
-// Created by santi on 31/05/19.
-//
-
 #include <iostream>
+#include <config.h>
 #include "EmisorDerecha.h"
 #include "ids.h"
 
 EmisorDerecha::EmisorDerecha(Mundo &mundo, const b2Vec2 &pos) :
         Emisor(mundo, pos) {
-    pos_creacion = b2Vec2(pos.x + (maxWidth / 2) + RADIO_BOLAENERGIA + 0.1, pos.y);
+    pos_creacion = b2Vec2(pos.x+(maxWidth/2)+config.radio_bola_energia+0.1,
+                          pos.y);
     dir_vel = b2Vec2(1, 0);
 }
 

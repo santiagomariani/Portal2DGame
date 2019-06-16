@@ -1,13 +1,11 @@
-//
-// Created by santi on 01/06/19.
-//
 
 #include "Emisor.h"
 #include <iostream>
+#include <config.h>
 #include "ids.h"
 
 Emisor::Emisor(Mundo &mundo, const b2Vec2 &pos) :
-        Cuerpo(TAMANIO_EMISOR * 2, TAMANIO_EMISOR * 2),
+        Cuerpo(config.tam_emisor * 2, config.tam_emisor * 2),
         mundo(mundo){
     contador = 0;
     mundo.agregarCuerpoAActualizar(this);
@@ -18,7 +16,7 @@ Emisor::Emisor(Mundo &mundo, const b2Vec2 &pos) :
     b2PolygonShape polygon_shape;
     b2FixtureDef fixture_def;
     fixture_def.shape = &polygon_shape;
-    polygon_shape.SetAsBox(TAMANIO_EMISOR, TAMANIO_EMISOR);
+    polygon_shape.SetAsBox(config.tam_emisor, config.tam_emisor);
     cuerpo->CreateFixture(&fixture_def);
     cuerpo->SetUserData(this);
 }
@@ -44,7 +42,6 @@ b2Body *Emisor::getBody() {
 
 void Emisor::emitirBolaEnergia() {
     // Veo si finalizo alguna bola de energia.
-
     for (auto it = bolas_energia.begin();it != bolas_energia.end();) {
         if ((*it)->bolaFinalizo()) {
             it = bolas_energia.erase(it);

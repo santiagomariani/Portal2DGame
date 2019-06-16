@@ -1,11 +1,12 @@
 
-#ifndef UNTITLED_COLA_PROTEGIDA_H
-#define UNTITLED_COLA_PROTEGIDA_H
+#ifndef COLA_PROTEGIDA_H
+#define COLA_PROTEGIDA_H
 
 #include <Input.h>
 #include <queue>
 #include <mutex>
 
+// Cola protegida que guarda structs Input.
 
 class ColaProtegidaInput {
 private:
@@ -23,9 +24,8 @@ public:
     // se devuelve nullptr.
     bool pop(Input& elemento);
 
-
     ~ColaProtegidaInput() = default;
 };
 
 
-#endif //UNTITLED_COLA_PROTEGIDA_H
+#endif

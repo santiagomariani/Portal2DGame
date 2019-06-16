@@ -11,16 +11,12 @@ class Boton : public Cuerpo{
 	b2Body* cuerpo_boton;
 public:
 	Boton(b2Vec2& pos, Mundo& mundo);
-
 	// Devuelve si esta encendido o no
 	bool estaActivado() override;
-
 	// Enciende boton
 	void encender();
-
 	// Apaga el boton
 	void apagar();
-
 	void empezarContacto(Cuerpo* otro);
 	void terminarContacto(Cuerpo* otro) override;
 	const b2Vec2& getPosition();

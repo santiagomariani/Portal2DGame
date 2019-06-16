@@ -1,6 +1,3 @@
-//
-// Created by santi on 31/05/19.
-//
 
 #include "mundo.h"
 #include "BolaEnergia.h"
@@ -8,7 +5,6 @@
 
 #ifndef EMISORDERECHA_H
 #define EMISORDERECHA_H
-
 
 class EmisorDerecha : public Emisor {
 public:

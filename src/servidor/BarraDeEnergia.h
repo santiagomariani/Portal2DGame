@@ -1,6 +1,3 @@
-//
-// Created by santi on 04/06/19.
-//
 
 #ifndef BARRADEENERGIA_H
 #define BARRADEENERGIA_H
@@ -8,9 +5,6 @@
 
 #include "cuerpo.h"
 #include "mundo.h"
-
-#define TAMANIO_BARRAENERGIA_X 0.05
-#define TAMANIO_BARRAENERGIA_Y 1
 
 class BarraDeEnergia : public Cuerpo {
 private:

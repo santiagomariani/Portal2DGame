@@ -1,6 +1,3 @@
-//
-// Created by seba on 10/06/19.
-//
 
 #ifndef MSJ_RENDERIZADO_H
 #define MSJ_RENDERIZADO_H

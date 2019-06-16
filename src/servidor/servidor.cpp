@@ -1,10 +1,8 @@
-#include <iostream>
 
+#include <iostream>
 #include "servidor.h"
 #include "SktAceptador.h"
 #include "partida.h"
-#include "iniciar_partida.h"
-
 #include "Box2D/Box2D.h"
 #include "disparo.h"
 #include "BloqueRoca.h"
@@ -47,14 +45,13 @@
 #include "th_aceptador_clientes.h"
 
 #define TECLA_TERMINAR 'q'
-#define TECLA_TERMINAR_RECIBIR_CLIENTES 't'
 
 Servidor::Servidor(){
 }
 
 void Servidor::iniciarMultiPartidas(std::string puerto){
     SktAceptador skt_aceptador(puerto);
-    ThAceptadorClientes aceptador_clientes(std::move(skt_aceptador));
+    ThAceptadorClientes aceptador_clientes(std::move(skt_aceptador), puerto);
     aceptador_clientes.start();
     
     char tecla = 0;
@@ -65,8 +62,5 @@ void Servidor::iniciarMultiPartidas(std::string puerto){
     aceptador_clientes.join();
 }
 
-void Servidor::iniciar(std::string puerto){
-
-}
 
 Servidor::~Servidor(){}

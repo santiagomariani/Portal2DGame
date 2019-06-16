@@ -15,7 +15,7 @@ public:
 	// Cliente(SdlWindow& ventana, Camera& camara, Protocolo& protocolo,
 	//	std::map<int, Renderable*> texturas);
 	Cliente() = default;
-	void iniciar();
+	void iniciar(int* etapa);
 	~Cliente() = default;
 
     std::string requestNuevaPartida(Protocolo &protocolo);

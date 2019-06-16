@@ -1,7 +1,4 @@
-//
-// Created by santi on 02/06/19.
-//
-
+#include <config.h>
 #include "ReceptorAbajo.h"
 #include "Receptor.h"
 #include "ids.h"
@@ -13,7 +10,7 @@ ReceptorAbajo::ReceptorAbajo(Mundo &mundo, const b2Vec2 &pos) :
     b2FixtureDef fixture_def;
     fixture_def.shape = &polygon_shape;
     fixture_def.userData = sensor.get();
-    polygon_shape.SetAsBox(TAMANIO_SENSOR_X, TAMANIO_SENSOR_Y, pos_sensor, 0);
+    polygon_shape.SetAsBox(config.tam_receptor, TAMANIO_SENSOR_Y, pos_sensor, 0);
     cuerpo->CreateFixture(&fixture_def);
 }
 
