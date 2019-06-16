@@ -9,3 +9,7 @@ Makefile
 libBox2D.a
 #ejecutable: (cambiar cuando cambiemos nombre de ejecutable)
 untitled
+cliente
+servidor
+untitled.cbp
+
