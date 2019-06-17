@@ -109,7 +109,8 @@ void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     float32 alto_maximo = info_cuerpo.alto;
     uint8_t id_chell = info_cuerpo.id_chell;
 
-    mensajero << id << estado << orientacion << angulo;
+    mensajero << id << estado << orientacion;
+    mensajero << angulo;
     mensajero << x << y << ancho_maximo << alto_maximo;
     mensajero << id_chell;
 }

@@ -7,7 +7,7 @@
 #include "config.h"
 
 BloqueMetal::BloqueMetal(Mundo &mundo, const b2Vec2 &pos) :
-	Bloque(config::tam_bloque * 2, config::tam_bloque * 2) {
+	Bloque(config.tam_bloque * 2, config.tam_bloque * 2) {
 
 	b2BodyDef cuerpo_def;
 	cuerpo_def.type = b2_staticBody;
@@ -18,13 +18,13 @@ BloqueMetal::BloqueMetal(Mundo &mundo, const b2Vec2 &pos) :
 	b2FixtureDef myFixtureDef;
 	myFixtureDef.shape = &polygonShape;
 
-	polygonShape.SetAsBox(config::tam_bloque, config::tam_bloque);
+	polygonShape.SetAsBox(config.tam_bloque, config.tam_bloque);
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
 
-BloqueMetal::BloqueMetal(BloqueMetal&& otro) :
-			Bloque(config::tam_bloque * 2, config::tam_bloque * 2){
+BloqueMetal::BloqueMetal(BloqueMetal&& otro) : 
+			Bloque(config.tam_bloque * 2, config.tam_bloque * 2){
 	if (this == &otro){
 		return;
 	}
@@ -54,7 +54,7 @@ void BloqueMetal::recibirDisparo(Disparo* disparo) {
 	} else {
 		pos.x = 0;
 	}
-	pos *= config::tam_bloque / pos.Length();
+	pos *= config.tam_bloque / pos.Length();
 	pos += bloque;
 
 	b2Vec2 normal = pos - bloque;

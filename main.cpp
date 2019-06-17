@@ -47,7 +47,7 @@
 #define CONVERSION 100
 #define PI 3.14159265
 
-
+#include <iostream>
 
 #include "editor.h"
 #include "EmisorAbajo.h"
@@ -60,9 +60,9 @@
 #include "Acido.h"
 #include "BarraDeEnergia.h"
 
+#include "yaml-cpp/yaml.h"
 
 int main() {
-
 //=====================Pruebas De Ariel===================
     Editor e;
     e();

@@ -15,6 +15,7 @@ public:
     ThOpcionPartida(Skt socket, ManejadorPartidas& partidas);
     void run() override;
     void terminar() override;
+    bool termino() override;
     ~ThOpcionPartida();
     
 };

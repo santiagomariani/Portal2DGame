@@ -109,3 +109,7 @@ SktAceptador::~SktAceptador() {
         close(this->skt);
     }
 }
+
+std::string SktAceptador::obtenerPuerto() {
+    return this->port;
+}

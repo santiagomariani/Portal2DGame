@@ -16,7 +16,6 @@ void RecibirInput::run(){
         }
         Input input;
         input = this->protocolo.recibirInput();
-        std::cout << "id al pushear: " << input.id << std::endl;
         this->cola.push(input);
     }
 }

@@ -31,6 +31,8 @@ class SktAceptador {
     void cerrarCanales();
     // Cierra el socket.
     void cerrarSocket();
+    // Devuelve el puerto
+    std::string obtenerPuerto();
     ~SktAceptador();
 };
 

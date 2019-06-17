@@ -17,6 +17,7 @@ class Thread {
         // Cada objeto activo que herede de Thread debera hacer todo en el
         //  metodo run.
         virtual void run() = 0;
+        virtual bool termino();
         virtual ~Thread();
         Thread(const Thread&) = delete;
         Thread& operator=(const Thread&) = delete;

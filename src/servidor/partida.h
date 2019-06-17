@@ -14,7 +14,7 @@ private:
     //ColaBloqueante<Input> cola_input;
     ColaProtegidaInput cola_input;
     Fisica& fisica;
-    std::vector<Thread*> threads_clientes;
+    std::vector<std::unique_ptr<Thread>> threads_clientes;
     std::vector<ColaBloqueanteCuerpos*> colas_clientes;
     SktAceptador skt_aceptador;
     bool continuar_juego;
@@ -28,6 +28,8 @@ public:
     int recibirClientes();
     void terminarRecibirClientes();
     void comenzar();
+    bool estaAceptando();
+    std::string obtenerPuerto();
     ~Partida();
 
 

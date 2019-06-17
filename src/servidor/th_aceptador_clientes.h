@@ -1,23 +1,25 @@
 
 
-#ifndef UNTITLED_TH_ACEPTADOR_CLIENTES_H
-#define UNTITLED_TH_ACEPTADOR_CLIENTES_H
+#ifndef TH_ACEPTADOR_CLIENTES_H
+#define TH_ACEPTADOR_CLIENTES_H
 
 
 #include <thread.h>
 #include "manejador_partidas.h"
 
 class ThAceptadorClientes : public Thread{
-    std::string puerto;
+    SktAceptador skt_aceptador;
     ManejadorPartidas partidas;
-    std::vector<Thread*> threads_clientes;
-
+    std::vector<std::unique_ptr<Thread>> threads_clientes;
+    bool terminado;
 public:
-    explicit ThAceptadorClientes(std::string puerto);
+    explicit ThAceptadorClientes(SktAceptador sktAceptador);
     void run() override;
     void terminar() override;
     ~ThAceptadorClientes() = default;
+
+
 };
 
 
-#endif //UNTITLED_TH_ACEPTADOR_CLIENTES_H
+#endif

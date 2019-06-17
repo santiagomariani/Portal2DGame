@@ -1,6 +1,3 @@
-//
-// Created by seba on 11/06/19.
-//
 
 #ifndef INFO_CUERPO_BOX_2_D_H
 #define INFO_CUERPO_BOX_2_D_H

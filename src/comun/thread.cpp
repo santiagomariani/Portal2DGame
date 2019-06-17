@@ -24,3 +24,7 @@ Thread::Thread(Thread&& other){
 
 Thread::~Thread(){
 }
+
+bool Thread::termino() {
+    return true;
+}
