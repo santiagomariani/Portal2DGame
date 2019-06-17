@@ -1,7 +1,7 @@
 #include "mapa_editor.h"
 #include <SDL2/SDL.h>
+#include "yaml-cpp/yaml.h"
 #include <fstream>
-#include <iostream>
 
 bool detectar_colision(SDL_Rect& A, SDL_Rect& B){
 	if ((A.x >= (B.x + B.w)) || ((A.x + A.w - 1) < B.x)){
@@ -106,33 +106,43 @@ void MapaEditor::conectar(){
 	}
 }
 
-/*
-Se guarda con el formato:
-<Cantidad de bloques>
-<id>
-<x y>
-.
-.
-.
-<id>
-<x y>
-
-*/
-void MapaEditor::guardar(std::string nombre){
-	/*std::ofstream out(nombre);
-	out << 0 << '\n';*/
-	unsigned int contador = 0;
+void MapaEditor::guardar(std::string& nombre){
+	YAML::Emitter out;
+	out << YAML::BeginMap;
+	out << YAML::Key << "Bloques";
+	out << YAML::Value;
+	out << YAML::BeginSeq;
 	for (auto it = mapa.begin(); it != mapa.end(); ++it){
 		for (auto it_interno = (it->second).begin(); it_interno != (it->second).end(); ++it_interno){
-			std::cout << (it_interno->second).id << '\n';
-			std::cout << it->first << ' ' << it_interno->first << '\n';
-			contador++;
+			out << YAML::BeginMap;
+			out << YAML::Key << "Id";
+			out << YAML::Value << it_interno->second.id;
+			out << YAML::Key << "Identificador";
+			out << YAML::Value << it_interno->second.getIdentificador();
+			out << YAML::Key << "Pos";
+			out << YAML::Value << YAML::Flow << YAML::BeginSeq << it->first << it_interno->first << YAML::EndSeq;
+			out << YAML::EndMap;
 		}
 	}
+	out << YAML::EndSeq;
+	out << YAML::Key << "Conexiones";
+	out << YAML::Value;
+	out << YAML::BeginSeq;
+	for (auto it = conexiones.begin(); it != conexiones.end(); ++it){
+		out << YAML::BeginMap;
+		out << YAML::Key << it->first;
+		out << YAML::Value << it->second;
+		out << YAML::EndMap;
+	}
+	out << YAML::EndSeq;
+
+
+
+	std::string ruta_mapa = nombre + ".yaml";
+	std::ofstream salida(ruta_mapa);
+	salida << out.c_str();
+	/*
 	for (auto it = conexiones.begin(); it != conexiones.end(); ++it){
 		std::cout << (it->first) << " : " << (it->second) << '\n';
-	}
-	//out.seekp(std::ios_base::beg);
-	std::cout << contador << '\n';
-	//out.close();
+	}*/
 }
