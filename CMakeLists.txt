@@ -20,7 +20,6 @@ message("[INFO] Adding '${CMAKE_SOURCE_DIR}/src/comun' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/src/comun)
 
 
-
 message("[INFO] Adding Box2D as library")
 file(GLOB_RECURSE BOX2D_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/Box2D/*.cpp" "libs/Box2D/*.h")
 
@@ -32,7 +31,7 @@ file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
 add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h)
-target_link_libraries(cliente SDL2 SDL2_image Box2D ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(cliente SDL2 SDL2_image SDL2_ttf Box2D ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 
 
 message("[INFO] Loading sources to the server")
@@ -40,4 +39,4 @@ file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cp
 file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
 add_executable(servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES} src/comun/info_cuerpo_box_2_d.h src/servidor/cola_protegida.cpp src/servidor/cola_protegida.h src/servidor/th_opcion_partida.cpp src/servidor/th_opcion_partida.h src/servidor/manejador_partidas.cpp src/servidor/manejador_partidas.h src/servidor/th_aceptador_clientes.cpp src/servidor/th_aceptador_clientes.h)
-target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(servidor Box2D SDL2 SDL2_image ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
