@@ -8,6 +8,8 @@ class BotonEditar : public Presionable{
 	bool* corriendo;
 public:
 	BotonEditar(Imagen* imagen, int* etapa, bool* corriendo);
+
+	// Ejecuta el modo edicion de mapas
 	void presionar() override;
 };
 

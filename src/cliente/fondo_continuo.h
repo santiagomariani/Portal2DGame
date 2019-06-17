@@ -6,6 +6,8 @@
 #include "textura.h"
 #include "ventana.h"
 
+// Toma una porcion de una imagen y la recorre hacia la derecha
+// al llegar al final vuelve al principio
 class FondoContinuo{
 	int ancho_f;
 	int alto_f;

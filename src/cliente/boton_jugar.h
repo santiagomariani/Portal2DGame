@@ -8,6 +8,8 @@ class BotonJugar : public Presionable{
 	bool* corriendo;
 public:
 	BotonJugar(Imagen* imagen, int* etapa, bool* corriendo);
+
+	// Abre el modo jugar del juego
 	void presionar() override;
 };
 

@@ -9,6 +9,8 @@
 #include "cursor.h"
 #include <string>
 
+// Representa un mapa del juego
+
 class MapaEditor{
 	SDL_Rect camara;
 	std::map<int, std::map<int, Pieza>> mapa;
@@ -20,12 +22,27 @@ class MapaEditor{
 	int convertirPosicion(int a);
 public:
 	MapaEditor(int ancho_cam, int alto_cam, int celda, Cursor& cursor);
+
+	// Agrega una pieza en la posicion (x, y)
 	void agregar(int x, int y, Pieza pieza);
+	
+	// Quita la pieza que hay en la posicion (x, y)
 	void quitar(int x, int y);
+
+	// Muestra las piezas que contiene
 	void render();
+
+	// Permite moverse por el mapa con las flechitas y entrar
+	// en modo logico con la "l"
 	void recibirEvento(SDL_KeyboardEvent& evento);
+
+	// Actualiza el cursor con los datos de la pieza clickeada
 	void recibirEvento(SDL_MouseButtonEvent& evento);
+
+	// Se guarda en un archivo yaml con el nombre recibido
 	void guardar(std::string& nombre);
+
+	// Conecta dos piezas solo si son parte de la logica
 	void conectar();
 };
 

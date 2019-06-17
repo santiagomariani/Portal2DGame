@@ -10,6 +10,8 @@ class BotonGuardar : public Presionable{
 	std::string& nombre;
 public:
 	BotonGuardar(Imagen* imagen, MapaEditor& mapa, std::string& nombre);
+
+	// Al ser clickeado ejecuta mapa.guardar(nombre);
 	void presionar() override;
 };
 

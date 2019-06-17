@@ -9,7 +9,11 @@ class BotonBloque : public Presionable{
 	int id;
 public:
 	BotonBloque(Cursor& cursor, int id, Imagen* imagen);
+
+	// Llena el cursor con los datos del bloque que representa
 	void presionar() override;
+
+	// Cambia su posicion en pantalla
 	void mover(int offset_x, int offset_y);
 };
 
