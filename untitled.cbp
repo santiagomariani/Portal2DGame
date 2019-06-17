@@ -467,10 +467,118 @@
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/ViewChell.h">
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_bloque.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_bloque.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_editar.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_editar.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_jugar.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_jugar.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_nueva_partida.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_nueva_partida.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_unirse_a_partida.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_unirse_a_partida.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_volver.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/boton_volver.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/botonera.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/botonera.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/constructor_piezas.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/constructor_piezas.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/cursor.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/cursor.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/editor.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/editor.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/fondo_continuo.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/fondo_continuo.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/imagen.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/imagen.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/inicio.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/inicio.h">
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/main.cpp">
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/mapa_editor.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/mapa_editor.h">
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/msj_renderizado.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pantalla_elegir_partida.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pantalla_elegir_partida.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pantalla_error_partida.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pantalla_error_partida.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pieza.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/pieza.h">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/presionable.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/cliente/presionable.h">
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/Bloque.cpp">
@@ -785,14 +893,6 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mapa_mundo.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mapa_mundo.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/comun/mundo.cpp">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -923,6 +1023,12 @@
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/boton.h">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/cargador_mapa.cpp">
+			<Option target="servidor"/>
+		</Unit>
+		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/cargador_mapa.h">
 			<Option target="servidor"/>
 		</Unit>
 		<Unit filename="/home/seba/Desktop/taller/TP4---Portal/src/servidor/cola_protegida.cpp">

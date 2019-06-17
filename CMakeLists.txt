@@ -10,7 +10,7 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread
 # add_executable(untitled main.cpp SdlWindow.cpp SdlTexture.cpp SdlTexture.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
 
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/libs/yaml-cpp)
+#add_subdirectory(${CMAKE_SOURCE_DIR} /libs/yaml-cpp)
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/libs)
