@@ -1,9 +1,48 @@
 /usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/santi/Escritorio/tp4/TP4---Portal
+CMake Error at CMakeLists.txt:13 (add_subdirectory):
+  The binary directory
+
+    /libs/yaml-cpp
+
+  is already used to build a source directory.  It cannot be used to build
+  source directory
+
+    /home/santi/Escritorio/tp4/TP4---Portal
+
+  Specify a unique binary directory name.
+
+
 [INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/libs' as include directory
 [INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/src/comun' as include directory
 [INFO] Adding Box2D as library
 [INFO] Loading sources to the client
 [INFO] Loading sources to the server
--- Configuring done
--- Generating done
--- Build files have been written to: /home/santi/Escritorio/tp4/TP4---Portal
+[INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/libs' as include directory
+[INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/src/comun' as include directory
+[INFO] Adding Box2D as library
+CMake Error at CMakeLists.txt:26 (add_library):
+  add_library cannot create target "Box2D" because another target with the
+  same name already exists.  The existing target is a static library created
+  in source directory "/home/santi/Escritorio/tp4/TP4---Portal".  See
+  documentation for policy CMP0002 for more details.
+
+
+[INFO] Loading sources to the client
+CMake Error at CMakeLists.txt:32 (add_executable):
+  add_executable cannot create target "portal_cliente" because another target
+  with the same name already exists.  The existing target is an executable
+  created in source directory "/home/santi/Escritorio/tp4/TP4---Portal".  See
+  documentation for policy CMP0002 for more details.
+
+
+[INFO] Loading sources to the server
+CMake Error at CMakeLists.txt:39 (add_executable):
+  add_executable cannot create target "portal_servidor" because another
+  target with the same name already exists.  The existing target is an
+  executable created in source directory
+  "/home/santi/Escritorio/tp4/TP4---Portal".  See documentation for policy
+  CMP0002 for more details.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/santi/Escritorio/tp4/TP4---Portal/CMakeFiles/CMakeOutput.log".

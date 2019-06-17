@@ -15,16 +15,13 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/libs)
 
-
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/src/comun' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/src/comun)
-
 
 message("[INFO] Adding Box2D as library")
 file(GLOB_RECURSE BOX2D_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "libs/Box2D/*.cpp" "libs/Box2D/*.h")
 
 add_library(Box2D STATIC ${BOX2D_SOURCES})
-
 
 message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
