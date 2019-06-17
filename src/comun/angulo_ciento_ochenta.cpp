@@ -1,5 +1,5 @@
 #include "angulo_ciento_ochenta.h"
-#include "Bloque.h"
+#include "bloque.h"
 #include "ids.h"
 #include "config.h"
 #define PI 3.14159265359

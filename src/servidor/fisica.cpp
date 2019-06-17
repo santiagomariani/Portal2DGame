@@ -5,11 +5,9 @@
 #include "personajes.h"
 #include "Box2D/Box2D.h"
 
-
 Fisica::Fisica(Mundo& mundo): 
 				mundo(mundo), personajes(mundo){
 }
-
 
 void Fisica::actualizar(){
     this->personajes.actualizarChells();
@@ -42,6 +40,15 @@ void Fisica::agregarMouse(int id, EstadoMouse& mouse){
 
 void Fisica::agregarNuevaChell() {
     personajes.agregar_chell();
+}
+
+void Fisica::eliminarChell(int id_chell) {
+    this->personajes.eliminarChell(id_chell);
+
+}
+
+int Fisica::cantChells() {
+    return this->personajes.cantChells();
 }
 
 

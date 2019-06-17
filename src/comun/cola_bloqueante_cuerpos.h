@@ -1,5 +1,5 @@
-#ifndef COLABLOQUEANTECUERPOS_H
-#define COLABLOQUEANTECUERPOS_H
+#ifndef COLA_BLOQUEANTE_CUERPOS_H
+#define COLA_BLOQUEANTE_CUERPOS_H
 
 #include <queue>
 #include <condition_variable>
@@ -15,21 +15,14 @@ private:
     bool notified;
 public:
     ColaBloqueanteCuerpos();
-
-    // Encola y notifica a un thread para que este
-    // desencole.
+    // Encola y notifica a un thread para que este desencole.
     void push(CuerpoAEnviar elemento);
-
-    // Espera a poder desencolar . Si puede desencolar, devuelve
-    // T. En caso de no haber mas nada para desencolar
-    // se devuelve nullptr.
+    // Espera a poder desencolar . Si puede desencolar, devuelve true. En caso
+    // de no haber mas nada para desencolar devuelve false.
     bool pop(CuerpoAEnviar& elemento);
-    // Se notifica a todos los threads que ya
-    // no hay mas nada para desencolar.
+    // Se notifica a todos los threads que ya no hay mas nada para desencolar.
     void finalizado();
-
     ~ColaBloqueanteCuerpos() = default;
 };
 
-#endif
-
+#endif //COLA_BLOQUEANTE_CUERPOS_H

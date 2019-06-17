@@ -10,11 +10,11 @@
 
 #include "estado_teclado.h"
 #include "cuerpo.h"
-#include "InfoCuerpo.h"
-#include "CoordConverter.h"
-#include "Input.h"
-#include "Skt.h"
-#include "Mensajero.h"
+#include "info_cuerpo.h"
+#include "convertidor_coordenadas.h"
+#include "input.h"
+#include "skt.h"
+#include "mensajero.h"
 
 #define MSJ_INPUT 1
 #define MSJ_CUERPO 2

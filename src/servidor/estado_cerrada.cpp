@@ -9,7 +9,6 @@ EstadoCompuerta* EstadoCerrada::actualizar(bool activa, b2Body* puerta){
 	if (!activa){
 		return new EstadoCerrada();
 	}
-	std::cout << "cerrada a abriendo\n";
 	return new EstadoAbriendo();
 }
 

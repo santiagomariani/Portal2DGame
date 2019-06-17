@@ -5,7 +5,7 @@ Imagen::Imagen() : textura(nullptr){
 	ancho = 0;
 }
 Imagen::Imagen(int area_x, int area_y, int ancho, int alto,
-	   		   SdlTexture* textura) :
+	   		   Textura* textura) :
 			   alto(alto), ancho(ancho), textura(textura){
 	area.x = area_x;
 	area.y = area_y;
@@ -21,5 +21,5 @@ Imagen::Imagen(Imagen&& otra) : textura(otra.textura){
 	area = std::move(otra.area);
 }
 void Imagen::render(SDL_Rect& destino){
-	textura->render(&area, &destino);
+	textura->renderizar(&area, &destino);
 }

@@ -2,15 +2,15 @@
 #include "bloque_metal_diagonal.h"
 #include "angulo_cero.h"
 #include "ids.h"
-#include <iostream>
 #include "cuerpo.h"
-#include <cmath>
 #include "config.h"
+#include <cmath>
+#include <iostream>
 
 #define PI 3.14159265
 
-
-BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos, Angulo& angulo) :
+BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos,
+        Angulo& angulo) :
     angulo(angulo),
     Bloque(config.tam_bloque * 2, config.tam_bloque * 2) {
 
@@ -29,9 +29,9 @@ BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos, Angulo
     this->crearMapaIds();
 }
 
-BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) : 
-            angulo(otro.angulo), 
-            Bloque(config.tam_bloque * 2, config.tam_bloque * 2){
+BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) :
+            Bloque(config.tam_bloque * 2, config.tam_bloque * 2),
+            angulo(otro.angulo){
     if (this == &otro){
         return;
     }
@@ -58,7 +58,6 @@ void BloqueMetalDiagonal::crearMapaIds(){
 }
 
 uint8_t BloqueMetalDiagonal::getId(){
-    //return mapa_ids[angulo];
     return this->angulo.getId();
 }
 
@@ -70,8 +69,6 @@ void BloqueMetalDiagonal::recibirDisparo(Disparo* disparo) {
     b2Vec2 pos_portal = this->angulo.obtenerPosPortal(pos);
     b2Vec2 normal_portal = this->angulo.obtenerNormalPortal(pos);
     pos_portal += bloque;
-    //std::cout << pos_portal.x << " " << pos_portal.y << std::endl;
-
     disparo->crearPortal(pos_portal, normal_portal);
 }
 

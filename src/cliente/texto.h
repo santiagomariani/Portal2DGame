@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_ttf.h>
-#include "SdlWindow.h"
+#include "ventana.h"
 #include <string>
 
 class Texto{
@@ -15,7 +15,7 @@ class Texto{
 	int alto;
 
 public:
-	Texto(SdlWindow& ventana, int tamanio);
+	Texto(Ventana& ventana, int tamanio);
 	bool cargarTexto(std::string textura_texto, SDL_Color color);
 	void render(int x, int y);
 };

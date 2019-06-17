@@ -8,4 +8,6 @@ BotonJugar::BotonJugar(Imagen* imagen, int* etapa, bool* corriendo) :
 
 void BotonJugar::presionar(){
 	std::cout << "Jugar\n";
+	*etapa = 2;
+    *corriendo = false;
 }

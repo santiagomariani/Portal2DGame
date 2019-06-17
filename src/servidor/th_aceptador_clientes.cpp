@@ -1,12 +1,13 @@
 
-#include <SktAceptador.h>
+#include <skt_aceptador.h>
 #include "th_aceptador_clientes.h"
 #include "th_opcion_partida.h"
-#include "SocketError.h"
+#include "socket_error.h"
 
-ThAceptadorClientes::ThAceptadorClientes(SktAceptador skt): 
+ThAceptadorClientes::ThAceptadorClientes(SktAceptador skt, std::string& puerto):
                                     skt_aceptador(std::move(skt)),
-                                    terminado(false) {
+                                    partidas(puerto),
+                                    terminado(false){
 }
 
 void ThAceptadorClientes::run() {
@@ -16,7 +17,6 @@ void ThAceptadorClientes::run() {
     while (!this->terminado){
         try{
             Skt acept_skt = std::move(skt_aceptador.aceptarCliente());
-            
 
             this->threads_clientes.emplace_back(new ThOpcionPartida(std::move(acept_skt), partidas));
             this->threads_clientes.back()->start();
@@ -40,8 +40,10 @@ void ThAceptadorClientes::terminar() {
     this->skt_aceptador.cerrarSocket();
     
     for (auto it=threads_clientes.begin(); it!=threads_clientes.end(); it++){
-        (*it)->terminar();
-        (*it)->join();
+        //if (!(*it)->termino()) {
+            (*it)->terminar();
+            (*it)->join();
+        //}
     }
 }
 

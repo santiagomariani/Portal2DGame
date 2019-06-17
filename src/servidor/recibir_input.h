@@ -1,11 +1,14 @@
 #ifndef RECIBIR_INPUT_H
 #define RECIBIR_INPUT_H
 
-#include "ColaBloqueante.h"
-#include "Protocolo.h"
-#include "Thread.h"
-#include "Input.h"
+#include "cola_bloqueante.h"
+#include "protocolo.h"
+#include "thread.h"
+#include "input.h"
 #include "cola_protegida.h"
+
+// Thread que recibe el input de un cliente constantemente,
+// pusheandolo en una cola protegida.
 
 class RecibirInput : public Thread {
 private:
@@ -13,13 +16,12 @@ private:
     Protocolo& protocolo;
     bool terminar_proceso;
 
+    void iteracion();
+
 public:
     explicit RecibirInput(ColaProtegidaInput& cola, Protocolo& protocolo);
-
     void run() override;
-
     void terminar() override;
-
     ~RecibirInput() = default;
 };
 

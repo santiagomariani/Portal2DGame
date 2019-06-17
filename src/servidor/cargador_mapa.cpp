@@ -92,7 +92,8 @@ Compuerta comp(pos_compuerta, mundo, compuerta_or);*/
     posiciones.emplace_back(-1, -1.5);
     compuertas.emplace_back(posiciones.back(), mundo, *(compuertas_logicas[i]));
 
-// Emisores
+// Emisores 
+/*
     posiciones.emplace_back(-16, -2);
     emisores_arriba.emplace_back(mundo, posiciones.back());
 
@@ -102,6 +103,7 @@ Compuerta comp(pos_compuerta, mundo, compuerta_or);*/
     emisores_derecha.emplace_back(mundo, posiciones.back());
     posiciones.emplace_back(-11, 1);
     emisores_izquierda.emplace_back(mundo, posiciones.back());
+    */
 
 // Acido
     posiciones.emplace_back(-24, -2.5 + 0.06);

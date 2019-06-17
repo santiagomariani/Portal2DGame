@@ -1,6 +1,6 @@
 #include "texto.h"
 
-Texto::Texto(SdlWindow& ventana, int tamanio) : renderizador(ventana.getRenderer()){
+Texto::Texto(Ventana& ventana, int tamanio) : renderizador(ventana.obtenerRenderizador()){
 	textura = nullptr;
 	fuente = nullptr;
 	ancho = 0;

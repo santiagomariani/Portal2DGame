@@ -1,7 +1,7 @@
 #include "fondo_continuo.h"
 
 FondoContinuo::FondoContinuo(int ancho_f, int alto_f, int ancho_v, int alto_v,
-							 int velocidad, SdlTexture& textura) :
+							 int velocidad, Textura& textura) :
 				  			 ancho_f(ancho_f), alto_f(alto_f),
 				  			 ancho_v(ancho_v), alto_v(alto_v),
 				  			 velocidad(velocidad), textura(textura){
@@ -15,9 +15,9 @@ FondoContinuo::FondoContinuo(int ancho_f, int alto_f, int ancho_v, int alto_v,
 	ventana.h = alto_v;
 }
 void FondoContinuo::render(){
-	textura.render(&area, &ventana);
+	textura.renderizar(&area, &ventana);
 	area.x += velocidad;
-	if (area.x + area.w >= textura.getWidth()){
+	if (area.x + area.w >= textura.obtenerAncho()){
 		area.x = 0;
 	}
 }

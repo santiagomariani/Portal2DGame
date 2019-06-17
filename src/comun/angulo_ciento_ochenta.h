@@ -1,5 +1,5 @@
-#ifndef ANGULO_CIENTOOCHENTA_H
-#define ANGULO_CIENTOOCHENTA_H
+#ifndef ANGULO_CIENTO_OCHENTA_H
+#define ANGULO_CIENTO_OCHENTA_H
 
 #include "angulo.h"
 #include "Box2D/Box2D.h"
@@ -14,4 +14,4 @@ public:
 	~AnguloCientoOchenta() = default;
 };
 
-#endif
+#endif //ANGULO_CIENTO_OCHENTA_H

@@ -7,28 +7,30 @@
 #include <contact_listener.h>
 #include <mundo.h>
 #include <angulo.h>
-#include <Bloque.h>
-#include <BloqueMetal.h>
+#include <bloque.h>
+#include <bloque_metal.h>
 #include <bloque_metal_diagonal.h>
-#include <BloqueRoca.h>
-#include <Roca.h>
+#include <bloque_roca.h>
+#include <roca.h>
 #include <angulo_cero.h>
 #include <angulo_ciento_ochenta.h>
 #include <angulo_noventa.h>
 #include "angulo_dos_setenta.h"
-#include "ReceptorArriba.h"
-#include "ReceptorAbajo.h"
-#include "ReceptorIzquierda.h"
-#include "ReceptorDerecha.h"
+#include "receptor_arriba.h"
+#include "receptor_abajo.h"
+#include "receptor_izquierda.h"
+#include "receptor_derecha.h"
 #include "compuerta_logica.h"
 #include "compuerta.h"
-#include "EmisorArriba.h"
-#include "EmisorAbajo.h"
-#include "EmisorIzquierda.h"
-#include "EmisorDerecha.h"
-#include "Acido.h"
-#include "BarraDeEnergia.h"
+#include "emisor_arriba.h"
+#include "emisor_abajo.h"
+#include "emisor_izquierda.h"
+#include "emisor_derecha.h"
+#include "acido.h"
+#include "barra_de_energia.h"
 #include "fisica.h"
+
+// Clase encargada de cargar y guardar un mapa dese un archivo yaml
 
 class CargadorMapa {
     std::string nombre_mapa;
@@ -38,7 +40,8 @@ class CargadorMapa {
     ContactListener listener;
     Fisica fisica;
 
-    std::vector<b2Vec2> posiciones; // tal vez habria que cambiar los constructores de los cuerpos
+    std::vector<b2Vec2> posiciones; 
+    // tal vez habria que cambiar los constructores de los cuerpos
 
     std::list<BloqueMetal> bloques_metal;
     std::list<BloqueRoca> bloques_roca;
@@ -51,11 +54,6 @@ class CargadorMapa {
     std::list<Roca> rocas;
 
     std::map<int,std::unique_ptr<Cuerpo>> botones_y_receptores;
-
-    /*std::map<int,ReceptorAbajo> receptores_abajo;
-    std::map<int,ReceptorIzquierda> receptores_izquierda;
-    std::map<int,ReceptorDerecha> receptores_derecha;*/
-
     std::map<int,std::shared_ptr<CompuertaLogica>> compuertas_logicas;
 
     std::list<Compuerta> compuertas;
@@ -68,7 +66,9 @@ class CargadorMapa {
 
 public:
     CargadorMapa();
+    // Carga el mapa del archivo.
     void cargarMapa();
+    // Devuelde la Fisica que se obtiene del mapa cargado.
     Fisica& obtenerFisica();
     ~CargadorMapa();
 };

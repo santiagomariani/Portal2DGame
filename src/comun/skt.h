@@ -1,0 +1,47 @@
+
+#ifndef SKT_H
+#define SKT_H
+
+#include <string>
+
+#include "skt_aceptador.h"
+
+// Permite la comunicacion entre 2 objetos de
+// la misma clase.
+class Skt {
+private:
+    std::string host;
+    std::string port;
+    int skt;
+    // Inicializa con un socket.
+    explicit Skt(int skt);
+    friend class SktAceptador;
+
+public:
+    // Inicializa con un host y un puerto.
+    Skt(std::string host, std::string port);
+    // Constructor por movimiento.
+    Skt(Skt&& otro);
+    // Se conecta con el servidor.
+    void conectar();
+    // Envia un mensaje al servidor.
+    int enviarMensaje(char *buffer, int longitud);
+    // Lee un mensaje del servidor.
+    int leerMensaje(char *buffer, int longitud);
+    // Cierra el canal de escritura.
+    void cerrarCanalEscritura();
+    // Cierra el canal de lectura.
+    void cerrarCanalLectura();
+    // Cierra el canal de escritura y el de lectura.
+    void cerrarCanales();
+    // Cierra el socket.
+    void cerrarSocket();
+    // No tiene sentido copiar un Socket.
+    Skt(const Skt&) = delete;
+    Skt& operator=(const Skt&) = delete;
+    // Libera los recursos.
+    ~Skt();
+};
+
+
+#endif //SKT_H
