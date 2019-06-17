@@ -3,16 +3,20 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 #include "SdlWindow.h"
 #include "Timer.h"
 #include "imagen.h"
 #include "boton_bloque.h"
 #include "boton_volver.h"
+#include "boton_guardar.h"
+#include "boton_escribir.h"
 #include "mapa_editor.h"
 #include <vector>
 #include "ids.h"
 #include "cursor.h"
 #include "botonera.h"
+#include "texto.h"
 
 #define CELDA 50
 #define SEP 40
@@ -115,20 +119,45 @@ void Editor::operator()(int* etapa){
 	botonera.setBotones(&botones_principales);
 
 
+	//=Mapa=
+	MapaEditor mapa(ancho_pantalla, alto_pantalla, CELDA, cursor);
 	bool corriendo = true;
+	bool recibir_texto = false;
 
 	//=Botones Opciones=
+
+	std::string nombre_mapa = "NOmbre Mapa";
+	std::string ruta_boton_escribir = "assets/boton_escribir.png";
+	SdlTexture textura_boton_escribir(ruta_boton_escribir, ventana);
+	Imagen imagen_boton_escribir(0, 0, 300, 300, &textura_boton_escribir);
+	BotonEscribir escribir(&imagen_boton_escribir, &recibir_texto);
+	escribir.colocar(ancho_pantalla - (ancho_pantalla / 6) - 50, 5, 40, 40);
+
+	SDL_Rect panel_input = {195, 0, ancho_pantalla - (ancho_pantalla / 6) - 320, 50};
 
 	std::string ruta_boton_volver = "assets/boton_volver.jpeg";
 	SdlTexture textura_boton_volver(ruta_boton_volver, ventana);
 	Imagen imagen_boton_volver(0, 0, 255, 255, &textura_boton_volver);
 	BotonVolver volver(&imagen_boton_volver, etapa, &corriendo);
-	volver.colocar(105, 10, 40, 40);
+	volver.colocar(100, 5, 40, 40);
 
-	SDL_Rect panel_opciones = {95, 0, 120, 70};
+	std::string ruta_boton_guardar = "assets/boton_guardar.jpeg";
+	SdlTexture textura_boton_guardar(ruta_boton_guardar, ventana);
+	Imagen imagen_boton_guardar(0, 0, 255, 255, &textura_boton_guardar);
+	BotonGuardar guardar(&imagen_boton_guardar, mapa, nombre_mapa);
+	guardar.colocar(145, 5, 40, 40);
 
-	//=Mapa=
-	MapaEditor mapa(ancho_pantalla, alto_pantalla, CELDA, cursor);
+	SDL_Rect panel_opciones = {95, 0, 95, 50};
+
+
+	TTF_Init();
+
+	Texto texto(ventana, 30);
+	SDL_Color color = {0, 0, 0};
+
+	SDL_StartTextInput();
+
+	//=Loop=
 
 	Timer capTimer;
 	SDL_Event event;
@@ -141,9 +170,20 @@ void Editor::operator()(int* etapa){
 		botonera.render();
 		panel.render(actual_espacio);
 		cursor.render();
+		escribir.render();
+
+		if (recibir_texto){
+			panel.render(panel_input);
+		}
+
+		if (nombre_mapa.length() > 0){
+			texto.cargarTexto(nombre_mapa.c_str(), color);
+			texto.render(200, 5);
+		}
 
 		panel.render(panel_opciones);
 		volver.render();
+		guardar.render();
 
 		ventana.render();
 
@@ -151,15 +191,28 @@ void Editor::operator()(int* etapa){
 			switch(event.type) {
 				case SDL_KEYDOWN:{
 						SDL_KeyboardEvent& keyEvent = (SDL_KeyboardEvent&) event;
-						mapa.recibirEvento(keyEvent);
+						if (!recibir_texto){
+							mapa.recibirEvento(keyEvent);
+						} else {
+							if (keyEvent.keysym.sym == SDLK_BACKSPACE && nombre_mapa.length() > 0){
+								nombre_mapa.pop_back();
+							}
+						}
 						break;
 				}
+				case SDL_TEXTINPUT:
+					if (recibir_texto && nombre_mapa.length() < 20){
+						nombre_mapa += event.text.text;
+					}
+					break;
 				case SDL_MOUSEBUTTONDOWN:{
 					SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
 					if (!(botonera.colisiona(mouseEvent.x, mouseEvent.y))){
-						if (mouseEvent.x > 95 && mouseEvent.x < 215 && mouseEvent.y < 70){
+						if (mouseEvent.y < 50){
+							escribir.recibirEvento(mouseEvent);
 							volver.recibirEvento(mouseEvent);
-						}else{
+							guardar.recibirEvento(mouseEvent);
+						} else {
 							mapa.recibirEvento(mouseEvent);
 						}
 					} else {
@@ -190,5 +243,6 @@ void Editor::operator()(int* etapa){
 			SDL_Delay(TICKS_PER_FRAME - frameTicks);
 		}
 	}
+	TTF_Quit();
 	//mapa.guardar("prueba.txt");
 }

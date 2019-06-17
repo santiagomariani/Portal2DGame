@@ -25,7 +25,7 @@ public:
 	void render();
 	void recibirEvento(SDL_KeyboardEvent& evento);
 	void recibirEvento(SDL_MouseButtonEvent& evento);
-	void guardar(std::string nombre);
+	void guardar(std::string& nombre);
 	void conectar();
 };
 
