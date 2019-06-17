@@ -4,7 +4,7 @@
 #include <SDL2/SDL_quit.h>
 #include <Box2D/Common/b2Settings.h>
 
-#include "Mensajero.h"
+#include "mensajero.h"
 
 #define UNBYTE 1
 #define DOSBYTES 2

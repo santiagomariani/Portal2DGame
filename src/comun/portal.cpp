@@ -1,7 +1,7 @@
 #include "portal.h"
 #include "chell.h"
 #include "ids.h"
-#include "Teletransportador.h"
+#include "teletransportador.h"
 #include <math.h>
 #include "Box2D/Box2D.h"
 #include "config.h"

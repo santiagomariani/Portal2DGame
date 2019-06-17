@@ -1,5 +1,6 @@
 #ifndef ANGULO_H
 #define ANGULO_H
+
 #include "Box2D/Box2D.h"
 
 class Angulo{
@@ -10,4 +11,4 @@ public:
 	virtual int getId() = 0;
 };
 
-#endif
+#endif //ANGULO_H

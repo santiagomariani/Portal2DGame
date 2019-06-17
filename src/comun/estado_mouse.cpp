@@ -1,4 +1,3 @@
-
 #include "estado_mouse.h"
 
 EstadoMouse::EstadoMouse(){

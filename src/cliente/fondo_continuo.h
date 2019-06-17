@@ -2,8 +2,9 @@
 #define FONDO_CONTINUO_H
 
 
-#include "SdlTexture.h"
-#include "SdlWindow.h"
+#include <SDL2/SDL_rect.h>
+#include "textura.h"
+#include "ventana.h"
 
 class FondoContinuo{
 	int ancho_f;
@@ -13,10 +14,10 @@ class FondoContinuo{
 	int velocidad;
 	SDL_Rect area;
 	SDL_Rect ventana;
-	SdlTexture& textura;
+    Textura& textura;
 public:
 	FondoContinuo(int ancho_f, int alto_f, int ancho_v, int alto_v,
-				  int velocidad, SdlTexture& textura);
+				  int velocidad, Textura& textura);
 	void render();
 };
 

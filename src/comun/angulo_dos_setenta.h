@@ -1,5 +1,5 @@
-#ifndef ANGULO_DOSSETENTA_H
-#define ANGULO_DOSSETENTA_H
+#ifndef ANGULO_DOS_SETENTA_H
+#define ANGULO_DOS_SETENTA_H
 
 #include "angulo.h"
 #include "Box2D/Box2D.h"
@@ -14,4 +14,4 @@ public:
 	~AnguloDosSetenta() = default;
 };
 
-#endif
+#endif //ANGULO_DOS_SETENTA_H

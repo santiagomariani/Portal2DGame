@@ -4,7 +4,7 @@
 
 
 #include <string>
-#include <Skt.h>
+#include "skt.h"
 
 class PantallaElegirPartida {
     std::string& puerto;

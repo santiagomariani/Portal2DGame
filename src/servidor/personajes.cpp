@@ -1,7 +1,7 @@
 #include "personajes.h"
 #include <iostream>
 #include <estado_mouse.h>
-#include "EstadoChell.h"
+#include "estado_chell.h"
 
 Personajes::Personajes(Mundo& m) : mundo(m){
 	this->siguiente_client = 0;
@@ -32,15 +32,15 @@ void Personajes::actualizarChells(){
         this->moverChell(tc->first, tc->second);
     }
 
-    auto it = personajes.begin();
+    /*auto it = personajes.begin();
     while (it != personajes.end()) {
-        if (it->second.obtenerEstado() == CHELL_MUERTA) {
+        if (it->second.obtenerEstado() == CHELL_MUERE) {
             teclados.erase((it->first));
             it = personajes.erase(it);
         } else {
             ++it;
         }
-    }
+    }*/
 }
 
 void Personajes::moverChell(int chell_id, EstadoTeclado& teclado){

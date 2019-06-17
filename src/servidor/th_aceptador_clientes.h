@@ -2,7 +2,7 @@
 #define TH_ACEPTADOR_CLIENTES_H
 
 
-#include <Thread.h>
+#include <thread.h>
 #include "manejador_partidas.h"
 
 // Thread para aceptar clientes constantemente.

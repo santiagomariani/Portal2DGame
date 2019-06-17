@@ -131,8 +131,7 @@ void Chell::mover(EstadoTeclado& t){
             roca->getBody()->SetLinearVelocity(vel_roca);
         }
     }
-    cuerpo->SetLinearVelocity(vel); // CAMBIAR
-
+    cuerpo->SetLinearVelocity(vel);
     estado_chell.actualizarEstado(*sensor, vel);
 }
 
@@ -145,6 +144,7 @@ void Chell::dispararAzul(b2Vec2& pos_click){
         return;
     }
     pistola.dispararAzul(getPosition(), pos_click);
+    estado_chell.ocurrioDisparo();
 }
 
 void Chell::dispararNaranja(b2Vec2& pos_click){
@@ -152,6 +152,7 @@ void Chell::dispararNaranja(b2Vec2& pos_click){
         return;
     }
     pistola.dispararNaranja(getPosition(), pos_click);
+    estado_chell.ocurrioDisparo();
 }
 
 float Chell::getWidth(){
@@ -203,7 +204,7 @@ void Chell::terminarContacto(Cuerpo *otro) {
 }
 
 void Chell::morir(){
-    std::cout << "chell murio\n";
+    estado_chell.chellMurio();
     mundo.agregarCuerpoADestruir(this);
 }
 

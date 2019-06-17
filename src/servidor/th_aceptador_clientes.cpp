@@ -1,8 +1,8 @@
 
-#include <SktAceptador.h>
+#include <skt_aceptador.h>
 #include "th_aceptador_clientes.h"
 #include "th_opcion_partida.h"
-#include "SocketError.h"
+#include "socket_error.h"
 
 ThAceptadorClientes::ThAceptadorClientes(SktAceptador skt, std::string& puerto):
                                     skt_aceptador(std::move(skt)),

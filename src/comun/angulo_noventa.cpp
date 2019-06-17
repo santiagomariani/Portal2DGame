@@ -1,5 +1,5 @@
 #include "angulo_noventa.h"
-#include "Bloque.h"
+#include "bloque.h"
 #include "ids.h"
 #include <iostream>
 #include "config.h"

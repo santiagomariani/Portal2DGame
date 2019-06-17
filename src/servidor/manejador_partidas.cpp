@@ -4,21 +4,21 @@
 #include <angulo_dos_setenta.h>
 #include <ids.h>
 #include <bloque_metal_diagonal.h>
-#include <BloqueMetal.h>
+#include <bloque_metal.h>
 #include <iostream>
 #include <sstream>
 #include "manejador_partidas.h"
-#include "ReceptorArriba.h"
+#include "receptor_arriba.h"
 #include "boton.h"
 #include "estado_logico.h"
 #include "and.h"
 #include "compuerta.h"
-#include "EmisorArriba.h"
-#include "EmisorAbajo.h"
-#include "EmisorDerecha.h"
-#include "EmisorIzquierda.h"
-#include "Acido.h"
-#include "BarraDeEnergia.h"
+#include "emisor_arriba.h"
+#include "emisor_abajo.h"
+#include "emisor_derecha.h"
+#include "emisor_izquierda.h"
+#include "acido.h"
+#include "barra_de_energia.h"
 
 #define CANTIDAD_DE_CLIENTES 2
 

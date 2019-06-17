@@ -2,7 +2,7 @@
 #ifndef BOTON_UNIRSE_A_PARTIDA_H
 #define BOTON_UNIRSE_A_PARTIDA_H
 
-#include <Protocolo.h>
+#include "protocolo.h"
 #include "presionable.h"
 
 class BotonUnirseAPartida : public Presionable{

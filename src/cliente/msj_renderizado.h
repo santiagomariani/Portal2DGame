@@ -3,7 +3,7 @@
 #define MSJ_RENDERIZADO_H
 
 
-#include <InfoCuerpo.h>
+#include <info_cuerpo.h>
 
 struct MsjRenderizado {
     InfoCuerpo info_cuerpo;
@@ -11,4 +11,4 @@ struct MsjRenderizado {
 };
 
 
-#endif //UNTITLED_MSJ_RENDERIZADO_H
+#endif //MSJ_RENDERIZADO_H

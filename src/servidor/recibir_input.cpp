@@ -1,7 +1,7 @@
 #include <iostream>
 #include "recibir_input.h"
-#include "SocketError.h"
-#include "Protocolo.h"
+#include "socket_error.h"
+#include "protocolo.h"
 
 RecibirInput::RecibirInput(ColaProtegidaInput& cola, Protocolo& protocolo):
                             cola(cola), protocolo(protocolo){

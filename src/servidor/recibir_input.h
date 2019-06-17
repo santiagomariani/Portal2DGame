@@ -1,10 +1,10 @@
 #ifndef RECIBIR_INPUT_H
 #define RECIBIR_INPUT_H
 
-#include "ColaBloqueante.h"
-#include "Protocolo.h"
-#include "Thread.h"
-#include "Input.h"
+#include "cola_bloqueante.h"
+#include "protocolo.h"
+#include "thread.h"
+#include "input.h"
 #include "cola_protegida.h"
 
 // Thread que recibe el input de un cliente constantemente,

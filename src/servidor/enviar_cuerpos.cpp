@@ -1,6 +1,6 @@
 #include "enviar_cuerpos.h"
 #include "cuerpo_a_enviar.h"
-#include "SocketError.h"
+#include "socket_error.h"
 #include <cstdint>
 #include <iostream>
 

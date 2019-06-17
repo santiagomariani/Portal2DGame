@@ -2,8 +2,8 @@
 #define FONDO_CONTINUO_H
 
 
-#include "SdlTexture.h"
-#include "SdlWindow.h"
+#include "textura.h"
+#include "ventana.h"
 
 class FondoContinuo{
 	int ancho_f;

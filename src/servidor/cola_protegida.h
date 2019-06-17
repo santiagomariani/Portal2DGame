@@ -2,7 +2,7 @@
 #ifndef COLA_PROTEGIDA_H
 #define COLA_PROTEGIDA_H
 
-#include <Input.h>
+#include <input.h>
 #include <queue>
 #include <mutex>
 

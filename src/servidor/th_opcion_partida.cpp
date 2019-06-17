@@ -1,7 +1,7 @@
 
-#include <Skt.h>
-#include "Mensajero.h"
-#include <Protocolo.h>
+#include <skt.h>
+#include "mensajero.h"
+#include <protocolo.h>
 #include <iostream>
 #include "th_opcion_partida.h"
 #include "manejador_partidas.h"

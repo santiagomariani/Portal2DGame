@@ -1,9 +1,9 @@
 
-#include <SdlWindow.h>
-#include <SdlTexture.h>
-#include <Timer.h>
-#include <Mensajero.h>
-#include <Protocolo.h>
+#include <ventana.h>
+#include <textura.h>
+#include <contador_tiempo.h>
+#include <mensajero.h>
+#include <protocolo.h>
 #include "pantalla_elegir_partida.h"
 #include "imagen.h"
 #include "boton_jugar.h"
@@ -35,18 +35,18 @@ bool PantallaElegirPartida::operator()(){
     const int FPS = 60;
     const int TICKS_PER_FRAME = 1000/FPS;
 
-    SdlWindow ventana(ancho_pantalla, alto_pantalla);
+    Ventana ventana(ancho_pantalla, alto_pantalla);
 
 
     //=Fondo=
     std::string ruta_fondo = "assets/inicio5.png";
-    SdlTexture textura_fondo(ruta_fondo, ventana);
+    Textura textura_fondo(ruta_fondo, ventana);
 
     bool corriendo = true;
 
     //=Botones=
     std::string  ruta_botones = "assets/botones_inicio.png";
-    SdlTexture botones(ruta_botones, ventana);
+    Textura botones(ruta_botones, ventana);
 
     Imagen imagen_nueva_partida(64, 71, 177, 81, &botones); // nueva partida
     BotonNuevaPartida nueva_partida(&imagen_nueva_partida, &corriendo, protocolo_opcion, puerto);
@@ -59,17 +59,17 @@ bool PantallaElegirPartida::operator()(){
 
 
     //=Loop=
-    Timer capTimer;
+    ContadorTiempo capTimer;
     SDL_Event event;
     bool continuar_programa = true;
     while (corriendo){
 
-        ventana.fill(0x33, 0x33, 0x33, 0xFF);
+        ventana.pintar(0x33, 0x33, 0x33, 0xFF);
 
         nueva_partida.render();
         unirse_partida.render();
 
-        ventana.render();
+        ventana.renderizar();
 
         while (SDL_PollEvent(&event) != 0){
             switch(event.type) {
@@ -85,7 +85,7 @@ bool PantallaElegirPartida::operator()(){
                     break;
             }
         }
-        int frameTicks = capTimer.getTicks();
+        int frameTicks = capTimer.obtenerTicks();
 
         if (frameTicks < TICKS_PER_FRAME) {
             SDL_Delay(TICKS_PER_FRAME - frameTicks);
