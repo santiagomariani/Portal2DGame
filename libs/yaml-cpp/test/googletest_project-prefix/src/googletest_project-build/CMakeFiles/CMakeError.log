@@ -1,0 +1,118 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7792e/fast 
+make[3]: se entra en el directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_7792e.dir/build.make CMakeFiles/cmTC_7792e.dir/build
+make[4]: se entra en el directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7792e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_7792e.dir/CheckSymbolExists.c.o   -c /home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_7792e
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7792e.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_7792e.dir/CheckSymbolExists.c.o  -o cmTC_7792e 
+CMakeFiles/cmTC_7792e.dir/CheckSymbolExists.c.o: En la función `main':
+CheckSymbolExists.c:(.text+0x1b): referencia a `pthread_create' sin definir
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7792e.dir/build.make:86: recipe for target 'cmTC_7792e' failed
+make[4]: *** [cmTC_7792e] Error 1
+make[4]: se sale del directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_7792e/fast' failed
+make[3]: *** [cmTC_7792e/fast] Error 2
+make[3]: se sale del directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+
+File /home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_493e0/fast 
+make[3]: se entra en el directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_493e0.dir/build.make CMakeFiles/cmTC_493e0.dir/build
+make[4]: se entra en el directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_493e0.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_493e0.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_493e0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_493e0.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_493e0.dir/CheckFunctionExists.c.o  -o cmTC_493e0 -lpthreads 
+/usr/bin/ld: no se puede encontrar -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_493e0.dir/build.make:86: recipe for target 'cmTC_493e0' failed
+make[4]: *** [cmTC_493e0] Error 1
+make[4]: se sale del directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_493e0/fast' failed
+make[3]: *** [cmTC_493e0/fast] Error 2
+make[3]: se sale del directorio '/home/ariel/Escritorio/Caca2/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6604e/fast 
+make[3]: se entra en el directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_6604e.dir/build.make CMakeFiles/cmTC_6604e.dir/build
+make[4]: se entra en el directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6604e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_6604e.dir/CheckSymbolExists.c.o   -c /home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_6604e
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6604e.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_6604e.dir/CheckSymbolExists.c.o  -o cmTC_6604e 
+CMakeFiles/cmTC_6604e.dir/CheckSymbolExists.c.o: En la función `main':
+CheckSymbolExists.c:(.text+0x1b): referencia a `pthread_create' sin definir
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_6604e.dir/build.make:86: recipe for target 'cmTC_6604e' failed
+make[4]: *** [cmTC_6604e] Error 1
+make[4]: se sale del directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_6604e/fast' failed
+make[3]: *** [cmTC_6604e/fast] Error 2
+make[3]: se sale del directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+
+File /home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f3829/fast 
+make[3]: se entra en el directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_f3829.dir/build.make CMakeFiles/cmTC_f3829.dir/build
+make[4]: se entra en el directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f3829.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_f3829.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f3829
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3829.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_f3829.dir/CheckFunctionExists.c.o  -o cmTC_f3829 -lpthreads 
+/usr/bin/ld: no se puede encontrar -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_f3829.dir/build.make:86: recipe for target 'cmTC_f3829' failed
+make[4]: *** [cmTC_f3829] Error 1
+make[4]: se sale del directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_f3829/fast' failed
+make[3]: *** [cmTC_f3829/fast] Error 2
+make[3]: se sale del directorio '/home/ariel/Escritorio/Portal/TP4---Portal/libs/yaml-cpp/test/googletest_project-prefix/src/googletest_project-build/CMakeFiles/CMakeTmp'
+
+
