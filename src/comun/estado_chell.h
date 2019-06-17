@@ -2,7 +2,7 @@
 #ifndef ESTADO_CHELL_H
 #define ESTADO_CHELL_H
 
-#include "SensorChell.h"
+#include "sensor_chell.h"
 #include "estado_teclado.h"
 
 #define CHELL_EN_EL_AIRE 0

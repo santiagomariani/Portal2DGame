@@ -1,10 +1,10 @@
 
-#include "Renderizables.h"
-#include "Ventana.h"
+#include "renderizables.h"
+#include "ventana.h"
 #include "ids.h"
-#include "Textura.h"
-#include "Sprite.h"
-#include "VistaChell.h"
+#include "textura.h"
+#include "sprite.h"
+#include "vista_chell.h"
 
 Renderizables::Renderizables(Ventana &ventana) {
     creacionRenderizables(ventana);

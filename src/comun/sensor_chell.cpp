@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "SensorChell.h"
+#include "sensor_chell.h"
 #include "ids.h"
 
 SensorChell::SensorChell() : activado(false),

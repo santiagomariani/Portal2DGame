@@ -2,7 +2,7 @@
 #define INICIAR_PARTIDA_H
 
 #include "partida.h"
-#include "Thread.h"
+#include "thread.h"
 
 class IniciarPartida : public Thread{
 	Partida& partida;

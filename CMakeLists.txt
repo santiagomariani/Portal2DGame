@@ -7,7 +7,7 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread
 #set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_FLAGS_RELEASE "-O0")
 
-# add_executable(untitled main.cpp Ventana.cpp Textura.cpp Textura.h SdlException.cpp Sprite.cpp Timer.cpp ViewChell.cpp Renderable.cpp Roca.cpp)
+# add_executable(untitled main.cpp Ventana.cpp Textura.cpp Textura.h SdlException.cpp Sprite.cpp ContadorTiempo.cpp VistaChell.cpp Renderizable.cpp Roca.cpp)
 
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
@@ -30,7 +30,7 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h src/cliente/Mixer.cpp src/cliente/Mixer.h src/comun/Sonido.cpp src/comun/Sonido.h src/cliente/Musica.cpp src/cliente/Musica.h src/comun/SonidosChell.cpp src/comun/SonidosChell.h src/cliente/ColeccionViewChells.cpp src/cliente/ColeccionViewChells.h)
+add_executable(cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h src/cliente/mixer.cpp src/cliente/mixer.h src/comun/sonido.cpp src/comun/sonido.h src/cliente/musica.cpp src/cliente/musica.h src/comun/sonidos_chell.cpp src/comun/sonidos_chell.h src/cliente/coleccion_vista_chells.cpp src/cliente/coleccion_vista_chells.h)
 target_link_libraries(cliente SDL2 SDL2_image SDL2_mixer Box2D ${CMAKE_THREAD_LIBS_INIT})
 
 message("[INFO] Loading sources to the server")

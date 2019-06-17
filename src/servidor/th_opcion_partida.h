@@ -2,8 +2,8 @@
 #ifndef TH_OPCION_PARTIDA_H
 #define TH_OPCION_PARTIDA_H
 
-#include <Skt.h>
-#include "Thread.h"
+#include <skt.h>
+#include "thread.h"
 #include "manejador_partidas.h"
 
 

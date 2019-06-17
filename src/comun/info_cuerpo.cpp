@@ -1,2 +1,2 @@
 
-#include "InfoCuerpo.h"
+#include "info_cuerpo.h"

@@ -1,8 +1,8 @@
 
 #include <SDL2/SDL_timer.h>
-#include "Renderizador.h"
+#include "renderizador.h"
 #include "ids.h"
-#include "VistaChell.h"
+#include "vista_chell.h"
 #include "msj_renderizado.h"
 
 Renderizador::Renderizador(Ventana &ventana,

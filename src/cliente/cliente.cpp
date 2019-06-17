@@ -1,26 +1,26 @@
-#include "Cliente.h"
+#include "cliente.h"
 #include "estado_mouse.h"
-#include "CoordConverter.h"
-#include "VistaChell.h"
-#include "InfoCuerpo.h"
+#include "convertidor_coordenadas.h"
+#include "vista_chell.h"
+#include "info_cuerpo.h"
 #include "ids.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
 #include "Box2D/Box2D.h"
-#include "ObtenedorInput.h"
-#include "Renderizador.h"
-#include "ColaBloqueante.h"
-#include "Input.h"
-#include "ThInput.h"
-#include "Skt.h"
-#include "ThRenderizado.h"
+#include "obtenedor_input.h"
+#include "renderizador.h"
+#include "cola_bloqueante.h"
+#include "input.h"
+#include "th_input.h"
+#include "skt.h"
+#include "th_renderizado.h"
 #include "msj_renderizado.h"
-#include "Sonido.h"
-#include "Mixer.h"
-#include "Musica.h"
-#include "ColeccionVistaChells.h"
+#include "sonido.h"
+#include "mixer.h"
+#include "musica.h"
+#include "coleccion_vista_chells.h"
 
 void Cliente::iniciar() {
 

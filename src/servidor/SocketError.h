@@ -2,8 +2,8 @@
 // Created by santi on 01/05/19.
 //
 
-#ifndef SOCKETERROR_H
-#define SOCKETERROR_H
+#ifndef SOCKET_ERROR_H
+#define SOCKET_ERROR_H
 
 #include <stdexcept>
 
@@ -12,4 +12,4 @@ public:
     explicit SocketError(const char* error) : runtime_error(error) {}
 };
 
-#endif //SOCKETERROR_H
+#endif //SOCKET_ERROR_H

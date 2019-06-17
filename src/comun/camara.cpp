@@ -1,5 +1,5 @@
 
-#include "camera.h"
+#include "camara.h"
 
 Camara::Camara(int ancho_camara, int alto_camara, Textura &fondo) :
     ancho_camara(ancho_camara), alto_camara(alto_camara), fondo(fondo){

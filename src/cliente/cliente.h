@@ -2,10 +2,10 @@
 #define CLIENTE_H
 
 #include "estado_teclado.h"
-#include "Protocolo.h"
-#include "ContadorTiempo.h"
-#include "Ventana.h"
-#include "Camera.h"
+#include "protocolo.h"
+#include "contador_tiempo.h"
+#include "ventana.h"
+#include "camara.h"
 #include <map>
 
 

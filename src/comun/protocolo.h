@@ -11,7 +11,7 @@
 #include "info_cuerpo.h"
 #include "convertidor_coordenadas.h"
 #include "input.h"
-#include "Skt.h"
+#include "skt.h"
 #include "mensajero.h"
 
 #define MSJ_INPUT 1

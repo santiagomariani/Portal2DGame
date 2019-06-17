@@ -3,8 +3,8 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_mixer.h>
-#include <SdlException.h>
-#include "Mixer.h"
+#include <sdl_exception.h>
+#include "mixer.h"
 
 
 Mixer::Mixer() {

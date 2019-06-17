@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "ThInput.h"
+#include "th_input.h"
 
 ThInput::ThInput(ColaBloqueante<Input> &cola_input,
         Protocolo &protocolo, int id) :

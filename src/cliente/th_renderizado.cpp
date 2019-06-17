@@ -1,5 +1,5 @@
 
-#include "ThRenderizado.h"
+#include "th_renderizado.h"
 #include <iostream>
 
 ThRenderizado::ThRenderizado(ColaBloqueante<MsjRenderizado> &cola_renderizado,

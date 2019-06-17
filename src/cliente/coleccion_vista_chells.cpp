@@ -1,5 +1,5 @@
 
-#include "ColeccionVistaChells.h"
+#include "coleccion_vista_chells.h"
 
 ColeccionVistaChells::ColeccionVistaChells(Ventana &ventana) {
     std::string chell_verde = "assets/chell_verde.png";

@@ -1,6 +1,6 @@
 
-#include <SdlException.h>
-#include "Musica.h"
+#include <sdl_exception.h>
+#include "musica.h"
 
 Musica::Musica(std::string nombre_archivo) {
     musica = Mix_LoadMUS(nombre_archivo.c_str());

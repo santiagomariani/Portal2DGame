@@ -1,7 +1,7 @@
 
 #include <iostream>
-#include "VistaChell.h"
-#include "EstadoChell.h"
+#include "vista_chell.h"
+#include "estado_chell.h"
 
 VistaChell::VistaChell(Ventana &ventana, std::string nombre_archivo) :
     renderizando_estado_transitorio(false),

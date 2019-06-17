@@ -2,15 +2,15 @@
 #ifndef RENDERIZADOR_H
 #define RENDERIZADOR_H
 
-#include "ContadorTiempo.h"
-#include "Ventana.h"
+#include "contador_tiempo.h"
+#include "ventana.h"
 #include "renderizables.h"
-#include "Camera.h"
-#include "InfoCuerpo.h"
-#include "ColaBloqueante.h"
+#include "camara.h"
+#include "info_cuerpo.h"
+#include "cola_bloqueante.h"
 #include "msj_renderizado.h"
 #include "coleccion_vista_chells.h"
-#include "SonidosChell.h"
+#include "sonidos_chell.h"
 
 #define FPS 60
 #define TICKS_POR_FOTOGRAMA 1000/FPS

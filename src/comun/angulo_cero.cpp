@@ -1,5 +1,5 @@
 #include "angulo_cero.h"
-#include "Bloque.h"
+#include "bloque.h"
 #include "ids.h"
 #include "config.h"
 #define PI 3.14159265359
@@ -33,8 +33,10 @@ b2Vec2 AnguloCero::obtenerNormalPortal(b2Vec2& dif_choque){
 b2PolygonShape AnguloCero::obtenerTriangulo(){
     b2Vec2 vertices[3];
     vertices[0].Set(-config::tam_bloque,  -config::tam_bloque);
-    vertices[1].Set(config::tam_bloque*2 - config::tam_bloque,  -config::tam_bloque);
-    vertices[2].Set(-config::tam_bloque, config::tam_bloque*2 -config::tam_bloque);
+    vertices[1].Set(config::tam_bloque*2 - config::tam_bloque,
+            -config::tam_bloque);
+    vertices[2].Set(-config::tam_bloque,
+            config::tam_bloque*2 -config::tam_bloque);
     b2PolygonShape polygonShape;
     polygonShape.Set(vertices, 3);
 

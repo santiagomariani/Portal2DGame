@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "EstadoChell.h"
+#include "estado_chell.h"
 
 EstadoChell::EstadoChell() : estado_actual(CHELL_QUIETA),
     orientacion_actual(CHELL_MIRA_DERECHA), disparo(false) {

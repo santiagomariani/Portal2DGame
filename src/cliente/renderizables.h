@@ -3,8 +3,8 @@
 #define MAPARENDERIZABLES_H
 
 
-#include "Renderizable.h"
-#include "Ventana.h"
+#include "renderizable.h"
+#include "ventana.h"
 #include <map>
 
 class Renderizables {

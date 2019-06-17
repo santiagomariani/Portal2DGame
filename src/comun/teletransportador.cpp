@@ -1,4 +1,4 @@
-#include "Teletransportador.h"
+#include "teletransportador.h"
 #include <iostream>
 
 Teletransportador::Teletransportador(b2Body* cuerpo,

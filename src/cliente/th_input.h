@@ -3,10 +3,10 @@
 #define TH_INPUT_H
 
 
-#include "Thread.h"
-#include "ColaBloqueante.h"
-#include "Input.h"
-#include "Protocolo.h"
+#include "thread.h"
+#include "cola_bloqueante.h"
+#include "input.h"
+#include "protocolo.h"
 
 class ThInput : public Thread {
 private:

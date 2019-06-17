@@ -3,7 +3,7 @@
 
 #include "mundo.h"
 #include "personajes.h"
-#include "Protocolo.h"
+#include "protocolo.h"
 #include "cuerpo.h"
 #include <vector>
 

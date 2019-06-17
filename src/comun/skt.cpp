@@ -9,8 +9,8 @@
 #include <iostream>
 #include <sstream>
 
-#include "Skt.h"
-#include "SocketError.h"
+#include "skt.h"
+#include "socket_error.h"
 
 Skt::Skt(std::string host, std::string port) :
     host(std::move(host)),

@@ -1,12 +1,12 @@
 #ifndef PARTIDA_H
 #define PARTIDA_H
 
-#include "ColaBloqueante.h"
+#include "cola_bloqueante.h"
 #include "cola_bloqueante_cuerpos.h"
 #include "fisica.h"
-#include "Thread.h"
+#include "thread.h"
 #include <vector>
-#include "SktAceptador.h"
+#include "skt_aceptador.h"
 #include "cola_protegida.h"
 
 class Partida{

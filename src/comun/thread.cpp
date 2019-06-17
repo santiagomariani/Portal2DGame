@@ -1,6 +1,6 @@
 
 #include <thread>
-#include "Thread.h"
+#include "thread.h"
 
 Thread::Thread(){
 }

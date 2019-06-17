@@ -1,6 +1,6 @@
 
 #include <sdl_exception.h>
-#include "Sonido.h"
+#include "sonido.h"
 
 Sonido::Sonido(std::string &nombre_archivo, int canal) : canal(canal) {
     sonido = Mix_LoadWAV(nombre_archivo.c_str());

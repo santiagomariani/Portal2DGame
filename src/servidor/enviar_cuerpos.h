@@ -1,10 +1,10 @@
 #ifndef ENVIAR_CUERPOS_H
 #define ENVIAR_CUERPOS_H
 
-#include "ColaBloqueante.h"
+#include "cola_bloqueante.h"
 #include "cola_bloqueante_cuerpos.h"
-#include "Protocolo.h"
-#include "Thread.h"
+#include "protocolo.h"
+#include "thread.h"
 
 
 class EnviarCuerpos : public Thread {

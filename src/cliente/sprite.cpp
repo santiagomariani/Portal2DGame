@@ -1,5 +1,5 @@
 
-#include "Sprite.h"
+#include "sprite.h"
 #define VELOCIDAD_SPRITE 4
 
 Sprite::Sprite(int ancho_imagen,

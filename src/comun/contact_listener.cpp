@@ -1,18 +1,8 @@
 #include <iostream>
 #include "disparo.h"
-#include "BloqueRoca.h"
+#include "bloque_roca.h"
 #include "contact_listener.h"
-#include "Sensor.h"
-
-/*
-Cuerpo* obtenerCuerpo(b2Fixture* fixture){
-	if (fixture->GetUserData()){
-		return (Cuerpo*)(fixture->GetUserData());
-	} else {
-		return (Cuerpo*)(fixture->GetBody()->GetUserData());
-	}
-}
-*/
+#include "sensor.h"
 
 bool dataEsSensor(b2Fixture *fixture) {
     return fixture->GetUserData();
@@ -50,17 +40,6 @@ void ContactListener::BeginContact(b2Contact* contact){
             cuerpo_B->empezarContacto(cuerpo_A);
         }
     }
-	/*
-    Cuerpo* entity_A = obtenerCuerpo(fixture_A);
-	Cuerpo* entity_B = obtenerCuerpo(fixture_B);
-
-	if (!entity_A || !entity_B){
-		return;
-	}
-
-	entity_A->empezarContacto(entity_B);
-	entity_B->empezarContacto(entity_A);
-*/
 }
 
 void ContactListener::EndContact(b2Contact* contact){
@@ -83,15 +62,4 @@ void ContactListener::EndContact(b2Contact* contact){
             cuerpo_B->terminarContacto(cuerpo_A);
         }
     }
-	/*
-	Cuerpo* entity_A = obtenerCuerpo(fixture_A);
-	Cuerpo* entity_B = obtenerCuerpo(fixture_B);
-
-	if (!entity_A || !entity_B){
-		return;
-	}
-
-	entity_A->terminarContacto(entity_B);
-	entity_B->terminarContacto(entity_A);
-*/
 }

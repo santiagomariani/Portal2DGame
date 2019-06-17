@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "CoordConverter.h"
+#include "convertidor_coordenadas.h"
 
 ConvertidorCoordenadas::ConvertidorCoordenadas(int ancho_camara,
         int alto_camara) :

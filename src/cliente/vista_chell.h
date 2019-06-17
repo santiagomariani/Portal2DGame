@@ -6,7 +6,7 @@
 #include <vector>
 #include <map>
 
-#include "Textura.h"
+#include "textura.h"
 #include "sprite.h"
 
 class VistaChell : public Renderizable {

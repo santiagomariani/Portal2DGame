@@ -1,7 +1,7 @@
 #ifndef IMAGEN_H
 #define IMAGEN_H
 
-#include "Textura.h"
+#include "textura.h"
 
 class Imagen{
 protected:

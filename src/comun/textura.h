@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Ventana.h"
+#include "ventana.h"
 
 class Textura {
 private:

@@ -3,9 +3,10 @@
 
 #include "info_cuerpo_box_2_d.h"
 
-struct CuerpoAEnviar{
+struct CuerpoAEnviar {
 	InfoCuerpoBox2D info_cuerpo;
+	// Indica si es el ultimo cuerpo (para saber cuando renderizar todo junto).
 	bool ultimo;
 };
 
-#endif
+#endif //CUERPO_A_ENVIAR_H

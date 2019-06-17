@@ -3,9 +3,9 @@
 #define SPRITE_H
 
 
-#include "Textura.h"
-#include "Ventana.h"
-#include "Renderizable.h"
+#include "textura.h"
+#include "ventana.h"
+#include "renderizable.h"
 
 // Permite renderizar una animacion. Cada vez que se llama a renderizar se
 // renderiza una imagen. Una animacion (Sprite) puede tener 1 o mas imagenes.

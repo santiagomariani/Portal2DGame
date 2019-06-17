@@ -2,8 +2,8 @@
 // Created by santi on 08/06/19.
 //
 
-#ifndef INFOCUERPO_H
-#define INFOCUERPO_H
+#ifndef INFO_CUERPO_H
+#define INFO_CUERPO_H
 
 
 #include <SDL2/SDL_rect.h>
@@ -14,9 +14,9 @@ public:
     uint8_t id;
     uint8_t estado;
     int32_t angulo;
-    SDL_Rect dest;
-    SDL_RendererFlip flip;
+    SDL_Rect destino;
+    SDL_RendererFlip espejado;
 };
 
 
-#endif //INFOCUERPO_H
+#endif //INFO_CUERPO_H

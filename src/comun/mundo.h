@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 #include "cuerpo.h"
-#include "Teletransportador.h"
+#include "teletransportador.h"
 #include "Box2D/Box2D.h"
 #include <queue>
 

@@ -1,5 +1,5 @@
 
-#include "BloqueMetal.h"
+#include "bloque_metal.h"
 #include "ids.h"
 #include <iostream>
 #include "cuerpo.h"

@@ -9,7 +9,7 @@
 #include <Box2D/Dynamics/b2Body.h>
 #include "cuerpo.h"
 #include "Receptor.h"
-#include "Sensor.h"
+#include "sensor.h"
 
 class Receptor;
 class SensorReceptor : public Sensor {

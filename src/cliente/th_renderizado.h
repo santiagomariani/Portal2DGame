@@ -3,11 +3,11 @@
 #define TH_RENDERIZADO_H
 
 
-#include "ColaBloqueante.h"
-#include "InfoCuerpo.h"
-#include "Protocolo.h"
+#include "cola_bloqueante.h"
+#include "info_cuerpo.h"
+#include "protocolo.h"
 #include "renderizador.h"
-#include "Thread.h"
+#include "thread.h"
 
 class ThRenderizado : public Thread {
 private:

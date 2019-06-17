@@ -1,6 +1,6 @@
 
 #include <SDL2/SDL_timer.h>
-#include "ContadorTiempo.h"
+#include "contador_tiempo.h"
 
 ContadorTiempo::ContadorTiempo() : ticks_comienzo(0),
     ticks_pausado(0),

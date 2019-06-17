@@ -6,7 +6,7 @@
 #include <cstdint>
 #include <string>
 
-#include "Skt.h"
+#include "skt.h"
 
 // Sabe como enviar y recibir distintos tipos de datos.
 class Mensajero {

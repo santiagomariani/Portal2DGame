@@ -3,12 +3,12 @@
 #define OBTENEDOR_INPUT_H
 
 
-#include "CoordConverter.h"
+#include "convertidor_coordenadas.h"
 #include "estado_teclado.h"
 #include "estado_mouse.h"
-#include "Camera.h"
-#include "Input.h"
-#include "ColaBloqueante.h"
+#include "camara.h"
+#include "input.h"
+#include "cola_bloqueante.h"
 
 class ObtenedorInput {
 private:

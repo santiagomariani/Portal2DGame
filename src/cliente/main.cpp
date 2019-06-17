@@ -1,15 +1,12 @@
-//
-// Created by santi on 08/06/19.
-//
 
 #include <map>
-#include "Ventana.h"
-#include "Textura.h"
-#include "Camera.h"
-#include "Sprite.h"
-#include "ViewChell.h"
+#include "ventana.h"
+#include "textura.h"
+#include "camara.h"
+#include "sprite.h"
+#include "vista_chell.h"
 #include "ids.h"
-#include "Cliente.h"
+#include "cliente.h"
 
 int main(int argc, const char *argv[]){
     Cliente cliente;

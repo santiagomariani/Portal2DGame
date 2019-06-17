@@ -11,8 +11,8 @@
 #include <string>
 #include <sstream>
 
-#include "SktAceptador.h"
-#include "SocketError.h"
+#include "skt_aceptador.h"
+#include "socket_error.h"
 #include "skt.h"
 
 #define MAX_CLIENTES 10

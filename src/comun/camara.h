@@ -4,9 +4,9 @@
 
 
 #include <SDL2/SDL_rect.h>
-#include "Renderizable.h"
-#include "Textura.h"
-#include "SonidosChell.h"
+#include "renderizable.h"
+#include "textura.h"
+#include "sonidos_chell.h"
 
 class Camara {
 private:

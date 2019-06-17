@@ -1,10 +1,10 @@
 
 #include <SDL2/SDL_events.h>
 #include <iostream>
-#include "ObtenedorInput.h"
+#include "obtenedor_input.h"
 #include "estado_mouse.h"
-#include "CoordConverter.h"
-#include "Input.h"
+#include "convertidor_coordenadas.h"
+#include "input.h"
 
 ObtenedorInput::ObtenedorInput(ConvertidorCoordenadas &convertidor_coordenadas,
         Camara &camara,

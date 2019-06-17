@@ -419,284 +419,76 @@
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/libs/Box2D/Rope/b2Rope.h">
 			<Option target="Box2D"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Cliente.cpp">
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/cliente.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Cliente.h">
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/cliente.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ColeccionViewChells.cpp">
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/coleccion_vista_chells.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ColeccionViewChells.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Mixer.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Mixer.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Musica.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Musica.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ObtenedorInput.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ObtenedorInput.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Renderizables.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Renderizables.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Renderizador.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Renderizador.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Sprite.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/Sprite.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ThInput.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ThInput.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ThRenderizado.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ThRenderizado.h">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ViewChell.cpp">
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/ViewChell.h">
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/coleccion_vista_chells.h">
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/main.cpp">
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/mixer.cpp">
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/mixer.h">
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/msj_renderizado.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Bloque.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/musica.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Bloque.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/musica.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/BloqueMetal.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/obtenedor_input.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/BloqueMetal.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/obtenedor_input.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/BloqueRoca.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/renderizables.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/BloqueRoca.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/renderizables.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Camera.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/renderizador.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Camera.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/renderizador.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/ColaBloqueante.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/sprite.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/ColaBloqueante.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/sprite.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/CoordConverter.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/th_input.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/CoordConverter.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/th_input.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/EstadoChell.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/th_renderizado.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/EstadoChell.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/th_renderizado.h">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/InfoCuerpo.cpp">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/vista_chell.cpp">
 			<Option target="cliente"/>
 		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/InfoCuerpo.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Input.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Input.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Mensajero.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Mensajero.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Protocolo.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Protocolo.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Renderable.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Renderable.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Roca.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Roca.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SdlException.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SdlException.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Textura.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Textura.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Ventana.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Ventana.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Sensor.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Sensor.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SensorChell.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SensorChell.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Skt.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Skt.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SktAceptador.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SktAceptador.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SocketError.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SocketError.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Sonido.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Sonido.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SonidosChell.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/SonidosChell.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Teletransportador.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Teletransportador.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Thread.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Thread.h">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Timer.cpp">
-			<Option target="servidor"/>
-			<Option target="cliente"/>
-		</Unit>
-		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/Timer.h">
-			<Option target="servidor"/>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/cliente/vista_chell.h">
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/angulo.h">
@@ -735,11 +527,43 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_metal.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_metal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_metal_diagonal.cpp">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_metal_diagonal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_roca.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/bloque_roca.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/camara.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/camara.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -752,6 +576,14 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/click.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/cola_bloqueante.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/cola_bloqueante.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -779,6 +611,22 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/contador_tiempo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/contador_tiempo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/convertidor_coordenadas.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/convertidor_coordenadas.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/cuerpo.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
@@ -792,6 +640,14 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/disparo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/estado_chell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/estado_chell.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -815,7 +671,31 @@
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/info_cuerpo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/info_cuerpo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/info_cuerpo_box_2_d.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/input.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/input.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/mensajero.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/mensajero.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>
@@ -840,6 +720,126 @@
 			<Option target="cliente"/>
 		</Unit>
 		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/portal.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/protocolo.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/protocolo.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/renderizable.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/renderizable.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/roca.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/roca.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sdl_exception.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sdl_exception.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sensor.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sensor.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sensor_chell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sensor_chell.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/skt.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/skt.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/skt_aceptador.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/skt_aceptador.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/socket_error.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/socket_error.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sonido.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sonido.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sonidos_chell.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/sonidos_chell.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/teletransportador.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/teletransportador.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/textura.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/textura.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/thread.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/thread.h">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/ventana.cpp">
+			<Option target="servidor"/>
+			<Option target="cliente"/>
+		</Unit>
+		<Unit filename="/home/santi/Escritorio/tp4/TP4---Portal/src/comun/ventana.h">
 			<Option target="servidor"/>
 			<Option target="cliente"/>
 		</Unit>

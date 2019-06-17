@@ -7,7 +7,7 @@
 #include "ids.h"
 #include "chell.h"
 #include "BolaEnergia.h"
-#include "CoordConverter.h"
+#include "convertidor_coordenadas.h"
 
 Protocolo::Protocolo(Mensajero &mensajero) :
     mensajero(mensajero) {

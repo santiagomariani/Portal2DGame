@@ -2,8 +2,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-#include "Textura.h"
-#include "Ventana.h"
+#include "textura.h"
+#include "ventana.h"
 #include "sdl_exception.h"
 
 Textura::Textura() {

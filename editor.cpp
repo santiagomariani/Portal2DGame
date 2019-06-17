@@ -3,8 +3,8 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
-#include "Ventana.h"
-#include "Timer.h"
+#include "ventana.h"
+#include "contador_tiempo.h"
 #include "fondo_continuo.h"
 #include "imagen.h"
 #include "boton_jugar.h"

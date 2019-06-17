@@ -1,5 +1,5 @@
 #include "mundo.h"
-#include "BloqueRoca.h"
+#include "bloque_roca.h"
 #include "disparo.h"
 
 Mundo::Mundo(const b2Vec2& gravedad) : mundo(gravedad){

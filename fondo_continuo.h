@@ -2,8 +2,8 @@
 #define FONDO_CONTINUO_H
 
 
-#include "Textura.h"
-#include "Ventana.h"
+#include "textura.h"
+#include "ventana.h"
 
 class FondoContinuo{
 	int ancho_f;

@@ -3,11 +3,11 @@
 #include "SocketError.h"
 #include "cuerpo_a_enviar.h"
 #include "ids.h"
-#include "Timer.h"
+#include "contador_tiempo.h"
 #include <iostream>
 
 #define FPS 60
-#define TICKS_PER_FRAME 1245/FPS
+#define TICKS_POR_FOTOGRAMA 1245/FPS
 
 Partida::Partida(Fisica& fisica, SktAceptador skt, int cant_clientes):
                 fisica(fisica), skt_aceptador(std::move(skt)){
@@ -36,10 +36,10 @@ InfoCuerpoBox2D Partida::obtenerInfo(Cuerpo* cuerpo){
 
 
 void Partida::correrPartida(){ //
-    Timer capTimer;
+    ContadorTiempo capTimer;
 
     while (this->continuar_juego){
-        capTimer.start();
+        capTimer.comenzar();
         Input input;
         if (this->cola_input.pop(input)){
             //this->fisica.actualizarChell(input.id, input.estado_teclado, input.estado_mouse);
@@ -65,9 +65,9 @@ void Partida::correrPartida(){ //
             (*c)->push(cuerpo_a_enviar); // aca se esta copiando
         }
 
-        int frameTicks = capTimer.getTicks();
-        if (frameTicks < TICKS_PER_FRAME) {
-            SDL_Delay(TICKS_PER_FRAME - frameTicks);
+        int frameTicks = capTimer.obtenerTicks();
+        if (frameTicks < TICKS_POR_FOTOGRAMA) {
+            SDL_Delay(TICKS_POR_FOTOGRAMA - frameTicks);
         }
     }
 

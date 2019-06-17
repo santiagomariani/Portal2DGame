@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include "SktAceptador.h"
+#include "skt_aceptador.h"
 
 // Permite la comunicacion entre 2 objetos de
 // la misma clase.

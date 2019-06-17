@@ -41,7 +41,8 @@ void Chell::activar(b2Vec2& pos){
     myFixtureDef.restitution = 0;
 
     b2Vec2 pos_poligono(0, 0.125f); // posicion del centro del poligono
-    polygonShape.SetAsBox(config::tam_chell_x, config::tam_chell_y, pos_poligono, 0);
+    polygonShape.SetAsBox(config::tam_chell_x,
+            config::tam_chell_y, pos_poligono, 0);
     cuerpo->CreateFixture(&myFixtureDef);
 
     b2CircleShape circulo;
@@ -102,10 +103,8 @@ Chell::Chell(Chell&& otro) :
 
 void Chell::mover(EstadoTeclado& t){
     b2Vec2 vel = cuerpo->GetLinearVelocity();
-    //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
-    vel.x = config::velocidad_chell * t.presionada(SDLK_RIGHT) + -config::velocidad_chell * t.presionada(SDLK_LEFT);
-    //cuerpo->SetLinearVelocity(vel);
-    //}
+    vel.x = (config::velocidad_chell * t.presionada(SDLK_RIGHT))
+            + -config::velocidad_chell * t.presionada(SDLK_LEFT);
 
     if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
         vel.y = config::salto_chell * t.presionada(SDLK_UP);
@@ -115,9 +114,7 @@ void Chell::mover(EstadoTeclado& t){
             roca->getBody()->SetLinearVelocity(vel_roca);
         }
     }
-    //cuerpo->SetLinearVelocity(vel);
-    cuerpo->SetLinearVelocity(vel); // CAMBIAR
-
+    cuerpo->SetLinearVelocity(vel);
     estado_chell.actualizarEstado(*sensor, vel);
 }
 
@@ -150,7 +147,8 @@ void Chell::agarrarRoca(EstadoTeclado &t) {
     if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
         if (joint_roca == nullptr) {
             b2Vec2 nueva_pos_roca(
-                    this->getPosition().x + config::tam_chell_x + (roca->getMaxWidth() / 2),
+                    this->getPosition().x
+                    + config::tam_chell_x + (roca->getMaxWidth() / 2),
                     this->getPosition().y);
             roca->getBody()->SetTransform(nueva_pos_roca, 0);
             b2DistanceJointDef joint_def;
@@ -184,7 +182,6 @@ void Chell::terminarContacto(Cuerpo *otro) {
 }
 
 void Chell::morir(){
-    std::cout << "chell murio\n";
     estado_chell.chellMurio();
 }
 

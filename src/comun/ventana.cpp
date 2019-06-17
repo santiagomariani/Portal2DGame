@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "sdl_exception.h"
-#include "Ventana.h"
+#include "ventana.h"
 
 
 Ventana::Ventana(int ancho, int alto) :

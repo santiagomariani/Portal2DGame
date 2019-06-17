@@ -4,7 +4,7 @@
 #include <angulo_dos_setenta.h>
 #include <ids.h>
 #include <bloque_metal_diagonal.h>
-#include <BloqueMetal.h>
+#include <bloque_metal.h>
 #include <iostream>
 #include "manejador_partidas.h"
 #include "iniciar_partida.h"

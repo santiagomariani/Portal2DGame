@@ -1,5 +1,5 @@
 
-#include <SktAceptador.h>
+#include <skt_aceptador.h>
 #include "th_aceptador_clientes.h"
 #include "th_opcion_partida.h"
 #include "SocketError.h"
