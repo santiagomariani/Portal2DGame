@@ -47,6 +47,11 @@ void Editor::operator()(int* etapa){
 	Imagen emisor_abajo_sprite(1, 1456, 193, 193, &textura_bloques_1);
 	Imagen emisor_izquierda_sprite(1, 814, 193, 193, &textura_bloques_1);
 
+	Imagen receptor_arriba_sprite(233, 1243, 192, 192, &textura_bloques_1);
+	Imagen receptor_derecha_sprite(235, 1029, 192, 192, &textura_bloques_1);
+	Imagen receptor_abajo_sprite(232, 1457, 192, 192, &textura_bloques_1);
+	Imagen receptor_izquierda_sprite(235, 814, 192, 192, &textura_bloques_1);
+
 	std::string ruta_boton = "assets/miscellaneous.png";
 	Textura textura_misc(ruta_boton, ventana);
 	Imagen boton(1, 116, 175, 55, &textura_misc);
@@ -54,6 +59,10 @@ void Editor::operator()(int* etapa){
 	std::string compuertaPath = "assets/gate.png";
 	Textura compuertaTexture(compuertaPath, ventana);
 	Imagen compuerta_cerrada(1, 21, 193, 385, &compuertaTexture);
+
+	Imagen acido(1, 1545, 300, 61, &textura_misc);
+
+	Imagen barra_energia(528, 689, 8, 220, &textura_misc);
 
 	std::string diago_path = "assets/block-diago.png";
 	Textura diago_texture(diago_path, ventana);
@@ -68,6 +77,10 @@ void Editor::operator()(int* etapa){
     Textura diago270_texture(diago270_path, ventana);
 	Imagen bloqueMetalDiago270Sprite(2, 0, 177, 178, &diago270_texture);
 
+	std::string ruta_sp = "assets/spawn_point.png";
+	Textura textura_sp(ruta_sp, ventana);
+	Imagen imagen_sp(0, 0, 300, 300, &textura_sp);
+
 	std::string ruta_and = "assets/and.png";
     Textura textura_and(ruta_and, ventana);
 	Imagen imagen_and(0, 0, 290, 174, &textura_and);
@@ -75,6 +88,7 @@ void Editor::operator()(int* etapa){
 	std::string ruta_or = "assets/or.png";
     Textura textura_or(ruta_or, ventana);
 	Imagen imagen_or(0, 0, 466, 299, &textura_or);
+
 
 
 	std::map<int, Imagen*> imagenes;
@@ -86,10 +100,17 @@ void Editor::operator()(int* etapa){
 	imagenes.emplace(ID_EMISORDERECHA, &emisor_derecha_sprite);
 	imagenes.emplace(ID_EMISORABAJO, &emisor_abajo_sprite);
 	imagenes.emplace(ID_EMISORIZQUIERDA, &emisor_izquierda_sprite);
+	imagenes.emplace(ID_RECEPTORARRIBA_DESACTIVADO, &receptor_arriba_sprite);
+	imagenes.emplace(ID_RECEPTORABAJO_DESACTIVADO, &receptor_abajo_sprite);
+	imagenes.emplace(ID_RECEPTORIZQUIERDA_DESACTIVADO, &receptor_izquierda_sprite);
+	imagenes.emplace(ID_RECEPTORDERECHA_DESACTIVADO, &receptor_derecha_sprite);
 	imagenes.emplace(ID_BLOQUE_DIAGONAL_0, &bloqueMetalDiagoSprite);
 	imagenes.emplace(ID_BLOQUE_DIAGONAL_90, &bloqueMetalDiago90Sprite);
 	imagenes.emplace(ID_BLOQUE_DIAGONAL_180, &bloqueMetalDiago180Sprite);
 	imagenes.emplace(ID_BLOQUE_DIAGONAL_270, &bloqueMetalDiago270Sprite);
+	imagenes.emplace(ID_ACIDO, &acido);
+	imagenes.emplace(ID_BARRAENERGIA, &barra_energia);
+	imagenes.emplace(ID_SPAWNPOINT, &imagen_sp);
 	imagenes.emplace(ID_AND, &imagen_and);
 	imagenes.emplace(ID_OR, &imagen_or);
 	
@@ -113,10 +134,17 @@ void Editor::operator()(int* etapa){
 	botones_principales.emplace_back(cursor, ID_EMISORDERECHA, imagenes[ID_EMISORDERECHA]);
 	botones_principales.emplace_back(cursor, ID_EMISORABAJO, imagenes[ID_EMISORABAJO]);
 	botones_principales.emplace_back(cursor, ID_EMISORIZQUIERDA, imagenes[ID_EMISORIZQUIERDA]);
+	botones_principales.emplace_back(cursor, ID_RECEPTORDERECHA_DESACTIVADO, imagenes[ID_RECEPTORDERECHA_DESACTIVADO]);
+	botones_principales.emplace_back(cursor, ID_RECEPTORIZQUIERDA_DESACTIVADO, imagenes[ID_RECEPTORIZQUIERDA_DESACTIVADO]);
+	botones_principales.emplace_back(cursor, ID_RECEPTORABAJO_DESACTIVADO, imagenes[ID_RECEPTORABAJO_DESACTIVADO]);
+	botones_principales.emplace_back(cursor, ID_RECEPTORARRIBA_DESACTIVADO, imagenes[ID_RECEPTORARRIBA_DESACTIVADO]);
 	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_0, imagenes[ID_BLOQUE_DIAGONAL_0]);
 	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_90, imagenes[ID_BLOQUE_DIAGONAL_90]);
 	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_180, imagenes[ID_BLOQUE_DIAGONAL_180]);
 	botones_principales.emplace_back(cursor, ID_BLOQUE_DIAGONAL_270, imagenes[ID_BLOQUE_DIAGONAL_270]);
+	botones_principales.emplace_back(cursor, ID_ACIDO, imagenes[ID_ACIDO]);
+	botones_principales.emplace_back(cursor, ID_BARRAENERGIA, imagenes[ID_BARRAENERGIA]);
+	botones_principales.emplace_back(cursor, ID_SPAWNPOINT, imagenes[ID_SPAWNPOINT]);
 	botones_principales.emplace_back(cursor, ID_AND, imagenes[ID_AND]);
 	botones_principales.emplace_back(cursor, ID_OR, imagenes[ID_OR]);
 	botonera.setBotones(&botones_principales);

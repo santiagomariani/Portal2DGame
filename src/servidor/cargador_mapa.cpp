@@ -40,7 +40,11 @@ void CargadorMapa::cargarMapa() {
 		    case(ID_SPAWNPOINT):
 		        posiciones.emplace_back(x, y);
 		        fisica.agregarPosChell(posiciones.back());
-		        break;
+				break;
+			case(ID_BLOQUE_METAL):
+				posiciones.emplace_back(x, y);
+				bloques_metal.emplace_back(mundo, posiciones.back());
+				break;
 		}
 	}
 	for (auto it = archivo["Conexiones"].begin(); it != archivo["Conexiones"].end(); ++it){
