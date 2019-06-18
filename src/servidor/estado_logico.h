@@ -8,10 +8,11 @@
 // y así poder agregarlo a diferentes compuertas And, Or, etc.
 
 class EstadoLogico : public CompuertaLogica {
-	Cuerpo& cuerpo;
+	std::unique_ptr<Cuerpo> cuerpo;
 public:
-	EstadoLogico(Cuerpo& cuerpo);
+	EstadoLogico(std::unique_ptr<Cuerpo> cuerpo);
 	bool encendida();
+	void agregar(std::shared_ptr<CompuertaLogica> compuerta) override;
 	~EstadoLogico() = default;
 };
 

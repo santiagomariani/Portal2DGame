@@ -13,16 +13,17 @@
 class Personajes{
 	std::map<int,Chell> personajes;
 	std::map<int, EstadoTeclado> teclados;
+	std::vector<b2Vec2>& pos_chells;
 	int siguiente_client;
 	Mundo& mundo;
 
     void moverChell(int chell_id, EstadoTeclado &teclado);
 
 public:
-	explicit Personajes(Mundo& m);
+    Personajes(Mundo& m, std::vector<b2Vec2>& pos_chells);
 
 	// Devuelve el id de la Chell creada.
-	int agregar_chell();
+	int agregar_chell(b2Vec2& pos);
 	Chell& obtener_chell(int chell_id);
 	// Actualiza el movimiento de cada Chell
 	// segun lo recibido del teclado y mouse.

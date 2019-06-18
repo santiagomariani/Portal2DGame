@@ -12,7 +12,7 @@ public:
 	And();
 
 	// Agrega una compuerta logica a la entrada de la And.
-	void agregar(std::shared_ptr<CompuertaLogica>& compuerta);
+	void agregar(std::shared_ptr<CompuertaLogica> compuerta);
 
 	// Devuelve el resultado actual de hacer And con las compuertas.
 	// true si esta encendida (1) o false si no (0)

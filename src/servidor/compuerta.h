@@ -10,14 +10,17 @@
 // Compuerta del juego
 
 class Compuerta : public Cuerpo{
-	CompuertaLogica& compuerta_logica;
+    std::shared_ptr<CompuertaLogica> compuerta_logica;
 	b2Body* cuerpo;
 	b2Body* base;
 	EstadoCompuerta* estado;
 public:
-	// Recibe una compuerta logica de la cual se obtiene el estado booleando
-	// para que se abra o no la compuerta.
-	Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica);
+
+	Compuerta(b2Vec2& pos, Mundo& mundo);
+	Compuerta& operator=(Compuerta&& otra);
+    // Recibe una compuerta logica de la cual se obtiene el estado booleando
+    // para que se abra o no la compuerta.
+    void agregarCompuertaLogica(std::shared_ptr<CompuertaLogica> compuerta);
 	// Devuelve si la compuerta esta activa o no
 	// (abierta o no)
 	bool estaActiva();

@@ -3,6 +3,7 @@
 #include <contador_tiempo.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL.h>
 #include "pantalla_error_partida.h"
 
 PantallaErrorPartida::PantallaErrorPartida(){
@@ -24,9 +25,13 @@ void PantallaErrorPartida::operator()(){
 
     bool corriendo = true;
 
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                         "Error",
+                         "Hubo un error en la conexion",
+                         NULL);
 
     //=Loop=
-    ContadorTiempo capTimer;
+    /*ContadorTiempo capTimer;
     SDL_Event event;
     while (corriendo){
         ventana.pintar(0x33, 0x33, 0x33, 0xFF);
@@ -47,5 +52,5 @@ void PantallaErrorPartida::operator()(){
         if (frameTicks < TICKS_PER_FRAME) {
             SDL_Delay(TICKS_PER_FRAME - frameTicks);
         }
-    }
+    }*/
 }

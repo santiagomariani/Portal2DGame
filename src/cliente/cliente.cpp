@@ -40,8 +40,12 @@ void Cliente::iniciar(int* etapa) {
             return; // cerrar programa (o ventana)
         }
     } catch (SocketError& e){
-        PantallaErrorPartida error_partida;
-        error_partida();
+        //PantallaErrorPartida error_partida;
+        //error_partida();
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                         "Error",
+                         "Hubo un error en la conexion",
+                         NULL);
         *etapa = 0;
         return;
     }

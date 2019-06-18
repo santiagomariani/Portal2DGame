@@ -3,15 +3,13 @@
 #include <estado_mouse.h>
 #include "estado_chell.h"
 
-Personajes::Personajes(Mundo& m) : mundo(m){
+Personajes::Personajes(Mundo& m, std::vector<b2Vec2>& pos_chells) :
+                       pos_chells(pos_chells), mundo(m){
 	this->siguiente_client = 0;
 }
 
-int Personajes::agregar_chell(){
+int Personajes::agregar_chell(b2Vec2& pos){
 	int id = this->siguiente_client;
-	float posx = 2 + 1*id;
-	float posy = 2;
-	b2Vec2 pos(posx, posy); // POS INICIAL
 	Chell chell(id, this->mundo);
 	chell.activar(pos);
 	this->personajes.emplace(id, std::move(chell)); //mov
@@ -31,23 +29,12 @@ void Personajes::actualizarChells(){
     for (auto tc=teclados.begin(); tc!=teclados.end(); tc++){
         this->moverChell(tc->first, tc->second);
     }
-
-    /*auto it = personajes.begin();
-    while (it != personajes.end()) {
-        if (it->second.obtenerEstado() == CHELL_MUERE) {
-            teclados.erase((it->first));
-            it = personajes.erase(it);
-        } else {
-            ++it;
-        }
-    }*/
 }
 
 void Personajes::moverChell(int chell_id, EstadoTeclado& teclado){
     Chell& chell = personajes.at(chell_id);
     chell.agarrarRoca(teclado);
     chell.mover(teclado);
-
 }
 
 void Personajes::agregarClick(int chell_id, EstadoMouse& mouse){

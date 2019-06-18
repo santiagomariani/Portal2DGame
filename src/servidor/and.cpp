@@ -4,7 +4,7 @@ And::And(){
 }
 
 
-void And::agregar(std::shared_ptr<CompuertaLogica>& compuerta){
+void And::agregar(std::shared_ptr<CompuertaLogica> compuerta){
 	compuertas.push_back(compuerta);
 }
 

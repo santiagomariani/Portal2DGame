@@ -8,10 +8,10 @@
 // Compuerta logia Or
 
 class Or : public CompuertaLogica {
-	std::vector<CompuertaLogica*> compuertas;
+	std::vector<std::shared_ptr<CompuertaLogica>> compuertas;
 public:
 	Or();
-	void agregar(CompuertaLogica* compuerta);
+	void agregar(std::shared_ptr<CompuertaLogica> compuerta);
 	bool encendida();
 	~Or() = default;
 };

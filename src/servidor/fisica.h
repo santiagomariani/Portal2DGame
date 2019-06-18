@@ -13,8 +13,12 @@
 class Fisica{
 	Mundo& mundo;
 	Personajes personajes;
+    std::vector<b2Vec2> pos_chells;
 public:
-	explicit Fisica(Mundo& mundo);	
+	explicit Fisica(Mundo& mundo);
+	// Agrega un spawn point para los personajes
+	void agregarPosChell(b2Vec2& pos_chell);
+	// Agrega una Chell al mundo
 	void agregarNuevaChell();
 	// Actualiza todo lo relacionado al mundo
 	void actualizar();

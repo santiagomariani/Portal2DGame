@@ -5,8 +5,8 @@
 #include "personajes.h"
 #include "Box2D/Box2D.h"
 
-Fisica::Fisica(Mundo& mundo): 
-				mundo(mundo), personajes(mundo){
+Fisica::Fisica(Mundo& mundo):
+				mundo(mundo), personajes(mundo, pos_chells){
 }
 
 void Fisica::actualizar(){
@@ -39,16 +39,26 @@ void Fisica::agregarMouse(int id, EstadoMouse& mouse){
 }
 
 void Fisica::agregarNuevaChell() {
-    personajes.agregar_chell();
+    if (pos_chells.empty()){
+        b2Vec2 pos(0, 0);
+        personajes.agregar_chell(pos);
+        return;
+    }
+    b2Vec2& pos = pos_chells.back();
+    personajes.agregar_chell(pos);
+    //pos_chells.pop_back();
 }
 
 void Fisica::eliminarChell(int id_chell) {
     this->personajes.eliminarChell(id_chell);
-
 }
 
 int Fisica::cantChells() {
     return this->personajes.cantChells();
+}
+
+void Fisica::agregarPosChell(b2Vec2& pos_chell) {
+    this->pos_chells.push_back(pos_chell);
 }
 
 

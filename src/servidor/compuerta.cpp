@@ -7,10 +7,9 @@
 #define TAM_COMP_BASE_X 0.15
 #define TAM_COMP_BASE_Y 0.06
 
-Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logica):
+Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo):
                     Cuerpo(config.tam_compuerta_x*2,
-                    config.tam_compuerta_y*2 + TAM_COMP_BASE_Y*2),
-                    compuerta_logica(compuerta_logica){
+                    config.tam_compuerta_y*2 + TAM_COMP_BASE_Y*2){
 
     // parte de ariba de la compuerta
     b2BodyDef cuerpo_def;
@@ -46,7 +45,7 @@ Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo, CompuertaLogica& compuerta_logic
 }
 
 bool Compuerta::estaActiva(){
-    return compuerta_logica.encendida();
+    return compuerta_logica->encendida();
 }
 
 void Compuerta::actualizar(){
@@ -72,4 +71,15 @@ const b2Vec2& Compuerta::getPosition(){
 
 Compuerta::~Compuerta(){
     delete estado;
+}
+
+void Compuerta::agregarCompuertaLogica(std::shared_ptr<CompuertaLogica> compuerta) {
+    compuerta_logica = compuerta;
+}
+
+Compuerta& Compuerta::operator=(Compuerta&& otra) {
+    compuerta_logica = std::move(otra.compuerta_logica);
+    cuerpo = otra.cuerpo;
+    base = otra.base;
+    estado = otra.estado;
 }

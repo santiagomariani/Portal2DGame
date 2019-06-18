@@ -9,8 +9,10 @@
 #define FPS 60
 #define TICKS_POR_FOTOGRAMA 1245/FPS
 
-Partida::Partida(Fisica& fisica, SktAceptador skt, int cant_clientes):
-                fisica(fisica), skt_aceptador(std::move(skt)),
+Partida::Partida(Fisica& fisica, SktAceptador skt,
+                 int cant_clientes):
+                fisica(fisica),
+                skt_aceptador(std::move(skt)),
                 continuar_juego(true){
     this->cant_clientes = cant_clientes;
     this->recibir_clientes = true;
@@ -35,7 +37,7 @@ InfoCuerpoBox2D Partida::obtenerInfo(Cuerpo* cuerpo){
 }
 
 
-void Partida::correrPartida(){ //
+void Partida::correrPartida(){
     ContadorTiempo capTimer;
 
     while (this->continuar_juego){
@@ -48,7 +50,6 @@ void Partida::correrPartida(){ //
         capTimer.comenzar();
         Input input;
         if (this->cola_input.pop(input)){
-            //this->fisica.actualizarChell(input.id, input.estado_teclado, input.estado_mouse);
             if (input.chell_muerta == 1){
                 std::cout << "chell muerta\n";
                 this->fisica.eliminarChell(input.id);
@@ -101,7 +102,6 @@ int Partida::recibirClientes(){
     while (this->recibir_clientes && i < cant_clientes){
         try{
             Skt acept_skt = std::move(this->skt_aceptador.aceptarCliente());
-            //std::shared_ptr<ColaBloqueanteCuerpos> c(new ColaBloqueanteCuerpos);
             ColaBloqueanteCuerpos* c = new ColaBloqueanteCuerpos();
             colas_clientes.push_back(c);
 

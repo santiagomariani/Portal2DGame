@@ -3,7 +3,7 @@
 Or::Or(){
 }
 
-void Or::agregar(CompuertaLogica* compuerta){
+void Or::agregar(std::shared_ptr<CompuertaLogica> compuerta){
 	compuertas.push_back(compuerta);
 }
 
