@@ -34,6 +34,7 @@
 #define ID_ACIDO 30
 #define ID_BARRAENERGIA 31
 
+#define ID_SPAWNPOINT 99
 #define ID_AND 100
 #define ID_OR 101
 

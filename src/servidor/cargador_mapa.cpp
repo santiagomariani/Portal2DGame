@@ -22,7 +22,6 @@ void CargadorMapa::cargarMapa() {
 	int id, identificador, x, y;
 	YAML::Node archivo = YAML::LoadFile("prueba.yaml");
 	for (auto it = archivo["Bloques"].begin(); it != archivo["Bloques"].end(); ++it){
-		
 		id = (*it)["Id"].as<int>();
 		identificador = (*it)["Identificador"].as<int>();
 		x = (*it)["X"].as<int>();
@@ -33,9 +32,15 @@ void CargadorMapa::cargarMapa() {
 			case(ID_BLOQUE_ROCA):
 				posiciones.emplace_back(x, y);
 				bloques_roca.emplace_back(id, mundo, posiciones.back());
+                break;
 			case(ID_BLOQUE_METAL):
 				posiciones.emplace_back(x, y);
 				bloques_metal.emplace_back(mundo, posiciones.back());
+                break;
+		    case(ID_SPAWNPOINT):
+		        posiciones.emplace_back(x, y);
+		        fisica.agregarPosChell(posiciones.back());
+		        break;
 		}
 	}
 	for (auto it = archivo["Conexiones"].begin(); it != archivo["Conexiones"].end(); ++it){
