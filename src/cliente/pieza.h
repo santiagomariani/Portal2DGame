@@ -4,6 +4,7 @@
 #include "imagen.h"
 #include <SDL2/SDL.h>
 
+	// Representa un bloque del juego en el editor
 class Pieza{
 	int ancho;
 	int alto;

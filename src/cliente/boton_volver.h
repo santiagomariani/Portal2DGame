@@ -8,6 +8,8 @@ class BotonVolver : public Presionable{
 	bool* corriendo;
 public:
 	BotonVolver(Imagen* imagen, int* etapa, bool* corriendo);
+
+	// Pasa del editor a la ventana de inicio
 	void presionar() override;
 };
 

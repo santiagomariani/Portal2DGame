@@ -16,10 +16,20 @@ class Cursor{
 	friend class MapaEditor;
 public:
 	Cursor(std::map<int, Imagen*>& imagenes, int id);
+
+	// Guarda _id
 	void setId(int _id);
+	
+	// Devuelve una pieza con los datos que contiene
 	Pieza actual();
+
+	// Muestra la ultima pieza clieckeada en la esquina de la pantalla
 	void render();
+
+	// Actualiza el ultimo y anteultimo click
 	void click(int identificador);
+
+	// Pone el ultimo y anteultimo click en -1
 	void resetClick();
 
 };

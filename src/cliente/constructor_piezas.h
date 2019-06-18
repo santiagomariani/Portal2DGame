@@ -10,6 +10,8 @@ class ConstructorDePiezas{
 	int identificador = 0;
 public:
 	ConstructorDePiezas(std::map<int, Imagen*>& imagenes);
+
+	//Crea las piezas
 	Pieza construir(int id);
 };
 

@@ -7,6 +7,8 @@ class BotonEscribir : public Presionable{
 	bool* escribir;
 public:
 	BotonEscribir(Imagen* imagen, bool* escribir);
+
+	// Habilita al usuario escribir
 	void presionar() override;
 };
 
