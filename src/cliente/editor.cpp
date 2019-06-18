@@ -18,6 +18,9 @@
 #include "botonera.h"
 #include "texto.h"
 
+#include <iostream>
+#include "yaml-cpp/yaml.h"
+
 #define CELDA 50
 #define SEP 40
 
@@ -244,5 +247,4 @@ void Editor::operator()(int* etapa){
 		}
 	}
 	TTF_Quit();
-	//mapa.guardar("prueba.txt");
 }

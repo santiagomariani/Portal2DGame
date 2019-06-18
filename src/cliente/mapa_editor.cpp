@@ -119,8 +119,10 @@ void MapaEditor::guardar(std::string& nombre){
 			out << YAML::Value << it_interno->second.id;
 			out << YAML::Key << "Identificador";
 			out << YAML::Value << it_interno->second.getIdentificador();
-			out << YAML::Key << "Pos";
-			out << YAML::Value << YAML::Flow << YAML::BeginSeq << it->first << it_interno->first << YAML::EndSeq;
+			out << YAML::Key << "X";
+			out << YAML::Value << it->first;
+			out << YAML::Key << "Y";
+			out << YAML::Value << (it_interno->first) * -1;
 			out << YAML::EndMap;
 		}
 	}
@@ -130,7 +132,9 @@ void MapaEditor::guardar(std::string& nombre){
 	out << YAML::BeginSeq;
 	for (auto it = conexiones.begin(); it != conexiones.end(); ++it){
 		out << YAML::BeginMap;
-		out << YAML::Key << it->first;
+		out << YAML::Key << "A";
+		out << YAML::Value << it->first;
+		out << YAML::Key << "B";
 		out << YAML::Value << it->second;
 		out << YAML::EndMap;
 	}
