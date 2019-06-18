@@ -6,13 +6,21 @@ ConstructorDePiezas::ConstructorDePiezas(std::map<int, Imagen*>& imagenes) :
 }
 
 Pieza ConstructorDePiezas::construir(int id){
-	if (id == ID_BOTON_APAGADO || id == ID_AND || id == ID_OR){
-		identificador++;
-		return Pieza(id, 1, 1, imagenes[id], true, identificador);
-	}
-	if (id == ID_COMPUERTA_CERRADA){
-		identificador++;
-		return Pieza(id, 1, 2, imagenes[id], true, identificador);
+	switch(id){
+		case(ID_BOTON_APAGADO):
+		case(ID_RECEPTORARRIBA_DESACTIVADO):
+		case(ID_RECEPTORABAJO_DESACTIVADO):
+		case(ID_RECEPTORIZQUIERDA_DESACTIVADO):
+		case(ID_RECEPTORDERECHA_DESACTIVADO):
+		case(ID_AND):
+		case(ID_OR):
+			identificador++;
+			return Pieza(id, 1, 1, imagenes[id], true, identificador);
+		case(ID_COMPUERTA_CERRADA):
+			identificador++;
+			return Pieza(id, 1, 2, imagenes[id], true, identificador);
+		case(ID_BARRAENERGIA):
+			return Pieza(id, 1, 2, imagenes[id], false, -1);
 	}
 	return Pieza(id, 1, 1, imagenes[id], false, -1);
 }

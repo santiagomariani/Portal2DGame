@@ -33,9 +33,11 @@ void CargadorMapa::cargarMapa() {
 			case(ID_BLOQUE_ROCA):
 				posiciones.emplace_back(x, y);
 				bloques_roca.emplace_back(id, mundo, posiciones.back());
+				break;
 			case(ID_BLOQUE_METAL):
 				posiciones.emplace_back(x, y);
 				bloques_metal.emplace_back(mundo, posiciones.back());
+				break;
 		}
 	}
 	for (auto it = archivo["Conexiones"].begin(); it != archivo["Conexiones"].end(); ++it){
