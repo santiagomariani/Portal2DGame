@@ -84,7 +84,6 @@ Compuerta comp(pos_compuerta, mundo, compuerta_or);*/
 
 // con botones AND:
     std::shared_ptr<And> compuerta_and(new And());
-    //And* compuerta_and = new And();
     compuerta_and->agregar((compuertas_logicas[2]));
     compuerta_and->agregar((compuertas_logicas[3]));
     compuertas_logicas[i] = std::move(compuerta_and);
@@ -97,13 +96,14 @@ Compuerta comp(pos_compuerta, mundo, compuerta_or);*/
     posiciones.emplace_back(-16, -2);
     emisores_arriba.emplace_back(mundo, posiciones.back());
 
-    posiciones.emplace_back(-17, 2);
-    emisores_abajo.emplace_back(mundo, posiciones.back());
+
     posiciones.emplace_back(-22, 1);
     emisores_derecha.emplace_back(mundo, posiciones.back());
     posiciones.emplace_back(-11, 1);
     emisores_izquierda.emplace_back(mundo, posiciones.back());
     */
+    posiciones.emplace_back(-17, 2);
+    emisores_abajo.emplace_back(mundo, posiciones.back());
 
 // Acido
     posiciones.emplace_back(-24, -2.5 + 0.06);
