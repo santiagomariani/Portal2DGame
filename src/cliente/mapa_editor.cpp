@@ -142,7 +142,7 @@ void MapaEditor::guardar(std::string& nombre){
 
 
 
-	std::string ruta_mapa = nombre + ".yaml";
+	std::string ruta_mapa = "mapas/" + nombre + ".yaml";
 	std::ofstream salida(ruta_mapa);
 	salida << out.c_str();
 	/*
