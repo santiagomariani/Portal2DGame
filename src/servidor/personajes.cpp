@@ -33,12 +33,19 @@ void Personajes::actualizarChells(){
 
 void Personajes::moverChell(int chell_id, EstadoTeclado& teclado){
     Chell& chell = personajes.at(chell_id);
+    if (chell.obtenerEstado() == CHELL_GANO){
+        return;
+    }
     chell.agarrarRoca(teclado);
     chell.mover(teclado);
 }
 
 void Personajes::agregarClick(int chell_id, EstadoMouse& mouse){
     Chell& chell = personajes.at(chell_id);
+    if (chell.obtenerEstado() == CHELL_GANO){
+        return;
+    }
+    
     if (mouse.clickDerecho()){
         b2Vec2 click = mouse.posClickDerecho();
         chell.dispararNaranja(click);

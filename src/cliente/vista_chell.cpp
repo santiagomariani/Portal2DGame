@@ -20,6 +20,7 @@ void VistaChell::creacionSprites() {
     sprites.insert(std::make_pair(CHELL_MOVIENDOSE,
                                   Sprite(194, 204, 1, 4123, 12,
                                           textura_chell)));
+
     // RestingIdle | Chell descansa
     sprites.insert(std::make_pair(CHELL_QUIETA,
                                   Sprite(104, 215, 1, 2073, 7,
@@ -47,6 +48,12 @@ void VistaChell::creacionSprites() {
     // Die | Chell muere.
     sprites_transitorios.insert(std::make_pair(CHELL_MUERE,
             Sprite(175, 261, 1, 8825, 72, textura_chell)));
+
+    // Chell gana, llega a la torta.
+    sprites.insert((std::make_pair(CHELL_GANO,
+                                   Sprite(168, 243, 1, 6609, 79,
+                                          textura_chell))));
+
     estado_actual = CHELL_QUIETA;
 }
 

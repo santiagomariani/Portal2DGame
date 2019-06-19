@@ -80,6 +80,9 @@ struct Config{
 
     // Ancho y alto de los emisores de energia
     float tam_emisor = 0.5f;
+
+    // Ancho y alto de la torta;
+    float tam_torta = 0.3f;
 };
 
 extern Config config;

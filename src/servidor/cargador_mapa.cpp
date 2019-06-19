@@ -147,6 +147,10 @@ void CargadorMapa::cargarMapa() {
                 compuertas_logicas[identificador] = std::move(a);
                 break;
             }
+            case(ID_TORTA):{
+                posiciones.emplace_back(x, y);
+                tortas.emplace_back(mundo, posiciones.back());
+            }
 
 		}
 

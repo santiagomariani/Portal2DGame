@@ -106,11 +106,6 @@ void Chell::mover(EstadoTeclado& t){
     }
     b2Vec2 vel = cuerpo->GetLinearVelocity();
     float32 tecla = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
-
-    //if (t.presionada(SDLK_RIGHT) || t.presionada(SDLK_LEFT)){
-    //vel.x = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
-    //cuerpo->SetLinearVelocity(vel);
-    //}
     if (tecla == 0){
         if (abs(vel.x) < 0.2) {
             vel.x = 0;
@@ -234,4 +229,11 @@ void Chell::desactivar() {
         mundo.destruirBody(this->cuerpo);
         this->cuerpo = nullptr;
     }
+}
+
+void Chell::ganar(){
+    if (this->cuerpo){
+        //this->cuerpo->SetActive(false);
+    }
+    this->estado_chell.chellGano();
 }

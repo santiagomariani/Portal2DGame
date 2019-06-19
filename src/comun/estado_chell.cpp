@@ -20,6 +20,10 @@ void EstadoChell::actualizarEstado(SensorChell &s, b2Vec2 &vel) {
 
     uint8_t orientacion_nueva;
     uint8_t estado_nuevo;
+
+    if (estado_actual == CHELL_GANO){
+        return;
+    }
     
     // hardcodeado - ver que hacer desp con la muerte.
     if ((estado_actual == CHELL_MUERE) && (i == 0)) {
@@ -81,4 +85,8 @@ uint8_t EstadoChell::obtenerOrientacion() {
 
 void EstadoChell::chellMurio() {
     estado_actual = CHELL_MUERE;
+}
+
+void EstadoChell::chellGano() {
+    estado_actual = CHELL_GANO;
 }

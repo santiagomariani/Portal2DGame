@@ -47,6 +47,9 @@ void Renderizador::renderizar() {
                               nullptr,
                               ic.espejado);
             camara.reproducirSonidoChell(sonidos_chell, ic.destino, ic.estado);
+            if (ic.estado == CHELL_GANO){
+                // se puede mostrar una pantallita  
+            }
         } else {
             camara.renderizar(*(renderizables[ic.id]),
                               ic.destino,

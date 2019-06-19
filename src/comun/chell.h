@@ -55,6 +55,7 @@ public:
 	void empezarContacto(Cuerpo* otro) override;
 	void terminarContacto(Cuerpo* otro) override;
 	void desactivar() override;
+	void ganar();
 };
 
 #endif //CHELL_H

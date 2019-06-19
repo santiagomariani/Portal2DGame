@@ -29,6 +29,7 @@
 #include "acido.h"
 #include "barra_de_energia.h"
 #include "fisica.h"
+#include "torta.h"
 
 // Clase encargada de cargar y guardar un mapa dese un archivo yaml
 
@@ -63,6 +64,7 @@ class CargadorMapa {
     std::list<EmisorDerecha> emisores_derecha;
     std::list<Acido> acidos;
     std::list<BarraDeEnergia> barras_de_energia;
+    std::list<Torta> tortas;
 
 public:
     CargadorMapa();

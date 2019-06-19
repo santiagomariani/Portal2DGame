@@ -14,6 +14,7 @@
 #define CHELL_EN_EL_AIRE_Y_DISPARA 6
 #define CHELL_SALTA 7
 #define CHELL_MUERE 8
+#define CHELL_GANO 10
 
 #define CHELL_MIRA_DERECHA 0
 #define CHELL_MIRA_IZQ 1
@@ -38,6 +39,8 @@ public:
     uint8_t obtenerOrientacion();
     // Actualiza el estado de la Chell por haber muerto.
     void chellMurio();
+    // Actualiza el estado de la Chell por haber llegado a la torta.
+    void chellGano();
 };
 
 
