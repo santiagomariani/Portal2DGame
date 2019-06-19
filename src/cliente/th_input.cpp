@@ -3,7 +3,7 @@
 #include "th_input.h"
 
 ThInput::ThInput(ColaBloqueante<Input> &cola_input,
-        Protocolo &protocolo, int id) :
+                 Protocolo &protocolo, uint8_t id) :
         cola_input(cola_input),
         protocolo(protocolo),
         id(id){

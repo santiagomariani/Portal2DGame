@@ -28,7 +28,7 @@ public:
     float getMaxHeight() {
         return maxHeight;
     }
-    ~Cuerpo() {};
+    virtual ~Cuerpo() {};
 	// Devuelve el b2Body asociado al cuerpo.
     virtual b2Body* getBody() {return nullptr;};
     // El cuerpo debera indicar que hacer en caso de que comienze contacto con

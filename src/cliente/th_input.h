@@ -12,10 +12,10 @@ class ThInput : public Thread {
 private:
     ColaBloqueante<Input> &cola_input;
     Protocolo &protocolo;
-    int id;
+    uint8_t id;
     
 public:
-    ThInput(ColaBloqueante<Input> &cola_input, Protocolo &protocolo, int id);
+    ThInput(ColaBloqueante<Input> &cola_input, Protocolo &protocolo, uint8_t id);
     // Saca de la cola de input el input obtenido en el cliente para enviarlo
     // luego al servidor.
     virtual void run();
