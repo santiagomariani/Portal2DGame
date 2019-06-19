@@ -13,7 +13,7 @@ class BolaEnergia : public Cuerpo {
 private:
     b2Body *cuerpo;
     Mundo& mundo;
-    const unsigned int TIEMPO_VIDA = 500;
+    const unsigned int TIEMPO_VIDA = 1000;
     unsigned int contador;
     bool finalizo;
 

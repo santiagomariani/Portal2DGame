@@ -32,6 +32,7 @@ InfoCuerpoBox2D Partida::obtenerInfo(Cuerpo* cuerpo){
     } else {
         info.estado = 0;
         info.orientacion = 0;
+        info.id_chell = 0;
     }
     return info;
 }

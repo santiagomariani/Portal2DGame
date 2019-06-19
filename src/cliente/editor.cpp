@@ -89,7 +89,9 @@ void Editor::operator()(int* etapa){
     Textura textura_or(ruta_or, ventana);
 	Imagen imagen_or(0, 0, 466, 299, &textura_or);
 
-
+	std::string ruta_roca = "assets/fx.png";
+	Textura textura_roca(ruta_roca, ventana);
+	Imagen imagen_roca(1, 4513, 83, 83, &textura_roca);
 
 	std::map<int, Imagen*> imagenes;
 	imagenes.emplace(ID_BLOQUE_ROCA, &bloque_roca);
@@ -113,7 +115,8 @@ void Editor::operator()(int* etapa){
 	imagenes.emplace(ID_SPAWNPOINT, &imagen_sp);
 	imagenes.emplace(ID_AND, &imagen_and);
 	imagenes.emplace(ID_OR, &imagen_or);
-	
+	imagenes.emplace(ID_ROCA, &imagen_roca);
+
 	//=Panel=
 	std::string ruta_panel = "assets/panel_blanco.png";
     Textura textura_panel(ruta_panel, ventana);
@@ -134,6 +137,7 @@ void Editor::operator()(int* etapa){
 	botones_principales.emplace_back(cursor, ID_EMISORDERECHA, imagenes[ID_EMISORDERECHA]);
 	botones_principales.emplace_back(cursor, ID_EMISORABAJO, imagenes[ID_EMISORABAJO]);
 	botones_principales.emplace_back(cursor, ID_EMISORIZQUIERDA, imagenes[ID_EMISORIZQUIERDA]);
+	botones_principales.emplace_back(cursor, ID_ROCA, imagenes[ID_ROCA]);
 	botones_principales.emplace_back(cursor, ID_RECEPTORDERECHA_DESACTIVADO, imagenes[ID_RECEPTORDERECHA_DESACTIVADO]);
 	botones_principales.emplace_back(cursor, ID_RECEPTORIZQUIERDA_DESACTIVADO, imagenes[ID_RECEPTORIZQUIERDA_DESACTIVADO]);
 	botones_principales.emplace_back(cursor, ID_RECEPTORABAJO_DESACTIVADO, imagenes[ID_RECEPTORABAJO_DESACTIVADO]);

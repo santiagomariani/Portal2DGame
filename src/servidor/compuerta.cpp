@@ -45,6 +45,9 @@ Compuerta::Compuerta(b2Vec2& pos, Mundo& mundo):
 }
 
 bool Compuerta::estaActiva(){
+    if (!compuerta_logica){
+        return false;
+    }
     return compuerta_logica->encendida();
 }
 

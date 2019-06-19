@@ -88,6 +88,10 @@ void CargadorMapa::cargarMapa() {
 		        posiciones.emplace_back(x, y - 0.5);
 		        barras_de_energia.emplace_back(mundo, posiciones.back());
                 break;
+		    case(ID_ROCA):
+		        posiciones.emplace_back(x, y);
+		        rocas.emplace_back(mundo, posiciones.back());
+		        break;
 		    case(ID_BOTON_APAGADO): {
                 posiciones.emplace_back(x, y);
                 std::unique_ptr<Cuerpo> b(new Boton(posiciones.back(), mundo));
@@ -155,7 +159,7 @@ void CargadorMapa::cargarMapa() {
 	    int a = (*it)["A"].as<int>();
         int b = (*it)["B"].as<int>();
 
-        compuertas_logicas[b]->agregar(compuertas_logicas[b]);
+        compuertas_logicas[b]->agregar(compuertas_logicas[a]);
 	}
 	/*
 	posiciones.emplace_back(-12,0);

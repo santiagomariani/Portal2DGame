@@ -8,7 +8,7 @@
 
 struct Input {
     // Id del jugador.
-    int id;
+    uint8_t id;
     EstadoTeclado estado_teclado;
     EstadoMouse estado_mouse;
     uint8_t chell_muerta = 0;

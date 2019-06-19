@@ -1,0 +1,78 @@
+Bloques:
+  - Id: 18
+    Identificador: -1
+    Pos: [4, 6]
+  - Id: 3
+    Identificador: -1
+    Pos: [4, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [5, 7]
+  - Id: 9
+    Identificador: -1
+    Pos: [6, 6]
+  - Id: 3
+    Identificador: -1
+    Pos: [6, 7]
+  - Id: 100
+    Identificador: 5
+    Pos: [7, 3]
+  - Id: 3
+    Identificador: -1
+    Pos: [7, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [8, 7]
+  - Id: 6
+    Identificador: 1
+    Pos: [9, 6]
+  - Id: 3
+    Identificador: -1
+    Pos: [9, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [10, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [11, 7]
+  - Id: 16
+    Identificador: 4
+    Pos: [12, 5]
+  - Id: 18
+    Identificador: -1
+    Pos: [12, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [13, 7]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 1]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 2]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 3]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 4]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 5]
+  - Id: 1
+    Identificador: -1
+    Pos: [14, 6]
+  - Id: 3
+    Identificador: -1
+    Pos: [14, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [15, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [16, 7]
+  - Id: 3
+    Identificador: -1
+    Pos: [17, 7]
+Conexiones:
+  []

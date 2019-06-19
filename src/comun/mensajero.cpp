@@ -44,7 +44,9 @@ Mensajero &Mensajero::operator<<(int32_t numero) {
 }
 
 Mensajero &Mensajero::operator>>(uint8_t &numero) {
-    skt.leerMensaje((char *) &numero, UNBYTE);
+    uint8_t aux;
+    skt.leerMensaje((char *) &aux, UNBYTE);
+    numero = aux;
     return *this;
 }
 
