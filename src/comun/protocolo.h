@@ -5,7 +5,6 @@
 
 #include <deque>
 #include <info_cuerpo_box_2_d.h>
-
 #include "estado_teclado.h"
 #include "cuerpo.h"
 #include "info_cuerpo.h"

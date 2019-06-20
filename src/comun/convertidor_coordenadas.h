@@ -5,7 +5,6 @@
 
 #include <SDL2/SDL_rect.h>
 #include <Box2D/Common/b2Math.h>
-#include "camara.h"
 
 class ConvertidorCoordenadas {
 private:
@@ -23,7 +22,7 @@ public:
             float32 alto_maximo);
     // Convierte una posicion en la camara (x, y) con x e y pixeles a una
     // posicion en box2d. Para esto se aplica el factor de conversion.
-    b2Vec2 sdlABox2D(int x, int y, Camara &camara);
+    b2Vec2 sdlABox2D(int x, int y, int x_camara, int y_camara);
 };
 
 

@@ -12,7 +12,6 @@ void ColaBloqueanteCuerpos::push(CuerpoAEnviar elemento) {
 }
 
 bool ColaBloqueanteCuerpos::pop(CuerpoAEnviar& elemento) {
-
     std::unique_lock<std::mutex> lock(m);
     while(true) {
         while (!notified && !done) {

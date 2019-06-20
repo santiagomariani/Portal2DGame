@@ -52,18 +52,22 @@ bool ObtenedorInput::obtenerInput() {
             case SDL_MOUSEBUTTONDOWN:{
                 SDL_MouseButtonEvent& evento_mouse = 
                         (SDL_MouseButtonEvent&) evento;
+                int x_camara = camara.obtenerX();
+                int y_camara = camara.obtenerY();
                 if ((evento_mouse.button) == SDL_BUTTON_LEFT){
                     b2Vec2 click = convertidor_coordenadas.sdlABox2D(
                             evento_mouse.x,
                             evento_mouse.y,
-                            camara);
+                            x_camara,
+                            y_camara);
                     estado_mouse.agregarClickIzquierdo(click);
                 }
                 if ((evento_mouse.button) == SDL_BUTTON_RIGHT){
                     b2Vec2 click = convertidor_coordenadas.sdlABox2D(
                             evento_mouse.x,
                             evento_mouse.y,
-                            camara);
+                            x_camara,
+                            y_camara);
                     estado_mouse.agregarClickDerecho(click);
                 }
                 hay_input = true;

@@ -34,8 +34,6 @@ void ThOpcionPartida::terminar() {
 }
 
 ThOpcionPartida::~ThOpcionPartida() {
-    this->skt.cerrarCanales();
-    this->skt.cerrarSocket();
 }
 
 bool ThOpcionPartida::termino() {

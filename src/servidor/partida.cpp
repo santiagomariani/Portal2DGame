@@ -45,7 +45,6 @@ void Partida::correrPartida(){
 
         if (this->fisica.cantChells() == 0){
             this->continuar_juego = false;
-            std::cout << "partida terminada\n";
             break;
         }
 

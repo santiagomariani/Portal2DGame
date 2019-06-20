@@ -1,6 +1,6 @@
 
-#include <ventana.h>
-#include <textura.h>
+#include "ventana.h"
+#include "textura.h"
 #include <contador_tiempo.h>
 #include <mensajero.h>
 #include <protocolo.h>

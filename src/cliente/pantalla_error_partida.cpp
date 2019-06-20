@@ -1,5 +1,5 @@
 
-#include <textura.h>
+#include "textura.h"
 #include <contador_tiempo.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
