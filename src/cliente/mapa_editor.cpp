@@ -87,6 +87,10 @@ void MapaEditor::recibirEvento(SDL_MouseButtonEvent& evento){
 	int j = convertirPosicion(x);
 	int k = convertirPosicion(y);
 	if (estado_logico){
+		auto it = mapa[j].find(k);
+		if (it == mapa[j].end()){
+			return;
+		}
 		if (mapa[j][k].esLogica()){
 			cursor.click(mapa[j][k].getIdentificador());
 		}

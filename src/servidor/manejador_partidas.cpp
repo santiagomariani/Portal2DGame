@@ -1,10 +1,10 @@
-
-#include <config.h>
-#include <contact_listener.h>
-#include <angulo_dos_setenta.h>
-#include <ids.h>
-#include <bloque_metal_diagonal.h>
-#include <bloque_metal.h>
+#include <dirent.h>
+#include "config.h"
+#include "contact_listener.h"
+#include "angulo_dos_setenta.h"
+#include "ids.h"
+#include "bloque_metal_diagonal.h"
+#include "bloque_metal.h"
 #include <iostream>
 #include <sstream>
 #include "manejador_partidas.h"
@@ -39,10 +39,34 @@ void ManejadorPartidas::borrarPartidasTerminadas(){
     }
 }
 
+std::string ManejadorPartidas::elegirMapa(Protocolo& protocolo){
+    std::unique_lock<std::mutex> lock(m);
+    DIR* directorio;
+    struct dirent* archivo;
+    std::vector<std::string> mapas;
+    if ((directorio = opendir ("mapas/")) != NULL) {
+        while ((archivo = readdir(directorio)) != NULL) {
+            mapas.emplace_back(archivo->d_name);
+        }
+        closedir (directorio);
+        protocolo.enviarCantidad(mapas.size());
+        for (auto it=mapas.begin(); it!=mapas.end(); ++it){
+            protocolo.enviarNombreMapa(*it);
+        }
+    } else {
+
+    }
+    std::string nombre_mapa = protocolo.recibirNombreMapa();
+    return std::move(nombre_mapa);
+}
+
 void ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
+    //std::string nombre_mapa = std::move(elegirMapa(protocolo));
+    std::unique_lock<std::mutex> lock(m);
+    std::string nombre_mapa("prueba.yaml");
     mapas.emplace_back();
     CargadorMapa& mapa = mapas.back();
-    mapa.cargarMapa();
+    mapa.cargarMapa(nombre_mapa);
     Fisica& fisica = mapa.obtenerFisica();
 
     std::string nuevo_puerto = obtenerPuertoSiguiente();
@@ -66,6 +90,7 @@ void ManejadorPartidas::terminarPartidas(){
 }
 
 void ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
+    std::unique_lock<std::mutex> lock(m);
     int cant_activos = 0;
     for (auto it=threads_partidas.begin(); it!=threads_partidas.end(); it++){
         if ((*it)->estaAceptando()){

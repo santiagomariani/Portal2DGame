@@ -68,3 +68,7 @@ void BloqueMetal::empezarContacto(Cuerpo* otro){
 		this->recibirDisparo((Disparo*)otro);
 	}
 }
+
+b2Vec2 BloqueMetal::obtenerVelocidadRebote(b2Vec2& vel_inicial){
+	return b2Vec2(vel_inicial.x * (-1), vel_inicial.y * (-1));
+}

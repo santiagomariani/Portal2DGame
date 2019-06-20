@@ -4,17 +4,17 @@
 
 #include <list>
 
-#include <contact_listener.h>
-#include <mundo.h>
-#include <angulo.h>
-#include <bloque.h>
-#include <bloque_metal.h>
-#include <bloque_metal_diagonal.h>
-#include <bloque_roca.h>
-#include <roca.h>
-#include <angulo_cero.h>
-#include <angulo_ciento_ochenta.h>
-#include <angulo_noventa.h>
+#include "contact_listener.h"
+#include "mundo.h"
+#include "angulo.h"
+#include "bloque.h"
+#include "bloque_metal.h"
+#include "bloque_metal_diagonal.h"
+#include "bloque_roca.h"
+#include "roca.h"
+#include "angulo_cero.h"
+#include "angulo_ciento_ochenta.h"
+#include "angulo_noventa.h"
 #include "angulo_dos_setenta.h"
 #include "receptor_arriba.h"
 #include "receptor_abajo.h"
@@ -69,7 +69,7 @@ class CargadorMapa {
 public:
     CargadorMapa();
     // Carga el mapa del archivo.
-    void cargarMapa();
+    void cargarMapa(std::string& nombre_mapa);
     // Devuelde la Fisica que se obtiene del mapa cargado.
     Fisica& obtenerFisica();
     ~CargadorMapa();

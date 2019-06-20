@@ -1,21 +1,21 @@
-#include <iostream>
 #include "estado_teclado.h"
 
 EstadoTeclado::EstadoTeclado(){
 }
 
-void EstadoTeclado::agregar_evento(SDL_KeyboardEvent evento) {
-    estado_tecla[evento.keysym.sym] = evento.state;
+void EstadoTeclado::agregar_evento(int tecla, uint8_t estado) {
+    estado_tecla[tecla] = estado;
 }
 
-bool EstadoTeclado::presionada(SDL_Keycode keyCode) {
-    return (estado_tecla[keyCode] == SDL_PRESSED);
+bool EstadoTeclado::presionada(int tecla) {
+    return (estado_tecla[tecla] == 1);
 }
 
-bool EstadoTeclado::liberada(SDL_Keycode keyCode) {
-    return (estado_tecla[keyCode] == SDL_RELEASED);
+bool EstadoTeclado::liberada(int tecla) {
+    return (estado_tecla[tecla] == 0);
 }
 
-std::map<SDL_Keycode, uint8_t> &EstadoTeclado::obtenerMapa(){
+std::map<int, uint8_t> &EstadoTeclado::obtenerMapa(){
     return estado_tecla;
 }
+

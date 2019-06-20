@@ -1,6 +1,6 @@
 
-#include <ventana.h>
-#include <textura.h>
+#include "ventana.h"
+#include "textura.h"
 #include <contador_tiempo.h>
 #include <mensajero.h>
 #include <protocolo.h>
@@ -66,13 +66,11 @@ bool PantallaElegirPartida::operator()(){
     BotonUnirseAPartida unirse_partida(&imagen_unirse, &corriendo, protocolo_opcion, puerto);
     unirse_partida.colocar((ancho_pantalla / 2) - (177 / 2), (alto_pantalla * 3 / 5) + 60, 177, 81);
 
-
     //=Loop=
     ContadorTiempo capTimer;
     SDL_Event event;
     bool continuar_programa = true;
     while (corriendo){
-
         ventana.pintar(0x33, 0x33, 0x33, 0xFF);
         fondo.render();
         titulo.render(destino_titulo);
@@ -100,7 +98,6 @@ bool PantallaElegirPartida::operator()(){
             SDL_Delay(TICKS_PER_FRAME - frameTicks);
         }
     }
-
     skt.cerrarCanales();
     skt.cerrarSocket();
     return continuar_programa;

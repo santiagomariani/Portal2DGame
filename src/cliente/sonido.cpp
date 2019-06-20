@@ -1,5 +1,5 @@
 
-#include <sdl_exception.h>
+#include "sdl_exception.h"
 #include "sonido.h"
 
 Sonido::Sonido(std::string &nombre_archivo, int canal) : canal(canal) {

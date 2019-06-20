@@ -5,7 +5,6 @@
 
 #include <deque>
 #include <info_cuerpo_box_2_d.h>
-
 #include "estado_teclado.h"
 #include "cuerpo.h"
 #include "info_cuerpo.h"
@@ -59,6 +58,10 @@ public:
     void enviarPuerto(std::string port);
     // Recibe el puerto.
     std::string recibirPuerto();
+    // Envia el nombre de un mapa.
+    void enviarNombreMapa(std::string& nombre_mapa);
+    // Recibe el nombre del mapa.
+    std::string recibirNombreMapa();
     // Envia mensaje al cliente indicando que la partida fue creada.
     void enviarPartidaCreada();
     // Envia mensaje indicando que chell se murio.

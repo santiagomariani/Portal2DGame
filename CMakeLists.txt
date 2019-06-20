@@ -24,15 +24,14 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-
-add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/msj_renderizado.h src/cliente/th_video.cpp src/cliente/th_video.h)
+add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES})
 target_link_libraries(portal_cliente SDL2 SDL2_image SDL2_mixer SDL2_ttf Box2D avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
-
 
 message("[INFO] Loading sources to the server")
 file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cpp" "src/servidor/*.h")
 file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
 add_executable(portal_servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES})
-target_link_libraries(portal_servidor Box2D SDL2 SDL2_mixer SDL2_image avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
+
+target_link_libraries(portal_servidor Box2D SDL2 avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 

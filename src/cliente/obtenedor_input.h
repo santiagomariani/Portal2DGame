@@ -2,7 +2,6 @@
 #ifndef OBTENEDOR_INPUT_H
 #define OBTENEDOR_INPUT_H
 
-
 #include "convertidor_coordenadas.h"
 #include "estado_teclado.h"
 #include "estado_mouse.h"
@@ -18,6 +17,9 @@ private:
     EstadoMouse estado_mouse;
     ColaBloqueante<Input> &cola_input;
     Ventana &ventana;
+
+    std::map<int, int> obtenerMapaTeclas();
+
 public:
     ObtenedorInput(ConvertidorCoordenadas &convertidor_coordenadas,
             Camara &camara,

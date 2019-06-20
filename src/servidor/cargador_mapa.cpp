@@ -1,6 +1,6 @@
 
-#include <config.h>
-#include <angulo_dos_setenta.h>
+#include "config.h"
+#include "angulo_dos_setenta.h"
 #include <iostream>
 #include "ids.h"
 #include "cargador_mapa.h"
@@ -19,9 +19,10 @@ CargadorMapa::CargadorMapa():
 }
 
 
-void CargadorMapa::cargarMapa() {
+void CargadorMapa::cargarMapa(std::string& nombre_mapa) {
 	int id, identificador, x, y;
-	YAML::Node archivo = YAML::LoadFile("mapas/prueba.yaml");
+	std::string ruta_mapa = "mapas/" + nombre_mapa;
+	YAML::Node archivo = YAML::LoadFile(ruta_mapa);
 	for (auto it = archivo["Bloques"].begin(); it != archivo["Bloques"].end(); ++it){
 		id = (*it)["Id"].as<int>();
 		identificador = (*it)["Identificador"].as<int>();
