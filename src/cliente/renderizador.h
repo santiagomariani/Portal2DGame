@@ -24,6 +24,7 @@ private:
     int id_chell;
     ColeccionVistaChells &coleccion_viewchells;
     SonidosChell sonidos_chell;
+    bool chell_gano;
 
 public:
     Renderizador(Ventana &ventana,

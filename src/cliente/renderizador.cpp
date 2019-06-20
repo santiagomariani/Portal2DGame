@@ -4,6 +4,7 @@
 #include "ids.h"
 #include "vista_chell.h"
 #include "msj_renderizado.h"
+#include "estado_chell.h"
 
 Renderizador::Renderizador(Ventana &ventana,
         Camara &camara,
@@ -16,7 +17,8 @@ Renderizador::Renderizador(Ventana &ventana,
         renderizables(renderizables),
         cola_renderizado(cola_renderizado),
         id_chell(id_chell),
-        coleccion_viewchells(coleccion_viewchells) {
+        coleccion_viewchells(coleccion_viewchells),
+        chell_gano(false) {
 }
 
 void Renderizador::renderizar() {
@@ -47,8 +49,13 @@ void Renderizador::renderizar() {
                               nullptr,
                               ic.espejado);
             camara.reproducirSonidoChell(sonidos_chell, ic.destino, ic.estado);
-            if (ic.estado == CHELL_GANO){
-                // se puede mostrar una pantallita  
+            if (ic.estado == CHELL_GANO && !chell_gano){
+                // se puede mostrar una pantallita
+                SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
+                         "Felicitaciones",
+                         "Excelente. Has logrado el objetivo.",
+                         NULL);
+                chell_gano = true;
             }
         } else {
             camara.renderizar(*(renderizables[ic.id]),
