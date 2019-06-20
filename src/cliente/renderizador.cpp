@@ -1,5 +1,6 @@
 
 #include <SDL2/SDL_timer.h>
+#include <SDL2/SDL.h>
 #include "renderizador.h"
 #include "ids.h"
 #include "vista_chell.h"

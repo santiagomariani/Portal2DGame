@@ -5,7 +5,6 @@
 
 #include <SDL2/SDL_rect.h>
 #include <Box2D/Common/b2Math.h>
-#include "cuerpo.h"
 #include "camara.h"
 
 class ConvertidorCoordenadas {

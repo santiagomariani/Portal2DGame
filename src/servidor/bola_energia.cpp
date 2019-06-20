@@ -2,6 +2,7 @@
 #include "bola_energia.h"
 #include "ids.h"
 #include "chell.h"
+#include "bloque_metal.h"
 #include <math.h>
 #include <iostream>
 #include <config.h>
@@ -109,22 +110,23 @@ void BolaEnergia::desactivar(){
 }
 
 void BolaEnergia::empezarContacto(Cuerpo *otro) {
-    /*
-    if (ya_choque) {
-        return;
-    }
-    */
     if (otro->getId() == ID_CHELL) {
-        //ya_choque = true;
         ((Chell*)otro)->morir();
-    } else if (otro->getId() == ID_BLOQUE_METAL ||
-    otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
-    otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
-    otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
-    otro->getId() == ID_BLOQUE_DIAGONAL_270 ||
-    otro->getId() == ID_DISPARO){
+    } else if (otro->getId() == ID_BLOQUE_METAL){
+        b2Vec2 inicial = cuerpo->GetLinearVelocity();
+        b2Vec2 final = ((BloqueMetal*)otro)->obtenerVelocidadRebote(inicial);
+        cuerpo->SetLinearVelocity(final);
         return;
-    }
+    } else if (otro->getId() == ID_BLOQUE_METAL ||
+            otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
+            otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
+            otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
+            otro->getId() == ID_BLOQUE_DIAGONAL_270 ||
+            otro->getId() == ID_DISPARO || 
+            otro->getId() == ID_PORTAL_NARANJA ||
+            otro->getId() == ID_PORTAL_AZUL){
+        return;
+    } 
     mundo.agregarCuerpoADestruir(this);
 }
 
