@@ -89,6 +89,10 @@ void Editor::operator()(int* etapa){
     Textura textura_or(ruta_or, ventana);
 	Imagen imagen_or(0, 0, 466, 299, &textura_or);
 
+	std::string ruta_torta = "assets/torta.png";
+	Textura textura_torta(ruta_torta, ventana);
+	Imagen imagen_torta(0, 0, 381, 389, &textura_torta);
+
 	std::string ruta_roca = "assets/fx.png";
 	Textura textura_roca(ruta_roca, ventana);
 	Imagen imagen_roca(1, 4513, 83, 83, &textura_roca);
@@ -115,6 +119,7 @@ void Editor::operator()(int* etapa){
 	imagenes.emplace(ID_SPAWNPOINT, &imagen_sp);
 	imagenes.emplace(ID_AND, &imagen_and);
 	imagenes.emplace(ID_OR, &imagen_or);
+	imagenes.emplace(ID_TORTA, &imagen_torta);
 	imagenes.emplace(ID_ROCA, &imagen_roca);
 
 	//=Panel=
@@ -151,6 +156,7 @@ void Editor::operator()(int* etapa){
 	botones_principales.emplace_back(cursor, ID_SPAWNPOINT, imagenes[ID_SPAWNPOINT]);
 	botones_principales.emplace_back(cursor, ID_AND, imagenes[ID_AND]);
 	botones_principales.emplace_back(cursor, ID_OR, imagenes[ID_OR]);
+	botones_principales.emplace_back(cursor, ID_TORTA, imagenes[ID_TORTA]);
 	botonera.setBotones(&botones_principales);
 
 

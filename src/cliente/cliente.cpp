@@ -183,6 +183,11 @@ void Cliente::iniciar(int* etapa) {
     // Barra Energia.
     Sprite sprite_barra_energia(8, 220, 528, 689, 1, textura_varios);
 
+    // Torta
+    std::string arch_textura_torta = "assets/torta.png";
+    Textura textura_torta(arch_textura_torta, ventana);
+    Sprite sprite_torta(381, 389, 0, 0, 1, textura_torta);
+
     ColeccionVistaChells coleccion_viewchells(ventana);
 
     std::map<uint8_t,Renderizable*> renderizables;
@@ -224,6 +229,7 @@ void Cliente::iniciar(int* etapa) {
             &sprite_receptor_izquierda_desactivado;
     renderizables[ID_ACIDO] = &sprite_acido;
     renderizables[ID_BARRAENERGIA] = &sprite_barra_energia;
+    renderizables[ID_TORTA] = &sprite_torta;
 
     std::string arch_musica_en_juego("assets/sonidos/musica_juego.wav");
     Musica musica_en_juego(arch_musica_en_juego);
@@ -272,7 +278,6 @@ void Cliente::iniciar(int* etapa) {
 			SDL_Delay(TICKS_POR_FOTOGRAMA - ticks_fotograma);
 		}
 	}
-	//skt.cerrarCanales();
 	th_renderizado.terminar();
 	th_renderizado.join();
 	th_input.terminar();
