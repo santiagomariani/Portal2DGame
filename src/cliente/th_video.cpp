@@ -1,9 +1,9 @@
 
 #include <libavformat/avformat.h>
 #include <libswscale/swscale.h>
-#include "ThVideo.h"
+#include "th_video.h"
 
-ThVideo::ThVideo(int ancho_buffer, int alto_buffer) :
+th_video::th_video(int ancho_buffer, int alto_buffer) :
     ancho_buffer(ancho_buffer),
     alto_buffer(alto_buffer) {
     av_register_all();
@@ -19,7 +19,7 @@ ThVideo::ThVideo(int ancho_buffer, int alto_buffer) :
             AV_PIX_FMT_YUV420P, 0, 0, 0, 0);
 }
 
-void ThVideo::run() {
+void th_video::run() {
     std::vector<char> buffer;
     while (cola_buffer.pop(buffer)) {
         formato_salida.writeFrame(buffer.data(), ctx);
@@ -27,10 +27,10 @@ void ThVideo::run() {
     formato_salida.close();
 }
 
-void ThVideo::terminar() {
+void th_video::terminar() {
     cola_buffer.finalizado();
 }
 
-ThVideo::~ThVideo() {
+th_video::~th_video() {
     sws_freeContext(ctx);
 }

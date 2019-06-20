@@ -9,7 +9,7 @@
 #include "contexto_formato.h"
 #include "formato_salida.h"
 
-class ThVideo : public Thread {
+class th_video : public Thread {
 private:
     const int ancho_buffer, alto_buffer;
     ContextoFormato contexto_formato;
@@ -17,10 +17,10 @@ private:
     SwsContext *ctx;
     ColaBloqueante<std::vector<char>> cola_buffer;
 public:
-    ThVideo(int ancho_buffer, int alto_buffer);
+    th_video(int ancho_buffer, int alto_buffer);
     void run();
     void terminar();
-    ~ThVideo();
+    ~th_video();
 };
 
 
