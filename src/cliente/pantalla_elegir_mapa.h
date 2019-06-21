@@ -4,17 +4,16 @@
 
 #include <string>
 #include "skt.h"
+#include "ventana.h"
 
-class PantallaElegirMapa {
+class PantallaElegirMapa{
     Skt& skt;
 
 public:
-    PantallaElegirMapa(std::string puerto,
-                          std::string host,
-                          std::string& puerto_partida);
+    PantallaElegirMapa(Skt& skt);
 
     // Devuelve si se debe continuar con el programa o no
-    bool operator()();
+    bool operator()(Ventana& ventana);
 };
 
 

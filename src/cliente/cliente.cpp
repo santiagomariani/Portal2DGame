@@ -26,6 +26,7 @@
 #include "pantalla_elegir_partida.h"
 
 void Cliente::iniciar(int* etapa) {
+
     // Conexion con servidor.
     std::string host = "localhost";
     std::string port = "8080";
