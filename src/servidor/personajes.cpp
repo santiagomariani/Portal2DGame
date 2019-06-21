@@ -60,9 +60,10 @@ void Personajes::eliminarChell(int id) {
     Chell& chell = personajes.at(id);
     chell.morir();
     teclados.erase(id);
+    siguiente_client -= 1;
 }
 
 int Personajes::cantChells() {
-    return personajes.size();
+    return siguiente_client;
 }
 

@@ -1,0 +1,35 @@
+Bloques:
+  - Id: 99
+    Identificador: -1
+    X: 3
+    Y: -7
+  - Id: 3
+    Identificador: -1
+    X: 3
+    Y: -8
+  - Id: 3
+    Identificador: -1
+    X: 4
+    Y: -8
+  - Id: 3
+    Identificador: -1
+    X: 5
+    Y: -8
+  - Id: 3
+    Identificador: -1
+    X: 7
+    Y: -8
+  - Id: 32
+    Identificador: -1
+    X: 8
+    Y: -7
+  - Id: 3
+    Identificador: -1
+    X: 8
+    Y: -8
+  - Id: 3
+    Identificador: -1
+    X: 9
+    Y: -8
+Conexiones:
+  []

@@ -3,6 +3,7 @@
 #include "pistola.h"
 #include "Box2D/Box2D.h"
 #include "ids.h"
+#include "ids_teclas.h"
 #include "config.h"
 
 #define TAMANIO_SENSOR_CHELL_X 0.001
@@ -105,7 +106,8 @@ void Chell::mover(EstadoTeclado& t){
         return;
     }
     b2Vec2 vel = cuerpo->GetLinearVelocity();
-    float32 tecla = config.velocidad_chell * t.presionada(SDLK_RIGHT) + -config.velocidad_chell * t.presionada(SDLK_LEFT);
+    float32 tecla = config.velocidad_chell * t.presionada(DERECHA) 
+                    + -config.velocidad_chell * t.presionada(IZQUIERDA);
     if (tecla == 0){
         if (abs(vel.x) < 0.2) {
             vel.x = 0;
@@ -118,8 +120,8 @@ void Chell::mover(EstadoTeclado& t){
         vel.x = tecla;
     }
 
-    if (sensor->estaActivado() && t.presionada(SDLK_UP)) {
-        vel.y = config.salto_chell * t.presionada(SDLK_UP);
+    if (sensor->estaActivado() && t.presionada(ARRIBA)) {
+        vel.y = config.salto_chell * t.presionada(ARRIBA);
         if (roca && joint_roca) {
             b2Vec2 vel_roca = roca->getBody()->GetLinearVelocity();
             vel_roca.y = vel.y;
@@ -162,7 +164,7 @@ b2Body* Chell::getBody(){
 }
 
 void Chell::agarrarRoca(EstadoTeclado &t) {
-    if ((t.presionada(SDLK_e)) && (roca != nullptr)) {
+    if ((t.presionada(TECLA_E)) && (roca != nullptr)) {
         if (joint_roca == nullptr) {
             b2Vec2 nueva_pos_roca(
                     this->getPosition().x + config.tam_chell_x + (roca->getMaxWidth() / 2),

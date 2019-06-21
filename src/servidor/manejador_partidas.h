@@ -13,8 +13,10 @@ class ManejadorPartidas {
     std::string& puerto_server;
     std::string obtenerPuertoSiguiente();
     std::string sumarPuerto(std::string &puerto);
+    std::mutex m;
     // Elimina los threads de las partidas que ya terminaron.
     void borrarPartidasTerminadas();
+    std::string elegirMapa(Protocolo& protocolo);
 
 public:
     explicit ManejadorPartidas(std::string& puerto_server);

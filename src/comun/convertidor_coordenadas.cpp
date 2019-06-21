@@ -20,11 +20,12 @@ SDL_Rect ConvertidorCoordenadas::box2DASDL(b2Vec2 posicion,
     return res;
 }
 
-b2Vec2 ConvertidorCoordenadas::sdlABox2D(int x, int y, Camara &camara) {
+b2Vec2 ConvertidorCoordenadas::sdlABox2D(int x, int y, 
+                                        int x_camara, int y_camara) {
     b2Vec2 res;
-    res.x = (x + camara.obtenerX() - ((float)ancho_camara / 2))
+    res.x = (x + x_camara - ((float)ancho_camara / 2))
             / CONVERSION;
-    res.y = ((y + camara.obtenerY() - ((float)alto_camara / 2))
+    res.y = ((y + y_camara - ((float)alto_camara / 2))
             / CONVERSION) * -1;
     return res;
 }

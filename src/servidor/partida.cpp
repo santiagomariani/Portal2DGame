@@ -69,13 +69,13 @@ void Partida::correrPartida(){
             cuerpo_a_enviar.info_cuerpo = obtenerInfo(*it);
             cuerpo_a_enviar.ultimo = false;
             for (auto c=colas_clientes.begin(); c!=colas_clientes.end(); c++){
-                (*c)->push(cuerpo_a_enviar); // aca se esta copiando
+                (*c)->push(cuerpo_a_enviar);
             }
         }
         CuerpoAEnviar cuerpo_a_enviar;
         cuerpo_a_enviar.ultimo = true;
         for (auto c=colas_clientes.begin(); c!=colas_clientes.end(); c++){
-            (*c)->push(cuerpo_a_enviar); // aca se esta copiando
+            (*c)->push(cuerpo_a_enviar);
         }
 
         int frameTicks = capTimer.obtenerTicks();
@@ -89,7 +89,6 @@ void Partida::correrPartida(){
     }
 
     for (size_t i = 0; i < this->threads_clientes.size(); ++i){
-        std::cout << "joinin clientes\n";
         this->threads_clientes[i]->terminar();
         this->threads_clientes[i]->join();
         this->threads_clientes[i].reset();

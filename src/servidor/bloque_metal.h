@@ -19,6 +19,8 @@ public:
     // Crea el portal en el lado que corresponda del Bloque.
     void recibirDisparo(Disparo* disparo);
     void empezarContacto(Cuerpo* otro);
+    // Devuelve la velocidad final del objeto que rebote con el bloque
+    b2Vec2 obtenerVelocidadRebote(b2Vec2& vel_inicial);
 };
 
 

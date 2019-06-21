@@ -2,7 +2,7 @@
 #include <netinet/in.h>
 #include "protocolo.h"
 #include "ids.h"
-#include "chell.h"
+#include "estado_chell.h"
 #include "convertidor_coordenadas.h"
 
 Protocolo::Protocolo(Mensajero &mensajero) :
@@ -81,10 +81,11 @@ Input Protocolo::recibirInput() {
         int32_t key_code;
         uint8_t estado_tecla;
         mensajero >> key_code >> estado_tecla;
-        SDL_KeyboardEvent event;
-        event.keysym.sym = key_code;
-        event.state = estado_tecla;
-        input.estado_teclado.agregar_evento(event);
+        //SDL_KeyboardEvent event;
+        //event.keysym.sym = key_code;
+        //event.state = estado_tecla;
+        //input.estado_teclado.agregar_evento(event);
+        input.estado_teclado.agregar_evento(key_code, estado_tecla);
     }
     uint8_t click_derecho;
     uint8_t click_izquierdo;
@@ -192,10 +193,20 @@ void Protocolo::enviarPuerto(std::string port) {
     mensajero << port;
 }
 
+void Protocolo::enviarNombreMapa(std::string& nombre_mapa) {
+    mensajero << nombre_mapa;
+}
+
 std::string Protocolo::recibirPuerto() {
     std::string port;
     mensajero >> port;
     return port;
+}
+
+std::string Protocolo::recibirNombreMapa() {
+    std::string mapa;
+    mensajero >> mapa;
+    return mapa;
 }
 
 void Protocolo::enviarPartidaCreada() {

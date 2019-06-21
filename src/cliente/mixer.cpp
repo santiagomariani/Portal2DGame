@@ -3,7 +3,7 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_mixer.h>
-#include <sdl_exception.h>
+#include "sdl_exception.h"
 #include "mixer.h"
 
 
