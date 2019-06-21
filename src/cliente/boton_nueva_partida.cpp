@@ -1,28 +1,28 @@
 
 #include <iostream>
 #include "boton_nueva_partida.h"
+#include "pantalla_elegir_mapa.h"
 
 BotonNuevaPartida::BotonNuevaPartida(Imagen *imagen,
                                     bool *corriendo,
                                     Protocolo &protocolo,
-                                    std::string& puerto):
+                                    std::string& puerto,
+                                    Ventana& ventana):
                                      Presionable(imagen),
                                      corriendo(corriendo),
                                      protocolo(protocolo),
-                                     puerto(puerto){
+                                     puerto(puerto),
+                                     ventana(ventana){
 
 }
 
 void BotonNuevaPartida::presionar(){
     std::cout << "enviando nueva partida request\n";
     protocolo.enviarOpcionNuevaPartida();
-    std::cout << "enviado req\n";
-    //std::string puerto_partida("8081");
-    //protocolo.enviarPuerto(puerto_partida);
-    //uint8_t respuesta = protocolo.recibirCodigoMensaje();
-    //if (respuesta != MSJ_PARTIDA_CREADA){
-      //  puerto.assign(""); // error al crear el socket en el servidor
-    //}
+
+    PantallaElegirMapa elegir_mapa(protocolo);
+    elegir_mapa(ventana);
+
     std::string puerto_partida = protocolo.recibirPuerto();
     std::cout << "puerto recibido\n";
     puerto.assign(puerto_partida);

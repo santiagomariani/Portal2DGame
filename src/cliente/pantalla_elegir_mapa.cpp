@@ -8,21 +8,21 @@
 #include "boton_mapa.h"
 #include "botonera_mapas.h"
 #include <vector>
+#include <iostream>
 
-PantallaElegirMapa::PantallaElegirMapa(Skt& skt): skt(skt){
+PantallaElegirMapa::PantallaElegirMapa(Protocolo& protocolo):
+                                         protocolo(protocolo){
 }
 
 
 bool PantallaElegirMapa::operator()(Ventana& ventana){
 
-    /*Mensajero mensajero_opcion(skt);
-    Protocolo protocolo_opcion(mensajero_opcion);
-
     std::vector<std::string> nombres;
-    uint16_t cant = protocolo_opcion.recibirCantidad();
+    uint16_t cant = protocolo.recibirCantidad();
+    std::cout << "cantidad recibida: " << +cant << std::endl;
     for (uint16_t i = 0; i < cant; ++i){
-        nombres.emplace_back(protocolo_opcion.recibirNombreMapa());
-    }*/
+        nombres.emplace_back(protocolo.recibirNombreMapa());
+    }
 
     const int FPS = 60;
     const int TICKS_PER_FRAME = 1000/FPS;
@@ -31,9 +31,13 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     std::string ruta_fondo = "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
     Imagen imagen_fondo(0, 0, 
-                        ventana.obtenerAncho(), 
-                        ventana.obtenerAlto(), 
+                        1800, 
+                        1100, 
                         &textura_fondo);
+
+    SDL_Rect dest_fondo = {0, 0, 
+                           ventana.obtenerAncho(), 
+                           ventana.obtenerAlto()};
 
     //=Titulo=
     TTF_Init();
@@ -45,13 +49,6 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     std::string ruta_imagen_boton = "assets/boton_mapa.png";
     Textura textura_boton_mapa(ruta_imagen_boton, ventana);
     Imagen imagen_boton(0, 0, 910, 290, &textura_boton_mapa);
-
-    std::vector<std::string> nombres;
-    nombres.emplace_back("Mapa1");
-    nombres.emplace_back("Mapa2");
-    nombres.emplace_back("Mapa3");
-    nombres.emplace_back("Mapa4");
-    nombres.emplace_back("Mapa5");
     
     std::string mapa_elegido;
     std::vector<BotonMapa> botones;
@@ -64,7 +61,9 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     Textura textura_panel(ruta_panel, ventana);
     Imagen imagen_panel(0, 0, 400, 640, &textura_panel);
 
-    SDL_Rect destino_botonera = {0, 0, 200, 200};
+    SDL_Rect destino_botonera = {ventana.obtenerAncho()/2 - 400, 
+                                ventana.obtenerAlto()/4, 
+                                300, 800};
 
     BotoneraMapas botonera(&imagen_panel, destino_botonera);
     botonera.setBotones(&botones);
@@ -75,12 +74,17 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     bool continuar_programa = true;
     bool corriendo = true;
     while (corriendo){
+        imagen_fondo.render(dest_fondo);
         titulo.render(0, 0);
         botonera.render();
+        ventana.renderizar();
         while (SDL_PollEvent(&event) != 0) {
             switch(event.type) {
                 case SDL_MOUSEBUTTONDOWN:{
                     SDL_MouseButtonEvent& mouseEvent = (SDL_MouseButtonEvent&) event;
+                    if (botonera.colisiona(mouseEvent.x, mouseEvent.y)){
+                        botonera.recibirEvento(mouseEvent);
+                    }
                     break;
                 }
                 case SDL_QUIT:
@@ -95,8 +99,8 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
             SDL_Delay(TICKS_PER_FRAME - frameTicks);
         }
     }
-    skt.cerrarCanales();
-    skt.cerrarSocket();
+    std::cout << "mapa elegido: " << mapa_elegido << std::endl;
+    protocolo.enviarNombreMapa(mapa_elegido);
     return continuar_programa;
 }
 

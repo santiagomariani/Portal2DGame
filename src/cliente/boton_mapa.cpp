@@ -1,6 +1,6 @@
 #include "boton_mapa.h"
 
-#define SEPARADOR 20
+#define SEPARADOR 0
 #define TAMANIO 30
 
 BotonMapa::BotonMapa(Imagen* imagen, std::string& mapa_elegido, 
@@ -11,8 +11,8 @@ BotonMapa::BotonMapa(Imagen* imagen, std::string& mapa_elegido,
 }
 
 void BotonMapa::render(){
-	mensaje.render(destino.x + SEPARADOR, destino.y + SEPARADOR);
 	Presionable::render();
+	mensaje.render(destino.x + SEPARADOR, destino.y + SEPARADOR);
 }
 
 void BotonMapa::presionar(){

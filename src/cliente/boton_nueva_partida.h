@@ -10,11 +10,14 @@ class BotonNuevaPartida : public Presionable{
     bool* corriendo;
     Protocolo& protocolo;
     std::string& puerto;
+    Ventana& ventana;
+    
 public:
     BotonNuevaPartida(Imagen* imagen,
                         bool* corriendo,
                         Protocolo& protocolo,
-                        std::string& puerto);
+                        std::string& puerto,
+                        Ventana& ventana);
 
     void presionar() override;
 };
