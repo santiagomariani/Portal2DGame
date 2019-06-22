@@ -20,7 +20,7 @@
 #include "acido.h"
 #include "barra_de_energia.h"
 
-#define CANTIDAD_DE_CLIENTES 2
+#define CANTIDAD_DE_CLIENTES 1
 
 ManejadorPartidas::ManejadorPartidas(std::string& puerto_server):
                                      puerto_server(puerto_server){

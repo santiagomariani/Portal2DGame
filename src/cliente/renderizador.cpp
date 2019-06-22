@@ -69,6 +69,7 @@ void Renderizador::renderizar() {
                               ic.espejado);
         }
     }
+    grabador.renderizarIconoGrabacion();
     if (grabador.estaGrabando()) {
         grabador.leerYEnviarPixeles();
     } else {
