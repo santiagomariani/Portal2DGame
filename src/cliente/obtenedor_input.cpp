@@ -91,16 +91,12 @@ bool ObtenedorInput::obtenerInput() {
         ventana.cambiarPantalla();
     }
     if (estado_teclado.presionada(TECLA_G)) {
-        std::cout << "APRETAS TECLA G" << std::endl;
         if (!grabador.estaGrabando()) {
-            std::cout << "LLAMO A INICIAR GRABACION" << std::endl;
             grabador.iniciar_grabacion();
         }
     }
     if (estado_teclado.presionada(TECLA_F)) {
-        std::cout << "APRETAS TECLA F" << std::endl;
         if (grabador.estaGrabando()) {
-            std::cout << "LLAMO A FINALIZAR GRABACION" << std::endl;
             grabador.finalizar_grabacion();
         }
     }
