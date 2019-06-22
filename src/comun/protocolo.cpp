@@ -217,7 +217,16 @@ uint8_t Protocolo::recibirId() {
 void Protocolo::enviarOpcionNuevaPartida() {
     uint8_t codigo_mensaje = MSJ_OPCION_NUEVA_PARTIDA;
     mensajero << codigo_mensaje;
+}
 
+void Protocolo::enviarMsjAceptar() {
+    uint8_t codigo_mensaje = MSJ_ACEPTAR;
+    mensajero << codigo_mensaje;
+}
+
+void Protocolo::enviarMsjCancelar() {
+    uint8_t codigo_mensaje = MSJ_CANCELAR;
+    mensajero << codigo_mensaje;
 }
 
 void Protocolo::enviarPuerto(std::string port) {

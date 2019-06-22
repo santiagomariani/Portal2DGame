@@ -115,10 +115,11 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
                     }
                     break;
                 }   
-                case SDL_QUIT: // ENVIAR AL SERVIDOR QUE SE CANCELO.
+                case SDL_QUIT:
                     corriendo = false;
                     continuar_programa = false;
-                    // protocolo.enviarMsjCancelar();
+                    std::cout << "enviando cancelar\n";
+                    protocolo.enviarMsjCancelar();
                     break;
             }
         }
@@ -128,7 +129,7 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
             SDL_Delay(TICKS_PER_FRAME - frameTicks);
         }
     }
-    
-    return corriendo;
+    std::cout << "return\n";
+    return continuar_programa;
 }
 

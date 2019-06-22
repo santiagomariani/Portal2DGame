@@ -20,6 +20,8 @@
 #define MSJ_PARTIDA_CREADA 5
 #define MSJ_OPCION_UNIRSE_PARTIDA 6
 #define MSJ_CHELL_MUERTA 7
+#define MSJ_ACEPTAR 8
+#define MSJ_CANCELAR 9
 
 class Protocolo {
 private:
@@ -72,6 +74,10 @@ public:
     void enviarCantidad(uint16_t cant);
     // Recibe la cantidad de puertos disponibles para nirse a partidas.
     uint16_t recibirCantidad();
+    // Envia un mensaje para cancelar la comunicacion
+    void enviarMsjCancelar();
+    // Enviar un mensaje para continuar la comunicacion
+    void enviarMsjAceptar();
 };
 
 

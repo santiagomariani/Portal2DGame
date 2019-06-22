@@ -39,8 +39,8 @@ void ManejadorPartidas::borrarPartidasTerminadas(){
     }
 }
 
-std::string ManejadorPartidas::elegirMapa(Protocolo& protocolo){
-    //std::unique_lock<std::mutex> lock(m);
+bool ManejadorPartidas::elegirMapa(Protocolo& protocolo, 
+                                          std::string& nombre_mapa){
     DIR* directorio;
     struct dirent* archivo;
     std::vector<std::string> mapas;
@@ -59,14 +59,19 @@ std::string ManejadorPartidas::elegirMapa(Protocolo& protocolo){
     } else {
         // error leyendo dir...
     }
-    std::string nombre_mapa = protocolo.recibirNombreMapa();
-    return std::move(nombre_mapa);
+    uint8_t respuesta = protocolo.recibirCodigoMensaje();
+    if (respuesta == MSJ_ACEPTAR){
+        nombre_mapa.assign(protocolo.recibirNombreMapa());
+        return true;
+    }
+    return false;
 }
 
-void ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
-    //std::unique_lock<std::mutex> lock(m);
-    std::string nombre_mapa = std::move(elegirMapa(protocolo));
-    //std::string nombre_mapa("prueba.yaml");
+bool ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
+    std::string nombre_mapa;
+    if (!elegirMapa(protocolo, nombre_mapa)){
+        return false;
+    }
     std::unique_lock<std::mutex> lock(m);
     this->mapas.emplace_back();
     CargadorMapa& mapa = mapas.back();
@@ -86,6 +91,7 @@ void ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
     }
 
     protocolo.enviarPuerto(nuevo_puerto);
+    return true;
 }
 
 void ManejadorPartidas::terminarPartidas(){

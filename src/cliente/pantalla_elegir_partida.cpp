@@ -16,14 +16,10 @@ PantallaElegirPartida::PantallaElegirPartida(std::string puerto,
                                              std::string host,
                                              std::string& puerto_partida):
                                              puerto(puerto_partida),
-                                             skt(host, puerto)
-                                             {
+                                             skt(host, puerto){
 }
 
-
 bool PantallaElegirPartida::operator()(){
-
-
     // Conexion con servidor.
     skt.conectar();
 
@@ -88,6 +84,7 @@ bool PantallaElegirPartida::operator()(){
                 case SDL_QUIT:
                     corriendo = false;
                     continuar_programa = false;
+                    protocolo_opcion.enviarMsjCancelar();
                     break;
             }
         }

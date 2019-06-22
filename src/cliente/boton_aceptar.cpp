@@ -22,6 +22,7 @@ void BotonAceptar::render(){
 }
 
 void BotonAceptar::presionar(){
+	protocolo.enviarMsjAceptar();
 	protocolo.enviarNombreMapa(mapa_elegido);
 	*continuar = false;
 }

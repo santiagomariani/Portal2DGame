@@ -15,14 +15,22 @@ ThOpcionPartida::ThOpcionPartida(Skt socket, ManejadorPartidas& partidas):
 void ThOpcionPartida::run() {
     Mensajero mensajero(skt);
     Protocolo protocolo(mensajero);
-    uint8_t opcion = protocolo.recibirCodigoMensaje();
-    if (opcion == MSJ_OPCION_NUEVA_PARTIDA){
-        partidas.nuevaPartida(protocolo);
+    bool terminar = false;
+    while (!terminar){
+        uint8_t opcion = protocolo.recibirCodigoMensaje();
+        if (opcion == MSJ_OPCION_NUEVA_PARTIDA){
+            terminar = partidas.nuevaPartida(protocolo);
+        }
+        if (opcion == MSJ_OPCION_UNIRSE_PARTIDA){
+            // enviar puertos activos (esperando clientes)
+            partidas.enviarPartidasEsperando(protocolo); // devolver bool para ver si sigue o no............................
+            break;
+        }
+        if (opcion == MSJ_CANCELAR){
+            break;
+        }
     }
-    if (opcion == MSJ_OPCION_UNIRSE_PARTIDA){
-        // enviar puertos activos (esperando clientes)
-        partidas.enviarPartidasEsperando(protocolo);
-    }
+    std::cout << "terminado thOpcion\n";
     this->terminado = true;
 }
 

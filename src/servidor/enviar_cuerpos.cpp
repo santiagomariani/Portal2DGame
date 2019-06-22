@@ -14,6 +14,7 @@ void EnviarCuerpos::run(){
     while(!this->terminar_envio){
         CuerpoAEnviar cuerpo_a_enviar;
         if (!(this->cola->pop(cuerpo_a_enviar))){
+            std::cout << "not pop\n";
             continue;
         }
         try{

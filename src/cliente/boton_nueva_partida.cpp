@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "boton_nueva_partida.h"
 #include "pantalla_elegir_mapa.h"
@@ -13,14 +12,15 @@ BotonNuevaPartida::BotonNuevaPartida(Imagen *imagen,
                                      protocolo(protocolo),
                                      puerto(puerto),
                                      ventana(ventana){
-
 }
 
 void BotonNuevaPartida::presionar(){
+    std::cout << "presionado nueva partida\n";
     protocolo.enviarOpcionNuevaPartida();
-
     PantallaElegirMapa elegir_mapa(protocolo);
-    elegir_mapa(ventana);
+    if (!elegir_mapa(ventana)){
+        return;
+    }
 
     std::string puerto_partida = protocolo.recibirPuerto();
     puerto.assign(puerto_partida);

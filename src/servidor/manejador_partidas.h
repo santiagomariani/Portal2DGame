@@ -15,11 +15,12 @@ class ManejadorPartidas {
     std::string sumarPuerto(std::string &puerto);
     std::mutex m;
 
-    std::string elegirMapa(Protocolo& protocolo);
+    bool elegirMapa(Protocolo& protocolo, std::string& nombre_mapa);
 
 public:
     explicit ManejadorPartidas(std::string& puerto_server);
-    void nuevaPartida(Protocolo& protocolo);
+    // Devuelve si 
+    bool nuevaPartida(Protocolo& protocolo);
     void terminarPartidas();
     // Envia por el protocolo los puertos de las partidas
     // que estan todavia aceptando jugadores.
