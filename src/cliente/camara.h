@@ -7,6 +7,7 @@
 #include "renderizable.h"
 #include "textura.h"
 #include "sonidos_chell.h"
+#include "grabador.h"
 
 class Camara {
 private:
@@ -14,12 +15,16 @@ private:
     int alto_camara;
     SDL_Rect camara;
     Textura &fondo;
+    Grabador &grabador;
     // Devuelve un booleano indicando si el objeto esta dentro de la camara.
     bool dentroDeCamara(SDL_Rect &destino);
 
 public:
     // Inicializa camara.
-    Camara(int ancho_camara, int alto_camara, Textura &fondo);
+    Camara(int ancho_camara,
+            int alto_camara,
+            Textura &fondo,
+            Grabador &grabador);
     // Renderiza el renderizable, con los parametros especificados, si lo que
     // se quiere renderizar esta dentro de la camara.
     void renderizar(Renderizable &renderizable,

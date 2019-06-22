@@ -12,7 +12,3 @@ ContextoFormato::ContextoFormato() {
 ContextoFormato::~ContextoFormato() {
     avformat_free_context(this->pFormatCtx);
 }
-
-AVFormatContext * ContextoFormato::getContext() const {
-    return this->pFormatCtx;
-}

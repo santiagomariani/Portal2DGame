@@ -62,19 +62,20 @@ void VistaChell::renderizar(SDL_Rect &destino,
                            SDL_Point *centro,
                            SDL_RendererFlip espejado) {
 
+    SDL_Rect copia_destino = destino;
     if ((estado_actual != CHELL_QUIETA) 
     && (estado_actual != CHELL_EN_EL_AIRE)
     && (estado_actual != CHELL_SALTA)) {
-        destino.w *= 1.5;
+        copia_destino.w *= 1.5;
     } else if (estado_actual == CHELL_EN_EL_AIRE) {
-        destino.w *= 1.1;
+        copia_destino.w *= 1.1;
     } else if (estado_actual == CHELL_SALTA) {
-        destino.w *= 1.1;
+        copia_destino.w *= 1.1;
     }
 
     if (renderizando_estado_transitorio) {
         Sprite &sprite_actual = sprites_transitorios.at(estado_actual);
-        sprite_actual.renderizar(destino,
+        sprite_actual.renderizar(copia_destino,
                                  angulo_transitorio,
                                  centro_transitorio,
                                  espejado_transitorio);
@@ -83,7 +84,7 @@ void VistaChell::renderizar(SDL_Rect &destino,
         }
     } else {
         Sprite &sprite_actual = sprites.at(estado_actual);
-        sprite_actual.renderizar(destino, angulo, centro, espejado);
+        sprite_actual.renderizar(copia_destino, angulo, centro, espejado);
     }
 }
 

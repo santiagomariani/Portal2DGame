@@ -1,36 +1,45 @@
 
-#include <libavformat/avformat.h>
-#include <libswscale/swscale.h>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
 #include "th_video.h"
 
-th_video::th_video(int ancho_buffer, int alto_buffer) :
-    ancho_buffer(ancho_buffer),
-    alto_buffer(alto_buffer) {
+ThVideo::ThVideo(ColaBloqueante<std::vector<char>> &cola_buffer,
+                 int ancho,
+                 int alto) :
+    cola_buffer(cola_buffer) {
+
     av_register_all();
-    // Calculo fecha
-    std::string nombre_prueba("nombre_prueba");
-    //
-    formato_salida = FormatoSalida(contexto_formato, nombre_prueba);
-    SwsContext * ctx = sws_getContext(ancho_buffer,
-            alto_buffer,
+
+    std::time_t t = std::time(nullptr);
+    std::tm *fecha = std::localtime(&t);
+    std::stringstream oss;
+    oss << std::put_time(fecha, "%b %d %H:%M:%S %Y");
+    std::string nombre_archivo = oss.str();
+
+    contexto_formato.reset(new ContextoFormato());
+    formato_salida.reset(new FormatoSalida(nombre_archivo, ancho, alto));
+    
+    ctx = sws_getContext(ancho,
+            alto,
             AV_PIX_FMT_RGB24,
-            ancho_buffer,
-            alto_buffer,
+            ancho,
+            alto,
             AV_PIX_FMT_YUV420P, 0, 0, 0, 0);
 }
 
-void th_video::run() {
+void ThVideo::run() {
     std::vector<char> buffer;
     while (cola_buffer.pop(buffer)) {
-        formato_salida.writeFrame(buffer.data(), ctx);
+        formato_salida->escribirMarco(buffer.data(), ctx);
     }
-    formato_salida.close();
+    formato_salida->cerrar();
 }
 
-void th_video::terminar() {
+void ThVideo::terminar() {
     cola_buffer.finalizado();
 }
 
-th_video::~th_video() {
+ThVideo::~ThVideo() {
     sws_freeContext(ctx);
 }

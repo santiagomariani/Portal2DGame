@@ -8,6 +8,7 @@
 #include "camara.h"
 #include "input.h"
 #include "cola_bloqueante.h"
+#include "grabador.h"
 
 class ObtenedorInput {
 private:
@@ -17,14 +18,15 @@ private:
     EstadoMouse estado_mouse;
     ColaBloqueante<Input> &cola_input;
     Ventana &ventana;
-
+    Grabador &grabador;
     std::map<int, int> obtenerMapaTeclas();
 
 public:
-    ObtenedorInput(ConvertidorCoordenadas &convertidor_coordenadas,
-            Camara &camara,
+    ObtenedorInput(Camara &camara,
             ColaBloqueante<Input> &cola_input,
-            Ventana &ventana);
+            Ventana &ventana,
+            ConvertidorCoordenadas &convertidor_coordenadas,
+            Grabador &grabador);
     // Obtiene el input y lo "pushea" en la cola de input para que luego un
     // hilo lo mande al servidor.
     bool obtenerInput();

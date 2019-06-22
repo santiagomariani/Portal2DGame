@@ -26,7 +26,6 @@
 #include "pantalla_elegir_partida.h"
 
 void Cliente::iniciar(int* etapa) {
-
     // Conexion con servidor.
     std::string host = "localhost";
     std::string port = "8080";
@@ -46,7 +45,7 @@ void Cliente::iniciar(int* etapa) {
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
                          "Error",
                          "Hubo un error en la conexion",
-                         NULL);
+                         nullptr);
         *etapa = 0;
         return;
     }
@@ -57,9 +56,10 @@ void Cliente::iniciar(int* etapa) {
 
     std::cout << "partida creada\n";
 
-    Mensajero mensajero(skt_partida); // poner en pantalla el puerto de la partida
+    // poner en pantalla el puerto de la partida
+    Mensajero mensajero(skt_partida);
     Protocolo protocolo(mensajero);
-    int id;
+    uint8_t id;
     try {
         id = protocolo.recibirId();
         std::cout << "id recibido es: " << +id << std::endl;
@@ -74,7 +74,7 @@ void Cliente::iniciar(int* etapa) {
     const int alto_nivel = 720;
 
     Ventana ventana(ancho_nivel, alto_nivel);
-    Mixer();
+    Mixer mixer;
 
     // Disparo.
     std::string arch_textura_efectos = "assets/fx.png";
@@ -109,7 +109,8 @@ void Cliente::iniciar(int* etapa) {
     std::string arch_textura_compuerta = "assets/gate.png";
     Textura textura_compuerta(arch_textura_compuerta, ventana);
     Sprite sprite_compuerta_cerrada(193, 385, 1, 21, 1, textura_compuerta);
-    Sprite sprite_compuerta_abierta(193, 385, 1553, 2437, 1, textura_compuerta);
+    Sprite sprite_compuerta_abierta(193, 385, 1553, 2437, 1,
+            textura_compuerta);
     Sprite sprite_compuerta_abriendo(193, 385, 1, 2051, 19, textura_compuerta);
 
     // Portal azul.
@@ -236,29 +237,35 @@ void Cliente::iniciar(int* etapa) {
     Musica musica_en_juego(arch_musica_en_juego);
     musica_en_juego.setearVolumen(MIX_MAX_VOLUME / 5);
     Mix_AllocateChannels(16);
+ 
+    int ancho_buffer = ancho_nivel;
+    int alto_buffer = alto_nivel;
+    Grabador grabador(ventana, ancho_buffer, alto_buffer);
 
-	std::string arch_fondo = "assets/industrial-background.jpg";
-	Textura fondo(arch_fondo, ventana);
-	Camara camara(ancho_nivel, alto_nivel, fondo);
+    std::string arch_fondo = "assets/industrial-background.jpg";
+    Textura fondo(arch_fondo, ventana);
+    Camara camara(ancho_nivel, alto_nivel, fondo, grabador);
 
-	ConvertidorCoordenadas convertidor_coordenadas(ancho_nivel, ancho_nivel);
-	ColaBloqueante<Input> cola_input;
-	ObtenedorInput obtenedor_input(convertidor_coordenadas,
-	        camara,
-	        cola_input,
-	        ventana);
+    ConvertidorCoordenadas convertidor_coordenadas(ancho_nivel, ancho_nivel);
+    ColaBloqueante<Input> cola_input;
 
-	
-	ThInput th_input(cola_input, protocolo, id);
 
-	ColaBloqueante<MsjRenderizado> cola_renderizado;
+    ObtenedorInput obtenedor_input(
+            camara,
+            cola_input,
+            ventana, convertidor_coordenadas, grabador);
 
-	Renderizador renderizador(ventana,
-			camara,
-			cola_renderizado,
-			renderizables,
-			id,
-			coleccion_viewchells);
+    ThInput th_input(cola_input, protocolo, id);
+
+    ColaBloqueante<MsjRenderizado> cola_renderizado;
+
+
+	Renderizador renderizador(
+            camara,
+            cola_renderizado,
+            renderizables,
+            id,
+            coleccion_viewchells, ventana, grabador);
 
 	ThRenderizado th_renderizado(cola_renderizado,
 			protocolo,

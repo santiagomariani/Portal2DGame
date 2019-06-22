@@ -1,5 +1,6 @@
 #ifndef OUTPUTFORMAT_H
 #define OUTPUTFORMAT_H
+
 #include <string>
 
 class AVCodec;
@@ -10,33 +11,35 @@ class AVStream;
 class AVCodecContext;
 class ContextoFormato;
 class SwsContext;
-/**
- * Clase que encapsula lógica la salida de video
- * Se recomienda modularizar aun más esta clase, reforzando RAII
- */
-class FormatoSalida {
-public:
-    FormatoSalida() = default;
-    FormatoSalida(ContextoFormato& context, const std::string& filename);
-    ~FormatoSalida();
-    // Escribe un frame a disco. Utiliza `swsContext` para convertir
-    // de RGB24 a YUV420p
-    void writeFrame(const char* data, SwsContext* swsContext);
-    // Cierra el stream de video
-    void close();
 
+class FormatoSalida {
 private:
-    // Inicializa frame
-    void initFrame();
-    // Inicializa contexto de codec
-    void codecContextInit(AVCodec* codec);
-    ContextoFormato* context;
-    AVOutputFormat* avOutputFormat;
+    // Inicializa frame.
+    void iniciarMarco();
+    // Inicializa contexto de codec.
+    void iniciarContextoCodec(AVCodec *codec);
+    void codificar(AVCodecContext *enc_ctx, AVFrame *frame, AVPacket *pkt,
+                   FILE *outfile);
+    AVOutputFormat* av_formato_salida;
     AVStream* video_avstream;
-    AVCodecContext* codecContext;
-    int currentPts;
-    FILE* outputFile;
+    AVCodecContext* contexto_codec;
+    int current_pts;
+    FILE* archivo_salida;
     AVFrame* frame;
     AVPacket* pkt;
+    int ancho;
+    int alto;
+
+public:
+    FormatoSalida(const std::string &nombre_archivo,
+            int ancho,
+            int alto);
+    // Escribe un frame a disco. Utiliza 'swsContext' para convertir
+    // de RGB24 a YUV420p.
+    void escribirMarco(const char *data, SwsContext *ctx);
+    // Cierra el stream de video.
+    void cerrar();
+    ~FormatoSalida();
 };
-#endif
+
+#endif //OUTPUTFORMAT_H
