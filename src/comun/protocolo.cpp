@@ -275,3 +275,18 @@ std::string Protocolo::pasarAString(float numero){
 float Protocolo::pasarAfloat(std::string& numero_str){
     return std::stof(numero_str);
 }
+
+void Protocolo::enviarOpcionCrearMapa(){
+    uint8_t codigo_mensaje = MSJ_CREAR_MAPA;
+    mensajero << codigo_mensaje;
+}
+
+void Protocolo::enviarMapa(std::string& mapa){
+    mensajero << mapa;
+}
+
+std::string Protocolo::recibirMapa(){
+    std::string mapa;
+    mensajero >> mapa;
+    return mapa;
+}

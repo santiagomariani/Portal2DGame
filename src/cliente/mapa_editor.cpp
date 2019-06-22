@@ -1,6 +1,7 @@
 #include "mapa_editor.h"
 #include <SDL2/SDL.h>
 #include "yaml-cpp/yaml.h"
+#include <sstream>
 #include <fstream>
 
 bool detectar_colision(SDL_Rect& A, SDL_Rect& B){
@@ -110,7 +111,7 @@ void MapaEditor::conectar(){
 	}
 }
 
-void MapaEditor::guardar(std::string& nombre){
+std::string MapaEditor::guardar(){
 	YAML::Emitter out;
 	out << YAML::BeginMap;
 	out << YAML::Key << "Bloques";
@@ -143,14 +144,7 @@ void MapaEditor::guardar(std::string& nombre){
 		out << YAML::EndMap;
 	}
 	out << YAML::EndSeq;
-
-
-
-	std::string ruta_mapa = "mapas/" + nombre + ".yaml";
-	std::ofstream salida(ruta_mapa);
-	salida << out.c_str();
-	/*
-	for (auto it = conexiones.begin(); it != conexiones.end(); ++it){
-		std::cout << (it->first) << " : " << (it->second) << '\n';
-	}*/
+	std::stringstream ss;
+	ss << out.c_str();
+	return ss.str();
 }
