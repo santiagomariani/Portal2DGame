@@ -26,6 +26,8 @@ BolaEnergia::BolaEnergia(Mundo &mundo, b2Vec2 &pos, b2Vec2 &dir_vel) :
     b2FixtureDef fixture_def;
     fixture_def.shape = &circle_shape;
     fixture_def.density = DENSIDAD_BOLAENERGIA;
+    fixture_def.friction = 0.7;
+    fixture_def.restitution = 0.7;
     cuerpo->CreateFixture(&fixture_def);
     b2Vec2 vel = dir_vel;
     vel.Normalize();
@@ -112,16 +114,16 @@ void BolaEnergia::desactivar(){
 void BolaEnergia::empezarContacto(Cuerpo *otro) {
     if (otro->getId() == ID_CHELL) {
         ((Chell*)otro)->morir();
-    } else if (otro->getId() == ID_BLOQUE_METAL){
-        b2Vec2 inicial = cuerpo->GetLinearVelocity();
-        b2Vec2 final = ((BloqueMetal*)otro)->obtenerVelocidadRebote(inicial);
-        cuerpo->SetLinearVelocity(final);
+    } else if (otro->getId() == ID_BLOQUE_METAL ||
+                otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
+                otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
+                otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
+                otro->getId() == ID_BLOQUE_DIAGONAL_270){
+        //b2Vec2 inicial = cuerpo->GetLinearVelocity();
+        //b2Vec2 final = ((Bloque*)otro)->obtenerVelocidadRebote(inicial);
+        //cuerpo->SetLinearVelocity(final);
         return;
     } else if (otro->getId() == ID_BLOQUE_METAL ||
-            otro->getId() == ID_BLOQUE_DIAGONAL_0 ||
-            otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
-            otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
-            otro->getId() == ID_BLOQUE_DIAGONAL_270 ||
             otro->getId() == ID_DISPARO || 
             otro->getId() == ID_PORTAL_NARANJA ||
             otro->getId() == ID_PORTAL_AZUL){

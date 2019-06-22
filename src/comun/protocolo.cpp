@@ -1,5 +1,7 @@
 
 #include <netinet/in.h>
+#include <iomanip>
+#include <sstream>
 #include "protocolo.h"
 #include "ids.h"
 #include "estado_chell.h"
@@ -52,7 +54,9 @@ void Protocolo::enviarInput(Input &input) {
     if (estado_mouse.clickDerecho()) {
         click_derecho = 1;
         b2Vec2 pos = estado_mouse.posClickDerecho();
-        mensajero << click_derecho << pos.x << pos.y;
+        std::string pos_x_str = std::move(pasarAString(pos.x));
+        std::string pos_y_str = std::move(pasarAString(pos.y));
+        mensajero << click_derecho << pos_x_str << pos_y_str;
     } else {
         click_derecho = 0;
         mensajero << click_derecho;
@@ -62,7 +66,9 @@ void Protocolo::enviarInput(Input &input) {
     if (estado_mouse.clickIzquierdo()) {
         click_izquierdo = 1;
         b2Vec2 pos = estado_mouse.posClickIzquierdo();
-        mensajero << click_izquierdo << pos.x << pos.y;
+        std::string pos_x_str = std::move(pasarAString(pos.x));
+        std::string pos_y_str = std::move(pasarAString(pos.y));
+        mensajero << click_izquierdo << pos_x_str << pos_y_str;
     } else {
         click_izquierdo = 0;
         mensajero << click_izquierdo;
@@ -81,10 +87,6 @@ Input Protocolo::recibirInput() {
         int32_t key_code;
         uint8_t estado_tecla;
         mensajero >> key_code >> estado_tecla;
-        //SDL_KeyboardEvent event;
-        //event.keysym.sym = key_code;
-        //event.state = estado_tecla;
-        //input.estado_teclado.agregar_evento(event);
         input.estado_teclado.agregar_evento(key_code, estado_tecla);
     }
     uint8_t click_derecho;
@@ -93,13 +95,21 @@ Input Protocolo::recibirInput() {
     mensajero >> click_derecho;
     if (click_derecho) {
         b2Vec2 pos_click;
-        mensajero >> pos_click.x >> pos_click.y;
+        std::string pos_click_x_str;
+        std::string pos_click_y_str;
+        mensajero >> pos_click_x_str >> pos_click_y_str;
+        pos_click.x = pasarAfloat(pos_click_x_str);
+        pos_click.y = pasarAfloat(pos_click_y_str);
         input.estado_mouse.agregarClickDerecho(pos_click);
     }
     mensajero >> click_izquierdo;
     if (click_izquierdo) {
         b2Vec2 pos_click;
-        mensajero >> pos_click.x >> pos_click.y;
+        std::string pos_click_x_str;
+        std::string pos_click_y_str;
+        mensajero >> pos_click_x_str >> pos_click_y_str;
+        pos_click.x = pasarAfloat(pos_click_x_str);
+        pos_click.y = pasarAfloat(pos_click_y_str);
         input.estado_mouse.agregarClickIzquierdo(pos_click);
     }
     return input;
@@ -114,17 +124,24 @@ void Protocolo::enviarCuerpo(InfoCuerpoBox2D &info_cuerpo) {
     uint8_t orientacion = info_cuerpo.orientacion;
     int32_t angulo = info_cuerpo.angulo;
     b2Vec2 pos_cuerpo = info_cuerpo.pos;
-    float32 x = pos_cuerpo.x;
-    float32 y = pos_cuerpo.y;
-    float32 ancho_maximo = info_cuerpo.ancho;
-    float32 alto_maximo = info_cuerpo.alto;
+
+    //float32 x = pos_cuerpo.x;
+    //float32 y = pos_cuerpo.y;
+    //float32 ancho_maximo = info_cuerpo.ancho;
+    //float32 alto_maximo = info_cuerpo.alto;
+
+    std::string x_str = std::move(pasarAString(pos_cuerpo.x));
+    std::string y_str = std::move(pasarAString(pos_cuerpo.y));
+    std::string ancho_max_str = std::move(pasarAString(info_cuerpo.ancho));
+    std::string alto_max_str = std::move(pasarAString(info_cuerpo.alto));
+
     uint8_t id_chell = info_cuerpo.id_chell;
 
     mensajero << id;
     mensajero << estado;
     mensajero << orientacion;
     mensajero << angulo;
-    mensajero << x << y << ancho_maximo << alto_maximo;
+    mensajero << x_str << y_str << ancho_max_str << alto_max_str;
     mensajero << id_chell;
 }
 
@@ -135,9 +152,23 @@ void Protocolo::recibirCuerpo(InfoCuerpo &info_cuerpo,
     float32 ancho_maximo;
     float32 alto_maximo;
 
+    std::string x_str;
+    std::string y_str;
+    std::string ancho_max_str;
+    std::string alto_max_str;
+
     mensajero >> info_cuerpo.id >> info_cuerpo.estado >> orientacion;
-    mensajero >> info_cuerpo.angulo >> pos_cuerpo.x >> pos_cuerpo.y;
-    mensajero >> ancho_maximo >> alto_maximo;
+    mensajero >> info_cuerpo.angulo;
+
+    mensajero >> x_str;
+    pos_cuerpo.x = pasarAfloat(x_str);
+    mensajero >> y_str;
+    pos_cuerpo.y = pasarAfloat(y_str);
+    mensajero >> ancho_max_str;
+    ancho_maximo = pasarAfloat(ancho_max_str);
+    mensajero >> alto_max_str;
+    alto_maximo = pasarAfloat(alto_max_str);
+
     mensajero >> info_cuerpo.id_chell;
 
     info_cuerpo.destino = convertidor_coordenadas.box2DASDL(pos_cuerpo,
@@ -233,4 +264,14 @@ uint16_t Protocolo::recibirCantidad() {
     uint16_t cant;
     mensajero >> cant;
     return cant;
+}
+
+std::string Protocolo::pasarAString(float numero){
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(3) << numero;
+    return std::move(ss.str());
+}
+
+float Protocolo::pasarAfloat(std::string& numero_str){
+    return std::stof(numero_str);
 }

@@ -2,6 +2,7 @@
 #include "bloque.h"
 #include "ids.h"
 #include "config.h"
+
 #define PI 3.14159265359
 
 AnguloCero::AnguloCero(){
@@ -40,6 +41,17 @@ b2PolygonShape AnguloCero::obtenerTriangulo(){
 
     return std::move(polygonShape);
 }
+
+b2Vec2 AnguloCero::obtenerVelocidadRebote(b2Vec2& vel_inicial){
+    if (vel_inicial.x < 0){
+        return b2Vec2(0, vel_inicial.x * (-1));
+    }
+    if (vel_inicial.y < 0){
+        return b2Vec2(vel_inicial.y * (-1), 0);
+    }
+    return b2Vec2(vel_inicial.x * (-1), vel_inicial.y * (-1));
+}
+
 
 int AnguloCero::getId(){
     return ID_BLOQUE_DIAGONAL_0;

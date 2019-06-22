@@ -1,6 +1,9 @@
 
 #include <iostream>
+#include <SDL2/SDL.h>
 #include "th_input.h"
+#include "socket_error.h"
+
 
 ThInput::ThInput(ColaBloqueante<Input> &cola_input,
                  Protocolo &protocolo, uint8_t id) :
@@ -17,7 +20,15 @@ void ThInput::run() {
             protocolo.enviarChellMuerta(id);
             break;
         }
-        protocolo.enviarInput(input);
+        try{
+            protocolo.enviarInput(input);
+        } catch (SocketError& e){
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                         "Error",
+                         "Hubo un error en la conexion",
+                         NULL);
+            break;
+        }
     }
 }
 

@@ -24,6 +24,8 @@
 class Protocolo {
 private:
     Mensajero &mensajero;
+    std::string pasarAString(float numero);
+    float pasarAfloat(std::string& numero_str);
 
 public:
     explicit Protocolo(Mensajero &mensajero);

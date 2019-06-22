@@ -1,6 +1,7 @@
 
 #include "th_renderizado.h"
-#include <iostream>
+#include "socket_error.h"
+#include <SDL2/SDL.h>
 
 ThRenderizado::ThRenderizado(ColaBloqueante<MsjRenderizado> &cola_renderizado,
         Protocolo &protocolo,
@@ -17,13 +18,21 @@ void ThRenderizado::run() {
     while (!terminado) {
         InfoCuerpo info_cuerpo;
         MsjRenderizado msj;
-        uint8_t codigo_mensaje = protocolo.recibirCodigoMensaje();
-        if (codigo_mensaje == MSJ_FINALIZO_FOTOGRAMA) {
-            msj.ultimo = true;
-        } else if (codigo_mensaje == MSJ_CUERPO) {
-            protocolo.recibirCuerpo(info_cuerpo, convertidor_coordenadas);
-            msj.info_cuerpo = std::move(info_cuerpo);
-            msj.ultimo = false;
+        try{
+            uint8_t codigo_mensaje = protocolo.recibirCodigoMensaje();
+            if (codigo_mensaje == MSJ_FINALIZO_FOTOGRAMA) {
+                msj.ultimo = true;
+            } else if (codigo_mensaje == MSJ_CUERPO) {
+                protocolo.recibirCuerpo(info_cuerpo, convertidor_coordenadas);
+                msj.info_cuerpo = std::move(info_cuerpo);
+                msj.ultimo = false;
+            }
+        } catch (SocketError& e){
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                         "Error",
+                         "Hubo un error en la conexion",
+                         NULL);
+            break;
         }
         cola_renderizado.push(msj);
     }

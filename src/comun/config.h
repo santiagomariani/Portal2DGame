@@ -73,10 +73,10 @@ struct Config{
     float tam_barra_energia_x = 0.05;
 
     // Radio bola energia
-    float radio_bola_energia = 0.40f;
+    float radio_bola_energia = 0.2f;
 
     // Velocidad constante de la bola de energia
-    float vel_bola_energia = 0.3;
+    float vel_bola_energia = 0.5;
 
     // Ancho y alto de los emisores de energia
     float tam_emisor = 0.5f;

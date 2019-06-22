@@ -13,7 +13,6 @@ ThAceptadorClientes::ThAceptadorClientes(SktAceptador skt, std::string& puerto):
 void ThAceptadorClientes::run() {
 
     skt_aceptador.escucharClientes();
-
     while (!this->terminado){
         try{
             Skt acept_skt = std::move(skt_aceptador.aceptarCliente());
@@ -31,6 +30,7 @@ void ThAceptadorClientes::run() {
                 i -= 1;
             }
         }
+        partidas.borrarPartidasTerminadas();
     }
 }
 
@@ -38,7 +38,8 @@ void ThAceptadorClientes::terminar() {
     this->terminado = true;
     this->skt_aceptador.cerrarCanales();
     this->skt_aceptador.cerrarSocket();
-    
+    this->partidas.terminarPartidas();
+
     for (auto it=threads_clientes.begin(); it!=threads_clientes.end(); it++){
         //if (!(*it)->termino()) {
             (*it)->terminar();

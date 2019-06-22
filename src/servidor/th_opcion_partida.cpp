@@ -27,10 +27,8 @@ void ThOpcionPartida::run() {
 }
 
 void ThOpcionPartida::terminar() {
-    std::cout << "terminado: " << terminado << std::endl;
     skt.cerrarCanales();
     skt.cerrarSocket();
-    partidas.terminarPartidas();
 }
 
 ThOpcionPartida::~ThOpcionPartida() {

@@ -14,8 +14,7 @@ class ManejadorPartidas {
     std::string obtenerPuertoSiguiente();
     std::string sumarPuerto(std::string &puerto);
     std::mutex m;
-    // Elimina los threads de las partidas que ya terminaron.
-    void borrarPartidasTerminadas();
+
     std::string elegirMapa(Protocolo& protocolo);
 
 public:
@@ -25,6 +24,8 @@ public:
     // Envia por el protocolo los puertos de las partidas
     // que estan todavia aceptando jugadores.
     void enviarPartidasEsperando(Protocolo& protocolo);
+    // Elimina los threads de las partidas que ya terminaron.
+    void borrarPartidasTerminadas();
     ~ManejadorPartidas() = default;
 };
 

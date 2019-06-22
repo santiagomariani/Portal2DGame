@@ -58,12 +58,11 @@ bool PantallaElegirPartida::operator()(){
 
 
     Imagen imagen_crear(64, 71, 177, 81, &botones); // nueva partida
-    BotonNuevaPartida nueva_partida(&imagen_crear, &corriendo, protocolo_opcion, puerto);
+    BotonNuevaPartida nueva_partida(&imagen_crear, &corriendo, protocolo_opcion, puerto, ventana);
     nueva_partida.colocar((ancho_pantalla / 2) - (177 / 2), (alto_pantalla * 3 / 5) - 40, 177, 81);
 
-    //Falta boton unirse a partida
     Imagen imagen_unirse(65, 226, 177, 81, &botones);
-    BotonUnirseAPartida unirse_partida(&imagen_unirse, &corriendo, protocolo_opcion, puerto);
+    BotonUnirseAPartida unirse_partida(&imagen_unirse, &corriendo, protocolo_opcion, puerto, ventana);
     unirse_partida.colocar((ancho_pantalla / 2) - (177 / 2), (alto_pantalla * 3 / 5) + 60, 177, 81);
 
     //=Loop=
