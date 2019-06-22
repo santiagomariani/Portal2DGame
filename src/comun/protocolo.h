@@ -21,6 +21,9 @@
 #define MSJ_OPCION_UNIRSE_PARTIDA 6
 #define MSJ_CHELL_MUERTA 7
 
+
+#define MSJ_CREAR_MAPA 10
+
 class Protocolo {
 private:
     Mensajero &mensajero;
@@ -72,6 +75,12 @@ public:
     void enviarCantidad(uint16_t cant);
     // Recibe la cantidad de puertos disponibles para nirse a partidas.
     uint16_t recibirCantidad();
+    // Envia msj para enviar un mapa
+    void enviarOpcionCrearMapa();
+    // Envia el mapa en formato yaml
+    void enviarMapa(std::string& mapa);
+    // Recibe el mapa
+    std::string recibirMapa();
 };
 
 

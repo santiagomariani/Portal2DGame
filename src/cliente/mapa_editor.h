@@ -40,7 +40,7 @@ public:
 	void recibirEvento(SDL_MouseButtonEvent& evento);
 
 	// Se guarda en un archivo yaml con el nombre recibido
-	void guardar(std::string& nombre);
+	std::string guardar();
 
 	// Conecta dos piezas solo si son parte de la logica
 	void conectar();
