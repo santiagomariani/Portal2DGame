@@ -1,14 +1,28 @@
 
 #include "camara.h"
 
-Camara::Camara(int ancho_camara, int alto_camara, Textura &fondo) :
-    ancho_camara(ancho_camara), alto_camara(alto_camara), fondo(fondo){
+Camara::Camara(int ancho_camara,
+        int alto_camara,
+        Textura &fondo,
+        Grabador &grabador) :
+    ancho_camara(ancho_camara),
+    alto_camara(alto_camara),
+    fondo(fondo),
+    grabador(grabador) {
     camara.x = 0;
     camara.y = 0;
     camara.w = ancho_camara;
     camara.h = alto_camara;
 }
 
+void Camara::renderizarFondo() {
+    SDL_Rect dest = {0,
+                     0,
+                     camara.w,
+                     camara.h};
+    fondo.renderizar(nullptr, &dest);
+    grabador.renderizarTexturaGrabador(fondo, nullptr, &dest);
+}
 void Camara::renderizar(Renderizable &renderizable,
                         SDL_Rect &destino,
                         double angulo,
@@ -20,8 +34,16 @@ void Camara::renderizar(Renderizable &renderizable,
     SDL_Rect copia = destino;
     copia.x = destino.x - camara.x;
     copia.y = destino.y - camara.y;
+
     renderizable.renderizar(copia, angulo, centro, espejado);
+
+    grabador.renderizarRenderizableGrabador(renderizable,
+                                            copia,
+                                            angulo,
+                                            centro,
+                                            espejado);
 }
+
 void Camara::actualizarCamara(SDL_Rect &destino) {
     int chellCenteredX = destino.x + (destino.w / 2);
     int chellCenteredY = destino.y + (destino.h / 2);
@@ -49,14 +71,6 @@ int Camara::obtenerX() {
 
 int Camara::obtenerY() {
     return camara.y;
-}
-
-void Camara::renderizarFondo() {
-    SDL_Rect dest = {0,
-                     0,
-                     camara.w,
-                     camara.h};
-    fondo.renderizar(nullptr, &dest);
 }
 
 void Camara::reproducirSonidoChell(SonidosChell &sonidos_chell,

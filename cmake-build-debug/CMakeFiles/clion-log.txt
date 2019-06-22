@@ -1,9 +1,0 @@
-/usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/santi/Escritorio/tp4/TP4---Portal
-[INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/libs' as include directory
-[INFO] Adding '/home/santi/Escritorio/tp4/TP4---Portal/src/comun' as include directory
-[INFO] Adding Box2D as library
-[INFO] Loading sources to the client
-[INFO] Loading sources to the server
--- Configuring done
--- Generating done
--- Build files have been written to: /home/santi/Escritorio/tp4/TP4---Portal

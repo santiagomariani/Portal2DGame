@@ -6,14 +6,16 @@
 #include "input.h"
 #include "ids_teclas.h"
 
-ObtenedorInput::ObtenedorInput(ConvertidorCoordenadas &convertidor_coordenadas,
-        Camara &camara,
+ObtenedorInput::ObtenedorInput(Camara &camara,
         ColaBloqueante<Input> &cola_input,
-        Ventana &ventana) :
+        Ventana &ventana,
+        ConvertidorCoordenadas &convertidor_coordenadas,
+        Grabador &grabador) :
         convertidor_coordenadas(convertidor_coordenadas),
         camara(camara),
         cola_input(cola_input),
-        ventana(ventana){
+        ventana(ventana),
+        grabador(grabador) {
 }
 
 std::map<int, int> ObtenedorInput::obtenerMapaTeclas(){
@@ -22,6 +24,8 @@ std::map<int, int> ObtenedorInput::obtenerMapaTeclas(){
     teclas[SDLK_LEFT] = IZQUIERDA;
     teclas[SDLK_UP] = ARRIBA;
     teclas[SDLK_e] = TECLA_E;
+    teclas[SDLK_g] = TECLA_G;
+    teclas[SDLK_f] = TECLA_F;
     teclas[SDLK_RETURN] = ENTER;
     teclas[SDLK_LALT] = ALT_IZQ;
     return std::move(teclas);
@@ -82,9 +86,23 @@ bool ObtenedorInput::obtenerInput() {
                 break;
         }
     }
-    if (estado_teclado.presionada(SDLK_LALT)
-        && estado_teclado.presionada(SDLK_RETURN)) {
+    if (estado_teclado.presionada(ALT_IZQ)
+        && estado_teclado.presionada(ENTER)) {
         ventana.cambiarPantalla();
+    }
+    if (estado_teclado.presionada(TECLA_G)) {
+        std::cout << "APRETAS TECLA G" << std::endl;
+        if (!grabador.estaGrabando()) {
+            std::cout << "LLAMO A INICIAR GRABACION" << std::endl;
+            grabador.iniciar_grabacion();
+        }
+    }
+    if (estado_teclado.presionada(TECLA_F)) {
+        std::cout << "APRETAS TECLA F" << std::endl;
+        if (grabador.estaGrabando()) {
+            std::cout << "LLAMO A FINALIZAR GRABACION" << std::endl;
+            grabador.finalizar_grabacion();
+        }
     }
 
     if (hay_input) {

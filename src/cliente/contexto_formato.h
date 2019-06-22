@@ -1,14 +1,15 @@
-#ifndef FORMATCONTEXT_H
-#define FORMATCONTEXT_H
+#ifndef CONTEXTOFORMATO_H
+#define CONTEXTOFORMATO_H
+
 #include <string>
 
 class AVFormatContext;
 class ContextoFormato {
+private:
+    AVFormatContext *pFormatCtx;
+
 public:
     ContextoFormato();
     ~ContextoFormato();
-    AVFormatContext* getContext() const;
-private:
-    AVFormatContext *pFormatCtx;
 };
-#endif
+#endif //CONTEXTOFORMATO_H

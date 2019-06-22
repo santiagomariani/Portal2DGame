@@ -11,6 +11,7 @@
 #include "msj_renderizado.h"
 #include "coleccion_vista_chells.h"
 #include "sonidos_chell.h"
+#include "grabador.h"
 
 #define FPS 60
 #define TICKS_POR_FOTOGRAMA 1000/FPS
@@ -25,14 +26,16 @@ private:
     ColeccionVistaChells &coleccion_viewchells;
     SonidosChell sonidos_chell;
     bool chell_gano;
+    Grabador &grabador;
 
 public:
-    Renderizador(Ventana &ventana,
-            Camara &camara,
+    Renderizador(Camara &camara,
             ColaBloqueante<MsjRenderizado> &cola_renderizado,
-            std::map<uint8_t,Renderizable*> &renderizables,
+            std::map<uint8_t,
+            Renderizable *> &renderizables,
             int id_chell,
-            ColeccionVistaChells &coleccion_viewchells);
+            ColeccionVistaChells &coleccion_viewchells,
+            Ventana &ventana, Grabador &grabador);
     // Obtiene la informacion de los cuerpos a renderizar, y los renderiza.
     // Ademas reproduce los sonidos de la Chell. Continua hasta que se recibe
     // el ultimo cuerpo a renderizar, momento en donde renderiza la ventana.
