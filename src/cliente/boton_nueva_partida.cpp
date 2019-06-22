@@ -17,14 +17,12 @@ BotonNuevaPartida::BotonNuevaPartida(Imagen *imagen,
 }
 
 void BotonNuevaPartida::presionar(){
-    std::cout << "enviando nueva partida request\n";
     protocolo.enviarOpcionNuevaPartida();
 
     PantallaElegirMapa elegir_mapa(protocolo);
     elegir_mapa(ventana);
 
     std::string puerto_partida = protocolo.recibirPuerto();
-    std::cout << "puerto recibido\n";
     puerto.assign(puerto_partida);
     
     *corriendo = false;

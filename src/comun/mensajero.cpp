@@ -79,37 +79,4 @@ Mensajero &Mensajero::operator>>(int32_t &numero) {
     return *this;
 }
 
-Mensajero &Mensajero::operator<<(float numero) {
-    uint32_t aux = htonf(numero);
-    skt.enviarMensaje((char *) &aux, CUATROBYTES);
-    return *this;
-}
 
-Mensajero &Mensajero::operator>>(float &numero) {
-    uint32_t aux;
-    skt.leerMensaje((char *) &aux, CUATROBYTES);
-    numero = ntohf(aux);
-    return *this;
-}
-
-float Mensajero::ntohf(uint32_t p) {
-    float32 f = ((p>>16)&0x7fff);
-    f += (p&0xffff) / 65536.0f;
-
-    if (((p>>31)&0x1) == 0x1) { f = -f; }
-
-    return f;
-}
-
-uint32_t Mensajero::htonf(float f) {
-    uint32_t p;
-    uint32_t sign;
-
-    if (f < 0) { sign = 1; f = -f; }
-    else { sign = 0; }
-
-    p = ((((uint32_t)f)&0x7fff)<<16) | (sign<<31);
-    p |= (uint32_t)(((f - (int)f) * 65536.0f))&0xffff;
-
-    return p;
-}

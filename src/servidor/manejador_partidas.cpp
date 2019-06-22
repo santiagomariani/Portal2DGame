@@ -40,32 +40,38 @@ void ManejadorPartidas::borrarPartidasTerminadas(){
 }
 
 std::string ManejadorPartidas::elegirMapa(Protocolo& protocolo){
-    std::unique_lock<std::mutex> lock(m);
+    //std::unique_lock<std::mutex> lock(m);
     DIR* directorio;
     struct dirent* archivo;
     std::vector<std::string> mapas;
-    if ((directorio = opendir ("mapas/")) != NULL) {
-        while ((archivo = readdir(directorio)) != NULL) {
-            mapas.emplace_back(archivo->d_name);
+    if ((directorio = opendir("mapas/")) != NULL) {
+        {
+            std::unique_lock<std::mutex> lock(m);
+            while ((archivo = readdir(directorio)) != NULL) {
+                mapas.emplace_back(archivo->d_name);
+            }
+            closedir (directorio);
         }
-        closedir (directorio);
         protocolo.enviarCantidad(mapas.size());
         for (auto it=mapas.begin(); it!=mapas.end(); ++it){
             protocolo.enviarNombreMapa(*it);
         }
     } else {
-
+        // error leyendo dir...
     }
     std::string nombre_mapa = protocolo.recibirNombreMapa();
     return std::move(nombre_mapa);
 }
 
 void ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
-    //std::string nombre_mapa = std::move(elegirMapa(protocolo));
+    //std::unique_lock<std::mutex> lock(m);
+    std::string nombre_mapa = std::move(elegirMapa(protocolo));
+    //std::string nombre_mapa("prueba.yaml");
     std::unique_lock<std::mutex> lock(m);
-    std::string nombre_mapa("prueba.yaml");
-    mapas.emplace_back();
+    this->mapas.emplace_back();
     CargadorMapa& mapa = mapas.back();
+    lock.unlock();
+
     mapa.cargarMapa(nombre_mapa);
     Fisica& fisica = mapa.obtenerFisica();
 
@@ -73,13 +79,13 @@ void ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
 
     SktAceptador skt(nuevo_puerto);
     skt.escucharClientes();
-
-    threads_partidas.emplace_back(new Partida(fisica, std::move(skt), CANTIDAD_DE_CLIENTES));
-    threads_partidas.back()->start();
+    {
+        std::unique_lock<std::mutex> lock(m);
+        threads_partidas.emplace_back(new Partida(fisica, std::move(skt), CANTIDAD_DE_CLIENTES));
+        threads_partidas.back()->start();
+    }
 
     protocolo.enviarPuerto(nuevo_puerto);
-
-    borrarPartidasTerminadas();
 }
 
 void ManejadorPartidas::terminarPartidas(){
@@ -109,6 +115,7 @@ void ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
 }
 
 std::string ManejadorPartidas::obtenerPuertoSiguiente(){
+    std::unique_lock<std::mutex> lock(m);
     if (threads_partidas.empty()){
         std::string nuevo_puerto("8081");
         if (nuevo_puerto == puerto_server){
@@ -117,7 +124,8 @@ std::string ManejadorPartidas::obtenerPuertoSiguiente(){
         return nuevo_puerto;
     }
     std::string ultimo_puerto = threads_partidas.back()->obtenerPuerto();
-
+    lock.unlock();
+    
     std::string nuevo_puerto = sumarPuerto(ultimo_puerto);
     if (nuevo_puerto == puerto_server){
         nuevo_puerto = sumarPuerto(nuevo_puerto);

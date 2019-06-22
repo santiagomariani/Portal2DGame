@@ -1,6 +1,6 @@
 #include "boton_mapa.h"
 
-#define SEPARADOR 0
+#define SEPARADOR 7
 #define TAMANIO 30
 
 BotonMapa::BotonMapa(Imagen* imagen, std::string& mapa_elegido, 
