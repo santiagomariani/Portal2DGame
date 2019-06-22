@@ -12,7 +12,7 @@ int Personajes::agregar_chell(b2Vec2& pos){
 	int id = this->siguiente_client;
 	Chell chell(id, this->mundo);
 	chell.activar(pos);
-	this->personajes.emplace(id, std::move(chell)); //mov
+	this->personajes.emplace(id, std::move(chell));
 	this->siguiente_client += 1;
 	return id;
 }

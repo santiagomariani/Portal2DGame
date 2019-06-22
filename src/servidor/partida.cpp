@@ -52,7 +52,6 @@ void Partida::correrPartida(){
         Input input;
         if (this->cola_input.pop(input)){
             if (input.chell_muerta == 1){
-                std::cout << "chell muerta\n";
                 this->fisica.eliminarChell(input.id);
             } else {
                 this->fisica.agregarTeclado(input.id, input.estado_teclado);
@@ -136,6 +135,9 @@ void Partida::terminarRecibirClientes(){
 
 void Partida::terminar(){
     this->continuar_juego = false;
+    if (this->recibir_clientes){
+        this->terminarRecibirClientes();
+    }
 }
 
 

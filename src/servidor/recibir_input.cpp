@@ -14,7 +14,6 @@ void RecibirInput::run(){
             this->iteracion();
         } catch (SocketError& e){
             this->terminar_proceso = true;
-            std::cout << "se desconecto un cliente.\n";
         }
     }
 }

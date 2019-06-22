@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <iostream>
 #include "enviar_cuerpos.h"
+#include "socket_error.h"
 #include "recibir_input.h"
 
 ProcesoCliente::ProcesoCliente(Skt socket, 
@@ -12,6 +13,7 @@ ProcesoCliente::ProcesoCliente(Skt socket,
                             cola_input(cola_input),
                             cola_cuerpos(cola_cuerpos),
                             id(id){
+    this->cancelado = false;
     this->terminar_proceso = false;
 }
 
@@ -19,8 +21,12 @@ void ProcesoCliente::run(){
     Mensajero mensajero(socket);
     Protocolo protocolo(mensajero);
 
-    protocolo.enviarId(id);
-
+    try{
+        protocolo.enviarId(id);
+    } catch (SocketError& e){
+        cancelado = true;
+        return;
+    }
     EnviarCuerpos* enviar_cuerpos = new EnviarCuerpos(cola_cuerpos, protocolo);
     RecibirInput* recibir_input = new RecibirInput(cola_input, protocolo);
     
@@ -34,6 +40,9 @@ void ProcesoCliente::run(){
 void ProcesoCliente::terminar(){
     for (auto it=threads.begin(); it!=threads.end(); ++it){
         (*it)->terminar();
+    }
+    if (cancelado){
+        return;
     }
     socket.cerrarCanales();
     socket.cerrarSocket();

@@ -15,7 +15,6 @@ BotonNuevaPartida::BotonNuevaPartida(Imagen *imagen,
 }
 
 void BotonNuevaPartida::presionar(){
-    std::cout << "presionado nueva partida\n";
     protocolo.enviarOpcionNuevaPartida();
     PantallaElegirMapa elegir_mapa(protocolo);
     if (!elegir_mapa(ventana)){

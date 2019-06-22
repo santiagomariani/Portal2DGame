@@ -3,11 +3,10 @@
 #include <iostream>
 
 BotonJugar::BotonJugar(Imagen* imagen, int* etapa, bool* corriendo) :
-					   Presionable(imagen), etapa(etapa), corriendo(corriendo){
+                       Presionable(imagen), etapa(etapa), corriendo(corriendo){
 }
 
 void BotonJugar::presionar(){
-	std::cout << "Jugar\n";
-	*etapa = 2;
+    *etapa = 2;
     *corriendo = false;
 }

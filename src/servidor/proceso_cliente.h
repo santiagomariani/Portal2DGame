@@ -20,6 +20,7 @@ private:
     bool terminar_proceso;
     std::vector<Thread*> threads;
     uint8_t id;
+    bool cancelado;
 
 public:
     explicit ProcesoCliente(Skt socket, 

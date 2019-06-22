@@ -14,7 +14,6 @@ void EnviarCuerpos::run(){
     while(!this->terminar_envio){
         CuerpoAEnviar cuerpo_a_enviar;
         if (!(this->cola->pop(cuerpo_a_enviar))){
-            std::cout << "not pop\n";
             continue;
         }
         try{
@@ -25,7 +24,6 @@ void EnviarCuerpos::run(){
             }
         } catch(const SocketError &e){
             this->terminar_envio = true;
-            std::cout << "se desconecto un cliente.\n";
         }
     }
 }

@@ -24,6 +24,8 @@
 #include "coleccion_vista_chells.h"
 #include "pantalla_error_partida.h"
 #include "pantalla_elegir_partida.h"
+#include "pantalla_esperando.h"
+
 
 void Cliente::iniciar(int* etapa) {
     // Conexion con servidor.
@@ -54,21 +56,23 @@ void Cliente::iniciar(int* etapa) {
     
     skt_partida.conectar();
 
-    std::cout << "partida creada\n";
-
     // poner en pantalla el puerto de la partida
     Mensajero mensajero(skt_partida);
     Protocolo protocolo(mensajero);
     uint8_t id;
+    int id_recib = -1;
     try {
-        id = protocolo.recibirId();
-        std::cout << "id recibido es: " << +id << std::endl;
+        PantallaEsperando esperando;
+        id_recib = esperando(protocolo, skt_partida);
+        if (id_recib < 0){
+            *etapa = 0;
+            return;
+        }
     } catch (SocketError& e) {
-        PantallaErrorPartida error_partida;
-        error_partida();
         *etapa = 0;
         return;
     }
+    id = (uint8_t)id_recib;
 
     const int ancho_nivel = 1280;
     const int alto_nivel = 720;
@@ -148,7 +152,7 @@ void Cliente::iniciar(int* etapa) {
     // Receptores.
 
     // ReceptorArriba.
-    // 	Activado.
+    //  Activado.
     Sprite sprite_receptor_arriba_activado(192, 192, 466, 1243, 1, 
             textura_bloques);
     // Desactivado.
@@ -156,7 +160,7 @@ void Cliente::iniciar(int* etapa) {
             textura_bloques);
 
     // ReceptorDerecha.
-    // 	Activado.
+    //  Activado.
     Sprite sprite_receptor_derecha_activado(192, 192, 465, 1029, 1,
             textura_bloques);
     // Desactivado.
@@ -164,7 +168,7 @@ void Cliente::iniciar(int* etapa) {
             textura_bloques);
 
     // ReceptorIzquierda.
-    // 	Activado.
+    //  Activado.
     Sprite sprite_receptor_izquierda_activado(192, 192, 464, 814, 1, 
             textura_bloques);
     // Desactivado.
@@ -172,7 +176,7 @@ void Cliente::iniciar(int* etapa) {
             textura_bloques);
 
     // ReceptorAbajo.
-    // 	Activado.
+    //  Activado.
     Sprite sprite_receptor_abajo_activado(192, 192, 468, 1457, 1,
             textura_bloques);
     // Desactivado.
@@ -260,42 +264,40 @@ void Cliente::iniciar(int* etapa) {
     ColaBloqueante<MsjRenderizado> cola_renderizado;
 
 
-	Renderizador renderizador(
+    Renderizador renderizador(
             camara,
             cola_renderizado,
             renderizables,
             id,
             coleccion_viewchells, ventana, grabador);
 
-	ThRenderizado th_renderizado(cola_renderizado,
-			protocolo,
-			renderizador,
-			convertidor_coordenadas);
+    ThRenderizado th_renderizado(cola_renderizado,
+            protocolo,
+            renderizador,
+            convertidor_coordenadas);
 
-	th_input.start();
-	th_renderizado.start();
-	bool seguir = true;
+    th_input.start();
+    th_renderizado.start();
+    bool seguir = true;
     musica_en_juego.reproducirEnLoop();
-	ContadorTiempo contador_tiempo;
-	while(seguir) {
-		contador_tiempo.comenzar();
-	    seguir = obtenedor_input.obtenerInput();
-		renderizador.renderizar();
-		int ticks_fotograma = contador_tiempo.obtenerTicks();
-		if (ticks_fotograma < TICKS_POR_FOTOGRAMA) {
-			SDL_Delay(TICKS_POR_FOTOGRAMA - ticks_fotograma);
-		}
-	}
-	th_renderizado.terminar();
-	th_renderizado.join();
-	th_input.terminar();
-	th_input.join();
+    ContadorTiempo contador_tiempo;
+    while(seguir) {
+        contador_tiempo.comenzar();
+        seguir = obtenedor_input.obtenerInput();
+        renderizador.renderizar();
+        int ticks_fotograma = contador_tiempo.obtenerTicks();
+        if (ticks_fotograma < TICKS_POR_FOTOGRAMA) {
+            SDL_Delay(TICKS_POR_FOTOGRAMA - ticks_fotograma);
+        }
+    }
+    th_renderizado.terminar();
+    th_renderizado.join();
+    th_input.terminar();
+    th_input.join();
 }
 
 std::string Cliente::requestNuevaPartida(Protocolo& protocolo){
-    std::cout << "enviando nueva partida request\n";
     protocolo.enviarOpcionNuevaPartida();
-    std::cout << "enviado req\n";
     std::string puerto_partida("8081");
     protocolo.enviarPuerto(puerto_partida);
     uint8_t respuesta = protocolo.recibirCodigoMensaje();
