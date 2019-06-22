@@ -20,7 +20,7 @@
 #include "acido.h"
 #include "barra_de_energia.h"
 
-#define CANTIDAD_DE_CLIENTES 1
+#define CANTIDAD_DE_CLIENTES 2
 
 ManejadorPartidas::ManejadorPartidas(std::string& puerto_server):
                                      puerto_server(puerto_server){
@@ -96,21 +96,21 @@ void ManejadorPartidas::terminarPartidas(){
 }
 
 void ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
-    std::unique_lock<std::mutex> lock(m);
     int cant_activos = 0;
+    std::vector<std::string> puertos;
+    std::string puerto;
+    std::unique_lock<std::mutex> lock(m);
     for (auto it=threads_partidas.begin(); it!=threads_partidas.end(); it++){
         if ((*it)->estaAceptando()){
+            puerto = (*it)->obtenerPuerto();
+            puertos.emplace_back(puerto);
             cant_activos++;
         }
     }
+    lock.unlock();
     protocolo.enviarCantidad(cant_activos);
-    std::cout << "cant de partidas a enviar: " << cant_activos << std::endl;
-    for (auto it=threads_partidas.begin(); it!=threads_partidas.end(); it++){
-        if ((*it)->estaAceptando()){
-            std::string puerto = (*it)->obtenerPuerto();
-            protocolo.enviarPuerto(puerto);
-            std::cout << "puerto enviado\n";
-        }
+    for (auto it=puertos.begin(); it!=puertos.end(); it++){
+        protocolo.enviarPuerto(*it);
     }
 }
 

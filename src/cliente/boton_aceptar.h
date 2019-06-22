@@ -6,6 +6,7 @@
 #include "protocolo.h"
 
 class BotonAceptar : public Presionable{
+protected:
 	bool* continuar;
 	Texto mensaje;
 	SDL_Color color = {0, 0, 0};
@@ -21,4 +22,4 @@ public:
 	void mover(int offset_x, int offset_y);
 };
 
-#endif //BOTON_MAPA
+#endif //BOTON_ACEPTAR

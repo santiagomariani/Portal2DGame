@@ -12,7 +12,7 @@ public:
     SelectorPartida(Protocolo& protocolo);
 
     // Devuelve si se debe continuar con el programa o no
-    bool operator()(Ventana& ventana);
+    bool operator()(Ventana& ventana, std::string& puerto);
 };
 
 

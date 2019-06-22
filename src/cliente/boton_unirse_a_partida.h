@@ -9,11 +9,13 @@ class BotonUnirseAPartida : public Presionable{
     bool* corriendo;
     Protocolo& protocolo;
     std::string& puerto;
+    Ventana& ventana;
 public:
     BotonUnirseAPartida(Imagen* imagen,
                       bool* corriendo,
                       Protocolo& protocolo,
-                      std::string& puerto);
+                      std::string& puerto,
+                      Ventana& ventana);
 
     void presionar() override;
 };
