@@ -78,3 +78,7 @@ void BloqueMetalDiagonal::empezarContacto(Cuerpo* otro){
         ((Disparo*)otro)->terminar();
     }
 }
+
+b2Vec2 BloqueMetalDiagonal::obtenerVelocidadRebote(b2Vec2& vel_inicial){
+    return angulo.obtenerVelocidadRebote(vel_inicial);
+}

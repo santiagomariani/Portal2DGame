@@ -12,8 +12,6 @@
 class Mensajero {
 private:
     Skt &skt;
-    uint32_t htonf(float f);
-    float ntohf(uint32_t p);
 
 public:
     // Inicializa el mensajero con un socket con el cual va a enviar los
@@ -30,8 +28,6 @@ public:
     Mensajero& operator<<(std::string &cadena);
     // Envia int32_t.
     Mensajero& operator<<(int32_t numero);
-    // Envia float.
-    Mensajero& operator<<(float numero);
     // Recibe un uint8_t.
     Mensajero& operator>>(uint8_t& numero);
     // Recibe un uint16_t.
@@ -42,8 +38,6 @@ public:
     Mensajero& operator>>(std::string &cadena);
     // Recibe int32_t.
     Mensajero& operator>>(int32_t& numero);
-    // Recibe float.
-    Mensajero& operator>>(float &numero);
     ~Mensajero() = default;
 };
 
