@@ -24,7 +24,7 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES})
+add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/grabador.cpp src/cliente/grabador.h)
 target_link_libraries(portal_cliente SDL2 SDL2_image SDL2_mixer SDL2_ttf Box2D avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 
 message("[INFO] Loading sources to the server")

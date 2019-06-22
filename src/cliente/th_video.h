@@ -9,18 +9,24 @@
 #include "contexto_formato.h"
 #include "formato_salida.h"
 
-class th_video : public Thread {
+extern "C" {
+#include <libavformat/avformat.h>
+#include <libswscale/swscale.h>
+}
+
+class ThVideo : public Thread {
 private:
-    const int ancho_buffer, alto_buffer;
-    ContextoFormato contexto_formato;
-    FormatoSalida formato_salida;
+    ColaBloqueante<std::vector<char>> &cola_buffer;
+    std::unique_ptr<ContextoFormato> contexto_formato;
+    std::unique_ptr<FormatoSalida> formato_salida;
     SwsContext *ctx;
-    ColaBloqueante<std::vector<char>> cola_buffer;
 public:
-    th_video(int ancho_buffer, int alto_buffer);
+    ThVideo(ColaBloqueante<std::vector<char>> &cola_buffer,
+            int ancho,
+            int alto);
     void run();
     void terminar();
-    ~th_video();
+    ~ThVideo();
 };
 
 

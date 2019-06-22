@@ -1,8 +1,8 @@
-
 #include <skt.h>
 #include "mensajero.h"
 #include <protocolo.h>
 #include <iostream>
+#include <fstream>
 #include "th_opcion_partida.h"
 #include "manejador_partidas.h"
 
@@ -29,8 +29,15 @@ void ThOpcionPartida::run() {
         if (opcion == MSJ_CANCELAR){
             break;
         }
+        if (opcion == MSJ_CREAR_MAPA){
+            std::string nombre_mapa = protocolo.recibirNombreMapa();
+            nombre_mapa += ".yaml";
+            std::string mapa_yaml = protocolo.recibirMapa();
+            std::ofstream mapa(nombre_mapa);
+            mapa << mapa_yaml;
+            break;
+        }
     }
-    std::cout << "terminado thOpcion\n";
     this->terminado = true;
 }
 

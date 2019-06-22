@@ -23,6 +23,9 @@
 #define MSJ_ACEPTAR 8
 #define MSJ_CANCELAR 9
 
+
+#define MSJ_CREAR_MAPA 10
+
 class Protocolo {
 private:
     Mensajero &mensajero;
@@ -78,6 +81,12 @@ public:
     void enviarMsjCancelar();
     // Enviar un mensaje para continuar la comunicacion
     void enviarMsjAceptar();
+    // Envia msj para enviar un mapa
+    void enviarOpcionCrearMapa();
+    // Envia el mapa en formato yaml
+    void enviarMapa(std::string& mapa);
+    // Recibe el mapa
+    std::string recibirMapa();
 };
 
 
