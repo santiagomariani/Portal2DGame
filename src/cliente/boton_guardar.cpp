@@ -18,6 +18,5 @@ void BotonGuardar::presionar(){
 	protocolo.enviarOpcionCrearMapa();
 	protocolo.enviarNombreMapa(nombre);
 	std::string mapa_yaml = mapa.guardar();
-	std::cout << mapa_yaml << std::endl;
 	protocolo.enviarMapa(mapa_yaml);
 }

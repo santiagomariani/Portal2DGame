@@ -20,8 +20,6 @@
 #include "acido.h"
 #include "barra_de_energia.h"
 
-#define CANTIDAD_DE_CLIENTES 2
-
 ManejadorPartidas::ManejadorPartidas(std::string& puerto_server):
                                      puerto_server(puerto_server){
 
@@ -79,6 +77,7 @@ bool ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
 
     mapa.cargarMapa(nombre_mapa);
     Fisica& fisica = mapa.obtenerFisica();
+    int spawn_points = fisica.cantSpawnPoints();
 
     std::string nuevo_puerto = obtenerPuertoSiguiente();
 
@@ -86,7 +85,7 @@ bool ManejadorPartidas::nuevaPartida(Protocolo& protocolo) {
     skt.escucharClientes();
     {
         std::unique_lock<std::mutex> lock(m);
-        threads_partidas.emplace_back(new Partida(fisica, std::move(skt), CANTIDAD_DE_CLIENTES));
+        threads_partidas.emplace_back(new Partida(fisica, std::move(skt), spawn_points));
         threads_partidas.back()->start();
     }
 
@@ -101,7 +100,7 @@ void ManejadorPartidas::terminarPartidas(){
     }
 }
 
-void ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
+bool ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
     int cant_activos = 0;
     std::vector<std::string> puertos;
     std::string puerto;
@@ -118,6 +117,11 @@ void ManejadorPartidas::enviarPartidasEsperando(Protocolo &protocolo) {
     for (auto it=puertos.begin(); it!=puertos.end(); it++){
         protocolo.enviarPuerto(*it);
     }
+    uint8_t msj = protocolo.recibirCodigoMensaje();
+    if (msj != MSJ_ACEPTAR){
+        return false;
+    }
+    return true;
 }
 
 std::string ManejadorPartidas::obtenerPuertoSiguiente(){

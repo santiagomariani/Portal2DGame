@@ -19,12 +19,12 @@ class ManejadorPartidas {
 
 public:
     explicit ManejadorPartidas(std::string& puerto_server);
-    // Devuelve si 
+    // Crea una nueva partida, devuelve si se creo correctamente.
     bool nuevaPartida(Protocolo& protocolo);
     void terminarPartidas();
     // Envia por el protocolo los puertos de las partidas
     // que estan todavia aceptando jugadores.
-    void enviarPartidasEsperando(Protocolo& protocolo);
+    bool enviarPartidasEsperando(Protocolo& protocolo);
     // Elimina los threads de las partidas que ya terminaron.
     void borrarPartidasTerminadas();
     ~ManejadorPartidas() = default;

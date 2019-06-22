@@ -46,7 +46,7 @@ void Fisica::agregarNuevaChell() {
     }
     b2Vec2& pos = pos_chells.back();
     personajes.agregar_chell(pos);
-    //pos_chells.pop_back();
+    pos_chells.pop_back();
 }
 
 void Fisica::eliminarChell(int id_chell) {
@@ -59,6 +59,10 @@ int Fisica::cantChells() {
 
 void Fisica::agregarPosChell(b2Vec2& pos_chell) {
     this->pos_chells.push_back(pos_chell);
+}
+
+int Fisica::cantSpawnPoints(){
+	return this->pos_chells.size();
 }
 
 

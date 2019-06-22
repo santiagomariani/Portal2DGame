@@ -21,7 +21,10 @@ void BotonUnirseAPartida::presionar(){
     protocolo.enviarOpcionUnirsePartida();
     
     SelectorPartida s(protocolo);
-    s(ventana, puerto);
+    if (!s(ventana, puerto)){
+        return;
+    }
+    protocolo.enviarMsjAceptar();
     *corriendo = false;
 }
 

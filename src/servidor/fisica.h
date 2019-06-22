@@ -32,6 +32,9 @@ public:
     void eliminarChell(int id_chell);
     // Devuelve la cantidad de personajes que hay en la actual iteracion
     int cantChells();
+    // Devuelve la cantidad de spawn points disponibles.
+    // Si se agrega una chell, este numero baja (hasta quedar en cero).
+    int cantSpawnPoints();
     ~Fisica() = default;
 };
 

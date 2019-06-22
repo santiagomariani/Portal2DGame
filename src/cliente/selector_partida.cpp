@@ -104,6 +104,7 @@ bool SelectorPartida::operator()(Ventana& ventana, std::string& puerto){
                     break;
                 }
                 case SDL_QUIT:
+                    protocolo.enviarMsjCancelar();
                     corriendo = false;
                     continuar_programa = false;
                     break;

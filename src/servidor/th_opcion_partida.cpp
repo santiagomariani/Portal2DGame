@@ -22,15 +22,14 @@ void ThOpcionPartida::run() {
             terminar = partidas.nuevaPartida(protocolo);
         }
         if (opcion == MSJ_OPCION_UNIRSE_PARTIDA){
-            // enviar puertos activos (esperando clientes)
-            partidas.enviarPartidasEsperando(protocolo); // devolver bool para ver si sigue o no............................
-            break;
+            terminar = partidas.enviarPartidasEsperando(protocolo);
         }
         if (opcion == MSJ_CANCELAR){
             break;
         }
         if (opcion == MSJ_CREAR_MAPA){
-            std::string nombre_mapa = protocolo.recibirNombreMapa();
+            std::string nombre_mapa("mapas/");
+            nombre_mapa += protocolo.recibirNombreMapa();
             nombre_mapa += ".yaml";
             std::string mapa_yaml = protocolo.recibirMapa();
             std::ofstream mapa(nombre_mapa);
