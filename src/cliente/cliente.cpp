@@ -25,13 +25,13 @@
 #include "pantalla_error_partida.h"
 #include "pantalla_elegir_partida.h"
 #include "pantalla_esperando.h"
-
+#include "path.h"
 
 void Cliente::iniciar(int* etapa) {
+    std::string assets_path = ASSETS;
     // Conexion con servidor.
     std::string host = "localhost";
     std::string port = "8080";
-
     // ELEGIR NUEVA PARTIDA O UNIRSE A PARTIDA
     // ...
     std::string puerto_partida;
@@ -83,7 +83,7 @@ void Cliente::iniciar(int* etapa) {
     ColeccionVistaChells coleccion_viewchells(ventana);
     ColeccionSprites coleccion_sprites(ventana);
 
-    std::string arch_musica_en_juego("assets/sonidos/musica_juego.wav");
+    std::string arch_musica_en_juego(assets_path + "assets/sonidos/musica_juego.wav");
     Musica musica_en_juego(arch_musica_en_juego);
     musica_en_juego.setearVolumen(MIX_MAX_VOLUME / 5);
     Mix_AllocateChannels(16);
@@ -92,7 +92,7 @@ void Cliente::iniciar(int* etapa) {
     int alto_buffer = alto_nivel;
     Grabador grabador(ventana, ancho_buffer, alto_buffer);
 
-    std::string arch_fondo = "assets/industrial-background.jpg";
+    std::string arch_fondo = assets_path + "assets/industrial-background.jpg";
     Textura fondo(arch_fondo, ventana);
     Camara camara(ancho_nivel, alto_nivel, fondo, grabador);
 

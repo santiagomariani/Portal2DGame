@@ -1,4 +1,5 @@
 
+#include <path.h>
 #include "coleccion_sprites.h"
 #include "ventana.h"
 #include "ids.h"
@@ -12,9 +13,11 @@ ColeccionSprites::ColeccionSprites(Ventana &ventana) {
 
 void ColeccionSprites::creacionSprites(Ventana &ventana) {
 
+    std::string assets_path = ASSETS;
+
     // TEXTURA EFECTOS
 
-    std::string arch_textura_efectos = "assets/fx.png";
+    std::string arch_textura_efectos = assets_path + "assets/fx.png";
     texturas.emplace_back(arch_textura_efectos,ventana);
     // Disparo.
     sprites.insert(std::make_pair(ID_DISPARO,
@@ -39,7 +42,7 @@ void ColeccionSprites::creacionSprites(Ventana &ventana) {
 
     // TEXTURA BLOQUES
 
-    std::string arch_textura_bloques = "assets/blocks1.png";
+    std::string arch_textura_bloques = assets_path + "assets/blocks1.png";
     texturas.emplace_back(arch_textura_bloques, ventana);
 
     // Bloques roca y metal.
@@ -99,31 +102,31 @@ void ColeccionSprites::creacionSprites(Ventana &ventana) {
             Sprite(192, 192, 232, 1457, 1, texturas.back())));
 
     // TEXTURA BLOQUE DIAG 0
-    std::string arch_textura_bloque_diag_0 = "assets/block-diago.png";
+    std::string arch_textura_bloque_diag_0 = assets_path + "assets/block-diago.png";
     texturas.emplace_back(arch_textura_bloque_diag_0, ventana);
     // Bloque diagonal 0°.
     sprites.insert(std::make_pair(ID_BLOQUE_DIAGONAL_0,
             Sprite(178, 177, 0, 2, 1, texturas.back())));
     // TEXTURA BLOQUE DIAG 90°
-    std::string arch_textura_bloque_diag_90 = "assets/diago-90.png";
+    std::string arch_textura_bloque_diag_90 = assets_path + "assets/diago-90.png";
     texturas.emplace_back(arch_textura_bloque_diag_90, ventana);
     // Bloque diagonal 90°.
     sprites.insert(std::make_pair(ID_BLOQUE_DIAGONAL_90,
             Sprite(177, 178, 2, 0, 1, texturas.back())));
     // TEXTURA BLOQUE DIAG 180°
-    std::string arch_textura_bloque_diag_180 = "assets/diago-180.png";
+    std::string arch_textura_bloque_diag_180 = assets_path + "assets/diago-180.png";
     texturas.emplace_back(arch_textura_bloque_diag_180, ventana);
     // Bloque diagonal 180°.
     sprites.insert(std::make_pair(ID_BLOQUE_DIAGONAL_180,
             Sprite(177, 178, 2, 0, 1, texturas.back())));
     // TEXTURA BLOQUE DIAG 270°
-    std::string arch_textura_bloque_diag_270 = "assets/diago-270.png";
+    std::string arch_textura_bloque_diag_270 = assets_path + "assets/diago-270.png";
     texturas.emplace_back(arch_textura_bloque_diag_270, ventana);
     sprites.insert(std::make_pair(ID_BLOQUE_DIAGONAL_270,
             Sprite(177, 178, 2, 0, 1, texturas.back())));
 
     // TEXTURA VARIOS
-    std::string arch_textura_varios = "assets/miscellaneous.png";
+    std::string arch_textura_varios = assets_path + "assets/miscellaneous.png";
     texturas.emplace_back(arch_textura_varios, ventana);
 
     // Boton apagado y prendidos.
@@ -143,7 +146,7 @@ void ColeccionSprites::creacionSprites(Ventana &ventana) {
             Sprite(8, 220, 528, 689, 1, texturas.back())));
 
     // TEXTURA COMPUERTA
-    std::string arch_textura_compuerta = "assets/gate.png";
+    std::string arch_textura_compuerta = assets_path + "assets/gate.png";
     texturas.emplace_back(arch_textura_compuerta, ventana);
 
     // Compuerta cerrada.
@@ -162,14 +165,14 @@ void ColeccionSprites::creacionSprites(Ventana &ventana) {
 
 
     // TEXTURA PORTAL AZUL
-    std::string arch_textura_portal_azul = "assets/portAzul.png";
+    std::string arch_textura_portal_azul = assets_path + "assets/portAzul.png";
     texturas.emplace_back(arch_textura_portal_azul, ventana);
     // Portal azul.
     sprites.insert(std::make_pair(ID_PORTAL_AZUL,
             Sprite(193, 193, 0, 0, 1, texturas.back())));
 
     // TEXTURA PORTAL NARANJA
-    std::string arch_textura_portal_naranja = "assets/portNaranja.png";
+    std::string arch_textura_portal_naranja = assets_path + "assets/portNaranja.png";
     texturas.emplace_back(arch_textura_portal_naranja, ventana);
     // Portal naranja.
     sprites.insert(std::make_pair(ID_PORTAL_NARANJA,
@@ -177,7 +180,7 @@ void ColeccionSprites::creacionSprites(Ventana &ventana) {
 
 
     // TEXTURA TORTA
-    std::string arch_textura_torta = "assets/torta.png";
+    std::string arch_textura_torta = assets_path + "assets/torta.png";
     texturas.emplace_back(arch_textura_torta, ventana);
     // Torta.
     sprites.insert(std::make_pair(ID_TORTA,

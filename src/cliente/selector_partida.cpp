@@ -10,6 +10,7 @@
 #include "boton_aceptar_partida.h"
 #include <vector>
 #include <iostream>
+#include <path.h>
 
 SelectorPartida::SelectorPartida(Protocolo& protocolo):
                                          protocolo(protocolo){
@@ -19,6 +20,8 @@ SelectorPartida::SelectorPartida(Protocolo& protocolo):
 bool SelectorPartida::operator()(Ventana& ventana, std::string& puerto){
     int ancho_v = ventana.obtenerAncho();
     int alto_v = ventana.obtenerAlto();
+
+    std::string assets_path = ASSETS;
 
     std::vector<std::string> partidas;
 
@@ -31,7 +34,7 @@ bool SelectorPartida::operator()(Ventana& ventana, std::string& puerto){
     const int TICKS_PER_FRAME = 1000/FPS;
 
     //=Fondo=
-    std::string ruta_fondo = "assets/inicio5.png";
+    std::string ruta_fondo = assets_path + "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
     Imagen imagen_fondo(0, 0, 
                         1800, 
@@ -47,7 +50,7 @@ bool SelectorPartida::operator()(Ventana& ventana, std::string& puerto){
     titulo.cargarTexto("Elegir Partida", color);
 
     //=Botones=
-    std::string ruta_imagen_boton = "assets/boton_mapa.png";
+    std::string ruta_imagen_boton = assets_path + "assets/boton_mapa.png";
     Textura textura_boton_mapa(ruta_imagen_boton, ventana);
     Imagen imagen_boton(0, 0, 910, 290, &textura_boton_mapa);
     
@@ -58,7 +61,7 @@ bool SelectorPartida::operator()(Ventana& ventana, std::string& puerto){
     }
 
     //=Botonera=
-    std::string ruta_panel = "assets/panel_blanco.png";
+    std::string ruta_panel = assets_path + "assets/panel_blanco.png";
     Textura textura_panel(ruta_panel, ventana);
     Imagen imagen_panel(0, 0, 400, 640, &textura_panel);
 

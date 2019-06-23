@@ -1,9 +1,0 @@
-
-
-
-Objeto | ID
-============
-Chell  | 0
-BloqueRoca   | 1
-Disparo| 2
-Metal

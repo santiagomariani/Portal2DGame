@@ -3,6 +3,7 @@
 #include <protocolo.h>
 #include <iostream>
 #include <fstream>
+#include <path.h>
 #include "th_opcion_partida.h"
 #include "manejador_partidas.h"
 
@@ -28,7 +29,7 @@ void ThOpcionPartida::run() {
             break;
         }
         if (opcion == MSJ_CREAR_MAPA){
-            std::string nombre_mapa("mapas/");
+            std::string nombre_mapa(std::string(MAPAS) + "mapas/");
             nombre_mapa += protocolo.recibirNombreMapa();
             nombre_mapa += ".yaml";
             std::string mapa_yaml = protocolo.recibirMapa();

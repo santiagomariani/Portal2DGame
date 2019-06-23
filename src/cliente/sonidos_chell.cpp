@@ -1,4 +1,5 @@
 
+#include <path.h>
 #include "sonidos_chell.h"
 #include "estado_chell.h"
 #define CHELL_DISPARA 254
@@ -8,17 +9,20 @@ SonidosChell::SonidosChell() {
 }
 
 void SonidosChell::creacionSonidos() {
+
+    std::string assets_path = ASSETS;
+
     // Chell dispara.
-    std::string chell_dispara = "assets/sonidos/chell_dispara.wav";
+    std::string chell_dispara = assets_path + "assets/sonidos/chell_dispara.wav";
     sonidos.insert(std::make_pair(CHELL_DISPARA, Sonido(chell_dispara, 1)));
     sonidos.at(CHELL_DISPARA).setearVolumen(100);
 
     // Chell salta.
-    std::string chell_salta = "assets/sonidos/chell_salta.wav";
+    std::string chell_salta = assets_path + "assets/sonidos/chell_salta.wav";
     sonidos.insert(std::make_pair(CHELL_SALTA, Sonido(chell_salta, 2)));
 
     // Chell muere.
-    std::string chell_muere = "assets/sonidos/chell_muere.wav";
+    std::string chell_muere = assets_path + "assets/sonidos/chell_muere.wav";
     sonidos.insert(std::make_pair(CHELL_MUERE, Sonido(chell_muere, 3)));
     sonidos.at(CHELL_MUERE).setearVolumen(40);
 }

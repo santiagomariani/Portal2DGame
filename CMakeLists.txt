@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(untitled)
 
+#modo debug
+#Agregar la opción -DDEBUG cuando se quiera correr el programa localmente
+#
+
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb")
 
 #set(CMAKE_CXX_STANDARD 11)
@@ -24,7 +28,7 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/grabador.cpp src/cliente/grabador.h)
+add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/grabador.cpp src/cliente/grabador.h src/comun/path.h)
 target_link_libraries(portal_cliente SDL2 SDL2_image SDL2_mixer SDL2_ttf Box2D avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 
 message("[INFO] Loading sources to the server")
@@ -35,3 +39,15 @@ add_executable(portal_servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES})
 
 target_link_libraries(portal_servidor Box2D SDL2 avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 
+######################################
+# Esto es por si se usa el modo debug
+#file(COPY assets DESTINATION ./)
+#file(COPY mapas DESTINATION ./)
+#file(COPY config.yaml DESTINATION ./)
+#######################################
+
+message("[INFO] Adding Installation directives")
+INSTALL(TARGETS portal_cliente portal_servidor DESTINATION /usr/bin)
+INSTALL(DIRECTORY assets DESTINATION /var/Portal)
+INSTALL(DIRECTORY mapas DESTINATION /var/Portal)
+INSTALL(FILES config.yaml DESTINATION /etc/Portal)

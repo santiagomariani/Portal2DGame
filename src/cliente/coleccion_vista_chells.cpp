@@ -1,14 +1,17 @@
 
+#include <path.h>
 #include "coleccion_vista_chells.h"
 
 ColeccionVistaChells::ColeccionVistaChells(Ventana &ventana) {
-    std::string chell_verde = "assets/chell_verde.png";
+    std::string assets_path = ASSETS;
+
+    std::string chell_verde = assets_path + "assets/chell_verde.png";
     vista_chells.emplace_back(ventana, chell_verde);
-    std::string chell_roja = "assets/chell_roja.png";
+    std::string chell_roja = assets_path + "assets/chell_roja.png";
     vista_chells.emplace_back(ventana, chell_roja);
-    std::string chell_violeta = "assets/chell_violeta.png";
+    std::string chell_violeta = assets_path + "assets/chell_violeta.png";
     vista_chells.emplace_back(ventana, chell_violeta);
-    std::string chell_azul = "assets/chell_azul.png";
+    std::string chell_azul = assets_path + "assets/chell_azul.png";
     vista_chells.emplace_back(ventana, chell_azul);
 }
 

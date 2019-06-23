@@ -10,6 +10,7 @@
 
 #include "yaml-cpp/yaml.h"
 #include "or.h"
+#include "path.h"
 
 CargadorMapa::CargadorMapa():
 		gravedad(0, config.gravedad),
@@ -20,8 +21,9 @@ CargadorMapa::CargadorMapa():
 
 
 void CargadorMapa::cargarMapa(std::string& nombre_mapa) {
+    std::string path_mapas = MAPAS;
 	int id, identificador, x, y;
-	std::string ruta_mapa = "mapas/" + nombre_mapa;
+	std::string ruta_mapa = path_mapas + "mapas/" + nombre_mapa;
 	YAML::Node archivo = YAML::LoadFile(ruta_mapa);
 	for (auto it = archivo["Bloques"].begin(); it != archivo["Bloques"].end(); ++it){
 		id = (*it)["Id"].as<int>();

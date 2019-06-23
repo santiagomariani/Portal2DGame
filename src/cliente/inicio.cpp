@@ -3,6 +3,7 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_image.h>
+#include <path.h>
 #include "ventana.h"
 #include "contador_tiempo.h"
 #include "fondo_continuo.h"
@@ -20,14 +21,15 @@ void Inicio::operator()(int* etapa){
 	
 	Ventana ventana(ancho_pantalla, alto_pantalla);
 
+	std::string assets_path = ASSETS;
 
 	//=Fondo=
-	std::string ruta_fondo = "assets/inicio5.png";
+	std::string ruta_fondo = assets_path + "assets/inicio5.png";
 	Textura textura_fondo(ruta_fondo, ventana);
 	
 	FondoContinuo fondo(1800, 1100, ancho_pantalla, alto_pantalla, 3, textura_fondo);
 	//=Titulo=
-	std::string  ruta_titulo = "assets/titulo.png";
+	std::string  ruta_titulo = assets_path + "assets/titulo.png";
     Textura titulo_textura(ruta_titulo, ventana);
 	Imagen titulo(0, 0, 470, 200, &titulo_textura);
 	SDL_Rect destino_titulo = {(ancho_pantalla / 2) - (470 / 2), (alto_pantalla / 3) - 100, 470, 200};
@@ -35,16 +37,18 @@ void Inicio::operator()(int* etapa){
 	bool corriendo = true;
 
 	//=Botones=
-	std::string  ruta_botones = "assets/botones_inicio.png";
+	std::string  ruta_botones = assets_path + "assets/botones_inicio.png";
     Textura botones(ruta_botones, ventana);
 	Imagen imagen_jugar(64, 71, 177, 81, &botones);
 
 	BotonJugar jugar(&imagen_jugar, etapa, &corriendo);
-	jugar.colocar((ancho_pantalla / 2) - (177 / 2), (alto_pantalla * 3 / 5) - 40, 177, 81);
+	jugar.colocar((ancho_pantalla / 2) - (177 / 2),
+			(alto_pantalla * 3 / 5) - 40, 177, 81);
 
 	Imagen imagen_editar(65, 226, 177, 81, &botones);
 	BotonEditar editar(&imagen_editar, etapa, &corriendo);
-	editar.colocar((ancho_pantalla / 2) - (177 / 2), (alto_pantalla * 3 / 5) + 60, 177, 81);
+	editar.colocar((ancho_pantalla / 2) - (177 / 2),
+			(alto_pantalla * 3 / 5) + 60, 177, 81);
 
 	//=Loop=
 	ContadorTiempo capTimer;

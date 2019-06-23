@@ -1,6 +1,7 @@
 #include "servidor.h"
 #include <string>
 #include <iostream>
+#include <path.h>
 #include "config.h"
 #include "cargar_configuracion.h"
 
@@ -13,7 +14,7 @@ int main(int argc, const char *argv[]){
 		return 1;
 	}
 	CargarConfiguracion cargar;
-	std::string nombre_config("config.yaml");
+	std::string nombre_config(std::string(CONFIG) + "config.yaml");
 	cargar(nombre_config);
     std::string puerto(argv[1]);
     Servidor servidor;
