@@ -4,6 +4,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL.h>
+#include <path.h>
 #include "pantalla_error_partida.h"
 
 PantallaErrorPartida::PantallaErrorPartida(){
@@ -17,10 +18,12 @@ void PantallaErrorPartida::operator()(){
     const int FPS = 60;
     const int TICKS_PER_FRAME = 1000/FPS;
 
+    std::string assets_path = ASSETS;
+
     Ventana ventana(ancho_pantalla, alto_pantalla);
 
     //=Fondo=
-    std::string ruta_fondo = "assets/inicio5.png";
+    std::string ruta_fondo = assets_path + "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
 
     bool corriendo = true;

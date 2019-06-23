@@ -4,6 +4,7 @@
 #include <contador_tiempo.h>
 #include <mensajero.h>
 #include <protocolo.h>
+#include <path.h>
 #include "pantalla_elegir_partida.h"
 #include "imagen.h"
 #include "boton_jugar.h"
@@ -23,6 +24,8 @@ bool PantallaElegirPartida::operator()(){
     // Conexion con servidor.
     skt.conectar();
 
+    std::string assets_path = ASSETS;
+
     Mensajero mensajero_opcion(skt);
     Protocolo protocolo_opcion(mensajero_opcion);
 
@@ -35,12 +38,12 @@ bool PantallaElegirPartida::operator()(){
     Ventana ventana(ancho_pantalla, alto_pantalla);
 
     //=Fondo=
-    std::string ruta_fondo = "assets/inicio5.png";
+    std::string ruta_fondo = assets_path + "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
 
     FondoContinuo fondo(1800, 1100, ancho_pantalla, alto_pantalla, 3, textura_fondo);
     //=Titulo=
-    std::string  ruta_titulo = "assets/titulo.png";
+    std::string  ruta_titulo = assets_path + "assets/titulo.png";
     Textura titulo_textura(ruta_titulo, ventana);
     Imagen titulo(0, 0, 470, 200, &titulo_textura);
     SDL_Rect destino_titulo = {(ancho_pantalla / 2) - (470 / 2), (alto_pantalla / 3) - 100, 470, 200};
@@ -49,7 +52,7 @@ bool PantallaElegirPartida::operator()(){
     bool corriendo = true;
 
     //=Botones=
-    std::string  ruta_botones_seleccion = "assets/botones_seleccion.png";
+    std::string  ruta_botones_seleccion = assets_path + "assets/botones_seleccion.png";
     Textura botones(ruta_botones_seleccion, ventana);
 
 

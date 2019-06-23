@@ -3,7 +3,8 @@
 #include "config.h"
 #include "chell.h"
 
-Acido::Acido(Mundo &mundo, b2Vec2 &pos) : Cuerpo(config.tam_acido_x * 2, config.tam_acido_y * 2){
+Acido::Acido(Mundo &mundo, b2Vec2 &pos) : Cuerpo(config.tam_acido_x * 2,
+        config.tam_acido_y * 2){
     b2BodyDef body_def;
     body_def.type = b2_staticBody;
     body_def.position.Set(pos.x, pos.y);

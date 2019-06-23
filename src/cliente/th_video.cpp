@@ -2,6 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <path.h>
 #include "th_video.h"
 
 ThVideo::ThVideo(ColaBloqueante<std::vector<char>> &cola_buffer,
@@ -15,7 +16,8 @@ ThVideo::ThVideo(ColaBloqueante<std::vector<char>> &cola_buffer,
     std::tm *fecha = std::localtime(&t);
     std::stringstream oss;
     oss << std::put_time(fecha, "%b %d %H:%M:%S %Y");
-    std::string nombre_archivo = oss.str();
+    std::string nombre_archivo = std::string(ASSETS) + oss.str();
+
 
     contexto_formato.reset(new ContextoFormato());
     formato_salida.reset(new FormatoSalida(nombre_archivo, ancho, alto));

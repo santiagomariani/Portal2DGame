@@ -1,3 +1,4 @@
+#include <path.h>
 #include "texto.h"
 
 Texto::Texto(Ventana& ventana, int tamanio) : renderizador(ventana.obtenerRenderizador()){
@@ -5,7 +6,8 @@ Texto::Texto(Ventana& ventana, int tamanio) : renderizador(ventana.obtenerRender
 	fuente = nullptr;
 	ancho = 0;
 	alto = 0;
-	fuente = TTF_OpenFont("assets/portal.ttf", tamanio);
+	std::string path = std::string(ASSETS) + "assets/portal.ttf";
+	fuente = TTF_OpenFont(path.c_str(), tamanio);
 }
 
 bool Texto::cargarTexto(std::string textura_texto, SDL_Color color){

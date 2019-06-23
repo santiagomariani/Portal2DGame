@@ -6,6 +6,7 @@
 #include "imagen.h"
 #include "th_esperando_id_partida.h"
 #include <iostream>
+#include <path.h>
 
 PantallaEsperando::PantallaEsperando(){
 }
@@ -16,8 +17,10 @@ int PantallaEsperando::operator()(Protocolo& protocolo, Skt& skt){
     int ancho_v = ventana.obtenerAncho();
     int alto_v = ventana.obtenerAlto();
 
+    std::string assets_path = ASSETS;
+
     //=Fondo=
-    std::string ruta_fondo = "assets/inicio5.png";
+    std::string ruta_fondo = assets_path + "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
     Imagen imagen_fondo(0, 0, 
                         1800, 

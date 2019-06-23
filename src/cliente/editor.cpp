@@ -19,6 +19,7 @@
 #include "texto.h"
 
 #include <iostream>
+#include <path.h>
 #include "yaml-cpp/yaml.h"
 
 #define CELDA 50
@@ -26,6 +27,8 @@
 
 
 void Editor::operator()(int* etapa){
+	std::string assets_path = ASSETS;
+
 	const int ancho_pantalla = 800;
 	const int alto_pantalla = 600;
 
@@ -35,12 +38,12 @@ void Editor::operator()(int* etapa){
 	Ventana ventana(ancho_pantalla, alto_pantalla);
 	
 	//=Imagenes de Bloques=
-	std::string ruta_bloques = "assets/blocks.png";
+	std::string ruta_bloques = assets_path + "assets/blocks.png";
 	Textura textura_bloques(ruta_bloques, ventana);
 	Imagen bloque_roca(1, 172, 193, 193, &textura_bloques);
 	Imagen bloque_metal(1, 600, 193, 193, &textura_bloques);
 
-	std::string ruta_bloques_1 = "assets/blocks1.png";
+	std::string ruta_bloques_1 = assets_path + "assets/blocks1.png";
 	Textura textura_bloques_1(ruta_bloques_1, ventana);
 	Imagen emisor_arriba_sprite(1, 1242, 193, 193, &textura_bloques_1);
 	Imagen emisor_derecha_sprite(1, 1028, 193, 193, &textura_bloques_1);
@@ -52,11 +55,11 @@ void Editor::operator()(int* etapa){
 	Imagen receptor_abajo_sprite(232, 1457, 192, 192, &textura_bloques_1);
 	Imagen receptor_izquierda_sprite(235, 814, 192, 192, &textura_bloques_1);
 
-	std::string ruta_boton = "assets/miscellaneous.png";
+	std::string ruta_boton = assets_path + "assets/miscellaneous.png";
 	Textura textura_misc(ruta_boton, ventana);
 	Imagen boton(1, 116, 175, 55, &textura_misc);
 
-	std::string compuertaPath = "assets/gate.png";
+	std::string compuertaPath = assets_path + "assets/gate.png";
 	Textura compuertaTexture(compuertaPath, ventana);
 	Imagen compuerta_cerrada(1, 21, 193, 385, &compuertaTexture);
 
@@ -64,36 +67,36 @@ void Editor::operator()(int* etapa){
 
 	Imagen barra_energia(528, 689, 8, 220, &textura_misc);
 
-	std::string diago_path = "assets/block-diago.png";
+	std::string diago_path = assets_path + "assets/block-diago.png";
 	Textura diago_texture(diago_path, ventana);
 	Imagen bloqueMetalDiagoSprite(1, 2, 178, 177, &diago_texture);
-	std::string diago90_path = "assets/diago-90.png";
+	std::string diago90_path = assets_path + "assets/diago-90.png";
 	Textura diago90_texture(diago90_path, ventana);
 	Imagen bloqueMetalDiago90Sprite(0, 2, 177, 178, &diago90_texture);
-	std::string diago180_path = "assets/diago-180.png";
+	std::string diago180_path = assets_path + "assets/diago-180.png";
     Textura diago180_texture(diago180_path, ventana);
 	Imagen bloqueMetalDiago180Sprite(2, 0, 177, 178, &diago180_texture);
-	std::string diago270_path = "assets/diago-270.png";
+	std::string diago270_path = assets_path + "assets/diago-270.png";
     Textura diago270_texture(diago270_path, ventana);
 	Imagen bloqueMetalDiago270Sprite(2, 0, 177, 178, &diago270_texture);
 
-	std::string ruta_sp = "assets/spawn_point.png";
+	std::string ruta_sp = assets_path + "assets/spawn_point.png";
 	Textura textura_sp(ruta_sp, ventana);
 	Imagen imagen_sp(0, 0, 300, 300, &textura_sp);
 
-	std::string ruta_and = "assets/and.png";
+	std::string ruta_and = assets_path + "assets/and.png";
     Textura textura_and(ruta_and, ventana);
 	Imagen imagen_and(0, 0, 290, 174, &textura_and);
 
-	std::string ruta_or = "assets/or.png";
+	std::string ruta_or = assets_path + "assets/or.png";
     Textura textura_or(ruta_or, ventana);
 	Imagen imagen_or(0, 0, 466, 299, &textura_or);
 
-	std::string ruta_torta = "assets/torta.png";
+	std::string ruta_torta = assets_path + "assets/torta.png";
 	Textura textura_torta(ruta_torta, ventana);
 	Imagen imagen_torta(0, 0, 381, 389, &textura_torta);
 
-	std::string ruta_roca = "assets/fx.png";
+	std::string ruta_roca = assets_path + "assets/fx.png";
 	Textura textura_roca(ruta_roca, ventana);
 	Imagen imagen_roca(1, 4513, 83, 83, &textura_roca);
 
@@ -123,7 +126,7 @@ void Editor::operator()(int* etapa){
 	imagenes.emplace(ID_ROCA, &imagen_roca);
 
 	//=Panel=
-	std::string ruta_panel = "assets/panel_blanco.png";
+	std::string ruta_panel = assets_path + "assets/panel_blanco.png";
     Textura textura_panel(ruta_panel, ventana);
 	Imagen panel(0, 0, 400, 640, &textura_panel);
 
@@ -167,8 +170,8 @@ void Editor::operator()(int* etapa){
 
 	//=Botones Opciones=
 
-	std::string nombre_mapa = "NOmbre Mapa";
-	std::string ruta_boton_escribir = "assets/boton_escribir.png";
+	std::string nombre_mapa = "Nombre Mapa";
+	std::string ruta_boton_escribir = assets_path + "assets/boton_escribir.png";
 	Textura textura_boton_escribir(ruta_boton_escribir, ventana);
 	Imagen imagen_boton_escribir(0, 0, 300, 300, &textura_boton_escribir);
 	BotonEscribir escribir(&imagen_boton_escribir, &recibir_texto);
@@ -176,13 +179,13 @@ void Editor::operator()(int* etapa){
 
 	SDL_Rect panel_input = {195, 0, ancho_pantalla - (ancho_pantalla / 6) - 320, 50};
 
-	std::string ruta_boton_volver = "assets/boton_volver.jpeg";
+	std::string ruta_boton_volver = assets_path + "assets/boton_volver.jpeg";
     Textura textura_boton_volver(ruta_boton_volver, ventana);
 	Imagen imagen_boton_volver(0, 0, 255, 255, &textura_boton_volver);
 	BotonVolver volver(&imagen_boton_volver, etapa, &corriendo);
 	volver.colocar(100, 5, 40, 40);
 
-	std::string ruta_boton_guardar = "assets/boton_guardar.jpeg";
+	std::string ruta_boton_guardar = assets_path + "assets/boton_guardar.jpeg";
 	Textura textura_boton_guardar(ruta_boton_guardar, ventana);
 	Imagen imagen_boton_guardar(0, 0, 255, 255, &textura_boton_guardar);
 	BotonGuardar guardar(&imagen_boton_guardar, mapa, nombre_mapa);
