@@ -46,6 +46,10 @@ bool ManejadorPartidas::elegirMapa(Protocolo& protocolo,
         {
             std::unique_lock<std::mutex> lock(m);
             while ((archivo = readdir(directorio)) != NULL) {
+                if (strcmp(archivo->d_name, ".") == 0 || 
+                    strcmp(archivo->d_name,"..") == 0){
+                    continue;
+                }
                 mapas.emplace_back(archivo->d_name);
             }
             closedir (directorio);

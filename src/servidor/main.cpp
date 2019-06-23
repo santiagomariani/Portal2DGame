@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "config.h"
+#include "cargar_configuracion.h"
 
 Config config;
 
@@ -11,6 +12,9 @@ int main(int argc, const char *argv[]){
 		std::cout << "./portal_servidor <puerto>\n";
 		return 1;
 	}
+	CargarConfiguracion cargar;
+	std::string nombre_config("config.yaml");
+	cargar(nombre_config);
     std::string puerto(argv[1]);
     Servidor servidor;
     servidor.iniciarMultiPartidas(puerto);
