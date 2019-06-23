@@ -3,11 +3,6 @@ project(untitled)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb")
 
-#set(CMAKE_CXX_STANDARD 11)
-#set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_CXX_FLAGS_RELEASE "-O0")
-
-#add_subdirectory(${CMAKE_SOURCE_DIR} /libs/yaml-cpp)
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
 include_directories(${CMAKE_SOURCE_DIR}/libs)
@@ -24,12 +19,18 @@ message("[INFO] Loading sources to the client")
 file(GLOB_RECURSE CLIENT_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente/*.cpp" "src/cliente/*.h")
 file(GLOB CLIENT_LIB_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
 
-add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES} src/cliente/grabador.cpp src/cliente/grabador.h)
+file(GLOB CLIENT_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "src/cliente" "src/cliente/editor" "src/cliente/hilos" "src/cliente/graficos" "src/cliente/grabacion" "src/cliente/pantallas" "src/cliente/sonidos")
+include_directories(${CLIENT_HEADERS})
+
+add_executable(portal_cliente ${CLIENT_SOURCES}  ${CLIENT_LIB_SOURCES})
 target_link_libraries(portal_cliente SDL2 SDL2_image SDL2_mixer SDL2_ttf Box2D avformat avcodec avutil swscale ${CMAKE_THREAD_LIBS_INIT} yaml-cpp)
 
 message("[INFO] Loading sources to the server")
 file(GLOB_RECURSE SERVER_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor/*.cpp" "src/servidor/*.h")
 file(GLOB SERVER_LIBS_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/comun/*.h" "src/comun/*.cpp")
+
+file(GLOB SERVER_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "src/servidor" "src/servidor/modelo_juego" "src/servidor/hilos")
+include_directories(${SERVER_HEADERS})
 
 add_executable(portal_servidor ${SERVER_SOURCES} ${SERVER_LIBS_SOURCES})
 
