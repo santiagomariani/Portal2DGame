@@ -1,0 +1,53 @@
+gravedad: -9.8
+
+escala gravedad chell: 1.0
+    
+velocidad chell: 4
+
+salto chell: 3
+
+tam chell x: 0.2
+
+tam chell y: 0.39583
+
+tam bloque: 0.5
+
+tam base boton x: 0.5
+
+tam base boton y: 0.1
+
+tam sensor boton x: 0.25
+
+tam sensor boton y: 0.025
+
+radio disparo: 0.15
+
+velocidad disparo: 10
+
+tam portal x: 0.04
+
+tam portal y: 0.45
+
+tam roca: 0.15
+
+tam acido x: 0.5
+
+tam acido y: 0.06
+
+tam compuerta x: 0.5
+
+tam compuerta y: 0.94
+    
+tam receptor: 0.5
+
+tam barra energia y: 1
+
+tam barra energia x: 0.05
+
+radio bola energia: 0.2
+
+velocidad bola energia: 0.5
+
+tam emisor: 0.5
+
+tam torta: 0.3
