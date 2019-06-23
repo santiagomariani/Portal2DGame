@@ -4,7 +4,7 @@
 
 #include "contador_tiempo.h"
 #include "ventana.h"
-#include "renderizables.h"
+#include "coleccion_sprites.h"
 #include "camara.h"
 #include "info_cuerpo.h"
 #include "cola_bloqueante.h"
@@ -20,7 +20,7 @@ class Renderizador {
 private:
     Camara &camara;
     Ventana &ventana;
-    std::map<uint8_t,Renderizable*> &renderizables;
+    ColeccionSprites &coleccion_sprites;
     ColaBloqueante<MsjRenderizado> &cola_renderizado;
     int id_chell;
     ColeccionVistaChells &coleccion_viewchells;
@@ -30,12 +30,11 @@ private:
 
 public:
     Renderizador(Camara &camara,
-            ColaBloqueante<MsjRenderizado> &cola_renderizado,
-            std::map<uint8_t,
-            Renderizable *> &renderizables,
-            int id_chell,
-            ColeccionVistaChells &coleccion_viewchells,
-            Ventana &ventana, Grabador &grabador);
+                 ColaBloqueante<MsjRenderizado> &cola_renderizado,
+                 ColeccionSprites &coleccion_sprites,
+                 int id_chell,
+                 ColeccionVistaChells &coleccion_viewchells,
+                 Ventana &ventana, Grabador &grabador);
     // Obtiene la informacion de los cuerpos a renderizar, y los renderiza.
     // Ademas reproduce los sonidos de la Chell. Continua hasta que se recibe
     // el ultimo cuerpo a renderizar, momento en donde renderiza la ventana.

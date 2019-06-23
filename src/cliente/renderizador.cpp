@@ -9,15 +9,15 @@
 #include "estado_chell.h"
 
 Renderizador::Renderizador(Camara &camara,
-        ColaBloqueante<MsjRenderizado> &cola_renderizado,
-        std::map<uint8_t,Renderizable *> &renderizables,
-        int id_chell,
-        ColeccionVistaChells &coleccion_viewchells,
-        Ventana &ventana,
-        Grabador &grabador) :
+                           ColaBloqueante<MsjRenderizado> &cola_renderizado,
+                           ColeccionSprites &coleccion_sprites,
+                           int id_chell,
+                           ColeccionVistaChells &coleccion_viewchells,
+                           Ventana &ventana,
+                           Grabador &grabador) :
         camara(camara),
         ventana(ventana),
-        renderizables(renderizables),
+        coleccion_sprites(coleccion_sprites),
         cola_renderizado(cola_renderizado),
         id_chell(id_chell),
         coleccion_viewchells(coleccion_viewchells),
@@ -62,13 +62,14 @@ void Renderizador::renderizar() {
                 chell_gano = true;
             }
         } else {
-            camara.renderizar(*(renderizables[ic.id]),
+            camara.renderizar(coleccion_sprites.obtenerSprite(ic.id),
                               ic.destino,
                               ic.angulo * -1,
                               nullptr,
                               ic.espejado);
         }
     }
+    grabador.renderizarIconoGrabacion();
     if (grabador.estaGrabando()) {
         grabador.leerYEnviarPixeles();
     } else {

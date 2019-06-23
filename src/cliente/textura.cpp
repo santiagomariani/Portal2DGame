@@ -83,6 +83,10 @@ void Textura::setearColorModulacion(uint8_t r, uint8_t g, uint8_t b) {
     SDL_SetTextureColorMod(textura, r, g, b);
 }
 
+void Textura::setearAlpha(uint8_t alpha) {
+    SDL_SetTextureAlphaMod(textura, alpha);
+}
+
 Textura::~Textura() {
     if (this->textura) {
         SDL_DestroyTexture(this->textura);

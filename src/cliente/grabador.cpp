@@ -12,6 +12,10 @@ Grabador::Grabador(Ventana &ventana,
         alto_buffer(alto_buffer),
         th_video(nullptr),
         grabando(false) {
+    std::string archivo_icono_grabacion("assets/grabando.png");
+    icono_grabacion = Textura(archivo_icono_grabacion, ventana);
+    icono_grabacion.setearColorModulacion(255, 0, 0);
+    icono_grabacion.setearAlpha(150);
 }
 
 void Grabador::iniciar_grabacion() {
@@ -86,6 +90,7 @@ void Grabador::finalizar_grabacion() {
         textura_video = nullptr;
         th_video->terminar();
         th_video->join();
+        th_video.reset();
         grabando = false;
         buffer.clear();
     }
@@ -93,6 +98,13 @@ void Grabador::finalizar_grabacion() {
 
 bool Grabador::estaGrabando() {
     return grabando;
+}
+
+void Grabador::renderizarIconoGrabacion() {
+    if (estaGrabando()) {
+        SDL_Rect destino = {70, 50, 55, 55};
+        icono_grabacion.renderizar(nullptr, &destino);
+    }
 }
 
 Grabador::~Grabador() {

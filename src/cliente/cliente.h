@@ -13,8 +13,6 @@ class Cliente{
 public:
 	Cliente() = default;
 	void iniciar(int* etapa);
-    std::string requestNuevaPartida(Protocolo &protocolo);
-	std::string requestUnirsePartida(Protocolo &protocolo);
 	~Cliente() = default;
 };
 

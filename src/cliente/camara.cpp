@@ -34,9 +34,7 @@ void Camara::renderizar(Renderizable &renderizable,
     SDL_Rect copia = destino;
     copia.x = destino.x - camara.x;
     copia.y = destino.y - camara.y;
-
     renderizable.renderizar(copia, angulo, centro, espejado);
-
     grabador.renderizarRenderizableGrabador(renderizable,
                                             copia,
                                             angulo,

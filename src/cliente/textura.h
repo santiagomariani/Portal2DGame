@@ -42,6 +42,7 @@ public:
     // Setea un color de modulacion para la textura. Esto permite cambiar el
     // color de la imagen.
     void setearColorModulacion(uint8_t r, uint8_t g, uint8_t b);
+    void setearAlpha(uint8_t alpha);
     // Libera la memoria reservada por la textura.
     ~Textura();
 };

@@ -8,6 +8,7 @@
 #include "renderizable.h"
 #include "th_video.h"
 #include "textura.h"
+#include "sprite.h"
 #include <vector>
 #include <cola_bloqueante.h>
 
@@ -21,6 +22,8 @@ private:
     ColaBloqueante<std::vector<char>> cola_buffer;
     std::unique_ptr<ThVideo> th_video;
     bool grabando;
+    Textura icono_grabacion;
+
 public:
     Grabador(Ventana &ventana, int ancho_buffer, int alto_buffer);
     void iniciar_grabacion();
@@ -36,6 +39,7 @@ public:
             double angulo = 0.0,
             SDL_Point *centro = nullptr,
             SDL_RendererFlip espejado = SDL_FLIP_NONE);
+    void renderizarIconoGrabacion();
     void finalizar_grabacion();
     void leerYEnviarPixeles();
     bool estaGrabando();
