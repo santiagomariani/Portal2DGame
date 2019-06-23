@@ -1,0 +1,104 @@
+Bloques:
+  - Id: 1
+    Identificador: -1
+    X: 2
+    Y: -3
+  - Id: 8
+    Identificador: -1
+    X: 2
+    Y: -4
+  - Id: 26
+    Identificador: 5
+    X: 2
+    Y: -5
+  - Id: 19
+    Identificador: -1
+    X: 2
+    Y: -6
+  - Id: 99
+    Identificador: -1
+    X: 3
+    Y: -2
+  - Id: 3
+    Identificador: -1
+    X: 3
+    Y: -3
+  - Id: 24
+    Identificador: 3
+    X: 3
+    Y: -4
+  - Id: 22
+    Identificador: 6
+    X: 3
+    Y: -5
+  - Id: 20
+    Identificador: -1
+    X: 3
+    Y: -6
+  - Id: 6
+    Identificador: 15
+    X: 4
+    Y: -3
+  - Id: 28
+    Identificador: 4
+    X: 4
+    Y: -4
+  - Id: 18
+    Identificador: -1
+    X: 4
+    Y: -5
+  - Id: 21
+    Identificador: -1
+    X: 4
+    Y: -6
+  - Id: 16
+    Identificador: 2
+    X: 5
+    Y: -3
+  - Id: 30
+    Identificador: -1
+    X: 6
+    Y: -2
+  - Id: 26
+    Identificador: 11
+    X: 6
+    Y: -3
+  - Id: 9
+    Identificador: -1
+    X: 6
+    Y: -5
+  - Id: 10
+    Identificador: -1
+    X: 7
+    Y: -2
+  - Id: 11
+    Identificador: -1
+    X: 8
+    Y: -3
+  - Id: 22
+    Identificador: 8
+    X: 8
+    Y: -5
+  - Id: 32
+    Identificador: -1
+    X: 9
+    Y: -1
+  - Id: 28
+    Identificador: 13
+    X: 9
+    Y: -2
+  - Id: 24
+    Identificador: 9
+    X: 9
+    Y: -3
+  - Id: 31
+    Identificador: -1
+    X: 11
+    Y: -1
+  - Id: 12
+    Identificador: -1
+    X: 11
+    Y: -3
+Conexiones:
+  - A: 15
+    B: 2

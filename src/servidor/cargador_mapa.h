@@ -31,7 +31,7 @@
 #include "fisica.h"
 #include "torta.h"
 
-// Clase encargada de cargar y guardar un mapa dese un archivo yaml
+// Clase encargada de cargar y guardar un mapa desde un archivo yaml
 
 class CargadorMapa {
     std::string nombre_mapa;
