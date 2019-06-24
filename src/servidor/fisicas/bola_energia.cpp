@@ -119,9 +119,9 @@ void BolaEnergia::empezarContacto(Cuerpo *otro) {
                 otro->getId() == ID_BLOQUE_DIAGONAL_90 ||
                 otro->getId() == ID_BLOQUE_DIAGONAL_180 ||
                 otro->getId() == ID_BLOQUE_DIAGONAL_270){
-        //b2Vec2 inicial = cuerpo->GetLinearVelocity();
-        //b2Vec2 final = ((Bloque*)otro)->obtenerVelocidadRebote(inicial);
-        //cuerpo->SetLinearVelocity(final);
+        b2Vec2 inicial = cuerpo->GetLinearVelocity();
+        b2Vec2 final = ((Bloque*)otro)->obtenerVelocidadRebote(inicial);
+        cuerpo->SetLinearVelocity(final);
         return;
     } else if (otro->getId() == ID_BLOQUE_METAL ||
             otro->getId() == ID_DISPARO || 

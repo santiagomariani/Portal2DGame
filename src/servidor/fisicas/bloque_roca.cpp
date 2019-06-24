@@ -52,3 +52,7 @@ void BloqueRoca::empezarContacto(Cuerpo *otro) {
     }
 }
 
+b2Vec2 BloqueRoca::obtenerVelocidadRebote(b2Vec2& vel_inicial){
+	return b2Vec2(0, 0);
+}
+
