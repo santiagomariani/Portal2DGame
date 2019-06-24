@@ -7,6 +7,7 @@
 #include "bloque_metal.h"
 #include <iostream>
 #include <sstream>
+#include <path.h>
 #include "manejador_partidas.h"
 #include "receptor_arriba.h"
 #include "boton.h"
@@ -42,7 +43,8 @@ bool ManejadorPartidas::elegirMapa(Protocolo& protocolo,
     DIR* directorio;
     struct dirent* archivo;
     std::vector<std::string> mapas;
-    if ((directorio = opendir("mapas/")) != NULL) {
+    std::string dir = std::string(MAPAS) + "mapas/";
+    if ((directorio = opendir(dir.c_str())) != NULL) {
         {
             std::unique_lock<std::mutex> lock(m);
             while ((archivo = readdir(directorio)) != NULL) {

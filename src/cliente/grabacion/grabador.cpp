@@ -1,6 +1,7 @@
 
 #include <SDL2/SDL_messagebox.h>
 #include <iostream>
+#include <path.h>
 #include "grabador.h"
 
 Grabador::Grabador(Ventana &ventana,
@@ -12,7 +13,7 @@ Grabador::Grabador(Ventana &ventana,
         alto_buffer(alto_buffer),
         th_video(nullptr),
         grabando(false) {
-    std::string archivo_icono_grabacion("assets/grabando.png");
+    std::string archivo_icono_grabacion(std::string(ASSETS) + "assets/grabando.png");
     icono_grabacion = Textura(archivo_icono_grabacion, ventana);
     icono_grabacion.setearColorModulacion(255, 0, 0);
     icono_grabacion.setearAlpha(150);

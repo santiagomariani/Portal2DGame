@@ -20,7 +20,8 @@ BloqueRoca::BloqueRoca(int identidad, Mundo& mundo, const b2Vec2& pos) :
 	cuerpo->CreateFixture(&myFixtureDef);
 	cuerpo->SetUserData(this);
 }
-BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(config.tam_bloque * 2, config.tam_bloque * 2) {
+BloqueRoca::BloqueRoca(BloqueRoca&& otro) : Bloque(config.tam_bloque * 2,
+		config.tam_bloque * 2) {
 	if (this == &otro){
 		return;
 	}

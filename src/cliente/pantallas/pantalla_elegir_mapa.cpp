@@ -10,6 +10,7 @@
 #include "botonera_mapas.h"
 #include <vector>
 #include <iostream>
+#include <path.h>
 
 PantallaElegirMapa::PantallaElegirMapa(Protocolo& protocolo):
                                          protocolo(protocolo){
@@ -17,6 +18,9 @@ PantallaElegirMapa::PantallaElegirMapa(Protocolo& protocolo):
 
 
 bool PantallaElegirMapa::operator()(Ventana& ventana){
+
+    std::string assets_path = ASSETS;
+
     int ancho_v = ventana.obtenerAncho();
     int alto_v = ventana.obtenerAlto();
 
@@ -30,7 +34,7 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     const int TICKS_PER_FRAME = 1000/FPS;
 
     //=Fondo=
-    std::string ruta_fondo = "assets/inicio5.png";
+    std::string ruta_fondo = assets_path + "assets/inicio5.png";
     Textura textura_fondo(ruta_fondo, ventana);
     Imagen imagen_fondo(0, 0, 
                         1800, 
@@ -48,7 +52,7 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     titulo.cargarTexto("Elegir mapa", color);
 
     //=Botones=
-    std::string ruta_imagen_boton = "assets/boton_mapa.png";
+    std::string ruta_imagen_boton = assets_path + "assets/boton_mapa.png";
     Textura textura_boton_mapa(ruta_imagen_boton, ventana);
     Imagen imagen_boton(0, 0, 910, 290, &textura_boton_mapa);
     
@@ -59,7 +63,7 @@ bool PantallaElegirMapa::operator()(Ventana& ventana){
     }
 
     //=Botonera=
-    std::string ruta_panel = "assets/panel_blanco.png";
+    std::string ruta_panel = assets_path + "assets/panel_blanco.png";
     Textura textura_panel(ruta_panel, ventana);
     Imagen imagen_panel(0, 0, 400, 640, &textura_panel);
 
