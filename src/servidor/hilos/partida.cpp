@@ -15,6 +15,9 @@ Partida::Partida(Fisica& fisica, SktAceptador skt,
                 skt_aceptador(std::move(skt)),
                 continuar_juego(true){
     this->cant_clientes = cant_clientes;
+    if (cant_clientes == 0){
+        this->cant_clientes = 1;
+    }
     this->recibir_clientes = true;
 }
 
