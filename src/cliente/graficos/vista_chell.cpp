@@ -4,11 +4,11 @@
 #include "estado_chell.h"
 
 VistaChell::VistaChell(Ventana &ventana, std::string nombre_archivo) :
+    textura_chell(nombre_archivo, ventana),
     renderizando_estado_transitorio(false),
-    angulo_transitorio(0),
-    centro_transitorio(nullptr),
     espejado_transitorio(SDL_FLIP_NONE),
-    textura_chell(nombre_archivo, ventana) {
+    angulo_transitorio(0),
+    centro_transitorio(nullptr) {
     creacionSprites();
 }
 
@@ -143,4 +143,5 @@ VistaChell &VistaChell::operator=(VistaChell &&otro) {
     otro.centro_transitorio = nullptr;
     otro.espejado_transitorio = SDL_FLIP_NONE;
     otro.renderizando_estado_transitorio = false;
+    return *this;
 }

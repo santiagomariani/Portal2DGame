@@ -25,7 +25,7 @@ private:
 
 public:
     // Carga la textura y crea todos los sprites con la misma.
-    explicit VistaChell(Ventana &ventana, std::string nombre_archivo);
+    VistaChell(Ventana &ventana, std::string nombre_archivo);
     VistaChell(VistaChell &&otro);
     VistaChell& operator=(VistaChell &&otro);
     // Renderiza el Sprite asociado con el estado actual. Si se esta

@@ -1,7 +1,9 @@
 #include "boton_bloque.h"
 
 BotonBloque::BotonBloque(Cursor& cursor, int id, Imagen* imagen) :
-						cursor(cursor), id(id), Presionable(imagen) {
+		Presionable(imagen),
+		cursor(cursor),
+		id(id) {
 }
 void BotonBloque::presionar(){
 	cursor.setId(id);

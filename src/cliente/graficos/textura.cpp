@@ -35,6 +35,7 @@ Textura& Textura::operator=(Textura &&otro) {
     otro.renderizador = nullptr;
     otro.ancho = 0;
     otro.alto = 0;
+    return *this;
 }
 
 Textura::Textura(Textura &&otro) {
@@ -57,11 +58,11 @@ SDL_Texture* Textura::cargarTextura(const std::string &nombre_archivo) {
     return textura;
 }
 
-int Textura::renderizar(const SDL_Rect *fuente,
-                        const SDL_Rect *destino,
-                        double angulo,
-                        SDL_Point *centro,
-                        SDL_RendererFlip espejado) const {
+void Textura::renderizar(const SDL_Rect *fuente,
+                         const SDL_Rect *destino,
+                         double angulo,
+                         SDL_Point *centro,
+                         SDL_RendererFlip espejado) const {
     SDL_RenderCopyEx(this->renderizador,
             this->textura,
             fuente,
