@@ -4,6 +4,7 @@
 
 #define SEPARACION 20
 #define CANT_BOTONES 5
+#define DESPLAZAMIENTO 15
 
 BotoneraMapas::BotoneraMapas(Imagen* fondo, SDL_Rect& destino) :
 				    fondo(fondo), destino_panel(destino){
@@ -23,7 +24,9 @@ void BotoneraMapas::render(){
 	fondo->render(destino_panel);
 
 	for (auto it = botones->begin(); it != botones->end(); ++it){
-		(*it).render();
+		if (it->estaDentro(destino_panel)){
+			it->render();
+		}
 	}
 }
 
@@ -40,6 +43,6 @@ void BotoneraMapas::recibirEvento(SDL_MouseButtonEvent& evento){
 
 void BotoneraMapas::recibirEvento(SDL_MouseWheelEvent& evento){
 	for (auto it = botones->begin(); it != botones->end(); ++it){
-		(*it).mover(0, evento.y * 15);
+		(*it).mover(0, evento.y * DESPLAZAMIENTO);
 	}
 }

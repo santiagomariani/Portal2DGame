@@ -23,3 +23,17 @@ void BotonMapa::mover(int offset_x, int offset_y){
 	destino.x += offset_x;
 	destino.y += offset_y;
 }
+
+bool BotonMapa::estaDentro(SDL_Rect& espacio){
+	bool punto_sup_izq = (destino.x >= espacio.x &&
+						  destino.x <= (espacio.x + espacio.w) &&
+						  destino.y >= espacio.y &&
+						  destino.y <= (espacio.y + espacio.h));
+
+	bool punto_inf_der = (destino.x + destino.w >= espacio.x &&
+						  destino.x + destino.w <= (espacio.x + espacio.w) &&
+						  destino.y + destino.h >= espacio.y &&
+						  destino.y + destino.h <= (espacio.y + espacio.h));
+	return punto_sup_izq && punto_inf_der;
+}
+

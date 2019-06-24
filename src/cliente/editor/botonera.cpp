@@ -2,6 +2,8 @@
 #include "ids.h"
 #include <iostream>
 
+#define DESPLAZAMIENTO 15
+
 Botonera::Botonera(Imagen* fondo, int ancho_v, int alto_v) :
 				    fondo(fondo){
 
@@ -45,6 +47,6 @@ void Botonera::recibirEvento(SDL_MouseButtonEvent& evento){
 
 void Botonera::recibirEvento(SDL_MouseWheelEvent& evento){
 	for (auto it = botones->begin(); it != botones->end(); ++it){
-		(*it).mover(0, evento.y * 15);
+		(*it).mover(0, evento.y * DESPLAZAMIENTO);
 	}
 }
