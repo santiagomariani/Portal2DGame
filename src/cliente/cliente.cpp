@@ -24,6 +24,7 @@
 #include "coleccion_vista_chells.h"
 #include "pantalla_elegir_partida.h"
 #include "pantalla_esperando.h"
+#include "pantalla_datos_conexion.h"
 #include "path.h"
 
 void Cliente::iniciar(int* etapa) {
@@ -31,6 +32,9 @@ void Cliente::iniciar(int* etapa) {
     // Conexion con servidor.
     std::string host = "localhost";
     std::string port = "8080";
+    //PEDIR INPUT DEL PUERTO Y HOST
+    PantallaDatosConexion pantalla_datos(port, host);
+    pantalla_datos();
     // ELEGIR NUEVA PARTIDA O UNIRSE A PARTIDA
     // ...
     std::string puerto_partida;

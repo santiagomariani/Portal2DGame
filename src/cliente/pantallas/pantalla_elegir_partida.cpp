@@ -1,4 +1,3 @@
-
 #include "ventana.h"
 #include "textura.h"
 #include <contador_tiempo.h>
@@ -52,9 +51,9 @@ bool PantallaElegirPartida::operator()(){
     bool corriendo = true;
 
     //=Botones=
+
     std::string  ruta_botones_seleccion = assets_path + "assets/botones_seleccion.png";
     Textura botones(ruta_botones_seleccion, ventana);
-
 
     Imagen imagen_crear(64, 71, 177, 81, &botones); // nueva partida
     BotonNuevaPartida nueva_partida(&imagen_crear, &corriendo, protocolo_opcion, puerto, ventana);
