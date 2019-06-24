@@ -2,7 +2,7 @@
 #ifndef PATH_H
 #define PATH_H
 
-#ifdef DEBUG_MODE
+#ifdef DEBUG
 #define CONFIG ""
 #define ASSETS ""
 #define MAPAS ""
@@ -12,4 +12,4 @@
 #define MAPAS "/var/Portal/"
 #endif
 
-#endif PATH_H
+#endif //PATH_H
