@@ -15,6 +15,7 @@ public:
 	void render();
 	void presionar() override;
 	void mover(int offset_x, int offset_y);
+	bool estaDentro(SDL_Rect& espacio);
 };
 
 #endif //BOTON_MAPA
