@@ -22,7 +22,6 @@
 #include "mixer.h"
 #include "musica.h"
 #include "coleccion_vista_chells.h"
-#include "pantalla_error_partida.h"
 #include "pantalla_elegir_partida.h"
 #include "pantalla_esperando.h"
 #include "path.h"

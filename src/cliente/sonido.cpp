@@ -60,4 +60,5 @@ Sonido &Sonido::operator=(Sonido &&otro) {
     canal = otro.canal;
     otro.canal = -1;
     otro.sonido = nullptr;
+    return *this;
 }

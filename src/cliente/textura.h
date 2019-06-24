@@ -30,11 +30,11 @@ public:
     // El rectangulo fuente selecciona que porcion de la imagen nos interesa,
     // mientras que el rectangulo destino indica donde se va a renderizar
     // y con que tamaño la porcion seleccionada con el primer rectangulo.
-    int renderizar(const SDL_Rect *fuente = nullptr,
-                   const SDL_Rect *destino = nullptr,
-                   double angulo = 0.0,
-                   SDL_Point *centro = nullptr,
-                   SDL_RendererFlip espejado = SDL_FLIP_NONE) const;
+    void renderizar(const SDL_Rect *fuente = nullptr,
+                    const SDL_Rect *destino = nullptr,
+                    double angulo = 0.0,
+                    SDL_Point *centro = nullptr,
+                    SDL_RendererFlip espejado = SDL_FLIP_NONE) const;
     // Devuelve el ancho de la textura.
     int obtenerAncho();
     // Devuelve el alto de la textura.
