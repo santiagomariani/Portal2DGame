@@ -10,7 +10,6 @@ class CompuertaLogica {
 public:
 	virtual bool encendida() = 0;
 	virtual void agregar(std::shared_ptr<CompuertaLogica> compuerta) = 0;
-
 };
 
 #endif
