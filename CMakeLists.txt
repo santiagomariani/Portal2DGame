@@ -5,7 +5,7 @@ project(untitled)
 #Agregar la opción -DDEBUG cuando se quiera correr el programa localmente
 #
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb -DDEBUG")
 
 
 message("[INFO] Adding '${CMAKE_SOURCE_DIR}/libs' as include directory")
@@ -43,13 +43,13 @@ target_link_libraries(portal_servidor Box2D SDL2 avformat avcodec avutil swscale
 
 ######################################
 # Esto es por si se usa el modo debug
-#file(COPY assets DESTINATION ./)
-#file(COPY mapas DESTINATION ./)
-#file(COPY config.yaml DESTINATION ./)
+file(COPY assets DESTINATION ./)
+file(COPY mapas DESTINATION ./)
+file(COPY config.yaml DESTINATION ./)
 #######################################
 
-message("[INFO] Adding Installation directives")
-INSTALL(TARGETS portal_cliente portal_servidor DESTINATION /usr/bin)
-INSTALL(DIRECTORY assets DESTINATION /var/Portal)
-INSTALL(DIRECTORY mapas DESTINATION /var/Portal)
-INSTALL(FILES config.yaml DESTINATION /etc/Portal)
+#message("[INFO] Adding Installation directives")
+#INSTALL(TARGETS portal_cliente portal_servidor DESTINATION /usr/bin)
+#INSTALL(DIRECTORY assets DESTINATION /var/Portal)
+#INSTALL(DIRECTORY mapas DESTINATION /var/Portal)
+#INSTALL(FILES config.yaml DESTINATION /etc/Portal)

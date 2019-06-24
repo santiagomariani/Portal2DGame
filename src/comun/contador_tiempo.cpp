@@ -4,8 +4,8 @@
 
 ContadorTiempo::ContadorTiempo() : ticks_comienzo(0),
     ticks_pausado(0),
-    comenzo(false),
-    pausado(false) {
+    pausado(false),
+    comenzo(false) {
 }
 
 void ContadorTiempo::comenzar() {

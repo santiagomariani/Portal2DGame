@@ -11,9 +11,8 @@
 
 BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos,
         Angulo& angulo) :
-    angulo(angulo),
-    Bloque(config.tam_bloque * 2, config.tam_bloque * 2) {
-
+    Bloque(config.tam_bloque * 2, config.tam_bloque * 2),
+    angulo(angulo) {
     b2BodyDef cuerpo_def;
     cuerpo_def.type = b2_staticBody;
     cuerpo_def.position.Set(pos.x, pos.y);
@@ -31,7 +30,7 @@ BloqueMetalDiagonal::BloqueMetalDiagonal(Mundo &mundo, const b2Vec2 &pos,
 
 BloqueMetalDiagonal::BloqueMetalDiagonal(BloqueMetalDiagonal&& otro) :
             Bloque(config.tam_bloque * 2, config.tam_bloque * 2),
-            angulo(otro.angulo){
+            angulo(otro.angulo) {
     if (this == &otro){
         return;
     }

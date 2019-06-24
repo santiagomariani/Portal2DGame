@@ -85,4 +85,5 @@ Compuerta& Compuerta::operator=(Compuerta&& otra) {
     cuerpo = otra.cuerpo;
     base = otra.base;
     estado = otra.estado;
+    return *this;
 }
