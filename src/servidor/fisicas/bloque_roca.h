@@ -21,6 +21,7 @@ public:
 	const b2Vec2& getPosition();
 	void recibirDisparo(Disparo* disparo);
 	void empezarContacto(Cuerpo* otro);
+	b2Vec2 obtenerVelocidadRebote(b2Vec2& vel_inicial) override;
 };
 
 #endif //BLOQUE_ROCA_H

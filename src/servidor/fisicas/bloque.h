@@ -22,7 +22,7 @@ public:
     virtual const b2Vec2& getPosition() = 0;
     virtual void empezarContacto(Cuerpo* otro) = 0;
     // Devuelve la velocidad final del objeto que rebote con el bloque
-    virtual b2Vec2 obtenerVelocidadRebote(b2Vec2& vel_inicial) {};
+    virtual b2Vec2 obtenerVelocidadRebote(b2Vec2& vel_inicial) = 0;
 };
 
 

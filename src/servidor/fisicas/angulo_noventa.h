@@ -11,6 +11,7 @@ public:
 	b2Vec2 obtenerNormalPortal(b2Vec2& dif_choque);
 	b2PolygonShape obtenerTriangulo();
 	int getId();
+	b2Vec2 obtenerVelocidadRebote(b2Vec2& vel_inicial) override;
 	~AnguloNoventa() = default;
 };
 

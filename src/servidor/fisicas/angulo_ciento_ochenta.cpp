@@ -45,3 +45,15 @@ int AnguloCientoOchenta::getId(){
     return ID_BLOQUE_DIAGONAL_180;
 }
 
+
+
+b2Vec2 AnguloCientoOchenta::obtenerVelocidadRebote(b2Vec2& vel_inicial){
+    if (vel_inicial.x > 0){
+        return b2Vec2(0, vel_inicial.x * (-1));
+    }
+    if (vel_inicial.y > 0){
+        return b2Vec2(vel_inicial.y * (-1), 0);
+    }
+    return b2Vec2(vel_inicial.x * (-1), vel_inicial.y * (-1));
+}
+

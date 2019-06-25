@@ -1,0 +1,312 @@
+Bloques:
+  - Id: 1
+    Identificador: -1
+    X: -9
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -9
+    Y: 0
+  - Id: 1
+    Identificador: -1
+    X: -9
+    Y: -1
+  - Id: 1
+    Identificador: -1
+    X: -9
+    Y: -2
+  - Id: 1
+    Identificador: -1
+    X: -9
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -8
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -8
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -7
+    Y: 1
+  - Id: 8
+    Identificador: -1
+    X: -7
+    Y: -2
+  - Id: 3
+    Identificador: -1
+    X: -7
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -6
+    Y: 1
+  - Id: 31
+    Identificador: -1
+    X: -6
+    Y: -1
+  - Id: 1
+    Identificador: -1
+    X: -6
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: -5
+    Y: 1
+  - Id: 6
+    Identificador: 1
+    X: -5
+    Y: -2
+  - Id: 1
+    Identificador: -1
+    X: -5
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -4
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -4
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -3
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -3
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: -2
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -2
+    Y: -3
+  - Id: 100
+    Identificador: 9
+    X: -2
+    Y: -5
+  - Id: 1
+    Identificador: -1
+    X: -1
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: -1
+    Y: 0
+  - Id: 99
+    Identificador: -1
+    X: -1
+    Y: -2
+  - Id: 1
+    Identificador: -1
+    X: -1
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: 2
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: 1
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: 0
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 0
+    Y: -6
+  - Id: 3
+    Identificador: -1
+    X: 1
+    Y: -6
+  - Id: 8
+    Identificador: -1
+    X: 2
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 2
+    Y: -6
+  - Id: 24
+    Identificador: 4
+    X: 3
+    Y: 3
+  - Id: 3
+    Identificador: -1
+    X: 3
+    Y: -6
+  - Id: 1
+    Identificador: -1
+    X: 4
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: 4
+    Y: -6
+  - Id: 3
+    Identificador: -1
+    X: 5
+    Y: 3
+  - Id: 6
+    Identificador: 3
+    X: 5
+    Y: 1
+  - Id: 1
+    Identificador: -1
+    X: 5
+    Y: 0
+  - Id: 1
+    Identificador: -1
+    X: 5
+    Y: -3
+  - Id: 16
+    Identificador: 2
+    X: 5
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 5
+    Y: -6
+  - Id: 16
+    Identificador: 5
+    X: 6
+    Y: 4
+  - Id: 1
+    Identificador: -1
+    X: 6
+    Y: -3
+  - Id: 11
+    Identificador: -1
+    X: 6
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 6
+    Y: -6
+  - Id: 3
+    Identificador: -1
+    X: 7
+    Y: 0
+  - Id: 16
+    Identificador: 8
+    X: 7
+    Y: -1
+  - Id: 1
+    Identificador: -1
+    X: 7
+    Y: -3
+  - Id: 1
+    Identificador: -1
+    X: 7
+    Y: -4
+  - Id: 1
+    Identificador: -1
+    X: 7
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 7
+    Y: -6
+  - Id: 28
+    Identificador: 6
+    X: 8
+    Y: 3
+  - Id: 3
+    Identificador: -1
+    X: 8
+    Y: 0
+  - Id: 3
+    Identificador: -1
+    X: 8
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: 8
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 8
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 9
+    Y: 0
+  - Id: 3
+    Identificador: -1
+    X: 9
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 10
+    Y: 0
+  - Id: 3
+    Identificador: -1
+    X: 10
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 11
+    Y: 0
+  - Id: 32
+    Identificador: -1
+    X: 11
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 11
+    Y: -5
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: 0
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: -1
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: -2
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: -3
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: -4
+  - Id: 3
+    Identificador: -1
+    X: 12
+    Y: -5
+Conexiones:
+  - A: 1
+    B: 9
+  - A: 3
+    B: 9
+  - A: 4
+    B: 5
+  - A: 6
+    B: 8
+  - A: 9
+    B: 2

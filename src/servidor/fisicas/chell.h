@@ -11,6 +11,10 @@
 #include "estado_chell.h"
 #include <SDL2/SDL.h>
 
+// Representa al personaje Chell. 
+// Puede disparar, agarrar una roca, moverse y saltar.
+// Tiene una identidad (int) unica para diferenciar de otros personajes.
+
 class Chell : public Cuerpo {
 	int id;
 	b2Body* cuerpo;
