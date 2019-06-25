@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.14)
 project(untitled)
 
-option(DEBUG_MODE "Usar modo debug" ON)
+option(DEBUG_MODE "Usar modo debug" OFF)
 if (DEBUG_MODE)
 	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb -DDEBUG")
 else(DEBUG_MODE)
-	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -std=c++11 -Wall -pedantic -pthread -ggdb")
+	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -Wall -pedantic -pthread -ggdb")
 endif(DEBUG_MODE)
 
 
